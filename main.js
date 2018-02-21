@@ -1,0 +1,181 @@
+
+
+function show(shown, hidden) {
+  document.getElementById(shown).style.display='block';
+  document.getElementById(hidden).style.display='none';
+  return false;
+}
+
+
+
+
+
+function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+        x.className += " responsive topnav myTopnav";
+
+    } else {
+        x.className = "topnav";
+    }
+}
+/*for responsive nav, func*/
+    var userFeed = new Instafeed({                     
+        get: 'user',
+        userId: '514128423',
+        limit: 12,
+        resolution: 'standard_resolution',
+        accessToken: '1967032900.ba4c844.c1ecb30e79504ac792c51cb8826aaef6',
+        sortBy: 'most-recent',
+        template: '<div class="row gallery instaimg  col-md-12 img-size"><a href="{{image}}" title="{{caption1}}" target="_blank"><img src="{{image}}" alt="{{caption}}" class="img-fluid"/></a></div>',
+    });
+    userFeed.run();
+ 
+    var myHeaders = new Headers();
+    var myInit = { 
+                  method: 'GET',
+                  headers: myHeaders,
+                  mode: 'cors',
+                  cache: 'default' 
+                 };
+      //https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20rss%20where%20url%20in%20(%27http%3A%2F%2Fwww.beograd.rs%2Fcir%2Frss%2F%27)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys                     
+    var myRequest = new Request('https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20rss%20where%20url%20in%20(%27http%3A%2F%2Fwww.beograd.rs%2Flat%2Frss%2F%27)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys');
+    fetch(myRequest, myInit)
+    .then(function(dataRSS){
+      return dataRSS.json()
+    })
+    .then(function(dataR){
+      console.log('BG sajt RSS feed:',dataR);
+      
+        for(var i = 0; i < 10; i++){
+                 var storeTitle = dataR.query.results.item[i].title;
+                 var storeLink = dataR.query.results.item[i].link;
+                 
+                 var storeText = dataR.query.results.item[i].description;
+
+                 //console.log(storeText);
+                 var storeDate = dataR.query.results.item[i].pubDate;
+                 var storeImageUse = storeText.match(/"http[^\s]+ /);
+                 var myImage = storeImageUse[0];
+                 var myFinImage = myImage.charAt(myImage.length -4).toLowerCase() != 'p' ? 'no image here!' :  myImage;
+                 var storeTextPart = '&#x2014;' +  '&nbsp;' + storeText.slice(200, storeText.length - 7);
+                 var firstCh = storeText.slice(200,201);
+                 var storeHref = String(storeLink);
+
+                $('#carousel-example-generic').carousel({
+                interval: 10000
+                });
+                // console.log(document.getElementsByClassName('item')[i].children[0]);
+                 document.getElementsByClassName('item')[i].children[0].innerHTML = `<h4 id =titleId1> <a id='titleId1' href=${storeHref} target = '_blank'> ${storeTitle}  </h4> </a>` + `<img title = "${storeTitle}" src = ${myFinImage} alt = 'No pic here unfortunately!'  id =imgId1>`   +  "<p id = partTxt>"  +  `<span id =dateId1>  ${storeDate} </span>` +  storeTextPart +  `<a id =aHrefId1 href =${storeHref} target = blank>&nbsp;...&nbsp;Detailed<a/>`     +  "</p>"               
+       }
+    })
+    .catch(function(error) {
+         console.log(error);
+    })
+    
+    fetch('https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20rss%20where%20url%20in%20(%27https%3A%2F%2Fwww.blic.rs%2Frss%2FVesti%2FBeograd%27)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys')        
+        .then(function(blicFeed){
+            return blicFeed.json();
+        })
+        .then(function(blicRSS){
+            console.log("BLIC FEED:", blicRSS);
+
+            for(let i = 0; i < 16; i++){
+                var storeTitle1   =  blicRSS.query.results.item[i].title;
+                var storeLink1    =  blicRSS.query.results.item[i].link;
+                var storeText1    =   '&#x2014;' +  '&nbsp;' + blicRSS.query.results.item[i].description;
+                var storeDate1    =  blicRSS.query.results.item[i].pubDate;
+                var storeDatePart1 =  storeDate1.slice(0, storeDate1.length - 23);
+                var storeDatePart2 =  storeDate1.slice(storeDate1.length - 23, storeDate1.length - storeDate1.length - 15);
+                var storeHref1    =  String(storeLink1);
+                
+               $('#myCarousel').carousel({
+                interval: 5000
+                })
+               
+               //console.log(document.getElementsByClassName('itemId2')[i])
+               document.getElementsByClassName('itemId2')[i].children[0].innerHTML = `&nbsp;&nbsp;<h4 id =titleId1> <a id ='titleId1' href = ${storeHref1} target = '_blank'> ${storeTitle1} &nbsp;</a></h4><br> &nbsp;&nbsp;&nbsp;&nbsp; <p id = 'partTxt1'>  <span id =dateId1> ${storeDatePart1}   </span> <span id='dateIdSl2'>&nbsp; ${storeDatePart2}  </span>${storeText1}<a id ='titleId1' href = ${storeHref1} target = '_blank'><i id ='glyId2' class="fa fa-external-link"></i></a></p> ` 
+            }
+        })
+        .catch(function(error){
+
+            console.log('<h2>Here is catched error:', error);
+        })
+
+        /*fetch('https://api.foursquare.com/v2/venues/search?ll=44.8099375,20.4494431&oauth_token=G55NI2XQXX55ZYHFLQBQC10QA4HCBEBAMMPLEVWHONUZOQ4H&v=20180130') //sve u Beogradu
+        .then(function(venueX){
+            return venueX.json();
+        }).then(function(venuesAll){
+            console.log('ALL VENUES:', venuesAll);
+            
+            fetch('https://api.foursquare.com/v2/venues/search?ll=44.8099375,20.4494431&categoryId=4d4b7105d754a06374d81259&&limit=50&client_id=SYQLZ1DXBSZYMCXG3QUGBBHDRM23YDDLO5SAZCALXMFUR3VS&client_secret=HHFBNGSRMFOUAFYQCTVMR1FK4HR4GZL5LO0T0BYGQVFUHSW0&v=20180130')   //restorani/hrana
+            .then(foodX => {   
+                return foodX.json()
+            }).then(foodPlaces => {
+                console.log('FOOD ONLY:',foodPlaces);
+            })
+            fetch('https://api.foursquare.com/v2/venues/search?ll=44.8099375,20.4494431&categoryId=4d4b7104d754a06370d81259&limit=50&client_id=SYQLZ1DXBSZYMCXG3QUGBBHDRM23YDDLO5SAZCALXMFUR3VS&client_secret=HHFBNGSRMFOUAFYQCTVMR1FK4HR4GZL5LO0T0BYGQVFUHSW0&v=20180130')
+            .then(funPlc => {
+                return funPlc.json();
+            }).then(funPlaces =>{
+                console.log('ART & ENTERTAINM:', funPlaces);
+                //take this also: http://api.eventful.com/
+            })
+        })
+        */
+        
+
+
+        /*fetch('https://www.blic.rs/rss/Vesti/Beograd')
+        .then(function(dataXML){
+        return dataXML.text()
+        })
+        .then(function(xmlStr){
+        return $.parseXML(xmlStr)   //parse to XMl doc with jqueery method
+        })
+        .then(function(dataV){
+        console.log("XML doc:", dataV)
+        
+        var $xml = $(dataV);
+        for(var i = 0; i < 16; i++){    
+            var storeLink  =  $xml.find('item')[i].children[2].textContent;
+            var stringLink =  String(storeLink);
+            var xmlTitle   =  $xml.find('item')[i].children[0].textContent;
+            var xmlDesc    =  '&#x2014;' +  '&nbsp;' + $xml.find('item')[i].children[1].textContent;
+            var xmlDate    =  $xml.find('item')[i].children[4].textContent;
+            var xmlDatePt1 =  xmlDate.slice(0, xmlDate.length - 23);
+            var xmlDatePt2 =  xmlDate.slice(xmlDate.length - 23, xmlDate.length - xmlDate.length - 15);
+
+             $('#myCarousel').carousel({
+                interval: 5000
+             });
+
+            document.getElementsByClassName('itemId2')[i].children[0].innerHTML = `&nbsp;&nbsp;<h4 id =titleId1> <a id ='titleId1' href = ${stringLink} target = '_blank'> ${xmlTitle} &nbsp;</a></h4><br> &nbsp;&nbsp;&nbsp;&nbsp; <p id = 'partTxt1'>  <span id =dateId1> ${xmlDatePt1}  <span id='dateIdSl2'>&nbsp; ${xmlDatePt2}  </span> </span>  ${xmlDesc}<a id ='titleId1' href = ${stringLink} target = '_blank'><span id ='glyId2' class="glyphicon glyphicon-arrow-right"></span></a></p>`;
+        } //big loop
+         
+      })*/
+
+
+
+
+
+
+ //https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20rss%20where%20url%20%3D%20%22http%3A%2F%2Fwww.beograd.rs%2Fcir%2Frss%2F%22&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
