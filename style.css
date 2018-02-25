@@ -39,10 +39,10 @@ body {
 
 }
 
-.active {
+/*.active {
   background-color: #4CAF50;
   color: white;
-}
+}*/
 
 .topnav .icon {
   display: none;
@@ -121,7 +121,7 @@ a.icon {
   padding-top:3%;
   padding-bottom:10%;
   border-top:2px solid #8CB240;
-  margin-top:-20px;
+  /*margin-top:-20px;*/
 }
 
 
@@ -178,12 +178,8 @@ a.icon {
  
 }
 
-
-
-
-
 #storeLoc {
-  color: red;
+  color: red!important;
   font-size: 50px;
   font-family:  Helvetica;
   position: relative;
@@ -713,8 +709,8 @@ a.icon {
 }
 
 p {
-  color:black;
-  background-color:#ceceb5;
+ /* color:black;
+  background-color:#ceceb5;*/
 }
 
 @media screen and (max-width: 250px) and (min-width: 150px) {
@@ -1197,4 +1193,216 @@ p {
   float:right;
 
 
+}
+
+
+/*Adding CSS for whatToSee.html*/
+
+
+
+.container {
+  padding-top:3%;
+}
+
+#forToSeePage {
+  background-color: #ecece3;
+  border-top:1px solid #8CB240;
+  /*margin-top:-20px;*/
+  padding-bottom:20%;
+  margin-left:auto;
+  margin-right:auto;
+ }
+
+
+
+
+#firstRow1 {
+  border:1px solid gray;
+}
+
+#divFourSQ {
+  background-color:#ceceb5;
+  height:450px;
+  border:2px solid #8CB240;
+  padding:0px;
+  margin-right:2%;
+  margin-left:2%;
+}
+
+#secondCol {
+  border:3px solid #8CB240;
+  height:450px;
+  background-color:#ceceb5;
+  padding:0px;
+  margin-right:2%;
+  margin-left:2%; 
+}
+
+#myCarousel {
+  height:450px;
+  width:100%;
+  padding-right:-5%;  
+}
+
+#myCarousel2 {
+  height:450px;
+  width:100%;
+  padding-right:-5%; 
+}
+
+#carFourSQ1  {
+  width:6%;
+  color:#aecc72;
+  height:24%;
+  margin-top:25%;
+  opacity:0.1;
+}
+
+#carFourSQ1:hover {
+  color:#8CB240;
+  opacity:0.6;
+}
+#carFourSQ1:active {
+  color:#6e8c33;
+  opacity:0.8;
+}
+
+#carFourSQ1 span {
+  width:2%;
+  text-align:center;
+  font-size:25px;
+
+}
+
+#carFourSQ2 {
+  width:6%;
+  color:#aecc72;
+  text-align:center;
+  height:24%;
+  margin-top:25%;
+  opacity:0.2;
+}
+
+#carFourSQ2:hover {
+  color:#8CB240;
+  opacity:0.5;
+}
+#carFourSQ2:active {
+  color:#6e8c33;
+  opacity:0.8;
+}
+#carFourSQ2 span {
+  width:auto;
+  text-align:center;
+  font-size:25px;
+}
+
+/*title fourSQ*/
+
+#titleFSQ1 {
+ font-weight: 700;
+ text-align:left;
+ margin: 20px;
+ height:70px;
+ color:black;
+ font-family: 'Verdana';
+}
+
+#imgFSQ1 {
+ background-color:#8CB240;
+
+}
+
+#forIndicator4Sq {
+  font-size:50px;
+  color:#8CB240;
+  width:6%;
+  top:-15%;
+  left:49%;
+  position:relative;
+  font-family:'Consolas';
+}
+
+#fsqTextDiv {
+  background-color:#b9b9a2;
+  width:460px;
+  height:190px;
+  margin-left:19px;
+    /*border:1px solid #8CB240;*/
+}
+
+#adress4sq {
+ padding:10px;
+ font-weight:700;
+ font-family:'Times New Roman';
+ color:gray;
+ font-size:16px;
+}
+
+#boldNumId {
+  color:#585858;
+}
+
+
+.fa-address-card-o {
+  background-color:#8CB240;
+  font-size:22px;
+}
+
+#phone4SqId {
+  /*background-color:#8CB240;*/
+  color:#8CB240;
+  font-size:22px;
+}
+
+#crossId {
+  /*background-color:#8CB240;*/
+  color: #8CB240;
+  font-size:22px;
+}
+.fa-map-signs {
+  color:#8CB240;
+  font-size:22px;
+}
+
+#categ4sqId {
+  margin-top:15px;
+  font-weight:800;
+  font-family:'Sitka Heading';
+  font-size:18px;
+  color: #707070;
+}
+
+#sq4StoreCat {
+  font-weight:500;
+  font-size:15px;
+  font-family: 'Constantia', 'Franclin Gothic';
+}
+
+#ifNoNumId {
+  color:gray;
+}
+
+
+#style4ImgUrl  {
+  color:#8CB240;
+  margin-left:9px;
+  margin-top:-41px;
+  border:2px solid #8CB240;
+  border-radius:100%;
+}
+
+#sq4UrlTxt {
+  color:gray;
+  font-weight:700;
+  margin-left:46px;
+  padding-bottom:3px;
+  position:relative;
+  top:-35px;
+}
+
+#sq4UrlTxt:hover {
+  color:#6f6f61;
+  font-weight:900;
+  text-decoration-color:#8CB240;
 }

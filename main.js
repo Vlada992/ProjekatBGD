@@ -1,14 +1,19 @@
 
 
-function show(shown, hidden) {
+ 
+function show(shown, hidden, hidden1, hidden2) {  //for now, 4 ative pages
   document.getElementById(shown).style.display='block';
+
   document.getElementById(hidden).style.display='none';
+  document.getElementById(hidden1).style.display='none';
+  document.getElementById(hidden2).style.display='none';
+
   return false;
 }
 
 
 
-
+ 
 
 function myFunction() {
     var x = document.getElementById("myTopnav");
@@ -47,7 +52,7 @@ function myFunction() {
     .then(function(dataR){
       console.log('BG sajt RSS feed:',dataR);
       
-        for(var i = 0; i < 10; i++){
+        for(var i = 0; i < 9; i++){ //0,1,2,3,4,5,6,7,8,9
                  var storeTitle = dataR.query.results.item[i].title;
                  var storeLink = dataR.query.results.item[i].link;
                  
@@ -65,14 +70,13 @@ function myFunction() {
                 $('#carousel-example-generic').carousel({
                 interval: 10000
                 });
-                // console.log(document.getElementsByClassName('item')[i].children[0]);
+                 console.log('10 NA ITEM JS 74 EVO GA:', document.getElementsByClassName('item')[i].children[0]);
                  document.getElementsByClassName('item')[i].children[0].innerHTML = `<h4 id =titleId1> <a id='titleId1' href=${storeHref} target = '_blank'> ${storeTitle}  </h4> </a>` + `<img title = "${storeTitle}" src = ${myFinImage} alt = 'No pic here unfortunately!'  id =imgId1>`   +  "<p id = partTxt>"  +  `<span id =dateId1>  ${storeDate} </span>` +  storeTextPart +  `<a id =aHrefId1 href =${storeHref} target = blank>&nbsp;...&nbsp;Detailed<a/>`     +  "</p>"               
        }
     })
     .catch(function(error) {
          console.log(error);
     })
-    
     fetch('https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20rss%20where%20url%20in%20(%27https%3A%2F%2Fwww.blic.rs%2Frss%2FVesti%2FBeograd%27)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys')        
         .then(function(blicFeed){
             return blicFeed.json();
@@ -92,8 +96,6 @@ function myFunction() {
                $('#myCarousel').carousel({
                 interval: 5000
                 })
-               
-               //console.log(document.getElementsByClassName('itemId2')[i])
                document.getElementsByClassName('itemId2')[i].children[0].innerHTML = `&nbsp;&nbsp;<h4 id =titleId1> <a id ='titleId1' href = ${storeHref1} target = '_blank'> ${storeTitle1} &nbsp;</a></h4><br> &nbsp;&nbsp;&nbsp;&nbsp; <p id = 'partTxt1'>  <span id =dateId1> ${storeDatePart1}   </span> <span id='dateIdSl2'>&nbsp; ${storeDatePart2}  </span>${storeText1}<a id ='titleId1' href = ${storeHref1} target = '_blank'><i id ='glyId2' class="fa fa-external-link"></i></a></p> ` 
             }
         })
@@ -125,7 +127,6 @@ function myFunction() {
         */
         
 
-
         /*fetch('https://www.blic.rs/rss/Vesti/Beograd')
         .then(function(dataXML){
         return dataXML.text()
@@ -145,34 +146,12 @@ function myFunction() {
             var xmlDate    =  $xml.find('item')[i].children[4].textContent;
             var xmlDatePt1 =  xmlDate.slice(0, xmlDate.length - 23);
             var xmlDatePt2 =  xmlDate.slice(xmlDate.length - 23, xmlDate.length - xmlDate.length - 15);
-
              $('#myCarousel').carousel({
                 interval: 5000
              });
-
             document.getElementsByClassName('itemId2')[i].children[0].innerHTML = `&nbsp;&nbsp;<h4 id =titleId1> <a id ='titleId1' href = ${stringLink} target = '_blank'> ${xmlTitle} &nbsp;</a></h4><br> &nbsp;&nbsp;&nbsp;&nbsp; <p id = 'partTxt1'>  <span id =dateId1> ${xmlDatePt1}  <span id='dateIdSl2'>&nbsp; ${xmlDatePt2}  </span> </span>  ${xmlDesc}<a id ='titleId1' href = ${stringLink} target = '_blank'><span id ='glyId2' class="glyphicon glyphicon-arrow-right"></span></a></p>`;
         } //big loop
-         
       })*/
-
-
-
-
-
-
- //https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20rss%20where%20url%20%3D%20%22http%3A%2F%2Fwww.beograd.rs%2Fcir%2Frss%2F%22&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
