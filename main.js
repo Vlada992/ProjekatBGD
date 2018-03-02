@@ -3,7 +3,6 @@
  
 function show(shown, hidden, hidden1, hidden2) {  //for now, 4 ative pages
   document.getElementById(shown).style.display='block';
-
   document.getElementById(hidden).style.display='none';
   document.getElementById(hidden1).style.display='none';
   document.getElementById(hidden2).style.display='none';
@@ -52,13 +51,10 @@ function myFunction() {
     .then(function(dataR){
       console.log('BG sajt RSS feed:',dataR);
       
-        for(var i = 0; i < 9; i++){ //0,1,2,3,4,5,6,7,8,9
+        for(var i = 0; i < 9; i++){ 
                  var storeTitle = dataR.query.results.item[i].title;
                  var storeLink = dataR.query.results.item[i].link;
-                 
-                 var storeText = dataR.query.results.item[i].description;
-
-                 //console.log(storeText);
+                 var storeText = dataR.query.results.item[i].description;                
                  var storeDate = dataR.query.results.item[i].pubDate;
                  var storeImageUse = storeText.match(/"http[^\s]+ /);
                  var myImage = storeImageUse[0];
@@ -70,7 +66,6 @@ function myFunction() {
                 $('#carousel-example-generic').carousel({
                 interval: 10000
                 });
-                 console.log('10 NA ITEM JS 74 EVO GA:', document.getElementsByClassName('item')[i].children[0]);
                  document.getElementsByClassName('item')[i].children[0].innerHTML = `<h4 id =titleId1> <a id='titleId1' href=${storeHref} target = '_blank'> ${storeTitle}  </h4> </a>` + `<img title = "${storeTitle}" src = ${myFinImage} alt = 'No pic here unfortunately!'  id =imgId1>`   +  "<p id = partTxt>"  +  `<span id =dateId1>  ${storeDate} </span>` +  storeTextPart +  `<a id =aHrefId1 href =${storeHref} target = blank>&nbsp;...&nbsp;Detailed<a/>`     +  "</p>"               
        }
     })

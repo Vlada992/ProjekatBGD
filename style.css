@@ -122,6 +122,8 @@ a.icon {
   padding-bottom:10%;
   border-top:2px solid #8CB240;
   /*margin-top:-20px;*/
+  margin-bottom:-5%;
+  padding-top:10%;
 }
 
 
@@ -190,6 +192,13 @@ a.icon {
 #locId {
   width:50%;
   margin:auto;
+  margin-top:2%;
+  margin-bottom:2%;
+  border:1px solid #c2c2a3;
+}
+
+#locId:hover {
+  border:1px solid #8CB240;
 }
 
 #storeTemp {
@@ -362,6 +371,58 @@ a.icon {
   margin:auto;
 }
 
+#openWImg {
+  position:relative;
+  margin-top:-18%;
+  margin-left:-66%;
+}
+
+.form-control {
+  background-color: #c2c2a3;
+  width:50%!important;
+  margin:0 auto;
+  margin-top:2%;
+  margin-bottom:2%;
+  color:red;
+  font-weight:500;
+  font-size:50px;
+  font-family:"Helvetica";
+  height:144px;
+  padding-top:-5%;
+  border:1px solid #8CB240;
+  padding-bottom:14.1%;
+  padding-left:5.29%;
+
+}
+
+.form-control:visited {
+  border:1px solid #485b21!important;
+
+}
+
+.form-control:hover {
+  border:1px solid #6a8730;
+  background-color:#aeae92;
+}
+
+.form-control:active {
+  border:1px solid #485b21!important;
+}
+
+
+.form-control::-webkit-input-placeholder {
+  color:red;
+  opacity:0.4;
+}
+
+.form-control::-moz-placeholder{
+  color:red;
+  opacity:0.4;
+}
+.form-control::-ms-placeholder{
+  color:red;
+  opacity:0.4;
+}
 
 /*END OF ADDED CSS FOR TIME  i weather*/
 
@@ -369,9 +430,6 @@ a.icon {
   border-radius: 0px;
   width:auto;
   height:auto;
-
-
-
 
 }
 .fixH3 {
@@ -663,7 +721,7 @@ a.icon {
 
 #storeMap {
   width: auto;
-  height: auto;
+  height: 520px;
   border: 4px solid #8CB240;
   box-shadow: 25px 20px 35px #888888;
   margin:auto;
@@ -1211,6 +1269,8 @@ p {
   padding-bottom:20%;
   margin-left:auto;
   margin-right:auto;
+  margin-bottom: -5%;
+  padding-top:10%;
  }
 
 
@@ -1222,20 +1282,22 @@ p {
 
 #divFourSQ {
   background-color:#ceceb5;
-  height:450px;
+  height:485px;
   border:2px solid #8CB240;
   padding:0px;
   margin-right:2%;
   margin-left:2%;
+  box-shadow: 4px -6px 24px #888888;
 }
 
 #secondCol {
   border:3px solid #8CB240;
-  height:450px;
+  height:485px;
   background-color:#ceceb5;
   padding:0px;
   margin-right:2%;
   margin-left:2%; 
+  box-shadow: 4px -6px 24px #888888;
 }
 
 #myCarousel {
@@ -1405,4 +1467,269 @@ p {
   color:#6f6f61;
   font-weight:900;
   text-decoration-color:#8CB240;
+}
+
+
+/*///////////////////////// adding css for eventfull div ///////////////////////////*/
+
+
+#sq4StoreCat {
+  font-weight:500;
+  font-size:15px;
+  font-family: 'Constantia', 'Franclin Gothic';
+}
+
+#ifNoNumId {
+  color:gray;
+}
+
+/**/
+#style4ImgUrl  {
+  color:#8CB240;
+  margin-left:9px;
+  margin-top:-41px;
+  border:2px solid #8CB240;
+  border-radius:100%;
+}
+
+#sq4UrlTxt {
+  color:gray;
+  font-weight:700;
+  margin-left:46px;
+  padding-bottom:3px;
+  position:relative;
+  top:-35px;
+}
+
+#sq4UrlTxt:hover {
+  color:#6f6f61;
+  font-weight:900;
+  text-decoration-color:#8CB240;
+}
+
+#evTitl1 {
+  text-align:center;
+  font-weight:900;
+  word-wrap: break-word;
+  margin:auto;
+  margin-top:5%!important;
+  width:75%;
+  font-family: 'Grotes Sans';
+  font-size:18px;
+}
+
+
+
+#venUrlId {
+  color:#ff4500;
+}
+
+#venUrlId:visited {
+  
+  color:#8CB240;
+}
+
+#venUrlId:hover {
+  
+  color:#8CB240;
+}
+
+
+
+#venUrlId:active {
+  color:#8CB240;
+}
+
+
+
+
+#venEvnUrl {
+  color:#323232!important;
+}
+
+#venEvnUrl:visited {
+  color:#8CB240;
+
+}
+
+#venEvnUrl:hover {
+  font-weight:500;
+  color:#000000!important;
+  text-decoration-color: #8CB240;
+}
+
+#venEvnUrl:active {
+  color:#8CB240;
+}
+
+
+/*eventfull API sign symbol badge*/
+.eventful-small {     
+  position: relative!important;
+  width: 100px!important;
+  font-size: 11px!important;
+  line-height: 11px!important;
+  float:right;
+  margin-right:2%;
+  margin-top:2%;
+  
+}
+
+#img4Id {
+  float:right;
+  margin:2%;
+  margin-top:14%;
+  position:relative;
+}
+
+
+#img4Id1 {
+  margin-top:15%;
+}
+#firstRow1 {
+  border:0px solid white;
+}
+
+
+#styleHr1 {
+  position:relative!important;
+  width:100%!important;
+  height:3px;
+  background-color:#ff4500;
+  margin-top:6%;
+
+}
+
+
+#monEvF {
+  color:black;
+  font-weight:500;
+  text-align:left;
+  margin-left:12%;
+  font-family:'Arial';
+}
+
+#monDayId {
+  color:#ff4500;
+  font-weight:500;
+}
+
+#dNameEvn {
+  color:black;
+  text-align:left;
+  margin-left:12%;
+  font-family:'Helvetica';
+}
+
+#opnTmEvn {
+  color:#ff4500;
+  font-weight:600;
+  /*margin-left:12%;*/
+  font-size:12px;
+}
+
+#evnLocF {
+  color: #ff4500;
+  font-family:'Raleway';
+  font-size:13px;
+  font-weight:700;
+  letter-spacing: 0.5
+}
+
+#addrIcnEnv {
+  margin-left:12%;
+}
+.faIcn1 {
+  color:#8CB240;
+  font-size:15px;
+}
+
+
+
+#linkEnvId {
+  margin-left:12%;
+  color:black;
+}
+
+#linkEnvId:visited {
+
+}
+
+#linkEnvId:hover {
+
+}
+
+#linkEnvId:active {
+  color:#8CB240!important;
+}
+#locEvnIc {
+  margin-left:12%;
+  font-family: 'Trebuchet MS';
+  font-size:13px;
+
+}
+#locImgEnv {
+  background-color:#8CB240;
+  border-radius: 90%
+}
+
+
+#dashIdEvn {
+  color: #8CB240;
+}
+
+#carFourSQ1 {
+  width:6%;
+  color:#aecc72;
+  height:24%;
+  margin-top:25%;
+  opacity:0.1;
+}
+
+#venNmEvn {
+  color:#323232;
+}
+
+#venNmEvn:visited {
+  color:#8CB240;
+}
+
+#venNmEvn:hover {
+  color:#000000
+  
+}
+
+#venNmEvn:active {
+  color:#8CB240;
+  
+}
+
+
+#carFourSQ11 {
+  width:6%;
+  color:#aecc72;
+  text-align:center;
+  height:108px;
+  margin-top:30%;
+  opacity:0.2;
+  color:#ffa27f;
+}
+
+#carFourSQ11:hover, #carFourSQ22:hover {
+ color:#ff4500;
+ opacity:0.6;
+}
+
+#carFourSQ11:active, #carFourSQ22:active {
+ opacity:0.8;
+ color:#cc3700;
+}
+#carFourSQ22 {
+  width:6%;
+  color:#aecc72;
+  text-align:center;
+  height:108px;
+  margin-top:30%;
+  opacity:0.2;
+  color:#ffa27f;
 }
