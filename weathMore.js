@@ -1,31 +1,7 @@
 
   
-  var addPlace = "Belgrade";
-  var returning1;
-   var myOb = {sredi1:5, sredi2:6};
-
   
-
- 
-      /*END !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
-
- 
-  
- var count = 0;
- 
- var takeLocatN = document.getElementById('siteName');
- takeLocatN.addEventListener('keydown', function(e){
-
-   console.log(this, e)
-   if(e.keyCode == 13){
-    mainF = null;
-
-  } else {
-   // mainF()
-  }
- })
-
-  mainF()
+  mainF() //mainF se znaci prva zove automatski i prikazuje sve. Druga FUNKCIJA POSLE OVE, dole showF() se zove u DOMu na click na 585 liniji u index.html
 
 function mainF(){  
 fetch('http://api.openweathermap.org/data/2.5/weather?q=Belgrade&units=imperial&APPID=69190f2d7f60d5551b77187e81d50575')
@@ -33,16 +9,20 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Belgrade&units=imperial&
     return  eks.json();     
   }).then(data =>{
       setInterval(function(){
-      var date = new Date();
+      var date = new Date() //.toLocaleString("en-US", {timeZone: 'Serbia/Belgrade'})
       updateTime(date);
   }, 1000);
         
- function updateTime(dateExp) {  
+ function updateTime(dateExp){  
   var timeDiv = document.getElementById("date1");
+  //console.log('Koliki je time div ovde', timeDiv);
+
   var time = resolveHours(dateExp) + ":" + resolveMin(dateExp) + ":" + resolveSec(dateExp) + " &nbsp;&nbsp;" + ` <a title = 'Central European Time. Click for reading more about CET and Time Zones.' id ='cetId' href=https://www.timeanddate.com/time/zones/cet target = blank>CET</a>`;
   //if(timeDiv.innerHTML = ''){
   timeDiv.innerHTML = time;
+    //timeDiv.innerHTML = dateExp;
 //}
+  
   function resolveHours(x){
     var storeHours = String(x.getHours());
      if(storeHours.length == 1) {   //StoreHours +"" will convert our var value to string.
@@ -50,7 +30,6 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Belgrade&units=imperial&
      }
       return storeHours;
   };
-
   function resolveMin(y) {
     var storeMin = String(y.getMinutes());
     if(storeMin.length == 1) {
@@ -58,7 +37,6 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Belgrade&units=imperial&
     }
       return storeMin;
   };
-
   function resolveSec(z) {
     var storeSec = String(z.getSeconds());
     if(storeSec.length == 1) {
@@ -66,6 +44,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Belgrade&units=imperial&
     }
     return storeSec;
   };
+
   };
  
   funcMonth();  //tu ih redom sve aktiviramo, tri bitne fukncije za vreme
@@ -92,7 +71,6 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Belgrade&units=imperial&
     console.log(monthD)
     document.getElementById("demo").innerHTML = monthD + " " +  n + ",";
   };
-
   function funcDay() {
     var day = new Date();
     var weekday = [];
@@ -106,7 +84,6 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Belgrade&units=imperial&
     var newDay = weekday[day.getDay()];
     document.getElementById("dayId").innerHTML = newDay;
   };
-
   function funcYear() {
     var year = new Date();
     var newYear= year.getFullYear();
@@ -140,13 +117,11 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Belgrade&units=imperial&
     return 'Northerly';
   }
 
-
    /*var icon = storeJson.weather[0].icon;  
    var iconSrc= "http://openweathermap.org/img/w/" + icon + ".png"; //no spaces on .png because it is a lin, a site, regular link.
    $("#storeTemp").prepend('<img src=' +  iconSrc +  '>'); //So prepend, add this img before text in #storeTemp*/
    
    var tempRoot = (storeJson.main.temp).toFixed(1);  // Farenhajtima(F)
-  
    btn1.addEventListener("click", function() {
      if(tempSwap === false){
         $("#storeTemp").html(storeFunc(tempRoot));
@@ -293,25 +268,30 @@ return false
 
 //showF()
 /*/////////////////////////////////////////////////////////////////////////////////////////////////////////*/
-
 function showF(){ 
+var tempSwapTM = false;
+
+
   var sitNam = document.getElementById('siteName');
   document.getElementById('siteName').style.display  ='block';
-  document.getElementById('locId').style.display     = 'none'
+  document.getElementById('locId').style.display     = 'none';
+  //document.getElementById('date1').style.display   =  'none';
+  //document.getElementById('date2').style.display   =  'none';
   addPlace = sitNam.value;
   returning1 = 1;
   sitNam.addEventListener('keydown', function(e){
      
-    if (e.keyCode == 13) {
+    if (e.keyCode == 13){
     var store = this.value;
     addPlace = this.value;
+    console.log(this.value)
   
 fetch('http://api.openweathermap.org/data/2.5/weather?q=' + addPlace  + '&units=imperial&APPID=69190f2d7f60d5551b77187e81d50575')
-  .then(eks => {
+  .then(eks =>{
     return  eks.json();     
   }).then(data => {
-      document.getElementById('siteName').style.display  ='none';
-      document.getElementById('locId').style.display= 'block' //vracamo ime i drzavu.
+      document.getElementById('siteName').style.display  = 'none';
+      document.getElementById('locId').style.display     = 'block' //vracamo ime i drzavu.
       console.log('na 28 idemo:', data)
      /* setInterval(function(){
       var date = new Date();
@@ -325,7 +305,8 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=' + addPlace  + '&units=
           return timeZon.json()
          }).then((tmZon)=> {
           console.log('i konacno:', tmZon);
-         // console.log('u satima ovde je:', new Date().getHours() - 1);
+          console.log(tmZon.timeZoneId);
+          
           var takeTime = new Date() -1;
           console.log(new Date().toUTCString())
           var takeUtc = new Date().toUTCString();
@@ -334,30 +315,52 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=' + addPlace  + '&units=
           console.log(offSet1)
 
           var takeH = tmZon.rawOffset / 3600;
-          //console.log((new Date().getHours() - 1) + takeH)
-          var realTm = (new Date().getHours() - 1) + takeH /*+ ":" + new Date().getMinutes() + ':' + new Date().getSeconds()*/;
           
+          var realTm = (new Date().getHours() - 1) + takeH /*+ ":" + new Date().getMinutes() + ':' + new Date().getSeconds()*/;
+          /*
           var hm = String(new Date());
           var toArr = hm.split(' ');
           console.log(toArr[4].replace(toArr[4], realTm));
           toArr[4] = toArr[4].replace(toArr[4], realTm);
-          
           var finalA = toArr.join(' ');
+*/
+          console.log(tmZon.timeZoneId)
 
           setInterval(function(){
-          var date = new Date();
+          var date = new Date().toLocaleString("en-US", {timeZone: tmZon.timeZoneId})
           updateTime(date, takeH);
           }, 1000);
 
 
-
- function updateTime(dateExp, addHour ){  
-  var timeDiv = document.getElementById("date1");
-  var time = resolveHours(dateExp) + ":" + resolveMin(dateExp) + ":" + resolveSec(dateExp) + " &nbsp;&nbsp;" + ` <a title = 'Central European Time. Click for reading more about CET and Time Zones.' id ='cetId' href=https://www.timeanddate.com/time/zones/cet target = blank>CET</a>`;
+  //TO JE OVO. Vreme.
+ function updateTime(dateExp, addHour){  
+  
+  //var time = resolveHours(dateExp) + ":" + resolveMin(dateExp) + ":" + resolveSec(dateExp) + " &nbsp;&nbsp;" + ` <a title = 'Central European Time. Click for reading more about CET and Time Zones.' id ='cetId' href=https://www.timeanddate.com/time/zones/cet target = blank>CET</a>`;
+ //var sitNam1 = document.getElementById('siteName');
+ var timeDiv = document.getElementById("date2");
   timeDiv.innerHTML = '';
-  timeDiv.innerHTML = time;
+
+ document.getElementById("date1").style.display = 'none';
+ document.getElementById("date2").style.display = 'block';
+
+ if(tempSwapTM === false && e.keyCode == 13) {  //OVO POGLEDAJ. TempSwapTm je varijabla na pocetku showF() funkcije.
+        timeDiv.innerHTML =  dateExp  //time;
+       tempSwapTM = true;
+     } else if(e.keyCode == 13 && tempSwapTM != false){
+             //document.getElementById("date1").style.display = 'none'
+             timeDiv.innerHTML = '';
+             timeDiv.innerHTML =  dateExp  //time;
+             // document.getElementById("date1").style.display = 'block'
+            tempSwapTM = false; 
+       };
+ 
+ 
+  
+   
+  //document.getElementById('date2').style.display  =  'block';
+   /*
   function resolveHours(x){
-    var storeHours = String(x.getHours() + addHour - 1);
+    var storeHours = String(x.getHours());
      if(storeHours.length == 1) {   
         storeHours = "0" + storeHours;
      }
@@ -370,21 +373,21 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=' + addPlace  + '&units=
     }
       return storeMin;
   };
-  function resolveSec(z) {
+  function resolveSec(z){
     var storeSec = String(z.getSeconds());
     if(storeSec.length == 1) {
       storeSec = "0" + storeSec;
     }
     return storeSec;
   };
+*/
   };
- 
+   
 
 
-         /*end of time things!!*/
   })
 
-        /*start of UTC time*/
+      
       
 
 
@@ -626,10 +629,7 @@ var storeFunc = function f2c(f) {
 
 }) //event
   console.log('a ovuda na krajuL', returning1)
-
-
 //}} //funckija showF
-
 }
  
 

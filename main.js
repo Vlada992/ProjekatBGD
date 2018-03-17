@@ -1,12 +1,25 @@
+window.onload = function(e){
+  e.preventDefault()
+  e.stopPropagation();
+}
 
 
+
+  var clickObj = {};
+ function myBFun(){
+  var x = document.getElementsByTagName('div');
+  
+  
+ }
  
-function show(shown, hidden, hidden1, hidden2) {  //for now, 4 ative pages
-  document.getElementById(shown).style.display='block';
-  document.getElementById(hidden).style.display='none';
-  document.getElementById(hidden1).style.display='none';
-  document.getElementById(hidden2).style.display='none';
+function show(shown, hidden, hidden1, hidden2) {   //for now, 4 ative pages
+  console.log('KLIKNUTO JE', shown);
+  document.getElementById(shown).style.display    ='block';
+  var x = document.getElementsByTagName('div');
 
+  document.getElementById(hidden).style.display   ='none';
+  document.getElementById(hidden1).style.display  ='none';
+  document.getElementById(hidden2).style.display  ='none';
   return false;
 }
 
@@ -18,7 +31,6 @@ function myFunction() {
     var x = document.getElementById("myTopnav");
     if (x.className === "topnav") {
         x.className += " responsive topnav myTopnav";
-
     } else {
         x.className = "topnav";
     }
@@ -50,8 +62,7 @@ function myFunction() {
     })
     .then(function(dataR){
       console.log('BG sajt RSS feed:',dataR);
-      
-        for(var i = 0; i < 9; i++){ 
+        for(var i = 0; i < dataR.query.count; i++){ 
                  var storeTitle = dataR.query.results.item[i].title;
                  var storeLink = dataR.query.results.item[i].link;
                  var storeText = dataR.query.results.item[i].description;                
@@ -79,7 +90,7 @@ function myFunction() {
         .then(function(blicRSS){
             console.log("BLIC FEED:", blicRSS);
 
-            for(let i = 0; i < 16; i++){
+            for(let i = 0; i < 20; i++){
                 var storeTitle1   =  blicRSS.query.results.item[i].title;
                 var storeLink1    =  blicRSS.query.results.item[i].link;
                 var storeText1    =   '&#x2014;' +  '&nbsp;' + blicRSS.query.results.item[i].description;

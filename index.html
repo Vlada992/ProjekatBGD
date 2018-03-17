@@ -14,7 +14,7 @@
     </head>
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     
-    <body>
+    <body onload= 'myBFun()'>
     <a id='top'></a>
 
         <!--
@@ -84,9 +84,6 @@
         <div id="Page1">
     <!--<a href="#" onclick="return show('Page2','Page1');"></a>-->
     <!--Start of page2 whatToSee.html-->
-
-   
-
         <div class='lajnL'></div>
         <div  id = 'forHomePage' class='container'>
 
@@ -153,6 +150,7 @@
                     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                     <span class="sr-only">Next</span>
                 </a>
+                <!--<img id='imgBlic1' src='https://ocdn.eu/ucs/static/3c5ab39ee6dc8430f4b619f2d673a685/f5a3b604653d57b7514ecb51ad827360/img/logo_x2.png'/>-->
             </div> 
           </div>  
 
@@ -160,7 +158,6 @@
               <div class = col-md-4 id = 'fixMd4'>
                   <div id = "fourSquareId">
 
-                    
                     <div>
                      <div id="myCarousel" class="carousel slide vertical">
     
@@ -292,96 +289,97 @@
 <!-- Wrapper for slides -->
 <div class="carousel-inner">
     <div class="item active item4">
-        <p id='venueStorage'></p>
+        <p class='venueStorage'></p>
     </div>
     <div class="item item4">
-        <p id='venueStorage'></p>
+        <p class='venueStorage'></p>
     </div>
     <div class="item item4">
-        <p id='venueStorage'></p>
+        <p class='venueStorage'></p>
     </div>
     <div class="item item4">
-        <p id='venueStorage'></p>
+        <p class='venueStorage'></p>
     </div>
     <div class="item item4">
-        <p id='venueStorage'></p>
+        <p class='venueStorage'></p>
     </div>
     <div class="item item4">
-        <p id='venueStorage'></p>
+        <p class='venueStorage'></p>
     </div>
     <div class="item item4">
-        <p id='venueStorage'></p>
+        <p class='venueStorage'></p>
     </div>
     <div class="item item4">
-        <p id='venueStorage'></p>
+        <p class='venueStorage'></p>
     </div>
     <div class="item item4">
-        <p id='venueStorage'></p>
+        <p class='venueStorage'></p>
     </div>
     <div class="item item4">
-        <p id='venueStorage'></p>
+        <p class='venueStorage'></p>
     </div>
     <div class="item item4">
-        <p id='venueStorage'></p>
+        <p class='venueStorage'></p>
     </div>
     <div class="item item4">
-        <p id='venueStorage'></p>
+        <p class='venueStorage'></p>
     </div>
     <div class="item item4">
-        <p id='venueStorage'></p>
+        <p class='venueStorage'></p>
     </div>
     <div class="item item4">
-        <p id='venueStorage'></p>
+        <p class='venueStorage'></p>
     </div>
     <div class="item item4">
-        <p id='venueStorage'></p>
+        <p class='venueStorage'></p>
     </div>
     <div class="item item4">
-        <p id='venueStorage'></p>
+        <p class='venueStorage'></p>
     </div>
     <div class="item item4">
-        <p id='venueStorage'></p>
+        <p class='venueStorage'></p>
     </div>
     <div class="item item4">
-        <p id='venueStorage'></p>
+        <p class='venueStorage'></p>
     </div>
     <div class="item item4">
-        <p id='venueStorage'></p>
+        <p class='venueStorage'></p>
     </div>
     <div class="item item4">
-        <p id='venueStorage'></p>
+        <p class='venueStorage'></p>
     </div>
     <div class="item item4">
-        <p id='venueStorage'></p>
+        <p class='venueStorage'></p>
     </div>
     <div class="item item4">
-        <p id='venueStorage'></p>
+        <p class='venueStorage'></p>
     </div>
     <div class="item item4">
-        <p id='venueStorage'></p>
+        <p class='venueStorage'></p>
     </div>
     <div class="item item4">
-        <p id='venueStorage'></p>
+        <p class='venueStorage'></p>
     </div>
     <div class="item item4">
-        <p id='venueStorage'></p>
+        <p class='venueStorage'></p>
     </div>
     <div class="item item4 ">
-        <p id='venueStorage'></p>
+        <p class='venueStorage'></p>
     </div>
     <div class="item item4">
-        <p id='venueStorage'></p>
+        <p class='venueStorage'></p>
     </div>
     <div class="item item4">
-        <p id='venueStorage'></p>
+        <p class='venueStorage'></p>
     </div>
     <div class="item item4">
-        <p id='venueStorage'></p>
+        <p class='venueStorage'></p>
     </div>
 </div>
 <!-- Left and right controls -->
 
-<a href='https://foursquare.com' target="_blank"><img id='img4Id1' src="images/Powered-by-Foursquare-one-color-600.png" alt="Smiley face" height="45" width="180"/></a>
+<a href='https://foursquare.com' title='Foursquare helps you find the perfect places to go with friends. 
+Discover the best food, nightlife, and entertainment in your area.' target="_blank"><img id='img4Id1' src="images/Powered-by-Foursquare-one-color-600.png" alt="Smiley face" height="45" width="180"/></a>
 
 
 <a  id='carFourSQ1' class="left carousel-control" href="#myCarousel2" role="button" data-slide="prev">
@@ -430,8 +428,8 @@
 -->
 <div class="eventful-badge eventful-small">
   <img src="http://api.eventful.com/images/powered/eventful_58x20.gif"
-    alt="Local Events, Concerts, Tickets">
-  <p><a href="http://eventful.com/" target="_blank">Events</a> by Eventful</p>
+    alt="Local Events, Concerts, Tickets" title='Find upcoming events near you, with listings, tour dates and tickets for concerts, festivals, movies, performing arts, family events, sports and more.'>
+  <p><a href="http://eventful.com/" target="_blank" title='Find upcoming events near you, with listings, tour dates and tickets for concerts, festivals, movies, performing arts, family events, sports and more.'>Events</a> by Eventful</p>
 </div>
 
 
@@ -528,14 +526,10 @@
     <span id='style4sqGly2' class="sr-only">Next</span>
 </a>
 
-
+    
 <!-- end of second col-->
 </div> <!--myCarousel carousel slide-->
 
-
-
-
-       
 </div> <!-- Iznad je logo eventfull-->
 
       
@@ -584,6 +578,7 @@
               <p id='windDir'></p>
               <hr style='width:70%'>
               <div id="date1"> </div>
+              <div id = 'date2' style="display:none"></div>
               <p id="dayId"></p>
               <p id="demo"> </p>
               <p id="yearId"></p>
@@ -657,7 +652,7 @@
 
 
         <footer class=" footStyle">
-            <p id="footP"> @ Vladan Petrovic <b>2018</b> <a href="#top" class="styleItTop">
+            <p title='vladanng@gmail.com' id="footP"> @ Vladan Petrovic <b>2018</b> <a href="#top" class="styleItTop">
              <i id ='toTopP' class="fa fa-arrow-circle-up"></i>
         </a> </p>
         </footer>
@@ -667,6 +662,7 @@
          <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
          <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <!--<script src='js/bootstrap.min.js'></script>-->
         <script src='instafeed.min.js'></script>
         <script src='main.js'></script>
         <script src='weathMore.js'></script>

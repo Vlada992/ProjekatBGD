@@ -373,8 +373,10 @@ a.icon {
 
 #openWImg {
   position:relative;
-  margin-top:-18%;
+  margin-top:-20%;
   margin-left:-66%;
+  padding:0 auto;
+
 }
 
 .form-control {
@@ -772,8 +774,8 @@ p {
 }
 
 @media screen and (max-width: 250px) and (min-width: 150px) {
-  #leftContSl2{top:-25%!important;}
-    #rightContSl2{top:69.9%!important;}
+  #leftContSl2{top:-36.9%!important;}
+    #rightContSl2{top:76%!important;}
     #fourSquareId {width:auto; height:670px!important; margin-left:0px; margin-right:0px; box-shadow:0px 0px 0px white;}
     .styleSlider2{width:auto; height:663px!important;}
     #partTxt1 {height:650px!important padding-top:30px!important; font-size:10px!important;}
@@ -787,15 +789,15 @@ p {
   #colMdTitl{ padding-top:1.5%; border-bottom: 5px solid #8CB240;}
   #imgHolder{border-left:0px; border-bottom:2px solid #8CB240;}
   #carousel-example-generic {width:auto; height: 860px; margin-left:0px; margin:auto; margin-bottom: 5%; box-shadow:0px 0px 0px white;  }
-
+  .carousel-indicators{display:none;}
 }
 
 
 
 
 @media screen and (max-width: 320px) and (min-width: 250px) {
-    #leftContSl2{top:-25%!important;}
-    #rightContSl2{top:69.9%!important;}
+    #leftContSl2{top:-36.9%!important;}
+    #rightContSl2{top:76%!important;}
     #fourSquareId {width:auto; height:670px!important; margin-left:0px; margin-right:0px; box-shadow:0px 0px 0px white;}
     .styleSlider2{width:auto; height:663px!important;}
     #partTxt1 {height:650px!important padding-top:30px!important; font-size:11px!important;}
@@ -815,31 +817,51 @@ p {
 
 @media screen and (max-width: 360px) and (min-width: 320px) {
     #carousel-example-generic {width:auto; height: 790px; margin-left:0px; margin:auto; margin-bottom: 5%; box-shadow:0px 0px 0px white;  }
-    #leftContSl2{top:-28%!important;}
-    #rightContSl2{top:66.5%!important;}
+    #leftContSl2{top:-36.9%!important;}
+    #rightContSl2{top:76%!important;}
     .styleSlider2{width:auto; height:592px!important;}
     #fourSquareId {width:auto; height:600px!important; margin-left:0px; margin-right:0px; box-shadow:0px 0px 0px white;}
    .img-fluid {margin: 0 auto; margin-bottom:10px; margin-left:5.8% ; margin-right: 0 auto; padding:0px;  width:80%; box-shadow:0px 0px 0px white;  border-bottom:4px solid #8CB240; margin-top:20%!important;}
    .img-size { margin-bottom:10px; padding:0px; margin:  auto;}
-    .gallery { margin-bottom:10px; padding:0px; margin: auto;}
+   .gallery { margin-bottom:10px; padding:0px; margin: auto;}
    .instaimg { margin-bottom:10px; padding:0px; margin:auto;}
    #partTxt1 {height:600px!important padding-top:30px!important;}
    #titleId1 {font-weight: 500; padding-bottom:50px!important; font-size:15px; display:center; margin-bottom:30px!important;}
    .fixH3{font-size:25px!important; text-align:left;}
-  .fixNH{}
   #colMdTitl{ padding-top:1.5%; border-bottom: 5px solid #8CB240;}
   #imgHolder{border-left:0px; border-bottom:2px solid #8CB240;}
+  #sq4StoreCat{font-size:10px!important;}
 }
 
 @media screen and (max-width: 360px) and (min-width: 0px) {
-  /*#carousel-example-generic {width:auto; height: 790px; margin-left:0px; margin:auto; margin-bottom: 5%; box-shadow:0px 0px 0px white;  }*/
   #partTxt{margin:40px; height:650px!important; text-align:left; line-height: 55%; display: inline-block; padding-top:16px;}
    #dateId1{height:550px;}
-   #footStyle{background-color:red; margin-top:15%;}
+   #footStyle{background-color:red; margin-top:15%;padding-bottom:-15%!important;}
    #forHomePage{ padding-bottom:40%;}
-  .carousel-inner {height:770px; margin-right:0px;}
   #aCarId1{height:100px!important; width:18px!important; }
   #aCarId2{height:100px!important; width:15px!important; }
+  #divFourSQ {height:660px!important; margin-bottom:15%!important;}
+  #secondCol {height:660px!important;}
+  .venueStorage{height:450px!important;}
+  #titleFSQ1 {margin-bottom:120px!important;margin-right:40px!important; line-height:40px; font-size:14px;}
+  .carousel-indicators{top:100%; margin-top:30%;}
+  #latLonForSq{font-size:10px!important; word-break: break-all;}
+  #latLonHrefEv{font-size:10px!important;}
+  #boldNumId{font-size:10px!important;}
+  #monEvF{margin-bottom:7%; font-size:10px!important;}
+  #nameEvn{margin-bottom:5%!important; font-size:10px!important;}
+  #evnLocF{font-size:10px!important;}
+  #venNmEvn{margin-bottom:5%; font-size:10px!important;}
+  #sq4UrlTxt{font-size:10px!important;}
+  #adress4sq {font-size:10px!important; margin-right:4%!important;}
+  #categ4sqId {font-size:11px!important; font-weight:700; word-break: break-all; margin: 3%;}
+  #sq4StoreCat{font-size:14px!important;}
+  #evTitl1{font-size:14px!important;}
+  #venEvnUrl{font-size:10px!important;}
+  #opnTmEvn{font-size:10px!important;}
+  #descIdEv{font-size:10px!important; margin:3%;}
+  #img4Id1 {margin-top:-5%!important;float:left;}
+  #descPrtId{font-size:10px!important;}
 
 }
 
@@ -849,18 +871,28 @@ p {
    #titleId1 {font-weight: 500; padding-bottom:20px; font-size:12px;}
    #fourSquareId {width:auto; height:550px!important; margin-right:0%;}
    .styleSlider2 {height:542px!important;}
-   #leftContSl2{top:-30.5%!important;}
-   #rightContSl2{top:63%!important;}
+   #leftContSl2{top:-36.9%!important;}
+   #rightContSl2{top:76%!important;}
   .img-fluid {margin: 0 auto; margin-bottom:10px;  margin-left: 6%; margin-right:12%;  margin-right: 0 auto;/*16px*/; padding:0px; width:90%; box-shadow:0px 0px 0px white; margin-top:25%!important;}
   .img-size {margin:  auto; margin-bottom:10px; padding:0px;}
   .gallery {margin: auto; margin-bottom:10px; padding:0px;}
   .instaimg {margin: auto; margin-bottom:10px; padding:0px;}
-  .carousel-inner {height:680px; margin-right:0px;}
+  /*.carousel-inner {height:680px; margin-right:0px;}*/
   .fixNH {width:auto; margin-left:0%;}
   .fixH3 {text-align:left; font-size:35px;}
   #colMdTitl{border-left:5px solid #8CB240; padding-top:1.5%; border-right:20px solid #8CB240;}
   #colMdImg {border-right:20px solid #8CB240; padding-right:0px!important; border-left:5px solid #8CB240!important;}
   #imgHolder{border-left:0px;}
+  #divFourSQ {margin-bottom: 15%!important; height:610px!important;}
+  #secondCol{height:610px!important;}
+  #img4Id1 {    margin-top: 30%!important;float:left;}
+  .carousel-indicators{top:100%; margin-top:20%;}
+  #sq4UrlTxt{font-size:11px!important;}
+  #titleFSQ1{font-size:18px!important;}
+  #sq4StoreCat {word-break: break-all!important;}
+
+
+
 }
 
 
@@ -870,8 +902,8 @@ p {
    #titleId1 {font-weight: 500; padding-bottom:20px;}
    #fourSquareId {width:auto; height:550px!important; margin-right:0%;}
    .styleSlider2 {height:542px!important;}
-   #leftContSl2{top:-30.5%!important;}
-   #rightContSl2{top:63%!important;}
+   #leftContSl2{top:-36.9%!important;}
+   #rightContSl2{top:76%!important;}
   .img-fluid {margin: 0 auto; margin-bottom:10px;  margin-left: 5.8%;  margin-right: 0 auto;/*16px*/; padding:0px; width:90%; margin-top:25%!important;}
   .img-size {margin:  auto; margin-bottom:10px; padding:0px;}
   .gallery {margin: auto; margin-bottom:10px; padding:0px;}
@@ -882,6 +914,15 @@ p {
   .fixH3{text-align:left; font-size:40px;}
   #colMdTitl{border-left:10px solid #8CB240; padding-top:1.5%; border-right:25px solid #8CB240;}
   #colMdImg {border-right:25px solid #8CB240; padding-right:0px!important;}
+  #divFourSQ {margin-bottom: 15%!important; height:590px!important;}
+  #secondCol{height:590px!important;}
+  #img4Id1 {margin-top:-30%!important;float:left;}
+  .carousel-indicators{top:90%; margin-top:20%;}
+    #titleFSQ1{font-size:20px!important;}
+    #sq4StoreCat {word-break: break-all!important;}
+}
+
+
 }
 
 @media screen and (max-width: 990px) and (min-width: 560px) {
@@ -900,6 +941,11 @@ p {
   #colMdTitl{border-left:10px solid #8CB240; border-right:25px solid #8CB240; padding-top:1.5%;}
   #colMdImg {border-right:25px solid #8CB240; padding-right:0px!important;}
   .styleItTop  i{margin-right:16%!important;}
+  #img4Id1 {margin-top:0%!important;float:left;}
+  #divFourSQ {margin-bottom: 10%; height:560px!important;}
+  #secondCol{height:560px!important;}
+  .carousel-indicators{top:70%; margin-top:10%;}
+
 }
 
 
@@ -921,8 +967,8 @@ p {
   .fixH3{width:auto; margin-left:0 auto;}
   .fixNH {width:auto;  float:left; height:104.88px; border-right:10px solid #8CB240;}
   #colMdTitl {background-color:#ecece3; border-right:0px; padding-left:0!important;}
-  .styleItTop  i{margin-right:13%!important;}
-
+  .styleItTop{margin-right:13%!important;}
+  #img4Id1 {margin-top:3%!important;}
 }
   
 
@@ -1039,6 +1085,8 @@ p {
  line-height: 95%
 }
 
+
+
 #aHrefId1:hover {
  color:#a02700;
  text-decoration: none;
@@ -1132,6 +1180,7 @@ p {
 
 .vertical .carousel-inner {
   height: 100%;
+  height: 542px!important;
 }
 .innerClass2 {
 }
@@ -1203,7 +1252,7 @@ p {
 }
 
 #glyId2:hover {
- box-shadow: 0px 19px 15px  -3px black;
+ box-shadow: 0px 21px 30px -3px black;
 }
 
 #glyId:active {
@@ -1282,7 +1331,7 @@ p {
 
 #divFourSQ {
   background-color:#ceceb5;
-  height:485px;
+  height:520px;
   border:2px solid #8CB240;
   padding:0px;
   margin-right:2%;
@@ -1292,7 +1341,7 @@ p {
 
 #secondCol {
   border:3px solid #8CB240;
-  height:485px;
+  height:520px;
   background-color:#ceceb5;
   padding:0px;
   margin-right:2%;
@@ -1461,15 +1510,42 @@ p {
   padding-bottom:3px;
   position:relative;
   top:-35px;
+  text-decoration-color:#8CB240;
+}
+#sq4UrlTxt:visited {
+
 }
 
-#sq4UrlTxt:hover {
-  color:#6f6f61;
-  font-weight:900;
+#sq4UrlTxt:hover{
+  text-decoration-color:#8CB240;
+}
+
+#sq4UrlTxt:active {
+  color:#8CB240!important;
   text-decoration-color:#8CB240;
 }
 
 
+
+
+#latLonForSq {
+  text-decoration-color:#8CB240;
+  color:gray;
+}
+
+#latLonForSq:visited {
+  text-decoration-color:#8CB240;
+}
+
+#latLonForSq:hover{
+  text-decoration-color:#8CB240;
+  color:#191926;
+}
+
+#latLonForSq:active {
+  text-decoration-color:#8CB240;
+  color:#8CB240;
+}
 /*///////////////////////// adding css for eventfull div ///////////////////////////*/
 
 
@@ -1503,7 +1579,7 @@ p {
 
 #sq4UrlTxt:hover {
   color:#6f6f61;
-  font-weight:900;
+  font-weight:700;
   text-decoration-color:#8CB240;
 }
 
@@ -1537,7 +1613,7 @@ p {
 
 
 #venUrlId:active {
-  color:#8CB240;
+  color:#8CB240!important;
 }
 
 
@@ -1545,6 +1621,7 @@ p {
 
 #venEvnUrl {
   color:#323232!important;
+  text-decoration-color:#8CB240;
 }
 
 #venEvnUrl:visited {
@@ -1554,12 +1631,12 @@ p {
 
 #venEvnUrl:hover {
   font-weight:500;
-  color:#000000!important;
+  color:#000000;
   text-decoration-color: #8CB240;
 }
 
 #venEvnUrl:active {
-  color:#8CB240;
+  color:#8CB240!important;
 }
 
 
@@ -1595,7 +1672,7 @@ p {
   position:relative!important;
   width:100%!important;
   height:3px;
-  background-color:#ff4500;
+  background-color:#8CB240;
   margin-top:6%;
 
 }
@@ -1638,7 +1715,31 @@ p {
 
 #addrIcnEnv {
   margin-left:12%;
+   text-decoration-color:#8CB240;
+  color:#ff4500;
 }
+
+#latLonHrefEv {
+  color:#ff4500;
+  
+}
+#latLonHrefEv:visited {
+  color: #000000;
+  text-decoration-color:#8CB240;
+  
+}
+#latLonHrefEv:hover{
+  color: #000000;
+  text-decoration-color:#8CB240;
+}
+
+#latLonHrefEv:active {
+  color: #8CB240;
+  text-decoration-color:#8CB240;
+  
+}
+
+
 .faIcn1 {
   color:#8CB240;
   font-size:15px;
@@ -1692,15 +1793,18 @@ p {
 
 #venNmEvn:visited {
   color:#8CB240;
+  text-decoration-color:#8CB240!important;
 }
 
 #venNmEvn:hover {
   color:#000000
+  text-decoration-color:#8CB240!important;
   
 }
 
 #venNmEvn:active {
   color:#8CB240;
+  text-decoration-color:#8CB240!important;
   
 }
 
@@ -1732,4 +1836,60 @@ p {
   margin-top:30%;
   opacity:0.2;
   color:#ffa27f;
+}
+
+#imgBlic1 {
+  background-color:red;
+  width:40px;
+  height:40px;
+  padding:10px;
+  float:right;
+  margin-right:5%;
+  position:relative;
+} 
+
+  #descIdEv{
+    font-size:14px!important; 
+    margin:3%;
+    margin-left:13%;
+   }
+
+   #icnPDesc {
+    width:20px;
+    height:20px;
+    color:#8CB240;
+    font-size:30px;
+   }
+
+   #descIdEv:visited {
+      text-decoration-color:#8CB240!important;
+
+   }
+   #descIdEv:hover {
+      text-decoration-color:#8CB240!important;
+      color:#000000;
+   }
+
+#descPrtId {
+  color:#323232;
+  text-decoration-color:#8CB240!important;
+}
+
+#descPrtId:visited {
+  color:#000000;
+  text-decoration-color:#8CB240!important;
+}
+#descPrtId:hover {
+  color:#000000;
+  text-decoration-color:#8CB240!important;
+}
+#descPrtId:active {
+  color:#8CB240;
+  text-decoration-color:#8CB240!important;
+}
+
+
+#showOnSm {
+  display:none;
+
 }
