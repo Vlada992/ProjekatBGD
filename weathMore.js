@@ -2,109 +2,53 @@
   
   
   mainF() //mainF se znaci prva zove automatski i prikazuje sve. Druga FUNKCIJA POSLE OVE, dole showF() se zove u DOMu na click na 585 liniji u index.html
-
 function mainF(){  
 fetch('http://api.openweathermap.org/data/2.5/weather?q=Belgrade&units=imperial&APPID=69190f2d7f60d5551b77187e81d50575')
   .then(eks => {
     return  eks.json();     
   }).then(data =>{
+      console.log(data)
       setInterval(function(){
-      var date = new Date() //.toLocaleString("en-US", {timeZone: 'Serbia/Belgrade'})
+      var date = new Date().toLocaleString("en-US", {timeZone: 'Europe/Belgrade'})
       updateTime(date);
   }, 1000);
-        
  function updateTime(dateExp){  
   var timeDiv = document.getElementById("date1");
-  //console.log('Koliki je time div ovde', timeDiv);
+  timeDiv.innerHTML = dateExp //time;
 
-  var time = resolveHours(dateExp) + ":" + resolveMin(dateExp) + ":" + resolveSec(dateExp) + " &nbsp;&nbsp;" + ` <a title = 'Central European Time. Click for reading more about CET and Time Zones.' id ='cetId' href=https://www.timeanddate.com/time/zones/cet target = blank>CET</a>`;
-  //if(timeDiv.innerHTML = ''){
-  timeDiv.innerHTML = time;
-    //timeDiv.innerHTML = dateExp;
-//}
   
-  function resolveHours(x){
-    var storeHours = String(x.getHours());
-     if(storeHours.length == 1) {   //StoreHours +"" will convert our var value to string.
-        storeHours = "0" + storeHours;
-     }
-      return storeHours;
   };
-  function resolveMin(y) {
-    var storeMin = String(y.getMinutes());
-    if(storeMin.length == 1) {
-      storeMin = "0" + storeMin;
-    }
-      return storeMin;
-  };
-  function resolveSec(z) {
-    var storeSec = String(z.getSeconds());
-    if(storeSec.length == 1) {
-      storeSec = "0" + storeSec;
-    }
-    return storeSec;
-  };
+  fetch('https://api.sunrise-sunset.org/json?lat=' + data.coord.lat +  '&lng=' +  data.coord.lon)
+  .then((riseSet1)=>{
+    return riseSet1.json();
+  })
+  .then((dataSun)=>{
+    console.log('26 nam treba pocetak za sunrise:', dataSun);
+    var takeRise = dataSun.results.sunrise;
+    var takeSet  = dataSun.results.sunset;
+    $('#sunSetRise').html(`Sunrise:&nbsp; <span id='sunId'>${takeRise}</span>`);
+    $('#sunSetRise').append(`&nbsp;&nbsp; Sunset:&nbsp; <span id ='sunId1'>${takeSet}</span>`);
+  })
 
-  };
- 
-  funcMonth();  //tu ih redom sve aktiviramo, tri bitne fukncije za vreme
-  funcDay(); //zbog hoistinga(odlazi u heap memory dekl.), mozemo da ih zovemo pre func declaration(ali samo njih, ne func exp).
-  funcYear();
-  function funcMonth() {
-    var d = new Date();
-    var month = [];
-    month[0] = "January";
-    month[1] = "February";
-    month[2] = "March";
-    month[3] = "April";
-    month[4] = "May";
-    month[5] = "June";
-    month[6] = "July";
-    month[7] = "August";
-    month[8] = "September";
-    month[9] = "October";
-    month[10]= "November";
-    month[11]= "December";
 
-    var n = month[d.getMonth()]; 
-    var monthD = d.getDate();
-    console.log(monthD)
-    document.getElementById("demo").innerHTML = monthD + " " +  n + ",";
-  };
-  function funcDay() {
-    var day = new Date();
-    var weekday = [];
-    weekday[0] = "Sunday";
-    weekday[1] = "Monday";
-    weekday[2] = "Tuesday";
-    weekday[3] = "Wednesday";
-    weekday[4] = "Thursday";
-    weekday[5] = "Friday";
-    weekday[6] = "Saturday";
-    var newDay = weekday[day.getDay()];
-    document.getElementById("dayId").innerHTML = newDay;
-  };
-  function funcYear() {
-    var year = new Date();
-    var newYear= year.getFullYear();
-    console.log(newYear);
-    document.getElementById("yearId").innerHTML = newYear;
-  }
+
 
     var storeJson = data;   //data
-    var tempSwap = false; //setting to false
+    var tempSwap = false;
     var icon = storeJson.weather[0].icon;  
     var iconSrc = "http://openweathermap.org/img/w/" + icon + ".png";
     var storeIcon =  `<img id ='iconIcon' src=   ${iconSrc} >`
-
    $("#locId").html(`${storeJson.name},   ${storeJson.sys.country}`);
    $("#storeDes").html(`${storeJson.weather[0].main} (<span id ='bracketsDes'> ${storeJson.weather[0].description} </span>) <span id='iconDesId'> ${storeIcon} </span>`);
    $("#storeTemp").html(`Temperature is: <span id ='tempValId'> &nbsp; ${storeJson.main.temp.toFixed(1)} &#x2109; </span>`);
    var storeWindRes = storeJson.wind.speed * 0.44704;
    $("#storeWind").html(`Wind Blow:&nbsp; <span id ='windVal'> ${storeWindRes.toFixed(2)}&nbsp;m/s </span>`);
    var windData = storeJson.wind.deg;
-   $('#windDir').html(`Wind direction: <span id ='windDirVal'> ${windDirect(windData)} </span>`); //cause of promise, you can call func here.
-
+   $('#storeWind').append(`&nbsp;&nbsp; Wind direction:&nbsp <span id ='windDirVal'> ${windDirect(windData)} </span>`);
+   var humidData1 = storeJson.main.humidity;
+   var pressData1 = storeJson.main.pressure;
+   $('#humid').html(`Humidity:&nbsp <span id ='windDirVal'>${humidData1}&#37 </span>`);
+   $('#humid').append(`&nbsp;&nbsp; Pressure:&nbsp <span id='windDirVal'>${pressData1} mb</span>`) 
   function  windDirect(degree){
     if (degree>337.5) return 'Northerly';
     if (degree>292.5) return 'North Westerly';
@@ -116,17 +60,11 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Belgrade&units=imperial&
     if(degree>22.5){return 'North Easterly';}
     return 'Northerly';
   }
-
-   /*var icon = storeJson.weather[0].icon;  
-   var iconSrc= "http://openweathermap.org/img/w/" + icon + ".png"; //no spaces on .png because it is a lin, a site, regular link.
-   $("#storeTemp").prepend('<img src=' +  iconSrc +  '>'); //So prepend, add this img before text in #storeTemp*/
-   
    var tempRoot = (storeJson.main.temp).toFixed(1);  // Farenhajtima(F)
    btn1.addEventListener("click", function() {
      if(tempSwap === false){
         $("#storeTemp").html(storeFunc(tempRoot));
        tempSwap = true;
-
      } else {
             $("#storeTemp").html("Temperature is:" +`<span id ='tempValId'> &nbsp; ${tempRoot}</span>` + " " + `<span id ='tempValId'>&#x2109;</span>` );
             document.getElementById("btn1").value = "Switch F/C";
@@ -142,8 +80,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Belgrade&units=imperial&
             document.getElementById("btn1").value = "Switch F/C";
             tempSwap = false; //to return
        };
-  }); //toggle func gly.
-
+  });
   var storeFunc = function f2c(f) {
   var num = ((f-32) * (5/9)) 
   document.getElementById("btn1").value = "Switch C/F";
@@ -155,13 +92,9 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Belgrade&units=imperial&
     return ajax.json();
 })
 .then(function(data1){
-
-    console.log(data1);
-  
   var storeFunc = function f2c(f) {
   var num = ((f-32) * (5/9));
   return  num.toFixed(1);  //Pravimo u celzijuse ovde.
-
 };
   var storeTempK = data1.list[3].main.temp;
   var storeCalled =  (storeFunc(storeTempK).charAt(0) == '-') ?  storeFunc(storeTempK) : '&nbsp;' + storeFunc(storeTempK)                                //ternary
@@ -197,7 +130,6 @@ var storeFunc = function f2c(f) {
   var num = ((f-32) * (5/9))
   return  num.toFixed(1);  //Pravimo u celzijuse ovde.
 };
-
   var storeTempK0 = data1.list[19].main.temp;
   var storeCalled0 = storeFunc(storeTempK0).charAt(0) == '-' ?  storeFunc(storeTempK0) : '&nbsp;' + storeFunc(storeTempK0)
   var storeTempK00 = data1.list[22].main.temp;
@@ -213,9 +145,8 @@ var storeFunc = function f2c(f) {
 /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
   var storeFunc = function f2c(f) {
   var num = ((f-32) * (5/9))
-    return  num.toFixed(1);  //Pravimo u celzijuse ovde.
+    return  num.toFixed(1);
   };
-
   var storeTempCETVRTI = data1.list[27].main.temp;
   var storeCalledCET = storeFunc(storeTempCETVRTI).charAt(0) == '-' ?  storeFunc(storeTempCETVRTI) : '&nbsp;' + storeFunc(storeTempCETVRTI);
   var storeTempCETVRTI1 = data1.list[30].main.temp;
@@ -242,7 +173,6 @@ var storeFunc = function f2c(f) {
       var iconSrcPET011 = "http://openweathermap.org/img/w/"+ iconPET2 + ".png";
      
       $("#insideDivPET2").prepend('<img src=' +  iconSrcPET +  '>' + "  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  " + " <img src =" + iconSrcPET011 + ">");
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   var storeFunc = function f2c(f) {
   var num = ((f-32) * (5/9))
@@ -262,42 +192,38 @@ var storeFunc = function f2c(f) {
 });
 return false
 }
-   // mainF();
-
-
-
-//showF()
 /*/////////////////////////////////////////////////////////////////////////////////////////////////////////*/
-function showF(){ 
-var tempSwapTM = false;
-
-
   var sitNam = document.getElementById('siteName');
+ function showDiv(){
   document.getElementById('siteName').style.display  ='block';
   document.getElementById('locId').style.display     = 'none';
-  //document.getElementById('date1').style.display   =  'none';
-  //document.getElementById('date2').style.display   =  'none';
   addPlace = sitNam.value;
-  returning1 = 1;
-  sitNam.addEventListener('keydown', function(e){
-     
+ };
+var counter = [];
+sitNam.addEventListener('keydown', function(e){
     if (e.keyCode == 13){
+    counter.push(e.isTrusted);
     var store = this.value;
     addPlace = this.value;
-    console.log(this.value)
-  
+    showF();
+  }
+});
+
+
+/*Start of showF function down*/
+function showF(){ 
+var tempSwapTM = false;
 fetch('http://api.openweathermap.org/data/2.5/weather?q=' + addPlace  + '&units=imperial&APPID=69190f2d7f60d5551b77187e81d50575')
-  .then(eks =>{
+  .then(eks => {
     return  eks.json();     
   }).then(data => {
+     console.log('Podaci za drugu funckiju vreme:', data)
       document.getElementById('siteName').style.display  = 'none';
       document.getElementById('locId').style.display     = 'block' //vracamo ime i drzavu.
       console.log('na 28 idemo:', data)
-     /* setInterval(function(){
-      var date = new Date();
-      //updateTime(date);
-
-  }, 1000);*/
+      if(data.cod == 404){
+        alert('Please, only enter place names and only on eglish language.');
+      }
          var cityLat1 = data.coord.lat;
          var cityLong1 = data.coord.lon;
          fetch("https://maps.googleapis.com/maps/api/timezone/json?location=" + cityLat1 + "," + cityLong1 + "&timestamp=1331161200&key=AIzaSyDQYoYpB-CyL4Leg5IWW1pT0afaVD9z4J0")
@@ -305,96 +231,40 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=' + addPlace  + '&units=
           return timeZon.json()
          }).then((tmZon)=> {
           console.log('i konacno:', tmZon);
-          console.log(tmZon.timeZoneId);
-          
-          var takeTime = new Date() -1;
-          console.log(new Date().toUTCString())
-          var takeUtc = new Date().toUTCString();
-
-          var offSet1 = tmZon.rawOffset;
-          console.log(offSet1)
-
-          var takeH = tmZon.rawOffset / 3600;
-          
-          var realTm = (new Date().getHours() - 1) + takeH /*+ ":" + new Date().getMinutes() + ':' + new Date().getSeconds()*/;
-          /*
-          var hm = String(new Date());
-          var toArr = hm.split(' ');
-          console.log(toArr[4].replace(toArr[4], realTm));
-          toArr[4] = toArr[4].replace(toArr[4], realTm);
-          var finalA = toArr.join(' ');
-*/
-          console.log(tmZon.timeZoneId)
-
-          setInterval(function(){
-          var date = new Date().toLocaleString("en-US", {timeZone: tmZon.timeZoneId})
-          updateTime(date, takeH);
-          }, 1000);
-
-
-  //TO JE OVO. Vreme.
- function updateTime(dateExp, addHour){  
-  
-  //var time = resolveHours(dateExp) + ":" + resolveMin(dateExp) + ":" + resolveSec(dateExp) + " &nbsp;&nbsp;" + ` <a title = 'Central European Time. Click for reading more about CET and Time Zones.' id ='cetId' href=https://www.timeanddate.com/time/zones/cet target = blank>CET</a>`;
- //var sitNam1 = document.getElementById('siteName');
+        
+  updateTime()
+ function updateTime(){   
  var timeDiv = document.getElementById("date2");
+ var timeDiv1 = document.getElementById("date1");
+ var timeDiv3 = document.getElementById("date3");
   timeDiv.innerHTML = '';
-
  document.getElementById("date1").style.display = 'none';
  document.getElementById("date2").style.display = 'block';
+ var myInt;
+ var tempSwapTM = counter.length; 
+ var sitNam = document.getElementById('siteName');
+ var myInt = null;
+ timeDiv.innerHTML = "Loading data... <img src='images/Spinner-1.4s-76px.gif'/>";
 
- if(tempSwapTM === false && e.keyCode == 13) {  //OVO POGLEDAJ. TempSwapTm je varijabla na pocetku showF() funkcije.
-        timeDiv.innerHTML =  dateExp  //time;
-       tempSwapTM = true;
-     } else if(e.keyCode == 13 && tempSwapTM != false){
-             //document.getElementById("date1").style.display = 'none'
-             timeDiv.innerHTML = '';
-             timeDiv.innerHTML =  dateExp  //time;
-             // document.getElementById("date1").style.display = 'block'
-            tempSwapTM = false; 
-       };
- 
- 
-  
-   
-  //document.getElementById('date2').style.display  =  'block';
-   /*
-  function resolveHours(x){
-    var storeHours = String(x.getHours());
-     if(storeHours.length == 1) {   
-        storeHours = "0" + storeHours;
-     }
-      return storeHours;
-  };
-  function resolveMin(y) {
-    var storeMin = String(y.getMinutes());
-    if(storeMin.length == 1) {
-      storeMin = "0" + storeMin;
+  myInt = setInterval(function(){
+          var date = new Date().toLocaleString("en-US", {timeZone: tmZon.timeZoneId});
+          timeDiv.innerHTML  = date;
+          document.getElementById("date2").style.display = 'block';
+
+          document.getElementById("date1").style.display = 'none';
+          document.getElementById("date3").style.display = 'none';
+          }, 1000)
+  sitNam.addEventListener('keydown', function(e){
+    if(e.keyCode == 13){
+      window.clearInterval(myInt)
     }
-      return storeMin;
+  });
   };
-  function resolveSec(z){
-    var storeSec = String(z.getSeconds());
-    if(storeSec.length == 1) {
-      storeSec = "0" + storeSec;
-    }
-    return storeSec;
-  };
-*/
-  };
-   
-
-
-  })
-
-      
-      
-
-
-  funcMonth();  
-  funcDay(); 
-  funcYear();
-
+  })    
+  //funcMonth();  
+  //funcDay(); 
+  //funcYear();
+  /*
   function funcMonth() {
     var d = new Date();
     var month = [];
@@ -412,9 +282,8 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=' + addPlace  + '&units=
     month[11]= "December";
     var n = month[d.getMonth()]; 
     var monthD = d.getDate();
-    console.log(monthD)
     document.getElementById("demo").innerHTML = monthD + " " +  n + ",";
-  };
+  };*/
   function funcDay() {
     var day = new Date();
     var weekday = [];
@@ -428,20 +297,11 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=' + addPlace  + '&units=
     var newDay = weekday[day.getDay()];
     document.getElementById("dayId").innerHTML = newDay;
   };
-
-  function funcYear() {
-    var year = new Date();
-    var newYear= year.getFullYear();
-    console.log(newYear);
-    document.getElementById("yearId").innerHTML = newYear;
-  }
-    var storeJson = data;   //data
+    var storeJson = data; 
     var tempSwap = false; //setting to false
     var icon = storeJson.weather[0].icon;  
     var iconSrc = "http://openweathermap.org/img/w/" + icon + ".png";
     var storeIcon =  `<img id ='iconIcon' src=   ${iconSrc} >`
-    //console.log('ALOO', storeJson);
-    
 
    $("#locId").html(`${storeJson.name},   ${storeJson.sys.country}`);
    $("#storeDes").html(`${storeJson.weather[0].main} (<span id ='bracketsDes'> ${storeJson.weather[0].description} </span>) <span id='iconDesId'> ${storeIcon} </span>`);
@@ -449,8 +309,11 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=' + addPlace  + '&units=
    var storeWindRes = storeJson.wind.speed * 0.44704;
    $("#storeWind").html(`Wind Blow:&nbsp; <span id ='windVal'> ${storeWindRes.toFixed(2)}&nbsp;m/s </span>`);
    var windData = storeJson.wind.deg;
-   $('#windDir').html(`Wind direction: <span id ='windDirVal'> ${windDirect(windData)} </span>`); //cause of promise, you can call func here.
-   
+   $('#storeWind').append(`&nbsp;&nbsp; Wind direction:&nbsp <span id ='windDirVal'> ${windDirect(windData)} </span>`);
+   var humidData1 = storeJson.main.humidity;
+   var pressData1 = storeJson.main.pressure;
+   $('#humid').html(`Humidity:&nbsp <span id ='windDirVal'>${humidData1}&#37 </span>`);
+   $('#humid').append(`&nbsp;&nbsp; Pressure:&nbsp <span id='windDirVal'>${pressData1} mb</span>`) 
 
   function  windDirect(degree){
     if (degree>337.5) return 'Northerly';
@@ -468,14 +331,12 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=' + addPlace  + '&units=
      if(tempSwap === false) {
         $("#storeTemp").html(storeFunc(tempRoot));
        tempSwap = true;
-
      } else {
             $("#storeTemp").html("Temperature is:" +`<span id ='tempValId'> &nbsp; ${tempRoot}</span>` + " " + `<span id ='tempValId'>&#x2109;</span>` );
             document.getElementById("btn1").value = "Switch F/C";
             tempSwap = false; 
        };
   });
-  
   glyId.addEventListener("click", function(){
      if(tempSwap === false) {
         $("#storeTemp").html(storeFunc(tempRoot));
@@ -497,12 +358,26 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=' + addPlace  + '&units=
     return ajax.json();
 })
 .then(function(data1){
-
-  var cityLat = data1.city.coord.lat;
+  var cityLat = data1.city.coord.lat; 
   var cityLong = data1.city.coord.lon;
-  console.log(document.getElementById('locId'));
+  fetch('https://api.sunrise-sunset.org/json?lat=' + data1.city.coord.lat +  '&lng=' +  data1.city.coord.lon)
+  .then((riseSet)=>{
+    return riseSet.json();
+  })
+  .then((aboutSun)=>{
+    console.log(aboutSun);
+    var takeRise1 = aboutSun.results.sunrise;
+    var takeSet1  = aboutSun.results.sunset;
+    console.log(takeRise1, takeSet1)
+    $('#sunSetRise').html(`Sunrise:&nbsp; <span id='sunIdNew'>${takeRise1}</span>`);
+    $('#sunSetRise').append(`&nbsp;&nbsp; Sunset:&nbsp; <span id ='sunIdNew1'>${takeSet1}</span>`);
+
+
+
+  })
+
   var storeLocId = document.getElementById('locId');
-  storeLocId.title = 'Long: ' + " "  + cityLong +  '&nbsp;  ' + ' Lat:' + "  " +  cityLat;
+  storeLocId.title =  `LAT: ${cityLat}        LON: ${cityLong}`           /*'Long: ' + " "  + cityLong +  '&nbsp;&nbsp;' + ' Lat:' + "  " +  cityLat;*/
   var storeFunc = function f2c(f) {
   var num = ((f-32) * (5/9));
   return  num.toFixed(1);  //Pravimo u celzijuse ovde.
@@ -513,13 +388,13 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=' + addPlace  + '&units=
   var storeCalled1 = storeFunc(storeTempK1).charAt(0) == '-' ?  storeFunc(storeTempK1) : '&nbsp;' + storeFunc(storeTempK1)                  
 ///////////////////////////////////
      var storeItAll = data1;
-     $('#insideDiv1').html( " <br> " + data1.list[3].dt_txt +  `<span id ='arrowSymb'>&nbsp;  &#x2771;&#x2771;&#x2771; </span>` + "&nbsp;&nbsp;" + `<span id ='styleVal5'> ${storeCalled} °C </span>`  + " &nbsp;&nbsp; - " + data1.list[3].weather[0].description + " - Wind: " + `<span id ='windValAll'> ${data1.list[3].wind.speed}</span>` + '<br> ' + "" + data1.list[6].dt_txt + `<span id ='arrowSymb'>&nbsp;  &#x2771;&#x2771;&#x2771; </span>` + "&nbsp;&nbsp;" + `<span id ='styleVal5'> ${storeCalled1} °C </span>` +  " &nbsp;&nbsp; - " +  data1.list[6].weather[0].description + "      - Wind: " + `<span id ='windValAll'> ${data1.list[6].wind.speed}</span>`);
+     $('#insideDiv1').html( " <br> " + data1.list[3].dt_txt + `<span id ='arrowSymb'>&nbsp;  &#x2771;&#x2771;&#x2771; </span>` + "&nbsp;&nbsp;" + `<span id ='styleVal5'> ${storeCalled} °C </span>`  + " &nbsp;&nbsp; - " + data1.list[3].weather[0].description + " - Wind: " + `<span id ='windValAll'> ${data1.list[3].wind.speed}</span>` + '<br> ' + "" + data1.list[6].dt_txt + `<span id ='arrowSymb'>&nbsp;  &#x2771;&#x2771;&#x2771; </span>` + "&nbsp;&nbsp;" + `<span id ='styleVal5'> ${storeCalled1} °C </span>` +  " &nbsp;&nbsp; - " +  data1.list[6].weather[0].description + "      - Wind: " + `<span id ='windValAll'> ${data1.list[6].wind.speed}</span>`);
       var icon1 = data1.list[3].weather[0].icon;
       var icon2 = data1.list[6].weather[0].icon;
       var iconSrc =  "http://openweathermap.org/img/w/"+ icon1 + ".png";
       var iconSrc2= "http://openweathermap.org/img/w/"+ icon2 + ".png";
       $("#insideDiv3").prepend('<img src=' +  iconSrc +  '>' + "  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  " + " <img src =" + iconSrc2 + ">");
-////////////////////////////////////////
+//////////////////////////////////////////
 var storeFunc = function f2c(f) {
   var num = ((f-32) * (5/9));
   return  num.toFixed(1);
@@ -585,7 +460,6 @@ var storeFunc = function f2c(f) {
       var iconSrcPET011 = "http://openweathermap.org/img/w/"+ iconPET2 + ".png";
      
       $("#insideDivPET2").prepend('<img src=' +  iconSrcPET +  '>' + "  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  " + " <img src =" + iconSrcPET011 + ">");
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   var storeFunc = function f2c(f) {
   var num = ((f-32) * (5/9))
@@ -593,15 +467,6 @@ var storeFunc = function f2c(f) {
   };
       return [cityLat, cityLong]
     }).then(function(oneArr){
-        /*
-       fetch("https://maps.googleapis.com/maps/api/timezone/json?location=" + oneArr[0] + "," + oneArr[1] + "&timestamp=1331161200&key=AIzaSyDQYoYpB-CyL4Leg5IWW1pT0afaVD9z4J0")
-       .then(function(timeZon){
-          return timeZon.json()
-       }).then((tmZon)=> {
-          console.log(tmZon);
-          console.log(new Date());
-       })*/
-
        var mapSrc = document.getElementById('storeMap').children[0].src = "https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d90588.96404060595!2d" + oneArr[1]  + "!3d" + oneArr[0] + "!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ssr!2srs!4v1497371916951"
       fetch("http://api.openweathermap.org/data/2.5/uvi?appid=69190f2d7f60d5551b77187e81d50575&lat=" + oneArr[0] + "&lon=" + oneArr[1])
       .then(function(uvInd1){
@@ -611,26 +476,10 @@ var storeFunc = function f2c(f) {
           storeIt.innerHTML = "UV index: " +  `  <p id ='raceIt'> ${holdVal.value}  </p>`;
         })
       })
-      //return false
-
       return oneArr;
     })
     .then(function(takeOneA){
-      //document.getElementById('siteName').style.display  ='none'
-      console.log(e)
       return takeOneA;
     }) 
-
 }) //then
- } 
-   console.log('a ovde returning;', returning1)
-   console.log(e)
-   return returning1;
-
-}) //event
-  console.log('a ovuda na krajuL', returning1)
-//}} //funckija showF
-}
- 
-
-
+ }

@@ -192,7 +192,7 @@ a.icon {
 #locId {
   width:50%;
   margin:auto;
-  margin-top:2%;
+  margin-top:12%;
   margin-bottom:2%;
   border:1px solid #c2c2a3;
 }
@@ -223,21 +223,13 @@ a.icon {
 
 #storeWind {
   color:black;
-  font-size: 20px;
+  font-size: 18px;
   font-family: "Times New Roman";
-  position: static;
-  top: 45px;
-  left:690px;
-  font-weight: 800;
-}
+  font-weight: 700;
+  text-align:center;
+  font-family: 'Times New Roman';
 
-#windDir {
-  color:black;
-  font-size: 20px;
-  font-family: "Times New Roman";
-  font-weight: 800;
 }
-
 #windDirVal {
   color:#7d0000;
   font-weight:600;
@@ -252,19 +244,50 @@ a.icon {
   color:#7d0000;
 }
 
+#humid {
+  text-align:center;
+  font-weight:700;
+  color:black;
+  font-size:18px;
+  font-family: 'Times New Roman';
+}
+
+
+#sunId {
+  color:#7d0000;
+  font-weight:600;
+}
+
+#sunId1 {
+  color:#7d0000;
+  font-weight:600;
+}
+
+#sunSetRise {
+  text-align:center;
+  font-weight:700;
+  color:black;
+  font-size:18px;
+  font-family: 'Times New Roman';
+}
+#sunIdNew {
+  color:#7d0000;
+  font-weight:600;
+}
+#sunIdNew1 {
+  color:#7d0000;
+  font-weight:600;
+}
+
+
 
 
 #storeDes {
-  
   color: #7d0000;
   font-size: 27px;
   letter-spacing:2px;
-  /*position: static;*/
-  /*top: 55px;
-  left: 455px;*/
   padding-top:20px;
   font-weight: 900;
-
 }
 
 
@@ -336,7 +359,37 @@ a.icon {
   width: 50%;
   margin-left: 25%;
   margin-right: 25%;
-  box-shadow: 8px 8px 24px #6d8092;
+  box-shadow:6px -5px 22px #6d8092;
+  padding:2%!important;
+}
+
+#date2 {
+ color: black;
+  font-weight: 800;
+  font-size: 15px;
+  letter-spacing: 4px;
+  background-color: #6d8092;
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+  box-shadow: 6px -5px 22px #6d8092;
+  padding:2%!important;
+
+}
+
+
+#date3 {
+ color: black;
+  font-weight: 800;
+  font-size: 15px;
+  letter-spacing: 4px;
+  background-color: #6d8092;
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+  box-shadow: 6px -5px 22px #6d8092;
+  padding:2%!important;
+
 }
 
 
@@ -383,7 +436,7 @@ a.icon {
   background-color: #c2c2a3;
   width:50%!important;
   margin:0 auto;
-  margin-top:2%;
+  margin-top:12%;
   margin-bottom:2%;
   color:red;
   font-weight:500;

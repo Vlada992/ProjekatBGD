@@ -63,7 +63,7 @@
        </div>
        </div>
 
-    <a onclick="return show('Page4','Page1', 'Page3', 'Page2');" title= 'local weather, current date/time, google maps..' href="#about">WEATHER &amp; MORE</a>
+    <a onclick="return show('Page4','Page1', 'Page3', 'Page2');" title= 'local and global weather, current date/time, google maps..' href="#about">WEATHER &amp; MORE</a>
     <a title= 'contact information' href="#about">CONTACT</a>
     <a onclick="return show('Page2','Page1', 'Page3', 'Page4');" title= 'Places/Venues/Things to do'  href="#contact">WHAT TO SEE</a>
     <a onclick="return show('Page3','Page1', 'Page2', 'Page4');"   title='Find more about BG'  href="#AboutBGD.html">ABOUT BG</a>
@@ -561,7 +561,7 @@ Discover the best food, nightlife, and entertainment in your area.' target="_bla
 
    <div id="Page3" style="display:none">
         <!-- page 3! about.bg-->
-      <p>ehhehehee</p>
+      <p>Loading something...</p>
    </div>
 
 
@@ -572,19 +572,23 @@ Discover the best food, nightlife, and entertainment in your area.' target="_bla
         <div class="row">
           <div class="col-md-6">
             <div id="mainDiv">
+
               <!--<div id ='redBtnDiv'></div>-->
+              
               <p id="storeDes"></p>
-              <p id="storeWind"></p>
-              <p id='windDir'></p>
+              <p id="storeWind"> </p>
+              <p id='sunSetRise'></p>
+              <p id ='humid'></p>
               <hr style='width:70%'>
-              <div id="date1"> </div>
+              <div id="date1">Loading Local Time... <img src="images/Spinner-1.4s-76px.gif"/></div>
               <div id = 'date2' style="display:none"></div>
+              <div id = 'date3' style="display:none"></div>
               <p id="dayId"></p>
               <p id="demo"> </p>
               <p id="yearId"></p>
-              <div title='Click to change current location' id="storeLoc" onclick='showF()'>
+              <div title='Click to change current location' id="storeLoc" onclick='showDiv()'>
                 <input type="text"  class="form-control" id="siteName" placeholder="Type city..." value='' style='display:none'>
-                <p  title='Lat: 44.787197 Lon: 20.457273' id='locId'>... </p>
+                <p  title='LAT: 44.787197 LON: 20.457273' id='locId'>... </p>
               </div>
               <p id="storeTemp">
                 <p>
