@@ -14,7 +14,7 @@
     </head>
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     
-    <body onload= 'myBFun()'>
+    <body>
     <a id='top'></a>
 
         <!--
@@ -63,11 +63,11 @@
        </div>
        </div>
 
-    <a onclick="return show('Page4','Page1', 'Page3', 'Page2');" title= 'local and global weather, current date/time, google maps..' href="#about">WEATHER &amp; MORE</a>
+    <a onclick="return show('Page4','Page1', 'Page3', 'Page2')" title= 'local and global weather, current date/time, google maps..' href="#about">WEATHER &amp; MORE</a>
     <a title= 'contact information' href="#about">CONTACT</a>
-    <a onclick="return show('Page2','Page1', 'Page3', 'Page4');" title= 'Places/Venues/Things to do'  href="#contact">WHAT TO SEE</a>
-    <a onclick="return show('Page3','Page1', 'Page2', 'Page4');"   title='Find more about BG'  href="#AboutBGD.html">ABOUT BG</a>
-    <a onclick="return show('Page1','Page2', 'Page3', 'Page4');" title='Home and main page' href="#home">HOME</a>
+    <a onclick="return show('Page2','Page1', 'Page3', 'Page4')" title= 'Places/Venues/Things to do'  href="#contact">WHAT TO SEE</a>
+    <a onclick="return show('Page3','Page1', 'Page2', 'Page4')"   title='Find more about BG'  href="#AboutBGD.html">ABOUT BG</a>
+    <a onclick="return show('Page1','Page2', 'Page3', 'Page4')" title='Home and main page' href="#home">HOME</a>
 
 
   <a title = 'Local weather, current date/time, google maps...' href="javascript:void(0);" style="font-size:15px;" class="icon container" onclick="myFunction()">&#9776;</a>
@@ -574,11 +574,12 @@ Discover the best food, nightlife, and entertainment in your area.' target="_bla
             <div id="mainDiv">
 
               <!--<div id ='redBtnDiv'></div>-->
-              
-              <p id="storeDes"></p>
-              <p id="storeWind"> </p>
-              <p id='sunSetRise'></p>
+               
+              <p id ="storeDes"></p>
+              <p id ="storeWind"> </p>
+              <p id ='sunSetRise'></p>
               <p id ='humid'></p>
+              <p id ='dayLastUv'></p>
               <hr style='width:70%'>
               <div id="date1">Loading Local Time... <img src="images/Spinner-1.4s-76px.gif"/></div>
               <div id = 'date2' style="display:none"></div>
@@ -591,12 +592,9 @@ Discover the best food, nightlife, and entertainment in your area.' target="_bla
                 <p  title='LAT: 44.787197 LON: 20.457273' id='locId'>... </p>
               </div>
               <p id="storeTemp">
+              
                 <p>
                   <input title='Switch between celsius(&#8451;) and fahrenheit(&#x2109;)' type="button" value="Switch F/C" id="btn1" /><span id='glyId' class="glyphicon glyphicon-repeat" type='button' title='Switch between celsius(&#8451;) and fahrenheit(&#x2109;)'></p> </span></p>
-                  <div title='Ultraviolet (UV) radiation is a type of energy produced by the sun and some artificial sources, such as solariums. The sun’s ultraviolet (UV) radiation is the main cause of skin cancer. UV radiation isn’t like the sun’s light or heat, which we can see and feel. Your senses cannot detect UV radiation, so you won’t notice the damage until it has been done.' id="holdUVindex">
-                    <p></p>
-
-                  </div>
 
                   <p id="storeDes"></p>
                   <p id='storeWind'></p>
@@ -614,23 +612,42 @@ Discover the best food, nightlife, and entertainment in your area.' target="_bla
                     </div>
                     <div id="insideDiv3">
                     </div>
+
+                    <div id="insideDiv3Ent">
+                    </div>
                   </div>
+
                   <div id="divF2">
                     <div id='insideDiv11'>
                     </div>
                     <div id="insideDiv33"></div>
+
+                     <div id="insideDiv33Ent"></div>
+
                   </div>
+
                   <div id="divF3">
                     <div id="insideDiv0"></div>
                     <div id="insideDiv02"></div>
+
+                    <div id="insideDiv02Ent"></div>
+
                   </div>
+
                   <div id="divF4">
                     <div id="insideDivCET"></div>
                     <div id="insideDivCET2"></div>
+
+                    <div id="insideDivCET2Ent"></div>
+
                   </div>
+
                   <div id="divF5">
                     <div id="insideDivPET"></div>
                     <div id="insideDivPET2"></div>
+
+                    <div id="insideDivPET2Ent"></div>
+
                   </div>
                 </div>
               </div>

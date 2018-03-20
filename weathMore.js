@@ -14,25 +14,31 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Belgrade&units=imperial&
   }, 1000);
  function updateTime(dateExp){  
   var timeDiv = document.getElementById("date1");
-  timeDiv.innerHTML = dateExp //time;
+  var putSliced = dateExp.slice(10);
+  timeDiv.innerHTML = dateExp.slice(0,9) + `<p class = 'newClassNow'>${putSliced}</p>`
 
-  
   };
   fetch('https://api.sunrise-sunset.org/json?lat=' + data.coord.lat +  '&lng=' +  data.coord.lon)
   .then((riseSet1)=>{
     return riseSet1.json();
   })
-  .then((dataSun)=>{
-    console.log('26 nam treba pocetak za sunrise:', dataSun);
+  .then((dataSun) =>{
     var takeRise = dataSun.results.sunrise;
     var takeSet  = dataSun.results.sunset;
+    var takeDayU  = dataSun.results.day_length;
     $('#sunSetRise').html(`Sunrise:&nbsp; <span id='sunId'>${takeRise}</span>`);
     $('#sunSetRise').append(`&nbsp;&nbsp; Sunset:&nbsp; <span id ='sunId1'>${takeSet}</span>`);
+    $('#dayLastUv').html(`Day length:&nbsp; <span id='dayUv'>${takeDayU}</span>`);
+    fetch("http://api.openweathermap.org/data/2.5/uvi?appid=69190f2d7f60d5551b77187e81d50575&lat=44.787197&lon=20.457273")
+    .then(function(uvInd1){
+    return uvInd1.json()
+    })
+    .then(function(holdVal){
+    $('#dayLastUv').append(`&nbsp;&nbsp; UVindex:&nbsp; <span id ='raceIt'>${holdVal.value}</span>`)
+    });
+
+
   })
-
-
-
-
     var storeJson = data;   //data
     var tempSwap = false;
     var icon = storeJson.weather[0].icon;  
@@ -40,7 +46,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Belgrade&units=imperial&
     var storeIcon =  `<img id ='iconIcon' src=   ${iconSrc} >`
    $("#locId").html(`${storeJson.name},   ${storeJson.sys.country}`);
    $("#storeDes").html(`${storeJson.weather[0].main} (<span id ='bracketsDes'> ${storeJson.weather[0].description} </span>) <span id='iconDesId'> ${storeIcon} </span>`);
-   $("#storeTemp").html(`Temperature is: <span id ='tempValId'> &nbsp; ${storeJson.main.temp.toFixed(1)} &#x2109; </span>`);
+   $("#storeTemp").html(`Temperature is: <span id ='tempValId'> &nbsp; ${storeJson.main.temp.toFixed(1)} &#x2109; &nbsp;</span>`);
    var storeWindRes = storeJson.wind.speed * 0.44704;
    $("#storeWind").html(`Wind Blow:&nbsp; <span id ='windVal'> ${storeWindRes.toFixed(2)}&nbsp;m/s </span>`);
    var windData = storeJson.wind.deg;
@@ -66,7 +72,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Belgrade&units=imperial&
         $("#storeTemp").html(storeFunc(tempRoot));
        tempSwap = true;
      } else {
-            $("#storeTemp").html("Temperature is:" +`<span id ='tempValId'> &nbsp; ${tempRoot}</span>` + " " + `<span id ='tempValId'>&#x2109;</span>` );
+            $("#storeTemp").html("Temperature is:&nbsp; " +`<span id ='tempValId'> &nbsp; ${tempRoot} &#x2109; &nbsp;</span>` );  //</span>` + " " + `<span id ='tempValId'>
             document.getElementById("btn1").value = "Switch F/C";
             tempSwap = false; //to return
        };
@@ -76,7 +82,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Belgrade&units=imperial&
         $("#storeTemp").html(storeFunc(tempRoot));
        tempSwap = true;
      } else {
-            $("#storeTemp").html("Temperature is:" +`<span id ='tempValId'> &nbsp; ${tempRoot}</span>` + " " + `<span id ='tempValId'>&#x2109;</span>` );
+            $("#storeTemp").html("Temperature is:&nbsp; " +`<span id ='tempValId'> &nbsp; ${tempRoot} &#x2109; &nbsp;</span>` );  //</span>` + " " + `<span id ='tempValId'>&#x2109;
             document.getElementById("btn1").value = "Switch F/C";
             tempSwap = false; //to return
        };
@@ -84,7 +90,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Belgrade&units=imperial&
   var storeFunc = function f2c(f) {
   var num = ((f-32) * (5/9)) 
   document.getElementById("btn1").value = "Switch C/F";
-  return "Temperature is:" +`<span id ='tempValId'> &nbsp; ${num.toFixed(1)}</span>`  + " " +  `<span id ='tempValId'>&#8451</span>`;
+  return "Temperature is:&nbsp; " +`<span id ='tempValId'> &nbsp; ${num.toFixed(1)} &#8451 &nbsp;</span>`;  //</span>`  + " " +  `<span id ='tempValId'>
   }
 }).then(function(){
   fetch('http://api.openweathermap.org/data/2.5/forecast?q=Belgrade,RS&units=imperial&APPID=69190f2d7f60d5551b77187e81d50575')
@@ -102,7 +108,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Belgrade&units=imperial&
   var storeCalled1 = storeFunc(storeTempK1).charAt(0) == '-' ?  storeFunc(storeTempK1) : '&nbsp;' + storeFunc(storeTempK1)                  
 //////////////////////////////////////////////////////////////////////////////////////////////
      var storeItAll = data1;
-     $('#insideDiv1').html( " <br> " + data1.list[3].dt_txt +  `<span id ='arrowSymb'>&nbsp;  &#x2771;&#x2771;&#x2771; </span>` + "&nbsp;&nbsp;" + `<span id ='styleVal5'> ${storeCalled} °C </span>`  + " &nbsp;&nbsp; - " + data1.list[3].weather[0].description + " - Wind: " + `<span id ='windValAll'> ${data1.list[3].wind.speed}</span>` + '<br> ' + "" + data1.list[6].dt_txt + `<span id ='arrowSymb'>&nbsp;  &#x2771;&#x2771;&#x2771; </span>` + "&nbsp;&nbsp;" + `<span id ='styleVal5'> ${storeCalled1} °C </span>` +  " &nbsp;&nbsp; - " +  data1.list[6].weather[0].description + "      - Wind: " + `<span id ='windValAll'> ${data1.list[6].wind.speed}</span>`);
+     $('#insideDiv1').html( " <br> " + data1.list[3].dt_txt +  `<span id ='arrowSymb'>&nbsp;  &#x2771;&#x2771;&#x2771; </span>` + "&nbsp;&nbsp;" + `<span id ='styleVal5'> ${storeCalled} °C </span>`  + " &nbsp;&nbsp; - " + data1.list[3].weather[0].description + " - Wind: " + `<span id ='windValAll'> ${data1.list[3].wind.speed}&nbsp;m/s</span>` + '<br> ' + "" + data1.list[6].dt_txt + `<span id ='arrowSymb'>&nbsp;  &#x2771;&#x2771;&#x2771; </span>` + "&nbsp;&nbsp;" + `<span id ='styleVal5'> ${storeCalled1} °C </span>` +  " &nbsp;&nbsp; - " +  data1.list[6].weather[0].description + "      - Wind: " + `<span id ='windValAll'> ${data1.list[6].wind.speed}&nbsp;m/s</span>`);
       var icon1 = data1.list[3].weather[0].icon;
       var icon2 = data1.list[6].weather[0].icon;
       var iconSrc =  "http://openweathermap.org/img/w/"+ icon1 + ".png";
@@ -118,7 +124,7 @@ var storeFunc = function f2c(f) {
   var storeTempK111 = data1.list[14].main.temp;
   var storeCalledALO = storeFunc(storeTempK111).charAt(0) == '-' ?  storeFunc(storeTempK111) : '&nbsp;' + storeFunc(storeTempK111)
 //////////////////////////////////////////////////////////
-  $('#insideDiv11').html(" <br> " + data1.list[11].dt_txt + `<span id ='arrowSymb'>&nbsp;  &#x2771;&#x2771;&#x2771; </span>` + "&nbsp;&nbsp;" + `<span id ='styleVal5'> ${storeCalledALOBRE} °C </span>` + " &nbsp;&nbsp;  -  " + data1.list[11].weather[0].description + " - Wind:  " + `<span id ='windValAll'> ${data1.list[11].wind.speed}</span>` + " <br> " + data1.list[14].dt_txt + `<span id ='arrowSymb'>&nbsp;  &#x2771;&#x2771;&#x2771; </span>` + "&nbsp;&nbsp;" + `<span id ='styleVal5'> ${storeCalledALO} °C </span>` + " &nbsp;&nbsp; - " +  data1.list[14].weather[0].description + "      - Wind: " + `<span id ='windValAll'> ${data1.list[14].wind.speed}</span>`)
+  $('#insideDiv11').html(" <br> " + data1.list[11].dt_txt + `<span id ='arrowSymb'>&nbsp;  &#x2771;&#x2771;&#x2771; </span>` + "&nbsp;&nbsp;" + `<span id ='styleVal5'> ${storeCalledALOBRE} °C </span>` + " &nbsp;&nbsp;  -  " + data1.list[11].weather[0].description + " - Wind:  " + `<span id ='windValAll'> ${data1.list[11].wind.speed}&nbsp;m/s</span>` + " <br> " + data1.list[14].dt_txt + `<span id ='arrowSymb'>&nbsp;  &#x2771;&#x2771;&#x2771; </span>` + "&nbsp;&nbsp;" + `<span id ='styleVal5'> ${storeCalledALO} °C </span>` + " &nbsp;&nbsp; - " +  data1.list[14].weather[0].description + "      - Wind: " + `<span id ='windValAll'> ${data1.list[14].wind.speed}&nbsp;m/s</span>`)
   
       var icon11 = data1.list[11].weather[0].icon;
       var icon22 = data1.list[14].weather[0].icon;
@@ -135,7 +141,7 @@ var storeFunc = function f2c(f) {
   var storeTempK00 = data1.list[22].main.temp;
   var storeCalled00 = storeFunc(storeTempK00).charAt(0) == '-' ?  storeFunc(storeTempK00) : '&nbsp;' + storeFunc(storeTempK00)
   //|||||||||||||||||||||||||||||||||||||||||||||//
-     $('#insideDiv0').html( " <br> " + data1.list[19].dt_txt + `<span id ='arrowSymb'>&nbsp;  &#x2771;&#x2771;&#x2771; </span>` + "&nbsp;&nbsp;" + `<span id ='styleVal5'> ${storeCalled0} °C </span>` +  " &nbsp;&nbsp; -  " + data1.list[19].weather[0].description + " - Wind:  " + `<span id ='windValAll'> ${data1.list[19].wind.speed}</span>` + " <br> " + data1.list[22].dt_txt + `<span id ='arrowSymb'>&nbsp;  &#x2771;&#x2771;&#x2771; </span>` + "&nbsp;&nbsp;" + `<span id ='styleVal5'> ${storeCalled00} °C </span>` + " &nbsp;&nbsp; - " +  data1.list[22].weather[0].description + "    - Wind: " + `<span id ='windValAll'> ${data1.list[22].wind.speed}</span>` );
+     $('#insideDiv0').html( " <br> " + data1.list[19].dt_txt + `<span id ='arrowSymb'>&nbsp;  &#x2771;&#x2771;&#x2771; </span>` + "&nbsp;&nbsp;" + `<span id ='styleVal5'> ${storeCalled0} °C </span>` +  " &nbsp;&nbsp; -  " + data1.list[19].weather[0].description + " - Wind:  " + `<span id ='windValAll'> ${data1.list[19].wind.speed}&nbsp;m/s</span>` + " <br> " + data1.list[22].dt_txt + `<span id ='arrowSymb'>&nbsp;  &#x2771;&#x2771;&#x2771; </span>` + "&nbsp;&nbsp;" + `<span id ='styleVal5'> ${storeCalled00} °C </span>` + " &nbsp;&nbsp; - " +  data1.list[22].weather[0].description + "    - Wind: " + `<span id ='windValAll'> ${data1.list[22].wind.speed}&nbsp;m/s</span>` );
       var icon0 = data1.list[19].weather[0].icon;
       var icon01 = data1.list[22].weather[0].icon;
       var iconSrc01 =  "http://openweathermap.org/img/w/"+ icon0 + ".png";
@@ -152,7 +158,7 @@ var storeFunc = function f2c(f) {
   var storeTempCETVRTI1 = data1.list[30].main.temp;
   var storeCalledCET1 = storeFunc(storeTempCETVRTI1).charAt(0) == '-' ?  storeFunc(storeTempCETVRTI1) : '&nbsp;' + storeFunc(storeTempCETVRTI1);
     
-     $('#insideDivCET').html(  " <br> " + data1.list[27].dt_txt + `<span id ='arrowSymb'>&nbsp;  &#x2771;&#x2771;&#x2771; </span>` + "&nbsp;&nbsp;" +  `<span id ='styleVal5'> ${storeCalledCET}°C  </span>` +  " &nbsp;&nbsp; -  " + data1.list[27].weather[0].description + " - Wind:  " + `<span id ='windValAll'> ${data1.list[27].wind.speed}</span>` + " <br> " + data1.list[30].dt_txt + `<span id ='arrowSymb'>&nbsp;  &#x2771;&#x2771;&#x2771; </span>` + "&nbsp;&nbsp;" + `<span id ='styleVal5'> ${storeCalledCET1} °C </span>` + " &nbsp;&nbsp; - " +  data1.list[30].weather[0].description + "    - Wind: " + `<span id ='windValAll'> ${data1.list[30].wind.speed}</span>` );
+     $('#insideDivCET').html(  " <br> " + data1.list[27].dt_txt + `<span id ='arrowSymb'>&nbsp;  &#x2771;&#x2771;&#x2771; </span>` + "&nbsp;&nbsp;" +  `<span id ='styleVal5'> ${storeCalledCET}°C  </span>` +  " &nbsp;&nbsp; -  " + data1.list[27].weather[0].description + " - Wind:  " + `<span id ='windValAll'> ${data1.list[27].wind.speed}&nbsp;m/s</span>` + " <br> " + data1.list[30].dt_txt + `<span id ='arrowSymb'>&nbsp;  &#x2771;&#x2771;&#x2771; </span>` + "&nbsp;&nbsp;" + `<span id ='styleVal5'> ${storeCalledCET1} °C </span>` + " &nbsp;&nbsp; - " +  data1.list[30].weather[0].description + "    - Wind: " + `<span id ='windValAll'> ${data1.list[30].wind.speed}&nbsp;m/s</span>` );
       var iconCET1 = data1.list[27].weather[0].icon;
       var iconCET2 = data1.list[30].weather[0].icon;
       var iconSrcCET =  "http://openweathermap.org/img/w/"+ iconCET1 + ".png";
@@ -166,7 +172,7 @@ var storeFunc = function f2c(f) {
       var storeTempPETI1 = data1.list[37].main.temp;
       var storeCalledPET1 = storeFunc(storeTempPETI1).charAt(0) == '-' ?  storeFunc(storeTempPETI1) : '&nbsp;' + storeFunc(storeTempPETI1);
     
-     $('#insideDivPET').html(  " <br> " + data1.list[35].dt_txt + `<span id ='arrowSymb'>&nbsp;  &#x2771;&#x2771;&#x2771; </span>`  + "&nbsp;&nbsp;" + `<span id ='styleVal5'> ${storeCalledPET}°C  </span>` +  " &nbsp;&nbsp; -  " + data1.list[35].weather[0].description + " - Wind:  " + `<span id ='windValAll'> ${data1.list[35].wind.speed}</span>` + " <br> " + data1.list[37].dt_txt + `<span id ='arrowSymb'>&nbsp;  &#x2771;&#x2771;&#x2771; </span>` + "&nbsp;&nbsp;" +  `<span id ='styleVal5'> ${storeCalledPET1} °C </span>`  + " &nbsp;&nbsp; - " +  data1.list[37].weather[0].description + "    - Wind: " +  `<span id ='windValAll'> ${data1.list[37].wind.speed}</span>`);
+     $('#insideDivPET').html(  " <br> " + data1.list[35].dt_txt + `<span id ='arrowSymb'>&nbsp;  &#x2771;&#x2771;&#x2771; </span>`  + "&nbsp;&nbsp;" + `<span id ='styleVal5'> ${storeCalledPET}°C  </span>` +  " &nbsp;&nbsp; -  " + data1.list[35].weather[0].description + " - Wind:  " + `<span id ='windValAll'> ${data1.list[35].wind.speed}&nbsp;m/s</span>` + " <br> " + data1.list[37].dt_txt + `<span id ='arrowSymb'>&nbsp;  &#x2771;&#x2771;&#x2771; </span>` + "&nbsp;&nbsp;" +  `<span id ='styleVal5'> ${storeCalledPET1} °C </span>`  + " &nbsp;&nbsp; - " +  data1.list[37].weather[0].description + "    - Wind: " +  `<span id ='windValAll'> ${data1.list[37].wind.speed}&nbsp;m/s</span>`);
       var iconPET1 = data1.list[35].weather[0].icon;
       var iconPET2 = data1.list[37].weather[0].icon;
       var iconSrcPET =  "http://openweathermap.org/img/w/"+ iconPET1 + ".png";
@@ -179,15 +185,16 @@ var storeFunc = function f2c(f) {
     return  num.toFixed(1);
   };
     }).then(function(){
-      fetch("http://api.openweathermap.org/data/2.5/uvi?appid=69190f2d7f60d5551b77187e81d50575&lat=44.787197&lon=20.457273")
+     /* fetch("http://api.openweathermap.org/data/2.5/uvi?appid=69190f2d7f60d5551b77187e81d50575&lat=44.787197&lon=20.457273")
       .then(function(uvInd1){
         uvInd1.json()
-        .then(function(holdVal){
-          var storeIt = document.getElementById('holdUVindex');
-          storeIt.innerHTML = "UV index: " +  `  <p id ='raceIt'> ${holdVal.value}  </p>`;
-          return false
-        })
       })
+      .then(function(holdVal){
+       $('#dayLastUv').append(`&nbsp;&nbsp; UVindex:&nbsp; <span id ='raceIt'>${holdVal.value}</span>`)
+      })*/
+      //})
+
+
     })
 });
 return false
@@ -219,7 +226,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=' + addPlace  + '&units=
   }).then(data => {
      console.log('Podaci za drugu funckiju vreme:', data)
       document.getElementById('siteName').style.display  = 'none';
-      document.getElementById('locId').style.display     = 'block' //vracamo ime i drzavu.
+      document.getElementById('locId').style.display     = 'block';
       console.log('na 28 idemo:', data)
       if(data.cod == 404){
         alert('Please, only enter place names and only on eglish language.');
@@ -229,9 +236,8 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=' + addPlace  + '&units=
          fetch("https://maps.googleapis.com/maps/api/timezone/json?location=" + cityLat1 + "," + cityLong1 + "&timestamp=1331161200&key=AIzaSyDQYoYpB-CyL4Leg5IWW1pT0afaVD9z4J0")
          .then(function(timeZon){
           return timeZon.json()
-         }).then((tmZon)=> {
-          console.log('i konacno:', tmZon);
-        
+         })
+         .then((tmZon)=>{
   updateTime()
  function updateTime(){   
  var timeDiv = document.getElementById("date2");
@@ -240,50 +246,33 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=' + addPlace  + '&units=
   timeDiv.innerHTML = '';
  document.getElementById("date1").style.display = 'none';
  document.getElementById("date2").style.display = 'block';
- var myInt;
  var tempSwapTM = counter.length; 
  var sitNam = document.getElementById('siteName');
+
  var myInt = null;
  timeDiv.innerHTML = "Loading data... <img src='images/Spinner-1.4s-76px.gif'/>";
-
   myInt = setInterval(function(){
           var date = new Date().toLocaleString("en-US", {timeZone: tmZon.timeZoneId});
-          timeDiv.innerHTML  = date;
+          var putSliced = date.slice(10);
+          timeDiv.innerHTML = date.slice(0,9) + `<p class = 'newClassNow'>${putSliced}</p>`
           document.getElementById("date2").style.display = 'block';
-
           document.getElementById("date1").style.display = 'none';
           document.getElementById("date3").style.display = 'none';
-          }, 1000)
+          }, 1000);
+
+  /*This down is magic code*/
   sitNam.addEventListener('keydown', function(e){
     if(e.keyCode == 13){
-      window.clearInterval(myInt)
+      window.clearInterval(myInt);
+       document.getElementById('insideDiv3Ent').innerHTML = '';
+       document.getElementById('insideDiv33Ent').innerHTML = '';
+       document.getElementById('insideDiv02Ent').innerHTML = '';
+       document.getElementById('insideDivCET2Ent').innerHTML = '';
+       document.getElementById('insideDivPET2Ent').innerHTML = '';
     }
   });
   };
   })    
-  //funcMonth();  
-  //funcDay(); 
-  //funcYear();
-  /*
-  function funcMonth() {
-    var d = new Date();
-    var month = [];
-    month[0] = "January";
-    month[1] = "February";
-    month[2] = "March";
-    month[3] = "April";
-    month[4] = "May";
-    month[5] = "June";
-    month[6] = "July";
-    month[7] = "August";
-    month[8] = "September";
-    month[9] = "October";
-    month[10]= "November";
-    month[11]= "December";
-    var n = month[d.getMonth()]; 
-    var monthD = d.getDate();
-    document.getElementById("demo").innerHTML = monthD + " " +  n + ",";
-  };*/
   function funcDay() {
     var day = new Date();
     var weekday = [];
@@ -298,14 +287,13 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=' + addPlace  + '&units=
     document.getElementById("dayId").innerHTML = newDay;
   };
     var storeJson = data; 
-    var tempSwap = false; //setting to false
+    var tempSwap = false;
     var icon = storeJson.weather[0].icon;  
     var iconSrc = "http://openweathermap.org/img/w/" + icon + ".png";
     var storeIcon =  `<img id ='iconIcon' src=   ${iconSrc} >`
-
    $("#locId").html(`${storeJson.name},   ${storeJson.sys.country}`);
    $("#storeDes").html(`${storeJson.weather[0].main} (<span id ='bracketsDes'> ${storeJson.weather[0].description} </span>) <span id='iconDesId'> ${storeIcon} </span>`);
-   $("#storeTemp").html(`Temperature is: <span id ='tempValId'> &nbsp; ${storeJson.main.temp.toFixed(1)} &#x2109; </span>`);
+   $("#storeTemp").html(`Temperature is: <span id ='tempValId'> &nbsp; ${storeJson.main.temp.toFixed(1)} &#x2109; &nbsp;</span>`);
    var storeWindRes = storeJson.wind.speed * 0.44704;
    $("#storeWind").html(`Wind Blow:&nbsp; <span id ='windVal'> ${storeWindRes.toFixed(2)}&nbsp;m/s </span>`);
    var windData = storeJson.wind.deg;
@@ -332,7 +320,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=' + addPlace  + '&units=
         $("#storeTemp").html(storeFunc(tempRoot));
        tempSwap = true;
      } else {
-            $("#storeTemp").html("Temperature is:" +`<span id ='tempValId'> &nbsp; ${tempRoot}</span>` + " " + `<span id ='tempValId'>&#x2109;</span>` );
+            $("#storeTemp").html("Temperature is:&nbsp; " +`<span id ='tempValId'> &nbsp; ${tempRoot} &#x2109; &nbsp;</span>` );
             document.getElementById("btn1").value = "Switch F/C";
             tempSwap = false; 
        };
@@ -342,7 +330,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=' + addPlace  + '&units=
         $("#storeTemp").html(storeFunc(tempRoot));
        tempSwap = true;
      } else {
-            $("#storeTemp").html("Temperature is:" +`<span id ='tempValId'> &nbsp; ${tempRoot}</span>` + " " + `<span id ='tempValId'>&#x2109;</span>` );
+            $("#storeTemp").html("Temperature is:&nbsp; " +`<span id ='tempValId'> &nbsp; ${tempRoot} &#x2109; &nbsp;</span>` );
             document.getElementById("btn1").value = "Switch F/C";
             tempSwap = false;
        };
@@ -350,7 +338,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=' + addPlace  + '&units=
   var storeFunc = function f2c(f) {
   var num = ((f-32) * (5/9)) 
   document.getElementById("btn1").value = "Switch C/F";
-  return "Temperature is:" +`<span id ='tempValId'> &nbsp; ${num.toFixed(1)}</span>`  + " " +  `<span id ='tempValId'>&#8451</span>`;
+  return "Temperature is:&nbsp; " +`<span id ='tempValId'> &nbsp; ${num.toFixed(1)} &#8451 &nbsp;</span>`;
   }
 }).then(function(){
   fetch('http://api.openweathermap.org/data/2.5/forecast?q=' + addPlace + '&units=imperial&APPID=69190f2d7f60d5551b77187e81d50575')
@@ -364,38 +352,43 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=' + addPlace  + '&units=
   .then((riseSet)=>{
     return riseSet.json();
   })
-  .then((aboutSun)=>{
-    console.log(aboutSun);
+  .then((aboutSun) => {
     var takeRise1 = aboutSun.results.sunrise;
     var takeSet1  = aboutSun.results.sunset;
-    console.log(takeRise1, takeSet1)
+    var takeDayU1  = aboutSun.results.day_length;
     $('#sunSetRise').html(`Sunrise:&nbsp; <span id='sunIdNew'>${takeRise1}</span>`);
     $('#sunSetRise').append(`&nbsp;&nbsp; Sunset:&nbsp; <span id ='sunIdNew1'>${takeSet1}</span>`);
-
-
-
+    $('#dayLastUv').html(`Day length:&nbsp; <span id='dayUv1'>${takeDayU1}</span>`);
+    fetch("http://api.openweathermap.org/data/2.5/uvi?appid=69190f2d7f60d5551b77187e81d50575&lat=" + cityLat + "&lon=" + cityLong)
+    .then(function(uvInd1){
+    uvInd1.json()
+    .then(function(holdVal){
+    $('#dayLastUv').append(`&nbsp;&nbsp; UVindex:&nbsp; <span id ='raceIt'>${holdVal.value}</span>`)
+    })
   })
 
   var storeLocId = document.getElementById('locId');
-  storeLocId.title =  `LAT: ${cityLat}        LON: ${cityLong}`           /*'Long: ' + " "  + cityLong +  '&nbsp;&nbsp;' + ' Lat:' + "  " +  cityLat;*/
+  storeLocId.title =  `LAT: ${cityLat}     LON: ${cityLong}`;
   var storeFunc = function f2c(f) {
   var num = ((f-32) * (5/9));
   return  num.toFixed(1);  //Pravimo u celzijuse ovde.
   };
   var storeTempK = data1.list[3].main.temp;
-  var storeCalled =  (storeFunc(storeTempK).charAt(0) == '-') ?  storeFunc(storeTempK) : '&nbsp;' + storeFunc(storeTempK)                                //ternary
+  var storeCalled =  (storeFunc(storeTempK).charAt(0) == '-') ?  storeFunc(storeTempK) : '&nbsp;' + storeFunc(storeTempK) //ternary
   var storeTempK1 = data1.list[6].main.temp;
   var storeCalled1 = storeFunc(storeTempK1).charAt(0) == '-' ?  storeFunc(storeTempK1) : '&nbsp;' + storeFunc(storeTempK1)                  
-///////////////////////////////////
-     var storeItAll = data1;
-     $('#insideDiv1').html( " <br> " + data1.list[3].dt_txt + `<span id ='arrowSymb'>&nbsp;  &#x2771;&#x2771;&#x2771; </span>` + "&nbsp;&nbsp;" + `<span id ='styleVal5'> ${storeCalled} °C </span>`  + " &nbsp;&nbsp; - " + data1.list[3].weather[0].description + " - Wind: " + `<span id ='windValAll'> ${data1.list[3].wind.speed}</span>` + '<br> ' + "" + data1.list[6].dt_txt + `<span id ='arrowSymb'>&nbsp;  &#x2771;&#x2771;&#x2771; </span>` + "&nbsp;&nbsp;" + `<span id ='styleVal5'> ${storeCalled1} °C </span>` +  " &nbsp;&nbsp; - " +  data1.list[6].weather[0].description + "      - Wind: " + `<span id ='windValAll'> ${data1.list[6].wind.speed}</span>`);
-      var icon1 = data1.list[3].weather[0].icon;
-      var icon2 = data1.list[6].weather[0].icon;
-      var iconSrc =  "http://openweathermap.org/img/w/"+ icon1 + ".png";
-      var iconSrc2= "http://openweathermap.org/img/w/"+ icon2 + ".png";
-      $("#insideDiv3").prepend('<img src=' +  iconSrc +  '>' + "  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  " + " <img src =" + iconSrc2 + ">");
+  ///////////////////////////////////
+  var storeItAll = data1;
+  $('#insideDiv1').html( " <br> " + data1.list[3].dt_txt + `<span id ='arrowSymb'>&nbsp;  &#x2771;&#x2771;&#x2771; </span>` + "&nbsp;&nbsp;" + `<span id ='styleVal5'> ${storeCalled} °C </span>`  + " &nbsp;&nbsp; - " + data1.list[3].weather[0].description + " - Wind: " + `<span id ='windValAll'> ${data1.list[3].wind.speed}&nbsp;m/s</span>` + '<br> ' + "" + data1.list[6].dt_txt + `<span id ='arrowSymb'>&nbsp;  &#x2771;&#x2771;&#x2771; </span>` + "&nbsp;&nbsp;" + `<span id ='styleVal5'> ${storeCalled1} °C </span>` +  " &nbsp;&nbsp; - " +  data1.list[6].weather[0].description + "      - Wind: " + `<span id ='windValAll'> ${data1.list[6].wind.speed}&nbsp;m/s</span>`);
+  var icon1 = data1.list[3].weather[0].icon;
+  var icon2 = data1.list[6].weather[0].icon;
+  var iconSrc =  "http://openweathermap.org/img/w/"+ icon1 + ".png";
+  var iconSrc2= "http://openweathermap.org/img/w/"+ icon2 + ".png";
+  document.querySelector("#insideDiv3").style.display = 'none';
+  $("#insideDiv3Ent").prepend('<img src=' +  iconSrc +  '>' + "  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  " + " <img src =" + iconSrc2 + ">");
+
 //////////////////////////////////////////
-var storeFunc = function f2c(f) {
+  var storeFunc = function f2c(f) {
   var num = ((f-32) * (5/9));
   return  num.toFixed(1);
 };
@@ -404,15 +397,17 @@ var storeFunc = function f2c(f) {
   var storeTempK111 = data1.list[14].main.temp;
   var storeCalledALO = storeFunc(storeTempK111).charAt(0) == '-' ?  storeFunc(storeTempK111) : '&nbsp;' + storeFunc(storeTempK111)
 ///////////////////////////////////////////////
-  $('#insideDiv11').html(" <br> " + data1.list[11].dt_txt + `<span id ='arrowSymb'>&nbsp;  &#x2771;&#x2771;&#x2771; </span>` + "&nbsp;&nbsp;" + `<span id ='styleVal5'> ${storeCalledALOBRE} °C </span>` + " &nbsp;&nbsp;  -  " + data1.list[11].weather[0].description + " - Wind:  " + `<span id ='windValAll'> ${data1.list[11].wind.speed}</span>` + " <br> " + data1.list[14].dt_txt + `<span id ='arrowSymb'>&nbsp;  &#x2771;&#x2771;&#x2771; </span>` + "&nbsp;&nbsp;" + `<span id ='styleVal5'> ${storeCalledALO} °C </span>` + " &nbsp;&nbsp; - " +  data1.list[14].weather[0].description + "      - Wind: " + `<span id ='windValAll'> ${data1.list[14].wind.speed}</span>`)
+  $('#insideDiv11').html(" <br> " + data1.list[11].dt_txt + `<span id ='arrowSymb'>&nbsp;  &#x2771;&#x2771;&#x2771; </span>` + "&nbsp;&nbsp;" + `<span id ='styleVal5'> ${storeCalledALOBRE} °C </span>` + " &nbsp;&nbsp;  -  " + data1.list[11].weather[0].description + " - Wind:  " + `<span id ='windValAll'> ${data1.list[11].wind.speed}&nbsp;m/s</span>` + " <br> " + data1.list[14].dt_txt + `<span id ='arrowSymb'>&nbsp;  &#x2771;&#x2771;&#x2771; </span>` + "&nbsp;&nbsp;" + `<span id ='styleVal5'> ${storeCalledALO} °C </span>` + " &nbsp;&nbsp; - " +  data1.list[14].weather[0].description + "      - Wind: " + `<span id ='windValAll'> ${data1.list[14].wind.speed}&nbsp;m/s</span>`)
   
-      var icon11 = data1.list[11].weather[0].icon;
-      var icon22 = data1.list[14].weather[0].icon;
-      var iconSrc11 =  "http://openweathermap.org/img/w/"+ icon11 + ".png";
-      var iconSrc22 = "http://openweathermap.org/img/w/"+ icon22 + ".png";
-      $("#insideDiv33").prepend('<img src=' +  iconSrc11 +  '>' + "  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  " + " <img src =" + iconSrc22 + ">");
+  var icon11 = data1.list[11].weather[0].icon;
+  var icon22 = data1.list[14].weather[0].icon;
+  var iconSrc11 =  "http://openweathermap.org/img/w/"+ icon11 + ".png";
+  var iconSrc22 = "http://openweathermap.org/img/w/"+ icon22 + ".png";
+  document.querySelector("#insideDiv33").style.display = 'none';
+  $("#insideDiv33Ent").prepend('<img src=' +  iconSrc11 +  '>' + "  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  " + " <img src =" + iconSrc22 + ">");
+
 ///////////////////////////////////////////////////
-    var storeFunc = function f2c(f) {
+  var storeFunc = function f2c(f) {
   var num = ((f-32) * (5/9))
   return  num.toFixed(1); 
 };
@@ -421,13 +416,16 @@ var storeFunc = function f2c(f) {
   var storeTempK00 = data1.list[22].main.temp;
   var storeCalled00 = storeFunc(storeTempK00).charAt(0) == '-' ?  storeFunc(storeTempK00) : '&nbsp;' + storeFunc(storeTempK00)
   //|||||||||||||||||||||||||||||||||||||||||||||//
-     $('#insideDiv0').html( " <br> " + data1.list[19].dt_txt + `<span id ='arrowSymb'>&nbsp;  &#x2771;&#x2771;&#x2771; </span>` + "&nbsp;&nbsp;" + `<span id ='styleVal5'> ${storeCalled0} °C </span>` +  " &nbsp;&nbsp; -  " + data1.list[19].weather[0].description + " - Wind:  " + `<span id ='windValAll'> ${data1.list[19].wind.speed}</span>` + " <br> " + data1.list[22].dt_txt + `<span id ='arrowSymb'>&nbsp;  &#x2771;&#x2771;&#x2771; </span>` + "&nbsp;&nbsp;" + `<span id ='styleVal5'> ${storeCalled00} °C </span>` + " &nbsp;&nbsp; - " +  data1.list[22].weather[0].description + "    - Wind: " + `<span id ='windValAll'> ${data1.list[22].wind.speed}</span>` );
-      var icon0 = data1.list[19].weather[0].icon;
-      var icon01 = data1.list[22].weather[0].icon;
-      var iconSrc01 =  "http://openweathermap.org/img/w/"+ icon0 + ".png";
-      var iconSrc02 = "http://openweathermap.org/img/w/"+ icon01 + ".png";
-     
-      $("#insideDiv02").prepend('<img src=' +  iconSrc01 +  '>' + "  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  " + " <img src =" + iconSrc02 + ">");
+  $('#insideDiv0').html( " <br> " + data1.list[19].dt_txt + `<span id ='arrowSymb'>&nbsp;  &#x2771;&#x2771;&#x2771; </span>` + "&nbsp;&nbsp;" + `<span id ='styleVal5'> ${storeCalled0} °C </span>` +  " &nbsp;&nbsp; -  " + data1.list[19].weather[0].description + " - Wind:  " + `<span id ='windValAll'> ${data1.list[19].wind.speed}&nbsp;m/s</span>` + " <br> " + data1.list[22].dt_txt + `<span id ='arrowSymb'>&nbsp;  &#x2771;&#x2771;&#x2771; </span>` + "&nbsp;&nbsp;" + `<span id ='styleVal5'> ${storeCalled00} °C </span>` + " &nbsp;&nbsp; - " +  data1.list[22].weather[0].description + "    - Wind: " + `<span id ='windValAll'> ${data1.list[22].wind.speed}&nbsp;m/s</span>` );
+  var icon0 = data1.list[19].weather[0].icon;
+  var icon01 = data1.list[22].weather[0].icon;
+  var iconSrc01 =  "http://openweathermap.org/img/w/"+ icon0 + ".png";
+  var iconSrc02 = "http://openweathermap.org/img/w/"+ icon01 + ".png";
+  document.querySelector("#insideDiv02").style.display = 'none';
+ 
+ $("#insideDiv02Ent").prepend('<img src=' +  iconSrc01 +  '>' + "  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  " + " <img src =" + iconSrc02 + ">");
+
+
 /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
   var storeFunc = function f2c(f) {
   var num = ((f-32) * (5/9))
@@ -439,13 +437,13 @@ var storeFunc = function f2c(f) {
   var storeTempCETVRTI1 = data1.list[30].main.temp;
   var storeCalledCET1 = storeFunc(storeTempCETVRTI1).charAt(0) == '-' ?  storeFunc(storeTempCETVRTI1) : '&nbsp;' + storeFunc(storeTempCETVRTI1);
     
-     $('#insideDivCET').html(  " <br> " + data1.list[27].dt_txt + `<span id ='arrowSymb'>&nbsp;  &#x2771;&#x2771;&#x2771; </span>` + "&nbsp;&nbsp;" +  `<span id ='styleVal5'> ${storeCalledCET}°C  </span>` +  " &nbsp;&nbsp; -  " + data1.list[27].weather[0].description + " - Wind:  " + `<span id ='windValAll'> ${data1.list[27].wind.speed}</span>` + " <br> " + data1.list[30].dt_txt + `<span id ='arrowSymb'>&nbsp;  &#x2771;&#x2771;&#x2771; </span>` + "&nbsp;&nbsp;" + `<span id ='styleVal5'> ${storeCalledCET1} °C </span>` + " &nbsp;&nbsp; - " +  data1.list[30].weather[0].description + "    - Wind: " + `<span id ='windValAll'> ${data1.list[30].wind.speed}</span>` );
+     $('#insideDivCET').html(  " <br> " + data1.list[27].dt_txt + `<span id ='arrowSymb'>&nbsp;  &#x2771;&#x2771;&#x2771; </span>` + "&nbsp;&nbsp;" +  `<span id ='styleVal5'> ${storeCalledCET}°C  </span>` +  " &nbsp;&nbsp; -  " + data1.list[27].weather[0].description + " - Wind:  " + `<span id ='windValAll'> ${data1.list[27].wind.speed}&nbsp;m/s</span>` + " <br> " + data1.list[30].dt_txt + `<span id ='arrowSymb'>&nbsp;  &#x2771;&#x2771;&#x2771; </span>` + "&nbsp;&nbsp;" + `<span id ='styleVal5'> ${storeCalledCET1} °C </span>` + " &nbsp;&nbsp; - " +  data1.list[30].weather[0].description + "    - Wind: " + `<span id ='windValAll'> ${data1.list[30].wind.speed}&nbsp;m/s</span>` );
       var iconCET1 = data1.list[27].weather[0].icon;
       var iconCET2 = data1.list[30].weather[0].icon;
       var iconSrcCET =  "http://openweathermap.org/img/w/"+ iconCET1 + ".png";
       var iconSrcCET011 = "http://openweathermap.org/img/w/"+ iconCET2 + ".png";
-
-      $("#insideDivCET2").prepend('<img src=' +  iconSrcCET +  '>' + "  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  " + " <img src =" + iconSrcCET011 + ">");
+      document.querySelector("#insideDivCET2").style.display = 'none';
+      $("#insideDivCET2Ent").prepend('<img src=' +  iconSrcCET +  '>' + "  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  " + " <img src =" + iconSrcCET011 + ">");
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       var storeTempPETI = data1.list[35].main.temp;
       var storeCalledPET = storeFunc(storeTempPETI).charAt(0) == '-' ?  storeFunc(storeTempPETI) : '&nbsp;' + storeFunc(storeTempPETI);
@@ -453,33 +451,28 @@ var storeFunc = function f2c(f) {
       var storeTempPETI1 = data1.list[37].main.temp;
       var storeCalledPET1 = storeFunc(storeTempPETI1).charAt(0) == '-' ?  storeFunc(storeTempPETI1) : '&nbsp;' + storeFunc(storeTempPETI1);
     
-     $('#insideDivPET').html(  " <br> " + data1.list[35].dt_txt + `<span id ='arrowSymb'>&nbsp;  &#x2771;&#x2771;&#x2771; </span>`  + "&nbsp;&nbsp;" + `<span id ='styleVal5'> ${storeCalledPET}°C  </span>` +  " &nbsp;&nbsp; -  " + data1.list[35].weather[0].description + " - Wind:  " + `<span id ='windValAll'> ${data1.list[35].wind.speed}</span>` + " <br> " + data1.list[37].dt_txt + `<span id ='arrowSymb'>&nbsp;  &#x2771;&#x2771;&#x2771; </span>` + "&nbsp;&nbsp;" +  `<span id ='styleVal5'> ${storeCalledPET1} °C </span>`  + " &nbsp;&nbsp; - " +  data1.list[37].weather[0].description + "    - Wind: " +  `<span id ='windValAll'> ${data1.list[37].wind.speed}</span>`);
+     $('#insideDivPET').html(  " <br> " + data1.list[35].dt_txt + `<span id ='arrowSymb'>&nbsp;  &#x2771;&#x2771;&#x2771; </span>`  + "&nbsp;&nbsp;" + `<span id ='styleVal5'> ${storeCalledPET}°C  </span>` +  " &nbsp;&nbsp; -  " + data1.list[35].weather[0].description + " - Wind:  " + `<span id ='windValAll'> ${data1.list[35].wind.speed}&nbsp;m/s</span>` + " <br> " + data1.list[37].dt_txt + `<span id ='arrowSymb'>&nbsp;  &#x2771;&#x2771;&#x2771; </span>` + "&nbsp;&nbsp;" +  `<span id ='styleVal5'> ${storeCalledPET1} °C </span>`  + " &nbsp;&nbsp; - " +  data1.list[37].weather[0].description + "    - Wind: " +  `<span id ='windValAll'> ${data1.list[37].wind.speed}&nbsp;m/s</span>`);
       var iconPET1 = data1.list[35].weather[0].icon;
       var iconPET2 = data1.list[37].weather[0].icon;
       var iconSrcPET =  "http://openweathermap.org/img/w/"+ iconPET1 + ".png";
       var iconSrcPET011 = "http://openweathermap.org/img/w/"+ iconPET2 + ".png";
-     
-      $("#insideDivPET2").prepend('<img src=' +  iconSrcPET +  '>' + "  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  " + " <img src =" + iconSrcPET011 + ">");
+      document.getElementById("insideDivPET2").style.display = 'none';
+      $("#insideDivPET2Ent").prepend('<img src=' +  iconSrcPET +  '>' + "  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  " + " <img src =" + iconSrcPET011 + ">" /*+  `&nbsp;Humidity: &nbsp;  <span id='styleVal5'>${data1.list[35].main.humidity}%</span>  &nbsp; Pressure: &nbsp;   <span id='styleVal5'>${data1.list[35].main.pressure} mb</span>`*/ );
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  var storeFunc = function f2c(f) {
+
+
+  var storeFunc = function f2c(f){
   var num = ((f-32) * (5/9))
     return  num.toFixed(1); 
   };
       return [cityLat, cityLong]
     }).then(function(oneArr){
-       var mapSrc = document.getElementById('storeMap').children[0].src = "https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d90588.96404060595!2d" + oneArr[1]  + "!3d" + oneArr[0] + "!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ssr!2srs!4v1497371916951"
-      fetch("http://api.openweathermap.org/data/2.5/uvi?appid=69190f2d7f60d5551b77187e81d50575&lat=" + oneArr[0] + "&lon=" + oneArr[1])
-      .then(function(uvInd1){
-        uvInd1.json()
-        .then(function(holdVal){
-          var storeIt = document.getElementById('holdUVindex');
-          storeIt.innerHTML = "UV index: " +  `  <p id ='raceIt'> ${holdVal.value}  </p>`;
-        })
+       var mapSrc = document.getElementById('storeMap').children[0].src = "https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d90588.96404060595!2d" + oneArr[1]  + "!3d" + oneArr[0] + "!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ssr!2srs!4v1497371916951";
       })
-      return oneArr;
+  
     })
-    .then(function(takeOneA){
-      return takeOneA;
+    .then(function(){
+
     }) 
 }) //then
  }

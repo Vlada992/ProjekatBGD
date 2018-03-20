@@ -202,7 +202,7 @@ a.icon {
 }
 
 #storeTemp {
-  color:lightblue;
+  color:#191926;
   font-size: 20px;
   font-weight:600;
   font-family: Arial;
@@ -214,7 +214,8 @@ a.icon {
 }
 
 #tempValId {
-  color:darkblue;
+  color:#000066;
+  background-color:#aeae92;
 }
 
 #instafeed {
@@ -224,20 +225,19 @@ a.icon {
 #storeWind {
   color:black;
   font-size: 18px;
-  font-family: "Times New Roman";
-  font-weight: 700;
+  font-weight: 600;
   text-align:center;
   font-family: 'Times New Roman';
 
 }
 #windDirVal {
   color:#7d0000;
-  font-weight:600;
+  font-weight:800;
 }
 
 #windVal {
   color:#7d0000;
-  font-weight:600;
+  font-weight:800;
 }
 
 #windValAll {
@@ -246,7 +246,7 @@ a.icon {
 
 #humid {
   text-align:center;
-  font-weight:700;
+  font-weight:600;
   color:black;
   font-size:18px;
   font-family: 'Times New Roman';
@@ -255,28 +255,46 @@ a.icon {
 
 #sunId {
   color:#7d0000;
-  font-weight:600;
+  font-weight:800;
 }
 
 #sunId1 {
   color:#7d0000;
-  font-weight:600;
+  font-weight:800;
 }
 
 #sunSetRise {
   text-align:center;
-  font-weight:700;
+  font-weight:600;
   color:black;
   font-size:18px;
   font-family: 'Times New Roman';
 }
+
+#dayLastUv {
+  text-align:center;
+  font-weight:600;
+  color:black;
+  font-size:18px;
+  font-family: 'Times New Roman';
+}
+
+#dayUv{
+  color:#7d0000;
+  font-weight:800;
+}
+
+#dayUv1 {
+  color:#7d0000;
+  font-weight:800
+}
 #sunIdNew {
   color:#7d0000;
-  font-weight:600;
+  font-weight:800;
 }
 #sunIdNew1 {
   color:#7d0000;
-  font-weight:600;
+  font-weight:800;
 }
 
 
@@ -300,7 +318,7 @@ a.icon {
 #btn1 {
   color:#323232;
   background-color:#c2c2a3;
-  padding: 22px;
+  padding: 10px;
   padding-right:65px;
   margin-right:-25px;
   font-family: Arial;
@@ -318,7 +336,7 @@ a.icon {
 #btn1:hover {
    color: black;
    background-color:#aeae92;
-   padding: 22px;
+   padding: 10px;
    padding-right: 65px;
    font-family: Arial;
    font-weight: 700;
@@ -332,15 +350,11 @@ a.icon {
   font-weight: 700;
   color: red;
   margin-left: 5px;
-  padding:22px;
+  padding:10px;
   padding-right:65px;
   margin-bottom:10px;
   margin-left:5px;
-
-
 }
-
-
 #demo {
   color: brown;
   font-size: 25px;
@@ -426,8 +440,7 @@ a.icon {
 
 #openWImg {
   position:relative;
-  margin-top:-20%;
-  margin-left:-66%;
+  margin-top:-10%;
   padding:0 auto;
 
 }
@@ -642,14 +655,16 @@ a.icon {
   font-weight: 800;
 }
 
-
   #insideDiv3 {
     padding-bottom: 0px;
   }
 
 
-#insideDiv3 img  { width: 80px; height: auto; /*100px;*/ padding-bottom: 0px; margin-left:30px;}  
+#insideDiv3 img  { width: 80px; height: auto;  padding-bottom: 0px; margin-left:30px;}  
+/*on enter*/
     
+#insideDiv3Ent img {width: 80px; height: auto; padding-bottom: 0px; margin-left:30px;}
+
 
 
 #divF2 {
@@ -677,7 +692,18 @@ a.icon {
   }
 
 
-#insideDiv33 img  { width: 80px; height: auto; /*100px;*/ padding-bottom: 0px; margin-left:30px;}  
+#insideDiv33 img  { width: 80px; height: auto; /*100px;*/ padding-bottom: 0px; margin-left:30px;}
+
+ #insideDiv33Ent {
+    padding-bottom: 0px;
+  }
+
+
+#insideDiv33Ent img  { width: 80px; height: auto; /*100px;*/ padding-bottom: 0px; margin-left:30px;}  
+
+
+
+
 
 
 
@@ -703,6 +729,13 @@ a.icon {
 
 #insideDiv02 img  { width: 80px; height: auto; /*100px;*/ padding-bottom: 0px; margin-left:30px;}  
 
+ #insideDiv02Ent {
+    padding-bottom: 0px;
+  }
+
+#insideDiv02Ent img  { width: 80px; height: auto; /*100px;*/ padding-bottom: 0px; margin-left:30px;}  
+
+
 
 
 
@@ -714,7 +747,6 @@ a.icon {
   border-bottom:1px solid black;
   height: auto; 
   width: 100%;
- 
   position: relative;
   margin:auto;
   top: auto; 
@@ -736,6 +768,17 @@ a.icon {
 }
 
 #insideDivCET2 img  { width: 80px; height: auto; padding-bottom: 0px; margin-left:30px;}
+/*Also on enter down*/
+#insideDivCET2Ent {
+  padding-bottom: 0px;
+ /* height:80px;*/
+}
+
+#insideDivCET2Ent img  { width: 80px; height: auto; padding-bottom: 0px; margin-left:30px;}
+
+
+
+
 
 #divF5 {
   height: auto;
@@ -751,16 +794,26 @@ a.icon {
   font-weight: 800;
   padding-left:20px;
   height:62px;
-  margin-top:30px;
+  margin-top:0apx;
 }
-
-
+/**/
 #insideDivPET2 {
   padding-bottom: 0px;
   height:80px;
 }
 
-#insideDivPET2 img  { width: 80px; height: auto;  /*100px;*/ padding-bottom: 0px; margin-left:30px;}
+#insideDivPET2 img  { width: 80px; height: auto; padding-bottom: 0px; margin-left:30px;     margin-top: 4%;
+}
+
+
+#insideDivPET2Ent {
+  padding-bottom: 0px;
+  height:80px;
+}
+
+#insideDivPET2Ent img  { width: 80px; height: auto; padding-bottom: 0px; margin-left:30px;     margin-top: 4%;
+}
+
 
 #styleVal5 {
   color:red;
@@ -796,8 +849,8 @@ a.icon {
 }
 
 #raceIt {
-  color:red;
-  font-weight:700;
+  color:#7d0000;
+  font-weight:600;
 }
 
 #mapForMedGrid {
@@ -849,6 +902,7 @@ p {
 
 
 @media screen and (max-width: 320px) and (min-width: 250px) {
+    .carousel-indicators{display:none;}
     #leftContSl2{top:-36.9%!important;}
     #rightContSl2{top:76%!important;}
     #fourSquareId {width:auto; height:670px!important; margin-left:0px; margin-right:0px; box-shadow:0px 0px 0px white;}
@@ -884,6 +938,7 @@ p {
   #colMdTitl{ padding-top:1.5%; border-bottom: 5px solid #8CB240;}
   #imgHolder{border-left:0px; border-bottom:2px solid #8CB240;}
   #sq4StoreCat{font-size:10px!important;}
+  .carousel-indicators{display:none;}
 }
 
 @media screen and (max-width: 360px) and (min-width: 0px) {
@@ -943,9 +998,7 @@ p {
   #sq4UrlTxt{font-size:11px!important;}
   #titleFSQ1{font-size:18px!important;}
   #sq4StoreCat {word-break: break-all!important;}
-
-
-
+  .carousel-indicators{display:none;}
 }
 
 
@@ -971,8 +1024,8 @@ p {
   #secondCol{height:590px!important;}
   #img4Id1 {margin-top:-30%!important;float:left;}
   .carousel-indicators{top:90%; margin-top:20%;}
-    #titleFSQ1{font-size:20px!important;}
-    #sq4StoreCat {word-break: break-all!important;}
+   #titleFSQ1{font-size:20px!important;}
+   #sq4StoreCat {word-break: break-all!important;}
 }
 
 
@@ -984,7 +1037,7 @@ p {
   .gallery {margin: auto; margin-bottom:10px; padding:0px;}
   .instaimg {margin: auto; margin-bottom:10px; padding:0px;}
   #fourSquareId {width:auto; height:auto;  margin-right:0px; margin-top:5%; }
-  #partTxt{margin:40px; height:550px; text-align:justify; line-height: 75%;}
+  #partTxt{margin:40px; /*height:550px;*/ text-align:justify; line-height: 75%;}
   #titleId1 {height:auto; font-size:15px;}
   #carousel-example-generic {width:auto; margin-left:0px;  margin-right:0%; height: 520px; margin:auto; margin-bottom: 5%;}
   .carousel-inner {height:500px; margin-right:0px;}
@@ -1112,7 +1165,7 @@ p {
  text-align: justify;
  margin:10px;
  margin-top:0px;
- height:250px;
+ /*height:250px;*/
  line-height: 97%;
  font-weight:500;
  color:#330c00;
@@ -1288,8 +1341,9 @@ p {
 #glyId {
   color:#323232;
   margin-left:-26px;
-  font-size:30px;
-  top:11px;
+  font-size:20px;
+  /*top:11px;*/
+  top:4.7px;
 }
 
 #glyId2 {
@@ -1945,4 +1999,11 @@ p {
 #showOnSm {
   display:none;
 
+}
+
+
+.newClassNow {
+  color:red;
+  background-color:#556472;
+  box-shadow:6px 10px 27px #556472;
 }

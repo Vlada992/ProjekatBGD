@@ -1,6 +1,5 @@
 window.onload = function(e){
-  e.preventDefault()
-  e.stopPropagation();
+  
 }
 
 
@@ -70,10 +69,9 @@ function myFunction() {
                  var storeImageUse = storeText.match(/"http[^\s]+ /);
                  var myImage = storeImageUse[0];
                  var myFinImage = myImage.charAt(myImage.length -4).toLowerCase() != 'p' ? 'no image here!' :  myImage;
-                 var storeTextPart = '&#x2014;' +  '&nbsp;' + storeText.slice(200, storeText.length - 7);
+                 var storeTextPart = '&#x2014;' +  '&nbsp;' + storeText.slice(200, storeText.length - 8);
                  var firstCh = storeText.slice(200,201);
                  var storeHref = String(storeLink);
-
                 $('#carousel-example-generic').carousel({
                 interval: 10000
                 });
