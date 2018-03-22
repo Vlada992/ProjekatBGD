@@ -211,6 +211,7 @@ a.icon {
   box-shadow: 2px 2px 28px red;
   margin:auto;
   width:53%;
+  margin-bottom:-9%;
 }
 
 #tempValId {
@@ -228,7 +229,7 @@ a.icon {
   font-weight: 600;
   text-align:center;
   font-family: 'Times New Roman';
-
+  margin-top:-3%;
 }
 #windDirVal {
   color:#7d0000;
@@ -297,7 +298,17 @@ a.icon {
   font-weight:800;
 }
 
-
+.cloudS {
+  color:#7d0000;
+  font-weight:800;
+}
+#maxMin {
+  text-align:center;
+  font-weight:600;
+  color:black;
+  font-size:18px;
+  font-family: 'Times New Roman';
+}
 
 
 #storeDes {
@@ -321,15 +332,17 @@ a.icon {
   padding: 10px;
   padding-right:65px;
   margin-right:-25px;
+  margin-left:-25px;
   font-family: Arial;
   font-weight: 700;
-  border: 3px solid #8CB240;
+  /*border: 3px solid #8CB240;*/
   margin-bottom:10px;
-  /*margin-top:-25%;*/
+  box-shadow: 2px 0px 28px red;
 };
 
 #btn1:visited {
   color:brown;
+  box-shadow: 2px 0px 28px red;
 }
 
 
@@ -340,7 +353,7 @@ a.icon {
    padding-right: 65px;
    font-family: Arial;
    font-weight: 700;
-   border: 3px solid #8CB240;
+   box-shadow: 2px 0px 28px red;
    margin-bottom:10px;
 }
 
@@ -354,6 +367,8 @@ a.icon {
   padding-right:65px;
   margin-bottom:10px;
   margin-left:5px;
+  box-shadow: 2px 0px 28px red;
+
 }
 #demo {
   color: brown;
@@ -442,6 +457,8 @@ a.icon {
   position:relative;
   margin-top:-10%;
   padding:0 auto;
+  float: left;
+  margin-left: 4%;
 
 }
 
@@ -786,7 +803,8 @@ a.icon {
   position: relative;
   margin:auto;
   top: auto;   
-  left: auto; 
+  left: auto;
+  height:100px;
 }
 
 #insideDivPET {
@@ -811,7 +829,7 @@ a.icon {
   height:80px;
 }
 
-#insideDivPET2Ent img  { width: 80px; height: auto; padding-bottom: 0px; margin-left:30px;     margin-top: 4%;
+#insideDivPET2Ent img  { width: 80px; height: auto; padding-bottom: 0px; margin-left:30px;     margin-top: 0%;
 }
 
 
@@ -2006,4 +2024,35 @@ p {
   color:red;
   background-color:#556472;
   box-shadow:6px 10px 27px #556472;
+}
+
+#citiesInfo {
+  background-color:#c2c2a3;
+  border: 3px solid #8CB240;
+  margin:auto;
+  margin-top:5%;
+  box-shadow: 4px -6px 24px #888888;
+  height:100px;
+  width:100%;
+}
+
+.redLineC {
+  color:red;
+  background-color:red;
+
+}
+
+#countryFlag {
+  text-align:center;
+  display:center;
+}
+
+.flagIdImg {
+  margin-top: -7%;
+}
+
+#shortInfo {
+  color:black;
+  font-weight:600;
+  margin:2%;
 }
