@@ -1,21 +1,60 @@
-window.onload = function(e){
-  
-}
 
 
 
   var clickObj = {};
  function myBFun(){
   var x = document.getElementsByTagName('div');
-  
-  
  }
  
 function show(shown, hidden, hidden1, hidden2) {   //for now, 4 ative pages
-  console.log('KLIKNUTO JE', shown);
   document.getElementById(shown).style.display    ='block';
-  var x = document.getElementsByTagName('div');
+  if(shown == 'Page1'){
+  document.querySelector('#navA5').style.backgroundColor = "#dcdccb"
+  document.querySelector('#navA3').style.backgroundColor = '';
+  document.querySelector('#navA1').style.backgroundColor = '';
+  document.querySelector('#navA4').style.backgroundColor = '';
 
+  document.querySelector('#navA5').style.borderBottom = '3px solid #8CB240'
+  document.querySelector('#navA3').style.borderBottom = ''
+  document.querySelector('#navA1').style.borderBottom = ''   
+  document.querySelector('#navA4').style.borderBottom = ''   
+
+
+} else if(shown == 'Page2'){
+  document.querySelector('#navA5').style.backgroundColor = ""
+  document.querySelector('#navA3').style.backgroundColor = '#dcdccb';
+  document.querySelector('#navA1').style.backgroundColor = '';
+  document.querySelector('#navA4').style.backgroundColor = '';
+
+  document.querySelector('#navA3').style.borderBottom = '3px solid #8CB240'
+   document.querySelector('#navA4').style.borderBottom = ''
+  document.querySelector('#navA1').style.borderBottom = ''   
+  document.querySelector('#navA5').style.borderBottom = '' 
+
+
+} else if(shown == 'Page3'){
+    document.querySelector('#navA3').style.backgroundColor = '';
+    document.querySelector('#navA5').style.backgroundColor = '';
+    document.querySelector('#navA4').style.backgroundColor = '#dcdccb';
+    document.querySelector('#navA1').style.backgroundColor = '';
+
+    document.querySelector('#navA4').style.borderBottom = '3px solid #8CB240'
+    document.querySelector('#navA3').style.borderBottom = ''
+    document.querySelector('#navA1').style.borderBottom = ''   
+    document.querySelector('#navA5').style.borderBottom = '' 
+
+} else if(shown == 'Page4'){
+    document.querySelector('#navA4').style.backgroundColor = '';
+    document.querySelector('#navA3').style.backgroundColor = '';
+    document.querySelector('#navA5').style.backgroundColor = '';
+    document.querySelector('#navA1').style.backgroundColor = '#dcdccb'
+
+    document.querySelector('#navA1').style.borderBottom = '3px solid #8CB240'
+    document.querySelector('#navA3').style.borderBottom = ''
+    document.querySelector('#navA5').style.borderBottom = ''   
+    document.querySelector('#navA4').style.borderBottom = '' 
+
+}
   document.getElementById(hidden).style.display   ='none';
   document.getElementById(hidden1).style.display  ='none';
   document.getElementById(hidden2).style.display  ='none';
@@ -23,15 +62,19 @@ function show(shown, hidden, hidden1, hidden2) {   //for now, 4 ative pages
 }
 
 
-
- 
-
 function myFunction() {
     var x = document.getElementById("myTopnav");
-    if (x.className === "topnav") {
+     console.log(document.querySelector('.glyphicon-triangle-bottom'))
+       x.className = "topnav";
+        var xx = document.getElementsByClassName('glyphicon-triangle-bottom')
+    xx.className = ''
+    xx.className = 'glyphicon-triangle-top'
+
+     if (x.className === "topnav") {
         x.className += " responsive topnav myTopnav";
+      
     } else {
-        x.className = "topnav";
+       
     }
 }
 /*for responsive nav, func*/
@@ -53,7 +96,6 @@ function myFunction() {
                   mode: 'cors',
                   cache: 'default' 
                  };
-      //https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20rss%20where%20url%20in%20(%27http%3A%2F%2Fwww.beograd.rs%2Fcir%2Frss%2F%27)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys                     
     var myRequest = new Request('https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20rss%20where%20url%20in%20(%27http%3A%2F%2Fwww.beograd.rs%2Flat%2Frss%2F%27)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys');
     fetch(myRequest, myInit)
     .then(function(dataRSS){
@@ -68,14 +110,14 @@ function myFunction() {
                  var storeDate = dataR.query.results.item[i].pubDate;
                  var storeImageUse = storeText.match(/"http[^\s]+ /);
                  var myImage = storeImageUse[0];
-                 var myFinImage = myImage.charAt(myImage.length -4).toLowerCase() != 'p' ? 'no image here!' :  myImage;
+                 var myFinImage = myImage.charAt(myImage.length -4).toLowerCase() != 'p' ? 'images/images.png' :  myImage;
                  var storeTextPart = '&#x2014;' +  '&nbsp;' + storeText.slice(200, storeText.length - 8);
                  var firstCh = storeText.slice(200,201);
                  var storeHref = String(storeLink);
                 $('#carousel-example-generic').carousel({
                 interval: 10000
                 });
-                 document.getElementsByClassName('item')[i].children[0].innerHTML = `<h4 id =titleId1> <a id='titleId1' href=${storeHref} target = '_blank'> ${storeTitle}  </h4> </a>` + `<img title = "${storeTitle}" src = ${myFinImage} alt = 'No pic here unfortunately!'  id =imgId1>`   +  "<p id = partTxt>"  +  `<span id =dateId1>  ${storeDate} </span>` +  storeTextPart +  `<a id =aHrefId1 href =${storeHref} target = blank>&nbsp;...&nbsp;Detailed<a/>`     +  "</p>"               
+                 document.getElementsByClassName('item')[i].children[0].innerHTML = `<h4 id =titleId1> <a id='titleId1' href=${storeHref} target = '_blank'> ${storeTitle}  </h4> </a>` + `<img title = "${storeTitle}" src = ${myFinImage}  id =imgId1>`   +  "<p id = partTxt>"  +  `<span id =dateId1>  ${storeDate} </span>` +  storeTextPart +  `<a id =aHrefId1 href =${storeHref} target = blank>&nbsp;...&nbsp;Detailed<a/>`     +  "</p>"               
        }
     })
     .catch(function(error) {
@@ -104,7 +146,6 @@ function myFunction() {
             }
         })
         .catch(function(error){
-
             console.log('<h2>Here is catched error:', error);
         })
 

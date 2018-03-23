@@ -28,15 +28,16 @@ body {
   font-family:'Lucida Grande'!important;
   font-weight:600;
   padding-left:-14px!important;
+  padding-bottom:10px;
+  border-bottom:3px solid #ecece3;
 }
 
 .topnav a:hover {
-  background-color:#e6e6da;
+  background-color:#dcdccb;
   color: #61300D;
   border-bottom: 3px solid #8CB240;
-  padding-bottom:11px;
-  
-
+  /*padding-bottom:11px;*/
+  padding-bottom:10px;
 }
 
 /*.active {
@@ -1179,6 +1180,21 @@ p {
   margin-top:20px;
 }
 
+
+#imgId2 {
+   width:350px;
+  height:250px;
+  float: left;
+  margin-left:10px;
+  border:3px solid #8CB240;
+  margin-right: 10px;
+  border-bottom:10px solid #8CB240;
+  margin-bottom:0px;
+  margin-top:20px;
+
+
+}
+
 #partTxt {
  text-align: justify;
  margin:10px;
@@ -1542,6 +1558,7 @@ p {
  height:70px;
  color:black;
  font-family: 'Verdana';
+ color: #4d1200;
 }
 
 #imgFSQ1 {
@@ -1717,6 +1734,7 @@ p {
   width:75%;
   font-family: 'Grotes Sans';
   font-size:18px;
+  color:#4d1200;
 }
 
 
@@ -1809,6 +1827,8 @@ p {
   text-align:left;
   margin-left:12%;
   font-family:'Arial';
+  margin-right: 1.5%;
+
 }
 
 #monDayId {
@@ -2052,7 +2072,31 @@ p {
 }
 
 #shortInfo {
-  color:black;
+  color:#330c00;
   font-weight:600;
   margin:2%;
 }
+
+.showInfoHref {
+  color:#330c00;
+  text-decoration:none!important;
+}
+.showInfoHref:visited {
+  text-decoration:none!important;
+  text-decoration-color: #c2c2a3;
+  text-decoration-style: dashed;
+    color:#a02700;
+
+
+}
+.showInfoHref:hover {
+  text-decoration:none!important;
+  color:#a02700;
+}
+.showInfoHref:active {
+  text-decoration:none!important;
+  text-decoration-color: #c2c2a3;
+  color:#a02700;
+}
+
+

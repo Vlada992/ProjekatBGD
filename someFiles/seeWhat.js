@@ -8,7 +8,7 @@ fetch('https://api.foursquare.com/v2/venues/search?ll=44.8099375,20.4494431&cate
 .then(venueY => {
     console.log(venueY);
       console.log('JASNIJE VENUES:', venueY.response.venues)
-      
+    
         var allVenueX     = venueY.response.venues;
         var eachVenId;
      for(var i = 0; i < 50; i++) { 
@@ -43,13 +43,13 @@ fetch('https://api.foursquare.com/v2/venues/search?ll=44.8099375,20.4494431&cate
 .catch(function(error){
   console.log(error)
 })
-.then(() =>{
+.then(() => {
   $.ajax({
     //http://api.eventful.com/json/events/search?app_key=RWcbt5k294VSHHmJ&q=music&location=Belgrade&date=Future
       url: 'http://api.eventful.com/json/events/search?app_key=RWcbt5k294VSHHmJ&location=Belgrade&date=Future&page_size=50',
       accepts:{accepts: "application/json"},
       dataType: 'jsonp',
-      success: function(eventJson){
+      success: function(eventJson){ 
         console.log(eventJson);
         console.log(eventJson.events.event)
       }
@@ -133,7 +133,8 @@ fetch('https://api.foursquare.com/v2/venues/search?ll=44.8099375,20.4494431&cate
 
 
         // Valjda je bolje getElementById, clasa moze da ima vise, ID samo jedan na strani.
-        document.getElementsByClassName("item1")[l].children[1].innerHTML = `<p id='evTitl1'>${evTitle}</p>&nbsp;&nbsp; <p id=styleHr1></p><br><p id=monEvF> <img title='Date and time' src="images/calendar-with-a-clock-time-tools.png"/> &nbsp;  <span id='monDayId'>${monIs} ${dayIs}</span>, &nbsp;${yrIs} &nbsp; <span id =dashIdEvn>&minus;</span>&nbsp;  ${dayName}&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-long-arrow-right faIcn1"></i>  &nbsp;<span id=opnTmEvn>${opnTime}  &nbsp;&nbsp; </p>  <p id=dNameEvn> <img title='City' src="images/skyline.png"/> &nbsp;<span id=evnLocF>${evnLoc},  ${countName}</span></span></p> <p id='locEvnIc'><img title='Venue location'  src ="images/placeholderNewLoc.png"/> &nbsp;<a id='venUrlId' title='More info about venue' href= ${venUrl} target="_blank">  <span id='venNmEvn'>${venName}</span> </a></p> <p id='addrIcnEnv'><img src="images/signalStreet.png"/> &nbsp;  ${venAdrr}</p> <p id='linkEnvId'><img title= 'Event url' src="images/http.png"/> &nbsp; <a id='venEvnUrl'  title='Visit eventfull.com for more info'  href= ${evUrl} target = "_blank">${eveUrlPrt}...</a> </p><br>`
+        console.log(document.querySelector('.item1'))
+        document.querySelector(".item1")[l].children[1].innerHTML = `<p id='evTitl1'>${evTitle}</p>&nbsp;&nbsp; <p id=styleHr1></p><br><p id=monEvF> <img title='Date and time' src="images/calendar-with-a-clock-time-tools.png"/> &nbsp;  <span id='monDayId'>${monIs} ${dayIs}</span>, &nbsp;${yrIs} &nbsp; <span id =dashIdEvn>&minus;</span>&nbsp;  ${dayName}&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-long-arrow-right faIcn1"></i>  &nbsp;<span id=opnTmEvn>${opnTime}  &nbsp;&nbsp; </p>  <p id=dNameEvn> <img title='City' src="images/skyline.png"/> &nbsp;<span id=evnLocF>${evnLoc},  ${countName}</span></span></p> <p id='locEvnIc'><img title='Venue location'  src ="images/placeholderNewLoc.png"/> &nbsp;<a id='venUrlId' title='More info about venue' href= ${venUrl} target="_blank">  <span id='venNmEvn'>${venName}</span> </a></p> <p id='addrIcnEnv'><img src="images/signalStreet.png"/> &nbsp;  ${venAdrr}</p> <p id='linkEnvId'><img title= 'Event url' src="images/http.png"/> &nbsp; <a id='venEvnUrl'  title='Visit eventfull.com for more info'  href= ${evUrl} target = "_blank">${eveUrlPrt}...</a> </p><br>`
         } 
   
     } //succcess

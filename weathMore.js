@@ -31,6 +31,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Belgrade&units=imperial&
     $('#sunSetRise').append(`&nbsp;&nbsp; Sunset:&nbsp; <span id ='sunId1'>${takeSet}</span>`);
     $('#dayLastUv').html(`Day length:&nbsp; <span id='dayUv'>${takeDayU}</span>`);
     $('#dayLastUv').append(`&nbsp;&nbsp;<span class='redLineC'>|</span>`);
+    $('#shortInfo').html("Belgrade (/ˈbɛlɡreɪd/ BEL-grayd; Serbian: Beograd / Београд, meaning 'White city', Serbian pronunciation: [beǒɡrad] names in other languages) is the capital and largest city of Serbia. It is located at the confluence of the Sava and Danube rivers, where the Pannonian Plain meets the Balkans. The urban area of the City of Belgrade has a population of 1.23 million, while nearly 1.7 million people live within its administrative limits<a class='showInfoHref' title='Click to continue reading' href=https://en.wikipedia.org/wiki/Belgrade target=_blank> &nbsp;<i  class='fa fa-external-link'></i></>")
     fetch("http://api.openweathermap.org/data/2.5/uvi?appid=69190f2d7f60d5551b77187e81d50575&lat=44.787197&lon=20.457273")
     .then(function(uvInd1){
     return uvInd1.json()
@@ -38,34 +39,32 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Belgrade&units=imperial&
     .then(function(holdVal){
     $('#dayLastUv').append(`&nbsp;&nbsp; UVindex:&nbsp; <span id ='raceIt'>${holdVal.value}</span>`)
     });
-
-
   })
-    var storeJson = data;   //data
+    var storeJson = data; //data
     var tempSwap = false;
     $('#countryFlag').html(`<img class='flagIdImg' src="http://www.countryflags.io/${storeJson.sys.country.toLowerCase()}/flat/64.png">`)
     var icon = storeJson.weather[0].icon;  
     var iconSrc = "http://openweathermap.org/img/w/" + icon + ".png";
     var storeIcon =  `<img id ='iconIcon' src=   ${iconSrc} >`
-   $("#locId").html(`${storeJson.name},   ${storeJson.sys.country}`);
-   $("#storeDes").html(`${storeJson.weather[0].main} (<span id ='bracketsDes'> ${storeJson.weather[0].description} </span>) <span id='iconDesId'> ${storeIcon} </span>`);
-   $("#storeTemp").html(`Temperature is: <span id ='tempValId'> &nbsp; ${storeJson.main.temp.toFixed(1)} &#x2109; &nbsp;</span>`);
-   var storeWindRes = storeJson.wind.speed * 0.44704;
-   $("#storeWind").html(`Wind Blow:&nbsp; <span id ='windVal'> ${storeWindRes.toFixed(2)}&nbsp;m/s </span>`);
-   var windData = storeJson.wind.deg;
-   $('#storeWind').append(`&nbsp;&nbsp;<span class='redLineC'>|</span>`);
-   $('#storeWind').append(`&nbsp;&nbsp; Wind direction:&nbsp <span id ='windDirVal'> ${windDirect(windData)} </span>`);
-   var humidData1 = storeJson.main.humidity;
-   var pressData1 = storeJson.main.pressure;
-   var takeClouds1 = storeJson.clouds.all;
-   var takeVisibl1 = (storeJson.visibility != undefined) ? storeJson.visibility :  'No visibility info!'
-   $('#humid').html(`Humidity:&nbsp <span id ='windDirVal'>${humidData1}&#37 </span>`);
-   $('#humid').append(`&nbsp;&nbsp;<span class='redLineC'>|</span>`);
-   $('#humid').append(`&nbsp;&nbsp; Pressure:&nbsp <span id='windDirVal'>${pressData1} mb</span>`) 
+    $("#locId").html(`${storeJson.name},   ${storeJson.sys.country}`);
+    $("#storeDes").html(`${storeJson.weather[0].main} (<span id ='bracketsDes'> ${storeJson.weather[0].description} </span>) <span id='iconDesId'> ${storeIcon} </span>`);
+    $("#storeTemp").html(`Temperature is: <span id ='tempValId'> &nbsp; ${storeJson.main.temp.toFixed(1)} &#x2109; &nbsp;</span>`);
+    var storeWindRes = storeJson.wind.speed * 0.44704;
+    $("#storeWind").html(`Wind Blow:&nbsp; <span id ='windVal'> ${storeWindRes.toFixed(2)}&nbsp;m/s </span>`);
+    var windData = storeJson.wind.deg;
+    $('#storeWind').append(`&nbsp;&nbsp;<span class='redLineC'>|</span>`);
+    $('#storeWind').append(`&nbsp;&nbsp; Wind direction:&nbsp <span id ='windDirVal'> ${windDirect(windData)} </span>`);
+    var humidData1 = storeJson.main.humidity;
+    var pressData1 = storeJson.main.pressure;
+    var takeClouds1 = storeJson.clouds.all;
+    var takeVisibl1 = (storeJson.visibility != undefined) ? storeJson.visibility :  'No visibility info!'
+    $('#humid').html(`Humidity:&nbsp <span id ='windDirVal'>${humidData1}&#37 </span>`);
+    $('#humid').append(`&nbsp;&nbsp;<span class='redLineC'>|</span>`);
+    $('#humid').append(`&nbsp;&nbsp; Pressure:&nbsp <span id='windDirVal'>${pressData1} mb</span>`) 
 
-   $('#maxMin').html(`Cloudiness:&nbsp; <span class='cloudS'>${takeClouds1}&#37</span>`) 
-   $('#maxMin').append(`&nbsp;&nbsp;<span class='redLineC'>|</span>`);
-   $('#maxMin').append(`&nbsp;&nbsp; Visibility:&nbsp; <span class='cloudS'>${takeVisibl1}m</span>`)
+    $('#maxMin').html(`Cloudiness:&nbsp; <span class='cloudS'>${takeClouds1}&#37</span>`) 
+    $('#maxMin').append(`&nbsp;&nbsp;<span class='redLineC'>|</span>`);
+    $('#maxMin').append(`&nbsp;&nbsp; Visibility:&nbsp; <span class='cloudS'>${takeVisibl1}m</span>`)
   function  windDirect(degree){
     if (degree>337.5) return 'Northerly';
     if (degree>292.5) return 'North Westerly';
@@ -223,6 +222,7 @@ sitNam.addEventListener('keydown', function(e){
     counter.push(e.isTrusted);
     var store = this.value;
     addPlace = this.value;
+    console.log(addPlace)
     showF();
   }
 });
@@ -331,20 +331,6 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=' + addPlace  + '&units=
    $('#maxMin').append(`&nbsp;&nbsp;<span class='redLineC'>|</span>`);
    $('#maxMin').append(`&nbsp;&nbsp; Visibility:&nbsp; <span class='cloudS'>${takeVisibl}</span>`)
 
-    fetch('http://api.geonames.org/wikipediaSearchJSON?q=' + storeJson.name   + '&maxRows=10&username=vladan992')
-    .then((geoGeo)=> {
-      return geoGeo.json()
-    })
-    .then((geoRes) =>{
-      console.log('GEONAMES API', geoRes.geonames)
-      var takeIt = geoRes.geonames;
-      for(var e = 0; e < 10; e++){
-        if(takeIt[e].feature == 'city' || takeIt[e].title == storeJson.name){ 
-        document.getElementById('shortInfo').innerHTML = takeIt[e].summary.slice(0, takeIt[e].summary.length - 5) +
-         `<a href=https://${takeIt[e].wikipediaUrl} target=_blank>...</a>`;
-        }
-      } //for loop
-    })
   function  windDirect(degree){
     if (degree>337.5) return 'Northerly';
     if (degree>292.5) return 'North Westerly';
@@ -388,8 +374,45 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=' + addPlace  + '&units=
     return ajax.json();
 })
 .then(function(data1){
+  console.log(data1)
+
+
+
+
+
+
   var cityLat = data1.city.coord.lat; 
   var cityLong = data1.city.coord.lon;
+
+  fetch('http://api.geonames.org/wikipediaSearchJSON?q=' + data1.city.name   + '&maxRows=10&username=vladan992')
+    .then((geoGeo)=> {
+      return geoGeo.json()
+    })
+    .then((geoRes) =>{
+      console.log('GEONAMES API', geoRes.geonames)
+      var takeIt = geoRes.geonames;
+       for(var e = 0; e < 10; e++){
+        console.log(String(data1.city.coord.lat).slice(0,5))
+
+        var sLat = String(data1.city.coord.lat).slice(0, 5)
+        var sLon = String(data1.city.coord.lon).slice(0, 5)
+        console.log(sLat)
+
+          if( String(takeIt[e].lat).slice(0,5) == sLat || String(takeIt[e].lng).slice(0,5) == sLon){ 
+          console.log(data1.city.coord.lat, takeIt[e].title)
+        document.getElementById('shortInfo').innerHTML = takeIt[0].summary.slice(0, takeIt[e].summary.length - 5) +
+         `<a class='showInfoHref' href=https://${takeIt[0].wikipediaUrl} target=_blank>&nbsp; <i class='fa fa-external-link'></i></a>`;
+        }
+
+      }//for loop
+    
+    })
+
+
+
+
+
+
   fetch('https://api.sunrise-sunset.org/json?lat=' + data1.city.coord.lat +  '&lng=' +  data1.city.coord.lon)
   .then((riseSet)=>{
     return riseSet.json();

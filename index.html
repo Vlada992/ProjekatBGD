@@ -10,44 +10,13 @@
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+
         <title>Belgrade Portal 1</title>
     </head>
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     
     <body>
     <a id='top'></a>
-
-        <!--
-        <nav class="navbar navbar-default  navbar-fixed fixNav1">
-            <div class="container  fixThisC">
-                <div class="navbar-header  fixNH">
-                    <h3 title = 'Belgrade/Бялград/Belqrad/贝尔格莱德/בלגרד' class="fixH3">BELGRADE</h3>
-                </div>
-                
-                <ul class="nav navbar-nav navBarChange">
-                    <li id='justFirst'>
-                        <a title = 'Home and main page' id="styleHome" class="clr1" href="#">HOME </a>
-                    </li>
-                    <li id="justForRegular3">
-                        <a title ='Find more about BG' class="clr1" href="AboutBGD.html">ABOUT BG</a>
-                    </li>
-                   
-                    <li id="justForRegular4">
-                        <a  title= 'Places/Venues/Things to do' class="clr1" href="whatToSee.html">WHAT TO SEE</a>
-                    </li>
-                    <li>
-                        <a class="clr1" href="#">CONTACT</a>
-                    </li>
-                    <li id="justForRegular5">
-                        <a title = 'Local weather, current date/time, google maps...' class="clr1" href="weather&amp;More.html">WEATHER &amp; MORE</a>  
-                    </li>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-        -->
-
-
         <div class="topnav container" id="myTopnav">
 
         <div  id ='styleheadTitl' class ='row'>
@@ -58,19 +27,19 @@
        </div>
        <div id='colMdImg' class = 'col-md-6'>
        <div  id = 'imgHolder'>
-        <img id= 'HeadImg' src ='images/BGHeadImg.PNG' alt='Head Image of Portal'/>
+        <img id= 'HeadImg' src ='images/BGHeadImg.PNG' alt='Head Image of Portal' title='Symbols of Belgrade'/>
         </div>
        </div>
        </div>
 
-    <a onclick="return show('Page4','Page1', 'Page3', 'Page2')" title= 'local and global weather, current date/time, google maps..' href="#about">WEATHER &amp; MORE</a>
-    <a title= 'contact information' href="#about">CONTACT</a>
-    <a onclick="return show('Page2','Page1', 'Page3', 'Page4')" title= 'Places/Venues/Things to do'  href="#contact">WHAT TO SEE</a>
-    <a onclick="return show('Page3','Page1', 'Page2', 'Page4')"   title='Find more about BG'  href="#AboutBGD.html">ABOUT BG</a>
-    <a onclick="return show('Page1','Page2', 'Page3', 'Page4')" title='Home and main page' href="#home">HOME</a>
+    <a id='navA1' onclick="return show('Page4','Page1', 'Page3', 'Page2')" title= 'local and global weather, current date/time, google maps..' href="#about">WEATHER &amp; MORE  &nbsp;&nbsp;<i class="fa fa-umbrella styleNavIcn"></i></a> 
+    <a id ='navA2' title= 'contact information' href="#about">CONTACT  &nbsp;&nbsp;<i class="fa fa-phone"></i></a>
+    <a id ='navA3' onclick="return show('Page2','Page1', 'Page3', 'Page4')" title= 'Places/Venues/Things to do'  href="#contact">WHAT TO SEE/DO &nbsp;&nbsp;<i class="fa fa-map-marker"></i></a>
+    <a id='navA4' onclick="return show('Page3','Page1', 'Page2', 'Page4')"   title='Find more about BG'  href="#AboutBGD.html">ABOUT BG &nbsp;&nbsp;<i class="fa fa-info"></i></a>
+    <a id='navA5' onclick="return show('Page1','Page2', 'Page3', 'Page4')" title='Home and main page' href="#home">HOME &nbsp;&nbsp;<i class="fa fa-home"></i></a>
 
 
-  <a title = 'Local weather, current date/time, google maps...' href="javascript:void(0);" style="font-size:15px;" class="icon container" onclick="myFunction()">&#9776;</a>
+  <a title = 'Local weather, current date/time, google maps...' href="javascript:void(0);" style="font-size:15px;" class="icon container" onclick="myFunction()"> <i class='glyphicon glyphicon-triangle-bottom'></i><br>&#9776;</a>
 </div>
 
 
@@ -79,7 +48,6 @@
 
      
         
-
 
         <div id="Page1">
     <!--<a href="#" onclick="return show('Page2','Page1');"></a>-->
@@ -686,8 +654,9 @@ Discover the best food, nightlife, and entertainment in your area.' target="_bla
 
 
         
-         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
+         
          <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
         <!--<script src='js/bootstrap.min.js'></script>-->
         <script src='instafeed.min.js'></script>
