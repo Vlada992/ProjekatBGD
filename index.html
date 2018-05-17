@@ -9,9 +9,14 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"
+   integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+   crossorigin=""/>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 
-        <title>Belgrade Portal 1</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+        <title>Belgrade Portal</title>
     </head>
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     
@@ -21,8 +26,8 @@
 
         <div  id ='styleheadTitl' class ='row'>
         <div id='colMdTitl'  class ='col-md-6'>
-        <div class=" fixNH">
-              <h3 title = 'Belgrade/Бялград/Belqrad/贝尔格莱德/בלגרד' class="fixH3">BELGRADE</h3>
+        <div  class=" fixNH">
+              <h3  title = 'Belgrade/Бялград/Belqrad/贝尔格莱德/בלגרד' class="fixH3">BELGRADE</h3>
        </div>
        </div>
        <div id='colMdImg' class = 'col-md-6'>
@@ -33,7 +38,7 @@
        </div>
 
     <a id='navA1' onclick="return show('Page4','Page1', 'Page3', 'Page2')" title= 'local and global weather, current date/time, google maps..' href="#about">WEATHER &amp; MORE  &nbsp;&nbsp;<i class="fa fa-umbrella styleNavIcn"></i></a> 
-    <a id ='navA2' title= 'contact information' href="#about">CONTACT  &nbsp;&nbsp;<i class="fa fa-phone"></i></a>
+    <a id ='navA2' title= 'contact information' href="#infoCont">CONTACT  &nbsp;&nbsp;<i class="fa fa-phone"></i></a>
     <a id ='navA3' onclick="return show('Page2','Page1', 'Page3', 'Page4')" title= 'Places/Venues/Things to do'  href="#contact">WHAT TO SEE/DO &nbsp;&nbsp;<i class="fa fa-map-marker"></i></a>
     <a id='navA4' onclick="return show('Page3','Page1', 'Page2', 'Page4')"   title='Find more about BG'  href="#AboutBGD.html">ABOUT BG &nbsp;&nbsp;<i class="fa fa-info"></i></a>
     <a id='navA5' onclick="return show('Page1','Page2', 'Page3', 'Page4')" title='Home and main page' href="#home">HOME &nbsp;&nbsp;<i class="fa fa-home"></i></a>
@@ -53,10 +58,11 @@
     <!--<a href="#" onclick="return show('Page2','Page1');"></a>-->
     <!--Start of page2 whatToSee.html-->
         <div class='lajnL'></div>
-        <div  id = 'forHomePage' class='container'>
 
-            <div class='row' id="instafeed">
-            </div>
+        <div  id = 'forHomePage' class='container'>
+            <div id="mapid"></div>
+            <!--<div class='row' id="instafeed">
+            </div>-->
             <br>
             <br>
             <br>
@@ -540,7 +546,7 @@ Discover the best food, nightlife, and entertainment in your area.' target="_bla
         <div class="row">
           <div class="col-md-6">
             <div id="mainDiv">
-              <!--<div id ='redBtnDiv'></div>-->
+              <div id ='redBtnDiv'></div>
 
               <p id ="storeDes"></p>
               <p id ="storeWind"> </p>
@@ -555,8 +561,8 @@ Discover the best food, nightlife, and entertainment in your area.' target="_bla
               <p id="dayId"></p>
               <p id="demo"> </p>
               <p id="yearId"></p>
-              <div title='Click to change current location' id="storeLoc" onclick='showDiv()'>
-                <input type="text"  class="form-control" id="siteName" placeholder="Type city..." value='' style='display:none'>
+              <div   title='Click to change current location' id="storeLoc" onclick='showDiv()'> <!-- Adding AngularJS-->
+                <input type="text"  class="form-control" id="siteName" placeholder="Type city..." value='' style='display:none' >
                 <p  title='LAT: 44.787197 LON: 20.457273' id='locId'>... </p>
               </div>
               <p id="storeTemp">
@@ -654,7 +660,9 @@ Discover the best food, nightlife, and entertainment in your area.' target="_bla
 
 
         
-         
+         <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"
+   integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
+   crossorigin=""></script>
          <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
          <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>

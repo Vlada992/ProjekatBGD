@@ -1,43 +1,33 @@
 
 
-
-  var clickObj = {};
- function myBFun(){
-  var x = document.getElementsByTagName('div');
- }
  
-function show(shown, hidden, hidden1, hidden2) {   //for now, 4 ative pages
-  document.getElementById(shown).style.display    ='block';
+function show(shown, hidden, hidden1, hidden2){ 
+  document.getElementById(shown).style.display    = 'block';
   if(shown == 'Page1'){
   document.querySelector('#navA5').style.backgroundColor = "#dcdccb"
   document.querySelector('#navA3').style.backgroundColor = '';
   document.querySelector('#navA1').style.backgroundColor = '';
   document.querySelector('#navA4').style.backgroundColor = '';
-
   document.querySelector('#navA5').style.borderBottom = '3px solid #8CB240'
   document.querySelector('#navA3').style.borderBottom = ''
   document.querySelector('#navA1').style.borderBottom = ''   
   document.querySelector('#navA4').style.borderBottom = ''   
-
 
 } else if(shown == 'Page2'){
   document.querySelector('#navA5').style.backgroundColor = ""
   document.querySelector('#navA3').style.backgroundColor = '#dcdccb';
   document.querySelector('#navA1').style.backgroundColor = '';
   document.querySelector('#navA4').style.backgroundColor = '';
-
   document.querySelector('#navA3').style.borderBottom = '3px solid #8CB240'
    document.querySelector('#navA4').style.borderBottom = ''
   document.querySelector('#navA1').style.borderBottom = ''   
   document.querySelector('#navA5').style.borderBottom = '' 
-
 
 } else if(shown == 'Page3'){
     document.querySelector('#navA3').style.backgroundColor = '';
     document.querySelector('#navA5').style.backgroundColor = '';
     document.querySelector('#navA4').style.backgroundColor = '#dcdccb';
     document.querySelector('#navA1').style.backgroundColor = '';
-
     document.querySelector('#navA4').style.borderBottom = '3px solid #8CB240'
     document.querySelector('#navA3').style.borderBottom = ''
     document.querySelector('#navA1').style.borderBottom = ''   
@@ -48,21 +38,19 @@ function show(shown, hidden, hidden1, hidden2) {   //for now, 4 ative pages
     document.querySelector('#navA3').style.backgroundColor = '';
     document.querySelector('#navA5').style.backgroundColor = '';
     document.querySelector('#navA1').style.backgroundColor = '#dcdccb'
-
     document.querySelector('#navA1').style.borderBottom = '3px solid #8CB240'
     document.querySelector('#navA3').style.borderBottom = ''
     document.querySelector('#navA5').style.borderBottom = ''   
     document.querySelector('#navA4').style.borderBottom = '' 
-
 }
+
   document.getElementById(hidden).style.display   ='none';
   document.getElementById(hidden1).style.display  ='none';
   document.getElementById(hidden2).style.display  ='none';
   return false;
 }
 
-
-function myFunction() {
+function myFunction(){
     var x = document.getElementById("myTopnav");
      console.log(document.querySelector('.glyphicon-triangle-bottom'))
        x.className = "topnav";
@@ -72,13 +60,9 @@ function myFunction() {
 
      if (x.className === "topnav") {
         x.className += " responsive topnav myTopnav";
-      
-    } else {
-       
     }
 }
-/*for responsive nav, func*/
-    var userFeed = new Instafeed({                     
+    /*var userFeed = new Instafeed({                     
         get: 'user',
         userId: '514128423',
         limit: 12,
@@ -86,9 +70,93 @@ function myFunction() {
         accessToken: '1967032900.ba4c844.c1ecb30e79504ac792c51cb8826aaef6',
         sortBy: 'most-recent',
         template: '<div class="row gallery instaimg  col-md-12 img-size"><a href="{{image}}" title="{{caption1}}" target="_blank"><img src="{{image}}" alt="{{caption}}" class="img-fluid"/></a></div>',
-    });
+    });*/
+    /*
     userFeed.run();
+    */
+
+
+ var mymap = L.map('mapid').setView([44.787197, 20.457273], 11);
+  L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiZG92bGExOTkyIiwiYSI6ImNqZnM0aG9nMzAwYWMycXA5OHlra2dnc2YifQ.0jZcVmYULoRh9DZewROQOA', {
+    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com" target="_blank">Mapbox</a>',
+    maxZoom: 18,
+    id:  'mapbox.light',
+    accessToken: 'pk.eyJ1IjoiZG92bGExOTkyIiwiYSI6ImNqZnM0aG9nMzAwYWMycXA5OHlra2dnc2YifQ.0jZcVmYULoRh9DZewROQOA'
+}).addTo(mymap);
+
+
+
+
+
+
+function onMapClick(e){
+    console.log("You clicked the map at " + e.latlng);
+};
+mymap.on('click', onMapClick);
+
+
+/*
+console.log('na 98 sta imamo:', L.Icon.Default)
+var iksik = new L.Icon.Default;
+console.log("sta je bre sad iksik", iksik);
+//var ikso = iksik.options.__proto__.iconUrl ='images/imageedit_2_6341612782.png';
+//ikso = 'images/imageedit_2_6341612782.png'
+
+console.log(L.Marker.prototype.options.icon.options.__proto__.iconUrl)
+console.log('eheheh', L.marker);
+console.log(L)
+*/
+
+/*var setIcon1 = L.Marker.prototype.options.icon.options.__proto__.iconUrl;
+setIcon1 = 'images/imageedit_2_6341612782.png';
+var bob = L.Marker.prototype.setIcon('images/imageedit_2_6341612782.png')
+console.log('eooooooooooooooooooo', bob)*/
+
+
+var marker =  L.marker([44.816459, 20.460835]).addTo(mymap);
+var marker1 = L.marker([44.831891, 20.435944]).addTo(mymap)
+var marker2 = L.marker([44.822882, 20.449848]).addTo(mymap)
+var marker3 = L.marker([44.818986, 20.294838]).addTo(mymap)
+var marker4 = L.marker([44.814906, 20.448732]).addTo(mymap)
+var marker5 = L.marker([44.797246, 20.42573]).addTo(mymap)
+var marker6 = L.marker([44.799846, 20.436177]).addTo(mymap)
+var marker7 = L.marker([44.790364, 20.409937]).addTo(mymap)
+var marker8 = L.marker([44.802545, 20.440793]).addTo(mymap)
+var marker9 = L.marker([44.810918, 20.44767]).addTo(mymap)
+var marker10 = L.marker([44.828376, 20.491916]).addTo(mymap)
+var marker11 = L.marker([44.801346, 20.439154]).addTo(mymap)
+var marker12 = L.marker([44.8083, 20.488526]).addTo(mymap)
+var marker13 = L.marker([44.741856, 20.319353]).addTo(mymap)
+var marker14 = L.marker([44.864379, 20.381114]).addTo(mymap)
+
  
+
+var circle = L.circle([44.7950478,20.4394765,17.71], {
+    color: '#8CB240',
+    fillColor: '#8CB240',
+    fillOpacity: 0.3,
+    radius: 8500
+}).addTo(mymap);
+
+marker.bindPopup("<br><b><a href='https://en.wikipedia.org/wiki/Republic_Square_(Belgrade)' target='_blank'>Republic Square</a></b>")
+marker1.bindPopup('<b><a href="https://en.wikipedia.org/wiki/Great_War_Island" target="_blank">Great War Island</a></b>')
+marker2.bindPopup("<b><a href='https://en.wikipedia.org/wiki/Belgrade_Fortress' target='_blank'>Belgrade Fortress</a></b>")
+marker3.bindPopup("<b><a href='https://en.wikipedia.org/wiki/Belgrade_Nikola_Tesla_Airport' target='_blank'>Belgrade Nikola Tesla Airport</a></b>")
+marker4.bindPopup("<b><a href='https://en.wikipedia.org/wiki/Branko%27s_Bridge' target='_blank'>Branko's bridge</a></b>")
+marker5.bindPopup("<b><a href='https://en.wikipedia.org/wiki/Ada_Bridge' target='_blank'>Ada Bridge</a></b>")
+marker6.bindPopup("<b><a href='https://en.wikipedia.org/wiki/New_Railway_Bridge' target='_blank'>New Railway Bridge</a></b>")
+marker7.bindPopup("<b><a href='https://en.wikipedia.org/wiki/Ada_Ciganlija' target='_blank'>Ada Ciganlija</a></b>")
+marker8.bindPopup("<b><a href='https://en.wikipedia.org/wiki/Gazela_Bridge' target='_blank'>Gazela Bridge</a></b>")
+marker9.bindPopup("<b><a href='https://en.wikipedia.org/wiki/Old_Sava_Bridge' target='_blank'>Old Sava Bridge</a></b>")
+marker10.bindPopup("<b><a href='https://en.wikipedia.org/wiki/Pan%C4%8Devo_Bridge' target='_blank'>Pančevo Bridge</a></b>")
+marker11.bindPopup("<b><a href='https://en.wikipedia.org/wiki/Old_Railway_Bridge' target='_blank'>Old Railway Bridge</a></b>")
+marker12.bindPopup("<b><a href='https://en.wikipedia.org/wiki/Belgrade_New_Cemetery' target='_blank'>Belgrade New Cemetery</a></b>")
+marker13.bindPopup("<b><a href='https://en.wikipedia.org/wiki/Ostru%C5%BEnica_Bridge' target='_blank'>Ostružnica Bridge</a></b>")
+marker14.bindPopup("<b><a href='https://en.wikipedia.org/wiki/Pupin_Bridge' target='_blank'>Pupin Bridge</a></b>")
+/*end of leaflet maps*/
+
+
+
     var myHeaders = new Headers();
     var myInit = { 
                   method: 'GET',
@@ -98,10 +166,10 @@ function myFunction() {
                  };
     var myRequest = new Request('https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20rss%20where%20url%20in%20(%27http%3A%2F%2Fwww.beograd.rs%2Flat%2Frss%2F%27)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys');
     fetch(myRequest, myInit)
-    .then(function(dataRSS){
+    .then(dataRSS => {
       return dataRSS.json()
     })
-    .then(function(dataR){
+    .then(dataR => {
       console.log('BG sajt RSS feed:',dataR);
         for(var i = 0; i < dataR.query.count; i++){ 
                  var storeTitle = dataR.query.results.item[i].title;
@@ -129,7 +197,6 @@ function myFunction() {
         })
         .then(function(blicRSS){
             console.log("BLIC FEED:", blicRSS);
-
             for(let i = 0; i < 20; i++){
                 var storeTitle1   =  blicRSS.query.results.item[i].title;
                 var storeLink1    =  blicRSS.query.results.item[i].link;
@@ -138,7 +205,6 @@ function myFunction() {
                 var storeDatePart1 =  storeDate1.slice(0, storeDate1.length - 23);
                 var storeDatePart2 =  storeDate1.slice(storeDate1.length - 23, storeDate1.length - storeDate1.length - 15);
                 var storeHref1    =  String(storeLink1);
-                
                $('#myCarousel').carousel({
                 interval: 5000
                 })
@@ -149,55 +215,9 @@ function myFunction() {
             console.log('<h2>Here is catched error:', error);
         })
 
-        /*fetch('https://api.foursquare.com/v2/venues/search?ll=44.8099375,20.4494431&oauth_token=G55NI2XQXX55ZYHFLQBQC10QA4HCBEBAMMPLEVWHONUZOQ4H&v=20180130') //sve u Beogradu
-        .then(function(venueX){
-            return venueX.json();
-        }).then(function(venuesAll){
-            console.log('ALL VENUES:', venuesAll);
-            
-            fetch('https://api.foursquare.com/v2/venues/search?ll=44.8099375,20.4494431&categoryId=4d4b7105d754a06374d81259&&limit=50&client_id=SYQLZ1DXBSZYMCXG3QUGBBHDRM23YDDLO5SAZCALXMFUR3VS&client_secret=HHFBNGSRMFOUAFYQCTVMR1FK4HR4GZL5LO0T0BYGQVFUHSW0&v=20180130')   //restorani/hrana
-            .then(foodX => {   
-                return foodX.json()
-            }).then(foodPlaces => {
-                console.log('FOOD ONLY:',foodPlaces);
-            })
-            fetch('https://api.foursquare.com/v2/venues/search?ll=44.8099375,20.4494431&categoryId=4d4b7104d754a06370d81259&limit=50&client_id=SYQLZ1DXBSZYMCXG3QUGBBHDRM23YDDLO5SAZCALXMFUR3VS&client_secret=HHFBNGSRMFOUAFYQCTVMR1FK4HR4GZL5LO0T0BYGQVFUHSW0&v=20180130')
-            .then(funPlc => {
-                return funPlc.json();
-            }).then(funPlaces =>{
-                console.log('ART & ENTERTAINM:', funPlaces);
-                //take this also: http://api.eventful.com/
-            })
-        })
-        */
-        
+      
 
-        /*fetch('https://www.blic.rs/rss/Vesti/Beograd')
-        .then(function(dataXML){
-        return dataXML.text()
-        })
-        .then(function(xmlStr){
-        return $.parseXML(xmlStr)   //parse to XMl doc with jqueery method
-        })
-        .then(function(dataV){
-        console.log("XML doc:", dataV)
-        
-        var $xml = $(dataV);
-        for(var i = 0; i < 16; i++){    
-            var storeLink  =  $xml.find('item')[i].children[2].textContent;
-            var stringLink =  String(storeLink);
-            var xmlTitle   =  $xml.find('item')[i].children[0].textContent;
-            var xmlDesc    =  '&#x2014;' +  '&nbsp;' + $xml.find('item')[i].children[1].textContent;
-            var xmlDate    =  $xml.find('item')[i].children[4].textContent;
-            var xmlDatePt1 =  xmlDate.slice(0, xmlDate.length - 23);
-            var xmlDatePt2 =  xmlDate.slice(xmlDate.length - 23, xmlDate.length - xmlDate.length - 15);
-             $('#myCarousel').carousel({
-                interval: 5000
-             });
-            document.getElementsByClassName('itemId2')[i].children[0].innerHTML = `&nbsp;&nbsp;<h4 id =titleId1> <a id ='titleId1' href = ${stringLink} target = '_blank'> ${xmlTitle} &nbsp;</a></h4><br> &nbsp;&nbsp;&nbsp;&nbsp; <p id = 'partTxt1'>  <span id =dateId1> ${xmlDatePt1}  <span id='dateIdSl2'>&nbsp; ${xmlDatePt2}  </span> </span>  ${xmlDesc}<a id ='titleId1' href = ${stringLink} target = '_blank'><span id ='glyId2' class="glyphicon glyphicon-arrow-right"></span></a></p>`;
-        } //big loop
-      })*/
-
+      
 
 
 

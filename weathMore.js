@@ -1,5 +1,21 @@
 
-  
+   var redB = document.getElementById('redBtnDiv');
+   redB.style.backgroundColor = '#ff7f7f';
+   redB.style.borderColor     = '#ff7f7f'
+
+
+ setInterval( () => {redB.style.backgroundColor = 'red'
+    redB.style.boxShadow = "1px 5px 77px 30px red"
+    redB.style.borderColor = 'red'
+}, 1000)
+
+ setInterval( () => {redB.style.backgroundColor = '#ff7f7f'
+    redB.style.boxShadow = "0px 0px 0px 0px #c2c2a3"
+    redB.style.borderColor = '#ff7f7f'
+}, 2000)
+
+
+
   
   mainF() //mainF se znaci prva zove automatski i prikazuje sve. Druga FUNKCIJA POSLE OVE, dole showF() se zove u DOMu na click na 585 liniji u index.html
 function mainF(){  
@@ -144,7 +160,7 @@ var storeFunc = function f2c(f) {
 ///////////////////////////////////////////////////////////////////////////////////////////////
     var storeFunc = function f2c(f) {
   var num = ((f-32) * (5/9))
-  return  num.toFixed(1);  //Pravimo u celzijuse ovde.
+  return  num.toFixed(1);
 };
   var storeTempK0 = data1.list[19].main.temp;
   var storeCalled0 = storeFunc(storeTempK0).charAt(0) == '-' ?  storeFunc(storeTempK0) : '&nbsp;' + storeFunc(storeTempK0)
@@ -223,7 +239,17 @@ sitNam.addEventListener('keydown', function(e){
     var store = this.value;
     addPlace = this.value;
     console.log(addPlace)
+    /*change title name on   on input*/
+    let cityNameIt = document.getElementsByClassName('fixH3');
+    console.log('moj nav pejdz:', document.getElementById('navA1'));
+    console.log('moj nav pejdz sad!!:', document.getElementById('navA1').href.slice(document.getElementById('navA1').href.length -6))
+    var currPage = document.getElementById('navA1').href.slice(document.getElementById('navA1').href.length -6);
+    console.log('eeeeeeee', currPage)
+    cityNameIt[0].innerHTML = addPlace;
+    cityNameIt[0].title =  '';
+
     showF();
+  
   }
 });
 
@@ -392,11 +418,10 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=' + addPlace  + '&units=
       console.log('GEONAMES API', geoRes.geonames)
       var takeIt = geoRes.geonames;
        for(var e = 0; e < 10; e++){
-        console.log(String(data1.city.coord.lat).slice(0,5))
+        //console.log(String(data1.city.coord.lat).slice(0,5))
 
         var sLat = String(data1.city.coord.lat).slice(0, 5)
         var sLon = String(data1.city.coord.lon).slice(0, 5)
-        console.log(sLat)
 
           if( String(takeIt[e].lat).slice(0,5) == sLat || String(takeIt[e].lng).slice(0,5) == sLon){ 
           console.log(data1.city.coord.lat, takeIt[e].title)
@@ -526,8 +551,6 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=' + addPlace  + '&units=
       document.getElementById("insideDivPET2").style.display = 'none';
       $("#insideDivPET2Ent").prepend('<img src=' +  iconSrcPET +  '>' + "  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  " + " <img src =" + iconSrcPET011 + ">" /*+  `&nbsp;Humidity: &nbsp;  <span id='styleVal5'>${data1.list[35].main.humidity}%</span>  &nbsp; Pressure: &nbsp;   <span id='styleVal5'>${data1.list[35].main.pressure} mb</span>`*/ );
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
   var storeFunc = function f2c(f){
   var num = ((f-32) * (5/9))
     return  num.toFixed(1); 
@@ -543,6 +566,3 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=' + addPlace  + '&units=
     }) 
 }) //then
  }
-
-
-//https://en.wikipedia.org/wiki/Astana
