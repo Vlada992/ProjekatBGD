@@ -62,20 +62,9 @@ function myFunction(){
         x.className += " responsive topnav myTopnav";
     }
 }
-    /*var userFeed = new Instafeed({                     
-        get: 'user',
-        userId: '514128423',
-        limit: 12,
-        resolution: 'standard_resolution',
-        accessToken: '1967032900.ba4c844.c1ecb30e79504ac792c51cb8826aaef6',
-        sortBy: 'most-recent',
-        template: '<div class="row gallery instaimg  col-md-12 img-size"><a href="{{image}}" title="{{caption1}}" target="_blank"><img src="{{image}}" alt="{{caption}}" class="img-fluid"/></a></div>',
-    });*/
-    /*
-    userFeed.run();
-    */
 
 
+console.log('a ovuda L', L)
  var mymap = L.map('mapid').setView([44.787197, 20.457273], 11);
   L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiZG92bGExOTkyIiwiYSI6ImNqZnM0aG9nMzAwYWMycXA5OHlra2dnc2YifQ.0jZcVmYULoRh9DZewROQOA', {
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com" target="_blank">Mapbox</a>',
@@ -154,7 +143,6 @@ marker12.bindPopup("<b><a href='https://en.wikipedia.org/wiki/Belgrade_New_Cemet
 marker13.bindPopup("<b><a href='https://en.wikipedia.org/wiki/Ostru%C5%BEnica_Bridge' target='_blank'>Ostružnica Bridge</a></b>")
 marker14.bindPopup("<b><a href='https://en.wikipedia.org/wiki/Pupin_Bridge' target='_blank'>Pupin Bridge</a></b>")
 /*end of leaflet maps*/
-
 
 
     var myHeaders = new Headers();

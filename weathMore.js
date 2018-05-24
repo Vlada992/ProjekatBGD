@@ -2,43 +2,43 @@
    var redB = document.getElementById('redBtnDiv');
    redB.style.backgroundColor = '#ff7f7f';
    redB.style.borderColor     = '#ff7f7f'
-
-
  setInterval( () => {redB.style.backgroundColor = 'red'
     redB.style.boxShadow = "1px 5px 77px 30px red"
     redB.style.borderColor = 'red'
 }, 1000)
-
  setInterval( () => {redB.style.backgroundColor = '#ff7f7f'
     redB.style.boxShadow = "0px 0px 0px 0px #c2c2a3"
     redB.style.borderColor = '#ff7f7f'
 }, 2000)
 
 
-
-  
-  mainF() //mainF se znaci prva zove automatski i prikazuje sve. Druga FUNKCIJA POSLE OVE, dole showF() se zove u DOMu na click na 585 liniji u index.html
+  mainF() //mainF se znaci prva zove automatski i prikazuje sve. Druga FUNKCIJA POSLE OVE, dole showF() se zove u DOMu na click na 585 line u index.html
 function mainF(){  
 fetch('http://api.openweathermap.org/data/2.5/weather?q=Belgrade&units=imperial&APPID=69190f2d7f60d5551b77187e81d50575')
   .then(eks => {
     return  eks.json();     
-  }).then(data =>{
-      console.log(data)
-      setInterval(function(){
+  }).then(data => {
+      setInterval(() => {
       var date = new Date().toLocaleString("en-US", {timeZone: 'Europe/Belgrade'})
       updateTime(date);
   }, 1000);
- function updateTime(dateExp){  
-  var timeDiv = document.getElementById("date1");
-  var putSliced = dateExp.slice(10);
-  timeDiv.innerHTML = dateExp.slice(0,9) + `<p class = 'newClassNow'>${putSliced}</p>`
-
+  function updateTime(dateExp){  
+  var timeDiv = document.getElementById("date1"); 
+  var putSliced = dateExp.slice(10, dateExp.length - 2);
+  var putSliced1 = dateExp.slice(dateExp.length - 2) == "PM" ? 'PM' : "AM";
+  var finalTm = putSliced + " " +  putSliced1
+  var dt = moment(String(finalTm), "h:mm:ss A").format("HH:mm:ss");
+  var dt1 = moment(String(finalTm), 'h:mm:ss A').format('MMMM Do YYYY');
+  var dt2 = moment(String(finalTm), "h:mm:ss A").format('dddd');  
+  timeDiv.innerHTML =  dt1 +   " "  + `<p class='newClassNow'>${dt}</p>`  + " " + `<p id='stDay2'>${dt2}</p>`;  
   };
+
+
   fetch('https://api.sunrise-sunset.org/json?lat=' + data.coord.lat +  '&lng=' +  data.coord.lon)
-  .then((riseSet1)=>{
+  .then(riseSet1 => {
     return riseSet1.json();
   })
-  .then((dataSun) =>{
+  .then(dataSun => {
     var takeRise = dataSun.results.sunrise;
     var takeSet  = dataSun.results.sunset;
     var takeDayU  = dataSun.results.day_length;
@@ -48,15 +48,16 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Belgrade&units=imperial&
     $('#dayLastUv').html(`Day length:&nbsp; <span id='dayUv'>${takeDayU}</span>`);
     $('#dayLastUv').append(`&nbsp;&nbsp;<span class='redLineC'>|</span>`);
     $('#shortInfo').html("Belgrade (/ˈbɛlɡreɪd/ BEL-grayd; Serbian: Beograd / Београд, meaning 'White city', Serbian pronunciation: [beǒɡrad] names in other languages) is the capital and largest city of Serbia. It is located at the confluence of the Sava and Danube rivers, where the Pannonian Plain meets the Balkans. The urban area of the City of Belgrade has a population of 1.23 million, while nearly 1.7 million people live within its administrative limits<a class='showInfoHref' title='Click to continue reading' href=https://en.wikipedia.org/wiki/Belgrade target=_blank> &nbsp;<i  class='fa fa-external-link'></i></>")
+    
     fetch("http://api.openweathermap.org/data/2.5/uvi?appid=69190f2d7f60d5551b77187e81d50575&lat=44.787197&lon=20.457273")
-    .then(function(uvInd1){
+    .then(uvInd1 => {
     return uvInd1.json()
     })
-    .then(function(holdVal){
+    .then(holdVal =>{
     $('#dayLastUv').append(`&nbsp;&nbsp; UVindex:&nbsp; <span id ='raceIt'>${holdVal.value}</span>`)
     });
   })
-    var storeJson = data; //data
+    var storeJson = data;
     var tempSwap = false;
     $('#countryFlag').html(`<img class='flagIdImg' src="http://www.countryflags.io/${storeJson.sys.country.toLowerCase()}/flat/64.png">`)
     var icon = storeJson.weather[0].icon;  
@@ -92,6 +93,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Belgrade&units=imperial&
     if(degree>22.5){return 'North Easterly';}
     return 'Northerly';
   }
+
    var tempRoot = (storeJson.main.temp).toFixed(1);  // Farenhajtima(F)
    btn1.addEventListener("click", function() {
      if(tempSwap === false){
@@ -118,15 +120,15 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Belgrade&units=imperial&
   document.getElementById("btn1").value = "Switch C/F";
   return "Temperature is:&nbsp; " +`<span id ='tempValId'> &nbsp; ${num.toFixed(1)} &#8451 &nbsp;</span>`;  //</span>`  + " " +  `<span id ='tempValId'>
   }
-}).then(function(){
+}).then(() => {
   fetch('http://api.openweathermap.org/data/2.5/forecast?q=Belgrade,RS&units=imperial&APPID=69190f2d7f60d5551b77187e81d50575')
 .then(function(ajax){
     return ajax.json();
 })
-.then(function(data1){
-  var storeFunc = function f2c(f) {
+.then((data1) => {
+  var storeFunc = function f2c(f){
   var num = ((f-32) * (5/9));
-  return  num.toFixed(1);  //Pravimo u celzijuse ovde.
+  return  num.toFixed(1);
 };
   var storeTempK = data1.list[3].main.temp;
   var storeCalled =  (storeFunc(storeTempK).charAt(0) == '-') ?  storeFunc(storeTempK) : '&nbsp;' + storeFunc(storeTempK)                                //ternary
@@ -175,7 +177,7 @@ var storeFunc = function f2c(f) {
      
       $("#insideDiv02").prepend('<img src=' +  iconSrc01 +  '>' + "  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  " + " <img src =" + iconSrc02 + ">");
 /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
-  var storeFunc = function f2c(f) {
+  var storeFunc = function f2c(f){
   var num = ((f-32) * (5/9))
     return  num.toFixed(1);
   };
@@ -211,14 +213,25 @@ var storeFunc = function f2c(f) {
     return  num.toFixed(1);
   };
     }).then(function(){
-     /* fetch("http://api.openweathermap.org/data/2.5/uvi?appid=69190f2d7f60d5551b77187e81d50575&lat=44.787197&lon=20.457273")
-      .then(function(uvInd1){
-        uvInd1.json()
-      })
-      .then(function(holdVal){
-       $('#dayLastUv').append(`&nbsp;&nbsp; UVindex:&nbsp; <span id ='raceIt'>${holdVal.value}</span>`)
-      })*/
-      //})
+
+
+  var mymap3 = L.map('mapid3').setView([44.787197, 20.457271], 11);
+  L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiZG92bGExOTkyIiwiYSI6ImNqZnM0aG9nMzAwYWMycXA5OHlra2dnc2YifQ.0jZcVmYULoRh9DZewROQOA', {
+    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com" target="_blank">Mapbox</a>',
+    maxZoom: 17,
+    id:  'mapbox.dark',
+    accessToken: 'pk.eyJ1IjoiZG92bGExOTkyIiwiYSI6ImNqZnM0aG9nMzAwYWMycXA5OHlra2dnc2YifQ.0jZcVmYULoRh9DZewROQOA'
+}).addTo(mymap3);
+var circle = L.circle([44.7950478,20.4394765,17.71], {
+    color: '#8CB240',
+    fillColor: '#8CB240',
+    fillOpacity: 0.3,
+    radius: 8500
+}).addTo(mymap3);
+
+  document.getElementById('mapid1').style.display  ='none';
+
+
 
 
     })
@@ -238,23 +251,17 @@ sitNam.addEventListener('keydown', function(e){
     counter.push(e.isTrusted);
     var store = this.value;
     addPlace = this.value;
-    console.log(addPlace)
     /*change title name on   on input*/
     let cityNameIt = document.getElementsByClassName('fixH3');
-    console.log('moj nav pejdz:', document.getElementById('navA1'));
-    console.log('moj nav pejdz sad!!:', document.getElementById('navA1').href.slice(document.getElementById('navA1').href.length -6))
     var currPage = document.getElementById('navA1').href.slice(document.getElementById('navA1').href.length -6);
-    console.log('eeeeeeee', currPage)
     cityNameIt[0].innerHTML = addPlace;
     cityNameIt[0].title =  '';
-
     showF();
-  
   }
 });
 
 
-/*Start of showF function down*/
+/*Start of showF function down NEW NEW NEW*/
 function showF(){ 
 var tempSwapTM = false;
 fetch('http://api.openweathermap.org/data/2.5/weather?q=' + addPlace  + '&units=imperial&APPID=69190f2d7f60d5551b77187e81d50575')
@@ -278,11 +285,12 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=' + addPlace  + '&units=
        }
          var cityLat1 = data.coord.lat;
          var cityLong1 = data.coord.lon;
+
          fetch("https://maps.googleapis.com/maps/api/timezone/json?location=" + cityLat1 + "," + cityLong1 + "&timestamp=1331161200&key=AIzaSyDQYoYpB-CyL4Leg5IWW1pT0afaVD9z4J0")
-         .then(function(timeZon){
+         .then((timeZon) => {
           return timeZon.json()
          })
-         .then((tmZon)=>{
+         .then((tmZon) => {
   updateTime()
  function updateTime(){   
  var timeDiv = document.getElementById("date2");
@@ -294,19 +302,28 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=' + addPlace  + '&units=
  var tempSwapTM = counter.length; 
  var sitNam = document.getElementById('siteName');
 
+
  var myInt = null;
  timeDiv.innerHTML = "Loading data... <img src='images/Spinner-1.4s-76px.gif'/>";
-  myInt = setInterval(function(){
+  myInt = setInterval(() => {
           var date = new Date().toLocaleString("en-US", {timeZone: tmZon.timeZoneId});
-          var putSliced = date.slice(10);
-          timeDiv.innerHTML = date.slice(0,9) + `<p class = 'newClassNow'>${putSliced}</p>`
+          let dateDay = new Date().toLocaleString("en-US", {timeZone: tmZon.timeZoneId, weekday: 'long'});
+          var dateExp = date;
+
+  var putSliced0 = dateExp.slice(10, dateExp.length - 2);
+  var putSliced1 = dateExp.slice(dateExp.length - 2) == "PM" ? 'PM' : "AM";
+  var finalTm = putSliced0 +  putSliced1
+  var dt0 = moment(String(finalTm), "h:mm:ss A").format("HH:mm:ss"); //hours time 
+  var dt11 = moment(String(finalTm), 'h:mm:ss A').format('MMMM Do YYYY'); //month
+
+          timeDiv.innerHTML = dt11 +   " "  + `<p class='newClassNow'>${dt0}</p>`  + " " + `<p id='stDay2'>${dateDay}</p>`
           document.getElementById("date2").style.display = 'block';
           document.getElementById("date1").style.display = 'none';
           document.getElementById("date3").style.display = 'none';
-          }, 1000);
+          }, 1000); 
 
-  /*This down is magic code*/
-  sitNam.addEventListener('keydown', function(e){
+  /*||||||||||||||||||This down is magic code|||||||||||||||||*/
+  sitNam.addEventListener('keydown', (e) => {
     if(e.keyCode == 13){
       window.clearInterval(myInt);
        document.getElementById('insideDiv3Ent').innerHTML = '';
@@ -314,22 +331,18 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=' + addPlace  + '&units=
        document.getElementById('insideDiv02Ent').innerHTML = '';
        document.getElementById('insideDivCET2Ent').innerHTML = '';
        document.getElementById('insideDivPET2Ent').innerHTML = '';
+       //mymap2.off();
+       //mymap2.remove();
+       //mymap = "";
     }
   });
-  };
-  })    
-  function funcDay() {
+
+  }  //updateTime
+  })  
+  function funcDay(){
     var day = new Date();
-    var weekday = [];
-    weekday[0] = "Sunday";
-    weekday[1] = "Monday";
-    weekday[2] = "Tuesday";
-    weekday[3] = "Wednesday";
-    weekday[4] = "Thursday";
-    weekday[5] = "Friday";
-    weekday[6] = "Saturday";
-    var newDay = weekday[day.getDay()];
-    document.getElementById("dayId").innerHTML = newDay;
+    var weekday = localStorage.getItem('dayW').split(",");
+    document.getElementById("dayId").innerHTML = weekday[day.getDay()]
   };
     var storeJson = data; 
     var tempSwap = false;
@@ -369,7 +382,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=' + addPlace  + '&units=
     return 'Northerly';
   }
    var tempRoot = (storeJson.main.temp).toFixed(1);  // Farenhajtima(F)
-   btn1.addEventListener("click", function() {
+   btn1.addEventListener("click", () => {
      if(tempSwap === false) {
         $("#storeTemp").html(storeFunc(tempRoot));
        tempSwap = true;
@@ -379,7 +392,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=' + addPlace  + '&units=
             tempSwap = false; 
        };
   });
-  glyId.addEventListener("click", function(){
+  glyId.addEventListener("click",() =>{
      if(tempSwap === false) {
         $("#storeTemp").html(storeFunc(tempRoot));
        tempSwap = true;
@@ -389,7 +402,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=' + addPlace  + '&units=
             tempSwap = false;
        };
   }); 
-  var storeFunc = function f2c(f) {
+  var storeFunc = function f2c(f){
   var num = ((f-32) * (5/9)) 
   document.getElementById("btn1").value = "Switch C/F";
   return "Temperature is:&nbsp; " +`<span id ='tempValId'> &nbsp; ${num.toFixed(1)} &#8451 &nbsp;</span>`;
@@ -399,27 +412,17 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=' + addPlace  + '&units=
 .then(function(ajax){
     return ajax.json();
 })
-.then(function(data1){
-  console.log(data1)
-
-
-
-
-
-
+.then(data1 =>{
   var cityLat = data1.city.coord.lat; 
   var cityLong = data1.city.coord.lon;
-
   fetch('http://api.geonames.org/wikipediaSearchJSON?q=' + data1.city.name   + '&maxRows=10&username=vladan992')
     .then((geoGeo)=> {
       return geoGeo.json()
     })
-    .then((geoRes) =>{
+    .then(geoRes =>{
       console.log('GEONAMES API', geoRes.geonames)
       var takeIt = geoRes.geonames;
        for(var e = 0; e < 10; e++){
-        //console.log(String(data1.city.coord.lat).slice(0,5))
-
         var sLat = String(data1.city.coord.lat).slice(0, 5)
         var sLon = String(data1.city.coord.lon).slice(0, 5)
 
@@ -428,18 +431,12 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=' + addPlace  + '&units=
         document.getElementById('shortInfo').innerHTML = takeIt[0].summary.slice(0, takeIt[e].summary.length - 5) +
          `<a class='showInfoHref' href=https://${takeIt[0].wikipediaUrl} target=_blank>&nbsp; <i class='fa fa-external-link'></i></a>`;
         }
-
       }//for loop
     
     })
 
-
-
-
-
-
   fetch('https://api.sunrise-sunset.org/json?lat=' + data1.city.coord.lat +  '&lng=' +  data1.city.coord.lon)
-  .then((riseSet)=>{
+  .then((riseSet) =>{
     return riseSet.json();
   })
   .then((aboutSun) => {
@@ -452,24 +449,23 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=' + addPlace  + '&units=
     $('#dayLastUv').html(`Day length:&nbsp; <span id='dayUv1'>${takeDayU1}</span>`);
     $('#dayLastUv').append(`&nbsp;&nbsp;<span class='redLineC'>|</span>`);
     fetch("http://api.openweathermap.org/data/2.5/uvi?appid=69190f2d7f60d5551b77187e81d50575&lat=" + cityLat + "&lon=" + cityLong)
-    .then(function(uvInd1){
+    .then((uvInd1) =>{
     uvInd1.json()
-    .then(function(holdVal){
+    .then(holdVal => {
     $('#dayLastUv').append(`&nbsp;&nbsp; UVindex:&nbsp; <span id ='raceIt'>${holdVal.value}</span>`)
     })
   })
-
   var storeLocId = document.getElementById('locId');
   storeLocId.title =  `LAT: ${cityLat}     LON: ${cityLong}`;
   var storeFunc = function f2c(f) {
   var num = ((f-32) * (5/9));
-  return  num.toFixed(1);  //Pravimo u celzijuse ovde.
+  return  num.toFixed(1);
   };
   var storeTempK = data1.list[3].main.temp;
-  var storeCalled =  (storeFunc(storeTempK).charAt(0) == '-') ?  storeFunc(storeTempK) : '&nbsp;' + storeFunc(storeTempK) //ternary
+  var storeCalled =  (storeFunc(storeTempK).charAt(0) == '-') ?  storeFunc(storeTempK) : '&nbsp;' + storeFunc(storeTempK)
   var storeTempK1 = data1.list[6].main.temp;
   var storeCalled1 = storeFunc(storeTempK1).charAt(0) == '-' ?  storeFunc(storeTempK1) : '&nbsp;' + storeFunc(storeTempK1)                  
-  ///////////////////////////////////
+  //
   var storeItAll = data1;
   $('#insideDiv1').html( " <br> " + data1.list[3].dt_txt + `<span id ='arrowSymb'>&nbsp;  &#x2771;&#x2771;&#x2771; </span>` + "&nbsp;&nbsp;" + `<span id ='styleVal5'> ${storeCalled} °C </span>`  + " &nbsp;&nbsp; - " + data1.list[3].weather[0].description + " - Wind: " + `<span id ='windValAll'> ${data1.list[3].wind.speed}&nbsp;m/s</span>` + '<br> ' + "" + data1.list[6].dt_txt + `<span id ='arrowSymb'>&nbsp;  &#x2771;&#x2771;&#x2771; </span>` + "&nbsp;&nbsp;" + `<span id ='styleVal5'> ${storeCalled1} °C </span>` +  " &nbsp;&nbsp; - " +  data1.list[6].weather[0].description + "      - Wind: " + `<span id ='windValAll'> ${data1.list[6].wind.speed}&nbsp;m/s</span>`);
   var icon1 = data1.list[3].weather[0].icon;
@@ -478,9 +474,8 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=' + addPlace  + '&units=
   var iconSrc2= "http://openweathermap.org/img/w/"+ icon2 + ".png";
   document.querySelector("#insideDiv3").style.display = 'none';
   $("#insideDiv3Ent").prepend('<img src=' +  iconSrc +  '>' + "  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  " + " <img src =" + iconSrc2 + ">");
-
-//////////////////////////////////////////
-  var storeFunc = function f2c(f) {
+  ////
+  var storeFunc = function f2c(f){
   var num = ((f-32) * (5/9));
   return  num.toFixed(1);
 };
@@ -488,7 +483,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=' + addPlace  + '&units=
   var storeCalledALOBRE = storeFunc(storeTempK11).charAt(0) == '-' ?  storeFunc(storeTempK11) : '&nbsp;' + storeFunc(storeTempK11)                 //ternary
   var storeTempK111 = data1.list[14].main.temp;
   var storeCalledALO = storeFunc(storeTempK111).charAt(0) == '-' ?  storeFunc(storeTempK111) : '&nbsp;' + storeFunc(storeTempK111)
-///////////////////////////////////////////////
+ ///
   $('#insideDiv11').html(" <br> " + data1.list[11].dt_txt + `<span id ='arrowSymb'>&nbsp;  &#x2771;&#x2771;&#x2771; </span>` + "&nbsp;&nbsp;" + `<span id ='styleVal5'> ${storeCalledALOBRE} °C </span>` + " &nbsp;&nbsp;  -  " + data1.list[11].weather[0].description + " - Wind:  " + `<span id ='windValAll'> ${data1.list[11].wind.speed}&nbsp;m/s</span>` + " <br> " + data1.list[14].dt_txt + `<span id ='arrowSymb'>&nbsp;  &#x2771;&#x2771;&#x2771; </span>` + "&nbsp;&nbsp;" + `<span id ='styleVal5'> ${storeCalledALO} °C </span>` + " &nbsp;&nbsp; - " +  data1.list[14].weather[0].description + "      - Wind: " + `<span id ='windValAll'> ${data1.list[14].wind.speed}&nbsp;m/s</span>`)
   
   var icon11 = data1.list[11].weather[0].icon;
@@ -497,9 +492,8 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=' + addPlace  + '&units=
   var iconSrc22 = "http://openweathermap.org/img/w/"+ icon22 + ".png";
   document.querySelector("#insideDiv33").style.display = 'none';
   $("#insideDiv33Ent").prepend('<img src=' +  iconSrc11 +  '>' + "  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  " + " <img src =" + iconSrc22 + ">");
-
-///////////////////////////////////////////////////
-  var storeFunc = function f2c(f) {
+  ////
+  var storeFunc = function f2c(f){
   var num = ((f-32) * (5/9))
   return  num.toFixed(1); 
 };
@@ -519,7 +513,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=' + addPlace  + '&units=
 
 
 /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
-  var storeFunc = function f2c(f) {
+  var storeFunc = function f2c(f){
   var num = ((f-32) * (5/9))
     return  num.toFixed(1); 
   };
@@ -556,7 +550,13 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=' + addPlace  + '&units=
     return  num.toFixed(1); 
   };
       return [cityLat, cityLong]
-    }).then(function(oneArr){
+    }).then(oneArr => { 
+      console.log(oneArr[1], oneArr[0])
+      console.log('radi li ovde leaflet L', L);
+        document.getElementById('mapid3').style.display  ='none';
+        document.getElementById('mapid1').style.display  ='block';
+        /**/
+
        var mapSrc = document.getElementById('storeMap').children[0].src = "https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d90588.96404060595!2d" + oneArr[1]  + "!3d" + oneArr[0] + "!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ssr!2srs!4v1497371916951";
       })
   
