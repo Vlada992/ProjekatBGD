@@ -1494,55 +1494,48 @@ p {
 }
 
 #divFourSQ {
+  display:flex;
+  justify-content:center;
   background-color:#ceceb5;
   height:600px;
   border:2px solid #8CB240;
-  padding:0px;
-  margin-right:2%;
-  margin-left:2%;
+  width:90%;
   box-shadow: 4px -6px 24px #888888;
 }
 
 #secondCol {
+  display:flex;
+  justify-content:center;
   border:2px solid #8CB240;
   height:600px;
   background-color:#ceceb5;
-  /*margin-right:2%;
-  margin-left:2%; */
+  width:90%;
   box-shadow: 4px -6px 24px #888888;
 
 }
 
 
 #thirdCol {
+  display:flex;
+  justify-content:center;
+  width:90%;
   background-color:#ceceb5;
   height:600px;
   border:2px solid #8CB240;
   padding:0px;
-  /*margin-right:2%;
-  margin-left:2%;*/
   box-shadow: 4px -6px 24px #888888;
   }
 
-  /*#forToSeePage {
-    display:flex;
-  justify-content:center;
-  width: 70%;
-  }*/
-
-
 #fourthCol {
+  display:flex;
+  justify-content:center;
+  width:90%;
   background-color:#ceceb5;
   height:600px;
   border:2px solid #8CB240;
   padding:0px;
-  margin-right:2%;
-  margin-left:2%;
   box-shadow: 4px -6px 24px #888888;
 }
-
-
-
 
 
 
@@ -2165,6 +2158,7 @@ p {
     height:20px;
     color:#8CB240;
     font-size:30px;
+    margin-left: -1%;
    }
 
    #descIdEv:visited {
@@ -2384,20 +2378,34 @@ p {
 
 #bedFa {
   font-size:25px;
+  margin: 0 8px;
 }
 
 #shopFa {
   font-size:25px;
   color:purple;
+  margin: 0 8px;
+
 }
 #foodFa {
   font-size: 25px;
   color:#ff4500;
+  margin: 0 8px;
+
 }
 
 #eventFa {
   width:35px;
   height:30px;
   color:red;
+  margin-left: 8px;
+  margin-right:8px;
+}
+
+
+#flexIcn {
+  display:flex;
+  margin: 0 -5px;
+  margin-left:5%;
 
 }

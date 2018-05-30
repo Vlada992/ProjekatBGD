@@ -2,22 +2,11 @@
 
 
 function invokSkver(visible, notVisb1, notVisb2, notVisb3){
-
-
-
   document.getElementById(visible).style.display = 'block';
   document.getElementById(notVisb1).style.display = 'none';
   document.getElementById(notVisb2).style.display = 'none';
   document.getElementById(notVisb3).style.display = 'none';
- 
-}
-
-
-
-
-
-
-
+ };
 
 
 fetch('https://api.foursquare.com/v2/venues/search?ll=44.8099375,20.4494431&categoryId=4d4b7105d754a06374d81259&&limit=50&client_id=SYQLZ1DXBSZYMCXG3QUGBBHDRM23YDDLO5SAZCALXMFUR3VS&client_secret=HHFBNGSRMFOUAFYQCTVMR1FK4HR4GZL5LO0T0BYGQVFUHSW0&v=20180130')
