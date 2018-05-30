@@ -1495,7 +1495,7 @@ p {
 
 #divFourSQ {
   background-color:#ceceb5;
-  height:520px;
+  height:600px;
   border:2px solid #8CB240;
   padding:0px;
   margin-right:2%;
@@ -1504,46 +1504,42 @@ p {
 }
 
 #secondCol {
-  border:3px solid #8CB240;
-  height:520px;
+  border:2px solid #8CB240;
+  height:600px;
   background-color:#ceceb5;
-  padding:0px;
-  margin-right:2%;
-  margin-left:2%; 
+  /*margin-right:2%;
+  margin-left:2%; */
   box-shadow: 4px -6px 24px #888888;
+
 }
-
-
-
 
 
 #thirdCol {
   background-color:#ceceb5;
-  height:520px;
+  height:600px;
   border:2px solid #8CB240;
   padding:0px;
-  margin-right:2%;
-  margin-left:2%;
+  /*margin-right:2%;
+  margin-left:2%;*/
   box-shadow: 4px -6px 24px #888888;
-    margin-top:5%;
-}
+  }
+
+  /*#forToSeePage {
+    display:flex;
+  justify-content:center;
+  width: 70%;
+  }*/
 
 
 #fourthCol {
   background-color:#ceceb5;
-  height:520px;
+  height:600px;
   border:2px solid #8CB240;
   padding:0px;
   margin-right:2%;
   margin-left:2%;
   box-shadow: 4px -6px 24px #888888;
-  margin-top:5%;
 }
-
-
-
-
-
 
 
 
@@ -1658,6 +1654,7 @@ p {
  font-family:'Times New Roman';
  color:gray;
  font-size:16px;
+ margin-top:15%;
 }
 
 #adress4sq1 {
@@ -1700,13 +1697,13 @@ p {
   margin-top:15px;
   font-weight:800;
   font-family:'Sitka Heading';
-  font-size:18px;
+  font-size:22px;
   color: #4d1200;
 }
 
 #sq4StoreCat {
   font-weight:500;
-  font-size:15px;
+  font-size:18px;
   font-family: 'Constantia', 'Franclin Gothic';
 }
 
@@ -1750,7 +1747,7 @@ p {
 
 #latLonForSq {
   text-decoration-color:#8CB240;
-  color:gray;
+  color:#ff4500;
 }
 
 #latLonForSq:visited {
@@ -1882,15 +1879,15 @@ p {
 
 
 #img4Id1 {
-  margin-top:15%;
+  margin-top:2%;
 }
 
 #img4Id2 {
-  margin-top:15%;
+  margin-top:2%;
 }
 
 #img4Id4 {
-  margin-top:8%;
+  margin-top:2%;
 }
 
 
@@ -2363,4 +2360,44 @@ p {
 #wip1 {
   width:15px;
   height:15px;
+}
+
+
+#defImg1 {
+  width:64px;
+  height:67px;
+  border-bottom: 3px solid #8CB240;
+}
+#defImg2 {
+  width:64px;
+  height:67px;
+  border-bottom: 3px solid #8CB240;
+
+}
+
+#defImg3 {
+  width:64px;
+  height:67px;
+  border-bottom: 3px solid #8CB240;
+}
+
+
+#bedFa {
+  font-size:25px;
+}
+
+#shopFa {
+  font-size:25px;
+  color:purple;
+}
+#foodFa {
+  font-size: 25px;
+  color:#ff4500;
+}
+
+#eventFa {
+  width:35px;
+  height:30px;
+  color:red;
+
 }

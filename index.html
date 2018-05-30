@@ -177,8 +177,17 @@
             <div id="Page2" style="display:none">
                 <!--Start of index.html-->
                 <div id='forToSeePage' class='container'>
+
+                <a onclick="return invokSkver('thirdCol', 'divFourSQ', 'fourthCol', 'secondCol')"><i id='bedFa' class="fa fa-bed"></i></a>
+                <a onclick="return invokSkver('fourthCol', 'divFourSQ', 'thirdCol', 'secondCol')"><i id='shopFa' class="fa fa-shopping-basket"></i></a>
+                <a onclick="return invokSkver('divFourSQ', 'thirdCol', 'fourthCol', 'secondCol')"><i id='foodFa' class="fa fa-cutlery"></i></a>
+                <a onclick="return invokSkver('secondCol', 'thirdCol', 'fourthCol', 'divFourSQ')"> <img id='eventFa' src='images/Concert-512.png'> </a>
+
+
+
+
                     <div id='firstRow1' class="row">
-                        <div id='divFourSQ' class="col-md-6">
+                        <div id='divFourSQ' class="col-md-11">    <!-- col-md-6-->
                             <div id="myCarousel2" class="carousel slide" data-ride="carousel">
                                 <div class="carousel-inner">
                                     <div class="item active item4">
@@ -284,7 +293,7 @@
                             <div id='forIndicator4Sq'>
                             </div>
                         </div>
-                        <div id='secondCol' class="col-md-5">
+                        <div style='display:none' id='secondCol' class="col-md-11 center">
                             <!-- start of second call-->
                             
                             <div id="myCarousel1" class="carousel slide" data-ride="carousel">
@@ -387,7 +396,13 @@
                             </div> <!-- Iznad je logo eventfull-->
                             </div> <!--End of second col div-->
                             <div class='row'>
-                                <div id='thirdCol' class='col-md-6'>
+
+
+
+
+
+
+                                <div style='display:none' id='thirdCol' class='col-md-11'>   <!-- col-md-6-->
                                     <!-- Add carousel here-->
                                     <div id="myCarousel3" class="carousel slide" data-ride="carousel">
                                         <div class="carousel-inner">
@@ -483,7 +498,13 @@
                                         
                                         </div>
                                         </div> <!-- end of thirdCOL -->
-                                        <div id='fourthCol' class='col-md-5'>
+
+
+
+
+
+
+                                        <div style='display:none' id='fourthCol' class='col-md-11'>   <!-- col-md-5-->
                                             
 
                                          <div id="myCarousel4" class="carousel slide" data-ride="carousel">
