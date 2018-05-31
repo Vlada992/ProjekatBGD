@@ -1,6 +1,4 @@
 
-
- 
 function show(shown, hidden, hidden1, hidden2){ 
   document.getElementById(shown).style.display    = 'block';
   if(shown == 'Page1'){
@@ -12,7 +10,6 @@ function show(shown, hidden, hidden1, hidden2){
   document.querySelector('#navA3').style.borderBottom = ''
   document.querySelector('#navA1').style.borderBottom = ''   
   document.querySelector('#navA4').style.borderBottom = ''   
-
 } else if(shown == 'Page2'){
   document.querySelector('#navA5').style.backgroundColor = ""
   document.querySelector('#navA3').style.backgroundColor = '#dcdccb';
@@ -22,7 +19,6 @@ function show(shown, hidden, hidden1, hidden2){
    document.querySelector('#navA4').style.borderBottom = ''
   document.querySelector('#navA1').style.borderBottom = ''   
   document.querySelector('#navA5').style.borderBottom = '' 
-
 } else if(shown == 'Page3'){
     document.querySelector('#navA3').style.backgroundColor = '';
     document.querySelector('#navA5').style.backgroundColor = '';
@@ -32,7 +28,6 @@ function show(shown, hidden, hidden1, hidden2){
     document.querySelector('#navA3').style.borderBottom = ''
     document.querySelector('#navA1').style.borderBottom = ''   
     document.querySelector('#navA5').style.borderBottom = '' 
-
 } else if(shown == 'Page4'){
     document.querySelector('#navA4').style.backgroundColor = '';
     document.querySelector('#navA3').style.backgroundColor = '';
@@ -43,7 +38,6 @@ function show(shown, hidden, hidden1, hidden2){
     document.querySelector('#navA5').style.borderBottom = ''   
     document.querySelector('#navA4').style.borderBottom = '' 
 }
-
   document.getElementById(hidden).style.display   ='none';
   document.getElementById(hidden1).style.display  ='none';
   document.getElementById(hidden2).style.display  ='none';
@@ -52,7 +46,6 @@ function show(shown, hidden, hidden1, hidden2){
 
 function myFunction(){
     var x = document.getElementById("myTopnav");
-     console.log(document.querySelector('.glyphicon-triangle-bottom'))
        x.className = "topnav";
         var xx = document.getElementsByClassName('glyphicon-triangle-bottom')
     xx.className = ''
@@ -63,8 +56,6 @@ function myFunction(){
     }
 }
 
-
-//console.log('a ovuda L', L)
  var mymap = L.map('mapid').setView([44.787197, 20.457273], 11);
   L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiZG92bGExOTkyIiwiYSI6ImNqZnM0aG9nMzAwYWMycXA5OHlra2dnc2YifQ.0jZcVmYULoRh9DZewROQOA', {
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com" target="_blank">Mapbox</a>',
@@ -74,34 +65,10 @@ function myFunction(){
 }).addTo(mymap);
 
 
-
-
-
-
 function onMapClick(e){
     console.log("You clicked the map at " + e.latlng);
 };
 mymap.on('click', onMapClick);
-
-
-/*
-console.log('na 98 sta imamo:', L.Icon.Default)
-var iksik = new L.Icon.Default;
-console.log("sta je bre sad iksik", iksik);
-//var ikso = iksik.options.__proto__.iconUrl ='images/imageedit_2_6341612782.png';
-//ikso = 'images/imageedit_2_6341612782.png'
-
-console.log(L.Marker.prototype.options.icon.options.__proto__.iconUrl)
-console.log('eheheh', L.marker);
-console.log(L)
-*/
-
-/*var setIcon1 = L.Marker.prototype.options.icon.options.__proto__.iconUrl;
-setIcon1 = 'images/imageedit_2_6341612782.png';
-var bob = L.Marker.prototype.setIcon('images/imageedit_2_6341612782.png')
-console.log('eooooooooooooooooooo', bob)*/
-
-
 var marker =  L.marker([44.816459, 20.460835]).addTo(mymap);
 var marker1 = L.marker([44.831891, 20.435944]).addTo(mymap)
 var marker2 = L.marker([44.822882, 20.449848]).addTo(mymap)
@@ -117,9 +84,6 @@ var marker11 = L.marker([44.801346, 20.439154]).addTo(mymap)
 var marker12 = L.marker([44.8083, 20.488526]).addTo(mymap)
 var marker13 = L.marker([44.741856, 20.319353]).addTo(mymap)
 var marker14 = L.marker([44.864379, 20.381114]).addTo(mymap)
-
- 
-
 var circle = L.circle([44.7950478,20.4394765,17.71], {
     color: '#8CB240',
     fillColor: '#8CB240',
@@ -142,7 +106,6 @@ marker11.bindPopup("<b><a href='https://en.wikipedia.org/wiki/Old_Railway_Bridge
 marker12.bindPopup("<b><a href='https://en.wikipedia.org/wiki/Belgrade_New_Cemetery' target='_blank'>Belgrade New Cemetery</a></b>")
 marker13.bindPopup("<b><a href='https://en.wikipedia.org/wiki/Ostru%C5%BEnica_Bridge' target='_blank'>Ostružnica Bridge</a></b>")
 marker14.bindPopup("<b><a href='https://en.wikipedia.org/wiki/Pupin_Bridge' target='_blank'>Pupin Bridge</a></b>")
-/*end of leaflet maps*/
 
 
     var myHeaders = new Headers();
@@ -176,14 +139,14 @@ marker14.bindPopup("<b><a href='https://en.wikipedia.org/wiki/Pupin_Bridge' targ
                  document.getElementsByClassName('item')[i].children[0].innerHTML = `<h4 id =titleId1> <a id='titleId1' href=${storeHref} target = '_blank'> ${storeTitle}  </h4> </a>` + `<img title = "${storeTitle}" src = ${myFinImage}  id =imgId1>`   +  "<p id = partTxt>"  +  `<span id =dateId1>  ${storeDate} </span>` +  storeTextPart +  `<a id =aHrefId1 href =${storeHref} target = blank>&nbsp;...&nbsp;Detailed<a/>`     +  "</p>"               
        }
     })
-    .catch(function(error) {
+    .catch(error =>{
          console.log(error);
     })
     fetch('https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20rss%20where%20url%20in%20(%27https%3A%2F%2Fwww.blic.rs%2Frss%2FVesti%2FBeograd%27)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys')        
-        .then(function(blicFeed){
+        .then((blicFeed)=>{
             return blicFeed.json();
         })
-        .then(function(blicRSS){
+        .then((blicRSS)=>{
             console.log("BLIC FEED:", blicRSS);
             for(let i = 0; i < 20; i++){
                 var storeTitle1   =  blicRSS.query.results.item[i].title;
@@ -199,8 +162,8 @@ marker14.bindPopup("<b><a href='https://en.wikipedia.org/wiki/Pupin_Bridge' targ
                document.getElementsByClassName('itemId2')[i].children[0].innerHTML = `&nbsp;&nbsp;<h4 id =titleId1> <a id ='titleId1' href = ${storeHref1} target = '_blank'> ${storeTitle1} &nbsp;</a></h4><br> &nbsp;&nbsp;&nbsp;&nbsp; <p id = 'partTxt1'>  <span id =dateId1> ${storeDatePart1}   </span> <span id='dateIdSl2'>&nbsp; ${storeDatePart2}  </span>${storeText1}<a id ='titleId1' href = ${storeHref1} target = '_blank'><i id ='glyId2' class="fa fa-external-link"></i></a></p> ` 
             }
         })
-        .catch(function(error){
-            console.log('<h2>Here is catched error:', error);
+        .catch(error => {
+            console.log('Here is catched error:', error);
         })
 
       

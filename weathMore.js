@@ -1,4 +1,5 @@
 
+  
    var redB = document.getElementById('redBtnDiv');
    redB.style.backgroundColor = '#ff7f7f';
    redB.style.borderColor     = '#ff7f7f'
@@ -196,7 +197,6 @@ var storeFunc = function f2c(f) {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       var storeTempPETI = data1.list[35].main.temp;
       var storeCalledPET = storeFunc(storeTempPETI).charAt(0) == '-' ?  storeFunc(storeTempPETI) : '&nbsp;' + storeFunc(storeTempPETI);
-      console.log('radi li dataLIST temp:', data1);
       var storeTempPETI1 = data1.list[37].main.temp;
       var storeCalledPET1 = storeFunc(storeTempPETI1).charAt(0) == '-' ?  storeFunc(storeTempPETI1) : '&nbsp;' + storeFunc(storeTempPETI1);
     
@@ -268,7 +268,6 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=' + addPlace  + '&units=
   .then(eks => {
     return  eks.json();     
   }).then(data => {
-     console.log('Podaci za drugu funckiju vreme:', data)
       document.getElementById('siteName').style.display  = 'none';
       document.getElementById('locId').style.display     = 'block';
       console.log('na 28 idemo:', data)
@@ -362,7 +361,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=' + addPlace  + '&units=
    var pressData1 = storeJson.main.pressure;
    var takeClouds = storeJson.clouds.all;
    var takeVisibl = storeJson.visibility != undefined ? storeJson.visibility + "m" :  `<img src="images/no-waiting.png"/>`
-   console.log(storeJson)
+   //console.log(storeJson)
    $('#humid').html(`Humidity:&nbsp <span id ='windDirVal'>${humidData1}&#37 </span>`);
    $('#humid').append(`&nbsp;&nbsp;<span class='redLineC'>|</span>`);
    $('#humid').append(`&nbsp;&nbsp; Pressure:&nbsp <span id='windDirVal'>${pressData1} mb</span>`)
@@ -420,7 +419,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=' + addPlace  + '&units=
       return geoGeo.json()
     })
     .then(geoRes =>{
-      console.log('GEONAMES API', geoRes.geonames)
+      //console.log('GEONAMES API', geoRes.geonames)
       var takeIt = geoRes.geonames;
        for(var e = 0; e < 10; e++){
         var sLat = String(data1.city.coord.lat).slice(0, 5)
@@ -533,7 +532,6 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=' + addPlace  + '&units=
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       var storeTempPETI = data1.list[35].main.temp;
       var storeCalledPET = storeFunc(storeTempPETI).charAt(0) == '-' ?  storeFunc(storeTempPETI) : '&nbsp;' + storeFunc(storeTempPETI);
-      console.log('radi li dataLIST temp:', data1);
       var storeTempPETI1 = data1.list[37].main.temp;
       var storeCalledPET1 = storeFunc(storeTempPETI1).charAt(0) == '-' ?  storeFunc(storeTempPETI1) : '&nbsp;' + storeFunc(storeTempPETI1);
     

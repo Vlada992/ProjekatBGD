@@ -764,13 +764,6 @@ a.icon {
 #insideDiv02Ent img  { width: 80px; height: auto; /*100px;*/ padding-bottom: 0px; margin-left:30px;}  
 
 
-
-
-
-
-
-
-
 #divF4 {
   border-bottom:1px solid black;
   height: auto; 
@@ -796,15 +789,12 @@ a.icon {
 }
 
 #insideDivCET2 img  { width: 80px; height: auto; padding-bottom: 0px; margin-left:30px;}
-/*Also on enter down*/
+
 #insideDivCET2Ent {
   padding-bottom: 0px;
- /* height:80px;*/
 }
 
 #insideDivCET2Ent img  { width: 80px; height: auto; padding-bottom: 0px; margin-left:30px;}
-
-
 
 
 
@@ -825,7 +815,6 @@ a.icon {
   height:32px;
   margin-top:0px;
 }
-/**/
 #insideDivPET2 {
   padding-bottom: 0px;
   height:80px;
@@ -838,8 +827,7 @@ a.icon {
 #insideDivPET2Ent {
   padding-bottom: 0px;
   height:80px;
-      margin-top: 6%;
-
+  margin-top: 6%;
 }
 
 #insideDivPET2Ent img  { width: 80px; height: auto; padding-bottom: 0px; margin-left:30px;     margin-top: 0%;
@@ -893,7 +881,7 @@ a.icon {
  width: auto;
  background-color: #ceceb5!important;
  color: black!important;
- height: 458px;
+ height: 510px;
  border: 4px  solid #8CB240;
  text-align: center;
  text-decoration: none;
@@ -903,11 +891,6 @@ a.icon {
  margin-right:0.5%;
  box-shadow: 18px -22px 52px #888888;   
  
-}
-
-p {
- /* color:black;
-  background-color:#ceceb5;*/
 }
 
 @media screen and (max-width: 250px) and (min-width: 150px) {
@@ -1018,7 +1001,6 @@ p {
   .img-size {margin:  auto; margin-bottom:10px; padding:0px;}
   .gallery {margin: auto; margin-bottom:10px; padding:0px;}
   .instaimg {margin: auto; margin-bottom:10px; padding:0px;}
-  /*.carousel-inner {height:680px; margin-right:0px;}*/
   .fixNH {width:auto; margin-left:0%;}
   .fixH3 {text-align:left; font-size:35px;}
   #colMdTitl{border-left:5px solid #8CB240; padding-top:1.5%; border-right:20px solid #8CB240;}
@@ -1069,16 +1051,16 @@ p {
 }
 
 @media screen and (max-width: 990px) and (min-width: 560px) {
+    #carousel-example-generic {width:auto;  height: 720px; margin:auto; margin-bottom: 5%; }
   .img-fluid {margin: auto; margin-bottom:10px;  margin-left: 0 auto; padding:0px; width:100%; margin-top:25%!important;}
   .img-size {margin:  auto; margin-bottom:10px; padding:0px;}
   .gallery {margin: auto; margin-bottom:10px; padding:0px;}
   .instaimg {margin: auto; margin-bottom:10px; padding:0px;}
   #fourSquareId {width:auto; height:auto;  margin-right:0px; margin-top:5%; }
-  #partTxt{margin:40px; /*height:550px;*/ text-align:justify; line-height: 75%;}
+  #partTxt{margin:40px; text-align:justify; line-height: 75%;}
   #titleId1 {height:auto; font-size:15px;}
-  #carousel-example-generic {width:auto; margin-left:0px;  margin-right:0%; height: 520px; margin:auto; margin-bottom: 5%;}
-  .carousel-inner {height:500px; margin-right:0px;}
-  .fixNH {width:auto;  float:center; /*padding-left:4%;*/}
+  .carousel-inner {height:620px; margin-right:0px;}
+  .fixNH {width:auto;  float:center;}
   .fixH3{width:auto; margin-left:0 auto; padding:auto;}
   .topnav a {padding:14px 12px;}
   #colMdTitl{border-left:10px solid #8CB240; border-right:25px solid #8CB240; padding-top:1.5%;}
@@ -1090,7 +1072,6 @@ p {
   #divFourSQ {margin-bottom: 10%; height:560px!important;}
   #secondCol{height:560px!important;}
   .carousel-indicators{top:70%; margin-top:10%;}
-
 }
 
 
@@ -1325,21 +1306,30 @@ p {
   box-shadow: 13px -16px 52px #888888;
 }
 
-.styleRow1 {
-  width:auto;
-  margin-right:-15px;
-  margin-left:-15px;
-}
+
+
 
  #fixMd4 {
-  padding:auto;
+  display:flex;
+  justify-content:center;
+  width:97%;
   margin-top:15%;
-
   }
 
   #fixMd8 {
-    margin-top:15%;
+    display:flex;
+    justify-content:center;
+    width:100%;
+    margin-left: -1%;
+
   }
+
+
+
+
+
+
+
 
  /* ///////SECOND CAROUSEL FOR BLIC FEED //////////    */
 
@@ -1500,6 +1490,7 @@ p {
   height:600px;
   border:2px solid #8CB240;
   width:90%;
+  padding:0px;
   box-shadow: 4px -6px 24px #888888;
 }
 
@@ -1510,6 +1501,7 @@ p {
   height:600px;
   background-color:#ceceb5;
   width:90%;
+  padding:0px;
   box-shadow: 4px -6px 24px #888888;
 
 }
@@ -2261,10 +2253,11 @@ p {
 
 #mapid {
   height:600px;
+  display:flex;
+  justify-content:center;
   width:100%;
   border:4px solid #8CB240;
-  margin-bottom:-10%;
-    box-shadow: 25px 20px 35px #888888;
+  box-shadow: 25px 20px 35px #888888;
 
 }
 
