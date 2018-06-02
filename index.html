@@ -6,6 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Vladan Petrović">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="apple-touch-icon" sizes="57x57" href="images/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="images/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="images/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="images/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="images/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="images/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="images/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="images/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
@@ -31,15 +49,15 @@
                 </div>
             </div>
         </div>
-        <a id='navA1' onclick="return show('Page4','Page1', 'Page3', 'Page2')" title='local and global weather, current date/time, google maps..' href="#about">WEATHER &amp; MORE  &nbsp;&nbsp;<i class="fa fa-umbrella styleNavIcn"></i></a>
-        <a id='navA2' title='contact information' href="#infoCont">CONTACT  &nbsp;&nbsp;<i class="fa fa-phone"></i></a>
-        <a id='navA3' onclick="return show('Page2','Page1', 'Page3', 'Page4')" title='Places/Venues/Things to do' href="#contact">WHAT TO SEE/DO &nbsp;&nbsp;<i class="fa fa-map-marker"></i></a>
-        <a id='navA4' onclick="return show('Page3','Page1', 'Page2', 'Page4')" title='Find more about BG' href="#AboutBGD.html">ABOUT BG &nbsp;&nbsp;<i class="fa fa-info"></i> <img id='wip1' src="images/i_WIP-300x269.png">  </a>
-        <a id='navA5' onclick="return show('Page1','Page2', 'Page3', 'Page4')" title='Home and main page' href="#home">HOME &nbsp;&nbsp;<i class="fa fa-home"></i></a>
+        <a id='navA1' onclick="return show('Page4','Page1', 'Page3', 'Page2', 'Page5')" title='local and global weather, current date/time, google maps..' href="#about">WEATHER &amp; MORE  &nbsp;&nbsp;<i class="fa fa-umbrella styleNavIcn"></i></a>
+        <a id='navA2' onclick="return show('Page5','Page1', 'Page3', 'Page2','Page4' )" title='contact information' href="#infoCont">CONTACT  &nbsp;&nbsp;<i class="fa fa-phone"></i></a>
+        <a id='navA3' onclick="return show('Page2','Page1', 'Page3', 'Page4','Page5')" title='Places/Venues/Things to do' href="#contact">WHAT TO SEE/DO &nbsp;&nbsp;<i class="fa fa-map-marker"></i></a>
+        <a id='navA4' onclick="return show('Page3','Page1', 'Page2', 'Page4','Page5')" title='Find more about BG' href="#AboutBGD.html">ABOUT BG &nbsp;&nbsp;<i class="fa fa-info"></i> <img id='wip1' src="images/i_WIP-300x269.png">  </a>
+        <a id='navA5' onclick="return show('Page1','Page2', 'Page3', 'Page4','Page5')" title='Home and main page' href="#home">HOME &nbsp;&nbsp;<i class="fa fa-home"></i></a>
         <a title='Local weather, current date/time, google maps...' href="javascript:void(0);" style="font-size:15px;" class="icon container" onclick="myFunction()"> <i class='glyphicon glyphicon-triangle-bottom'></i><br>&#9776;</a>
     </div>
+
     <div id="Page1">
-        <!--Start of page2 whatToSee.html-->
         <div class='lajnL'></div>
         <div id='forHomePage' class='container'>
             <div id="mapid" class='container'></div>
@@ -47,7 +65,8 @@
             <br>
             <br>
             <br>
-            <div id='fixMd8' class='container'>
+            <div id='fixMd8' class='container' >
+             <div id='hitPlease1' style='display:none'>
                 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                     <ol id="olId1" class="carousel-indicators">
                         <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -102,12 +121,16 @@
                                     <span class="sr-only">Next</span>
                                 </a>
                 </div>
+
+                </div>
+
             </div>
             <div id='fixMd4' class='container'>
-                <div id="fourSquareId">
+                <div id="fourSquareId" style='display:none'>
                     <div>
                         <div id="myCarousel" class="carousel slide vertical">
                             <div id='innerCar2' class="carousel-inner   innerClass2">
+
                                 <div class="active item  itemId2">
                                     <p class='styleSlider2'> </p>
                                 </div>
@@ -153,6 +176,89 @@
                                 <div class="item  itemId2">
                                     <p class='styleSlider2'></p>
                                 </div>
+                                 <div class="item  itemId2">
+                                    <p class='styleSlider2'></p>
+                                </div>
+                                <div class="item  itemId2">
+                                    <p class='styleSlider2'></p>
+                                </div>
+                                <div class="item  itemId2">
+                                    <p class='styleSlider2'></p>
+                                </div>
+                                <div class="item  itemId2">
+                                    <p class='styleSlider2'></p>
+                                </div>
+                                <div class="item  itemId2">
+                                    <p class='styleSlider2'></p>
+                                </div>
+                                <div class="item  itemId2">
+                                    <p class='styleSlider2'></p>
+                                </div>
+                                <div class="item  itemId2">
+                                    <p class='styleSlider2'></p>
+                                </div>
+                                <div class="item  itemId2">
+                                    <p class='styleSlider2'></p>
+                                </div>
+                                <div class="item  itemId2">
+                                    <p class='styleSlider2'></p>
+                                </div>
+                                <div class="item  itemId2">
+                                    <p class='styleSlider2'></p>
+                                </div>
+                                <div class="item  itemId2">
+                                    <p class='styleSlider2'></p>
+                                </div>
+                                <div class="item  itemId2">
+                                    <p class='styleSlider2'></p>
+                                </div>
+                                <div class="item  itemId2">
+                                    <p class='styleSlider2'></p>
+                                </div>
+                                <div class="item  itemId2">
+                                    <p class='styleSlider2'></p>
+                                </div>
+                                 <div class="item  itemId2">
+                                    <p class='styleSlider2'></p>
+                                </div>
+                                <div class="item  itemId2">
+                                    <p class='styleSlider2'></p>
+                                </div>
+                                <div class="item  itemId2">
+                                    <p class='styleSlider2'></p>
+                                </div>
+                                <div class="item  itemId2">
+                                    <p class='styleSlider2'></p>
+                                </div>
+                                <div class="item  itemId2">
+                                    <p class='styleSlider2'></p>
+                                </div>
+                                <div class="item  itemId2">
+                                    <p class='styleSlider2'></p>
+                                </div>
+                                <div class="item  itemId2">
+                                    <p class='styleSlider2'></p>
+                                </div>
+                                <div class="item  itemId2">
+                                    <p class='styleSlider2'></p>
+                                </div>
+                                <div class="item  itemId2">
+                                    <p class='styleSlider2'></p>
+                                </div>
+                                <div class="item  itemId2">
+                                    <p class='styleSlider2'></p>
+                                </div>
+                                <div class="item  itemId2">
+                                    <p class='styleSlider2'></p>
+                                </div>
+                                <div class="item  itemId2">
+                                    <p class='styleSlider2'></p>
+                                </div>
+                                <div class="item  itemId2">
+                                    <p class='styleSlider2'></p>
+                                </div>
+                                <!-- 43-->
+
                             </div>
                             <a id='leftContSl2' class="left carousel-control" href="#myCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-down"></i></a>
                             <a id='rightContSl2' class="right carousel-control" href="#myCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-up"></i></a>
@@ -263,6 +369,48 @@
                         <div class="item item4">
                             <p class='venueStorage'></p>
                         </div>
+                        <div class="item item4">
+                            <p class='venueStorage'></p>
+                        </div>
+                        <div class="item item4">
+                            <p class='venueStorage'></p>
+                        </div>
+                        <div class="item item4">
+                            <p class='venueStorage'></p>
+                        </div>
+                        <div class="item item4">
+                            <p class='venueStorage'></p>
+                        </div>
+                        <div class="item item4">
+                            <p class='venueStorage'></p>
+                        </div>
+                        <div class="item item4">
+                            <p class='venueStorage'></p>
+                        </div>
+                        <div class="item item4 ">
+                            <p class='venueStorage'></p>
+                        </div>
+                        <div class="item item4">
+                            <p class='venueStorage'></p>
+                        </div>
+                        <div class="item item4">
+                            <p class='venueStorage'></p>
+                        </div>
+                        <div class="item item4">
+                            <p class='venueStorage'></p>
+                        </div>
+                        <div class="item item4">
+                            <p class='venueStorage'></p>
+                        </div>
+                        <div class="item item4">
+                            <p class='venueStorage'></p>
+                        </div>
+                        <div class="item item4">
+                            <p class='venueStorage'></p>
+                        </div>
+
+
+
                     </div>
                     <!-- Left and right controls -->
                     <a href='https://foursquare.com' title='Foursquare helps you find the perfect places to go with friends.
@@ -287,6 +435,7 @@
                         <p><a href="http://eventful.com/" target="_blank" title='Find upcoming events near you, with listings, tour dates and tickets for concerts, festivals, movies, performing arts, family events, sports and more.'>Events</a> by Eventful</p>
                     </div>
                     <div class="carousel-inner">
+
                         <div class="item active item1">
                             <p></p>
                             <p class='venueStorage1'></p>
@@ -363,6 +512,17 @@
                             <p></p>
                             <p class='venueStorage1'></p>
                         </div>
+                          <div class="item item1">
+                            <p></p>
+                            <p class='venueStorage1'></p>
+                        </div>
+                          <div class="item item1">
+                            <p></p>
+                            <p class='venueStorage1'></p>
+                        </div>
+                        
+
+
                     </div>
                     <a id='carFourSQ11' class="left carousel-control  carFourSQ1Evn" href="#myCarousel1" role="button" data-slide="prev">
                                     <span  class="glyphicon glyphicon-chevron-left"></span>
@@ -372,6 +532,7 @@
                                     <span  class="glyphicon glyphicon-chevron-right"></span>
                                     <span  class="sr-only">Next</span>
                                 </a>
+                                 <img id='probaj' src=''>
                     <!-- end of second col-->
                 </div>
             </div>
@@ -455,6 +616,99 @@
                             <p></p>
                             <p class='venueStorage2'></p>
                         </div>
+                        <div class="item item2">
+                            <p></p>
+                            <p class='venueStorage2'></p>
+                        </div>
+                        <div class="item item2">
+                            <p></p>
+                            <p class='venueStorage2'></p>
+                        </div>
+                        <div class="item item2">
+                            <p></p>
+                            <p class='venueStorage2'></p>
+                        </div>
+                        <div class="item item2">
+                            <p></p>
+                            <p class='venueStorage2'></p>
+                        </div>
+                        <div class="item item2">
+                            <p></p>
+                            <p class='venueStorage2'></p>
+                        </div>
+                        <div class="item item2">
+                            <p></p>
+                            <p class='venueStorage2'></p>
+                        </div>
+                        <div class="item item2">
+                            <p></p>
+                            <p class='venueStorage2'></p>
+                        </div>
+                        <div class="item item2">
+                            <p></p>
+                            <p class='venueStorage2'></p>
+                        </div>
+                        <div class="item item2">
+                            <p></p>
+                            <p class='venueStorage2'></p>
+                        </div>
+                        <div class="item item2">
+                            <p></p>
+                            <p class='venueStorage2'></p>
+                        </div>
+                        <div class="item item2">
+                            <p></p>
+                            <p class='venueStorage2'></p>
+                        </div>
+                        <div class="item item2">
+                            <p></p>
+                            <p class='venueStorage2'></p>
+                        </div>
+                        <div class="item  item2">
+                            <p></p>
+                            <p class='venueStorage2'></p>
+                        </div>
+                        <div class="item item2">
+                            <p></p>
+                            <p class='venueStorage2'></p>
+                        </div>
+                        <div class="item item2">
+                            <p></p>
+                            <p class='venueStorage2'></p>
+                        </div>
+                        <div class="item item2">
+                            <p></p>
+                            <p class='venueStorage2'></p>
+                        </div>
+                        <div class="item item2">
+                            <p></p>
+                            <p id='venueStorage2'></p>
+                        </div>
+                        <div class="item item2">
+                            <p></p>
+                            <p class='venueStorage2'></p>
+                        </div>
+
+                          <div class="item item2">
+                            <p></p>
+                            <p class='venueStorage2'></p>
+                        </div>
+                        <div class="item item2">
+                            <p></p>
+                            <p class='venueStorage2'></p>
+                        </div>
+                        <div class="item item2">
+                            <p></p>
+                            <p id='venueStorage2'></p>
+                        </div>
+                        <div class="item item2">
+                            <p></p>
+                            <p class='venueStorage2'></p>
+                        </div>
+
+
+
+
                     </div>
                     <a href='https://foursquare.com' title='Foursquare helps you find the perfect places to go with friends.
                                         Discover the best food, nightlife, and entertainment in your area.' target="_blank"><img id='img4Id2' src="images/Powered-by-Foursquare-one-color-600.png" alt="Smiley face" height="45" width="180"/></a>
@@ -548,6 +802,104 @@
                             <p></p>
                             <p class='venueStorage4'></p>
                         </div>
+
+
+
+
+                        <div class="item item44">
+                            <p></p>
+                            <p class='venueStorage4'></p>
+                        </div>
+                        <div class="item item44">
+                            <p></p>
+                            <p class='venueStorage4'></p>
+                        </div>
+                        <div class="item item44">
+                            <p></p>
+                            <p class='venueStorage4'></p>
+                        </div>
+                        <div class="item item44">
+                            <p></p>
+                            <p class='venueStorage4'></p>
+                        </div>
+                        <div class="item item44">
+                            <p></p>
+                            <p class='venueStorage4'></p>
+                        </div>
+                        <div class="item item44">
+                            <p></p>
+                            <p class='venueStorage4'></p>
+                        </div>
+                        <div class="item item44">
+                            <p></p>
+                            <p class='venueStorage4'></p>
+                        </div>
+                        <div class="item item44">
+                            <p></p>
+                            <p class='venueStorage4'></p>
+                        </div>
+                        <div class="item item44">
+                            <p></p>
+                            <p class='venueStorage4'></p>
+                        </div>
+                        <div class="item item44">
+                            <p></p>
+                            <p class='venueStorage2'></p>
+                        </div>
+                        <div class="item item44">
+                            <p></p>
+                            <p clas='venueStorage4'></p>
+                        </div>
+                        <div class="item item44">
+                            <p></p>
+                            <p class='venueStorage4'></p>
+                        </div>
+                        <div class="item  item44">
+                            <p></p>
+                            <p class='venueStorage4'></p>
+                        </div>
+                        <div class="item item44">
+                            <p></p>
+                            <p class='venueStorage4'></p>
+                        </div>
+                        <div class="item item44">
+                            <p></p>
+                            <p class='venueStorage4'></p>
+                        </div>
+                        <div class="item item44">
+                            <p></p>
+                            <p class='venueStorage4'></p>
+                        </div>
+                        <div class="item item44">
+                            <p></p>
+                            <p class='venueStorage4'></p>
+                        </div>
+                        <div class="item item44">
+                            <p></p>
+                            <p class='venueStorage4'></p>
+                        </div>
+
+                        <div class="item item44">
+                            <p></p>
+                            <p class='venueStorage4'></p>
+                        </div>
+                        <div class="item item44">
+                            <p></p>
+                            <p class='venueStorage4'></p>
+                        </div>
+                        <div class="item item44">
+                            <p></p>
+                            <p class='venueStorage4'></p>
+                        </div>
+                         <div class="item item44">
+                            <p></p>
+                            <p class='venueStorage4'></p>
+                        </div>
+                        
+
+
+
+
                     </div>
                     <a href='https://foursquare.com' title='Foursquare helps you find the perfect places to go with friends.
                                         Discover the best food, nightlife, and entertainment in your area.' target="_blank"><img id='img4Id4' src="images/Powered-by-Foursquare-one-color-600.png" alt="Smiley face" height="45" width="180"/></a>
@@ -564,7 +916,6 @@
         </div>
     </div>
     <div id="Page3" style="display:none">
-        <!-- page 3! about.bg-->
         <img id='bldStl' src="images/buildimg.png">
         <div id='flexCont' class="container">
             <div id='divFlx1'></div>
@@ -659,7 +1010,16 @@
         </div>
     </div>
     <!--End of weatherMore page -->
+    <div id='Page5' style='display:none'>
+     <div id='forToSeePage' class='container'>
+     </div>
     </div>
+
+
+
+    </div>
+
+
     <footer class=" footStyle">
         <p title='vladanng@gmail.com' id="footP"> @ Vladan Petrovic <b>2018</b> <a href="#top" class="styleItTop">
                                         <i id ='toTopP' class="fa fa-arrow-circle-up"></i>
