@@ -15,6 +15,9 @@ fetch('https://api.foursquare.com/v2/venues/search?ll=44.8099375,20.4494431&cate
     var allVenueX  = foodY.response.venues;
     for(let i = 0; i <= 41; i++){
     var storeImageFSQ = allVenueX[i].categories[0].icon.prefix + 64 +allVenueX[i].categories[0].icon.suffix;
+    
+    
+    localStorage.setItem('eto3','images/imageeditNEW3.png');
     var defImgS       = localStorage.getItem('eto3');
     var storeCateg    = allVenueX[i].categories[0].name;
     var storeUrl      = allVenueX[i].url  != undefined ?  allVenueX[i].url  : 'No link info';
@@ -43,11 +46,15 @@ fetch('https://api.foursquare.com/v2/venues/search?ll=44.8099375,20.4494431&cate
       dataType: 'jsonp',  
       success: eventJson => {  
       var takeEvent = eventJson.events.event;
-       let weekday =  localStorage.getItem('dayW').split(","); 
-       let month   =  localStorage.getItem('monthS').split(",");
-       console.log('eventfull API:', eventJson)
-       var imageArr = [];
-       var iterArr  = [];
+      var myDays = 'Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday';
+      myMont     = 'January, February, March, April, May, June, July, August, September, October, November, December';
+      localStorage.setItem('dayW',myDays );
+      localStorage.setItem('monthS', myMont);
+      let weekday =  localStorage.getItem('dayW').split(","); 
+      let month   =  localStorage.getItem('monthS').split(",");
+      console.log('eventfull API:', eventJson)
+      var imageArr = [];
+      var iterArr  = [];
 
        for(let l = 0; l <= 20; l++){
 
@@ -92,10 +99,6 @@ fetch('https://api.foursquare.com/v2/venues/search?ll=44.8099375,20.4494431&cate
           <p id='linkEnvId'><img title= 'Event url' src="images/http.png"/> &nbsp; <a id='venEvnUrl'  title='Visit eventfull.com for more info'  href= ${evUrl} target = "_blank">${eveUrlPrt}...</a>
          </p><p id="descIdEv"><i title='Venue name' id ='icnPDesc' class="fa fa-paragraph"></i> &nbsp;&nbsp;&nbsp;&nbsp;<a id='descPrtId' href =${evUrl} target=_blank>${takeDesc}...</a></p>   <img id='imgDrop250  src= ${takeImg}/> </div>`
         }
-
-        console.log('moj array:', imageArr)
-        console.log('iteracije su:', iterArr)
-
         for(let xx = 0; xx < imageArr.length; xx++ ){
           document.getElementsByClassName('item1')[iterArr[xx]].children[1].innerHTML +=`<img id='picForEvent' src =${imageArr[xx]}/>`
         }
@@ -111,6 +114,11 @@ fetch('https://api.foursquare.com/v2/venues/search?ll=44.8099375,20.4494431&cate
   let allVenueX = hotelS.response.venues;
   for(let i = 0; i <=40; i++){
     var storeImageFSQ = allVenueX[i].categories[0].icon.prefix + 64 + allVenueX[i].categories[0].icon.suffix;
+    
+
+    /**/
+    
+    localStorage.setItem('eto1','images/imageeditNEW1.png')
     var defImgS       = localStorage.getItem('eto1');
     var storeCateg    = allVenueX[i].categories[0].name;
     var storeUrl      = allVenueX[i].url  != undefined ?  allVenueX[i].url  : 'No link info';
@@ -118,15 +126,15 @@ fetch('https://api.foursquare.com/v2/venues/search?ll=44.8099375,20.4494431&cate
     var storeAddress  = allVenueX[i].location.address != undefined ?   allVenueX[i].location.address    : ''+'No street info';
     var strCross      = allVenueX[i].location.crossStreet != undefined ? allVenueX[i].location.crossStreet : ''+'No intersection info';
     var storeAddr1    = allVenueX[i].location.formattedAddress[1] != undefined ? `${allVenueX[i].location.formattedAddress[1]},`  : 'Belgrade,';
-    var storeAddr2    = allVenueX[i].location.formattedAddress[2] != undefined ?  `&nbsp; ${allVenueX[i].location.formattedAddress[2]}` : '&nbsp;  Serbia';
+    var storeAddr2    = allVenueX[i].location.formattedAddress[2] != undefined ?  `&nbsp; ${allVenueX[i].location.formattedAddress[2]}` : '&nbsp;  Serbia';                                                                     
     var  number       = allVenueX[i].contact.formattedPhone != undefined ?  ''+`${allVenueX[i].contact.formattedPhone}` : `<span id ='ifNoNumId'>No number info</span>`;
     var takeLatLon    =  'https://www.google.com/maps/search/?api=1&query=' + allVenueX[i].location.lat + ',' + allVenueX[i].location.lng
     document.getElementsByClassName('item2')[i].children[0].innerHTML =   ` <h3 title = ${allVenueX[i].categories[0].name} id = 'titleFSQ1'> ${allVenueX[i].name} &nbsp;&nbsp;&nbsp; <img id = 'imgFSQ1' src =${storeImageFSQ} /> <img id='defImg2' src=${defImgS}></h3>  <div id ='fsqTextDiv'> <p id ='adress4sq'> <i title='Location of place' class="fa fa-map-signs"></i> <a id='latLonForSq' href=${takeLatLon} target=_blank title='Click to get there'>&nbsp;&nbsp;&nbsp;&nbsp;${storeAddress}</a> <br> <span title='Explanation, nearby streets' id='crossId'>&nbsp;&#9580; </span> &nbsp;&nbsp;&nbsp; ${strCross} <br> <i title='In which city?'  class="fa fa-address-card-o styleFaCard"></i> &nbsp;&nbsp; ${storeAddr1} ${storeAddr2}<br> <span id ='boldNumId'><span title='Phone number' id ='phone4SqId'>&#9742;</span> &nbsp;&nbsp;&nbsp; ${number}</span></p><img title='Internet adress' id ='style4ImgUrl' src ='https://image.flaticon.com/icons/svg/109/109476.svg' style="width:26px;height:28px;"/><p>&nbsp;<a id = 'sq4UrlTxt' href = ${storeUrl} target = "_blank">${prtUrl}...</a></p><p id='showOnSm'>Visit Site<p></div><p id ='categ4sqId'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Categories: <span id='sq4StoreCat'>${storeCateg}</span></p>`;
-    }
+    }                                                                                                                                                                                                                                                                                                                    
  })
  fetch('https://api.foursquare.com/v2/venues/search?ll=44.8099375,20.4494431&categoryId=4d4b7105d754a06378d81259&&limit=50&client_id=SYQLZ1DXBSZYMCXG3QUGBBHDRM23YDDLO5SAZCALXMFUR3VS&client_secret=HHFBNGSRMFOUAFYQCTVMR1FK4HR4GZL5LO0T0BYGQVFUHSW0&v=20180130')
  .then(shopS => {
-  return shopS.json()
+  return shopS.json();
 })
 .then(storeShops =>{
   console.log('shops API:', storeShops)
@@ -134,6 +142,8 @@ fetch('https://api.foursquare.com/v2/venues/search?ll=44.8099375,20.4494431&cate
    console.log(allVenueX);
   for(let i = 0; i <= 40; i++){
     var storeImageFSQ = allVenueX[i].categories[0].icon.prefix + 64 + allVenueX[i].categories[0].icon.suffix;
+    
+    localStorage.setItem('eto2','images/imageeditNEW2.jpg')
     var defImgS       = localStorage.getItem('eto2');
     var storeCateg    = allVenueX[i].categories[0].name;
     var storeUrl      = allVenueX[i].url  != undefined ?  allVenueX[i].url  : 'No link info';
@@ -149,7 +159,7 @@ fetch('https://api.foursquare.com/v2/venues/search?ll=44.8099375,20.4494431&cate
 
  })
  
- var idShops = localStorage.getItem('shopIds4').split(',');
+ //var idShops = localStorage.getItem('shopIds4').split(',');
 /*
  for(let ii = 0; ii < idShops.length; ii++){
 
@@ -162,7 +172,7 @@ fetch('https://api.foursquare.com/v2/venues/search?ll=44.8099375,20.4494431&cate
   })
  }
 */
-}) //last then promise.
+})               //last then promise.
 
 
 
