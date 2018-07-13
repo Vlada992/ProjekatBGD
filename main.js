@@ -135,7 +135,7 @@ marker14.bindPopup("<b><a href='https://en.wikipedia.org/wiki/Pupin_Bridge' targ
                  };
     var myRequest = new Request('https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20rss%20where%20url%20in%20(%27http%3A%2F%2Fwww.beograd.rs%2Flat%2Frss%2F%27)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys');
     fetch(myRequest, myInit)
-    .then(beogradNewsRS => {
+    .then((beogradNewsRS) => {
       return beogradNewsRS.json()  
     })
     .then(beogradRS => {
@@ -147,7 +147,15 @@ marker14.bindPopup("<b><a href='https://en.wikipedia.org/wiki/Pupin_Bridge' targ
                  var storeText = dataR.query.results.item[i].description;
                  var storeDate = dataR.query.results.item[i].pubDate;
                  var momDate = storeDate.split('.').reverse();
+
+                 var myDays = 'Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday';
+                 localStorage.setItem('dayW',myDays );
                  takeWeek = localStorage.getItem('dayW').split(',');
+                /*if(!takeWeek){
+                    takeWeekIE = myDays.split(',')
+                    var dow = takeWeekIE[moment(momDate.join('-').slice(1)).day()]
+        };*/
+
                  var dow = takeWeek[moment(momDate.join('-').slice(1)).day()]  /*moment fine code*/
                  var storeImageUse = storeText.match(/"http[^\s]+ /);
                  var myImage = storeImageUse[0];
@@ -158,10 +166,10 @@ marker14.bindPopup("<b><a href='https://en.wikipedia.org/wiki/Pupin_Bridge' targ
                 $('#carousel-example-generic').carousel({
                 interval: 10000
                 });
-                 document.getElementsByClassName('item')[i].children[0].innerHTML = ` <h4 id =titleId1> <span title='Belgrade news from beograd.rs'><i  id='titleIcnId1' class="fa fa-newspaper-o"></i></span>
+                 document.getElementsByClassName('itembeg')[i].children[0].innerHTML = ` <h4 id =titleId1> <span title='Belgrade news from beograd.rs'><i  id='titleIcnId1' class="fa fa-newspaper-o"></i></span>
                   <a id='titleId1' href=${storeHref} target = '_blank'> ${storeTitle}  </h4> </a>` + `<img title = "${storeTitle}" src = ${myFinImage}  id =imgId1>` 
                    +  "<p id = partTxt>"  +  `<span id =dateId1>  ${dow}, ${storeDate} </span>` +  storeTextPart +  `<a id =aHrefId1 href =${storeHref} target = blank>&nbsp;...&nbsp;Detailed<a/>`     +  "</p>"               
-                 document.getElementById('hitPlease1').style.display = 'block';
+                   document.getElementById('hitPlease1').style.display = 'block';
        }
     })
     fetch('https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20rss%20where%20url%20in%20(%27https%3A%2F%2Fwww.blic.rs%2Frss%2FVesti%2FBeograd%27)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys')        

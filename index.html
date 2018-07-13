@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Vladan Petrović">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+        crossorigin="anonymous">
     <link rel="apple-touch-icon" sizes="57x57" href="images/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="images/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="images/apple-icon-72x72.png">
@@ -16,7 +17,7 @@
     <link rel="apple-touch-icon" sizes="144x144" href="images/apple-icon-144x144.png">
     <link rel="apple-touch-icon" sizes="152x152" href="images/apple-icon-152x152.png">
     <link rel="apple-touch-icon" sizes="180x180" href="images/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="images/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="images/android-icon-192x192.png">
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="images/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
@@ -25,10 +26,13 @@
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin="" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+        crossorigin="" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <title>Belgrade Portal</title>
 </head>
@@ -49,12 +53,26 @@
                 </div>
             </div>
         </div>
-        <a id='navA1' onclick="return show('Page4','Page1', 'Page3', 'Page2', 'Page5')" title='local and global weather, current date/time, google maps..' href="#about">WEATHER &amp; MORE  &nbsp;&nbsp;<i class="fa fa-umbrella styleNavIcn"></i></a>
-        <a id='navA2' onclick="return show('Page5','Page1', 'Page3', 'Page2','Page4' )" title='contact information' href="#infoCont">CONTACT  &nbsp;&nbsp;<i class="fa fa-phone"></i></a>
-        <a id='navA3' onclick="return show('Page2','Page1', 'Page3', 'Page4','Page5')" title='Places/Venues/Things to do' href="#contact">WHAT TO SEE/DO &nbsp;&nbsp;<i class="fa fa-map-marker"></i></a>
-        <a id='navA4' onclick="return show('Page3','Page1', 'Page2', 'Page4','Page5')" title='Find more about BG' href="#AboutBGD.html">ABOUT BG &nbsp;&nbsp;<i class="fa fa-info"></i> <img id='wip1' src="images/i_WIP-300x269.png">  </a>
-        <a id='navA5' onclick="return show('Page1','Page2', 'Page3', 'Page4','Page5')" title='Home and main page' href="#home">HOME &nbsp;&nbsp;<i class="fa fa-home"></i></a>
-        <a title='Local weather, current date/time, google maps...' href="javascript:void(0);" style="font-size:15px;" class="icon container" onclick="myFunction()"> <i class='glyphicon glyphicon-triangle-bottom'></i><br>&#9776;</a>
+        <a id='navA1' onclick="return show('Page4','Page1', 'Page3', 'Page2', 'Page5')" title='local and global weather, current date/time, google maps..'
+            href="#about">WEATHER &amp; MORE &nbsp;&nbsp;
+            <i class="fa fa-umbrella styleNavIcn"></i>
+        </a>
+        <a id='navA2' onclick="return show('Page5','Page1', 'Page3', 'Page2','Page4' )" title='contact information' href="#infoCont">CONTACT &nbsp;&nbsp;
+            <i class="fa fa-phone"></i>
+        </a>
+        <a id='navA3' onclick="return show('Page2','Page1', 'Page3', 'Page4','Page5')" title='Places/Venues/Things to do' href="#contact">WHAT TO SEE/DO &nbsp;&nbsp;
+            <i class="fa fa-map-marker"></i>
+        </a>
+        <a id='navA4' onclick="return show('Page3','Page1', 'Page2', 'Page4','Page5')" title='Find more about BG' href="#AboutBGD.html">ABOUT BG &nbsp;&nbsp;
+            <i class="fa fa-info"></i>
+            <img id='wip1' src="images/i_WIP-300x269.png"> </a>
+        <a id='navA5' onclick="return show('Page1','Page2', 'Page3', 'Page4','Page5')" title='Home and main page' href="#home">HOME &nbsp;&nbsp;
+            <i class="fa fa-home"></i>
+        </a>
+        <a title='Local weather, current date/time, google maps...' href="javascript:void(0);" style="font-size:15px;" class="icon container"
+            onclick="myFunction()">
+            <i class='glyphicon glyphicon-triangle-bottom'></i>
+            <br>&#9776;</a>
     </div>
 
     <div id="Page1">
@@ -65,71 +83,69 @@
             <br>
             <br>
             <br>
-            <div id='fixMd8' class='container' >
-             <div id='hitPlease1' style='display:none'>
-                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                    <ol id="olId1" class="carousel-indicators">
-                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                        <li data-target="#carousel-example-generic" data-slide-to="3"></li>
-                        <li data-target="#carousel-example-generic" data-slide-to="4"></li>
-                        <li data-target="#carousel-example-generic" data-slide-to="5"></li>
-                        <li data-target="#carousel-example-generic" data-slide-to="6"></li>
-                        <li data-target="#carousel-example-generic" data-slide-to="7"></li>
-                        <li data-target="#carousel-example-generic" data-slide-to="8"></li>
-                        <li data-target="#carousel-example-generic" data-slide-to="9"></li>
-                    </ol>
-                    <div class="carousel-inner" role="listbox">
-                        <div class="item active">
-                            <p></p>
+            <div id='fixMd8' class='container'>
+                <div id='hitPlease1' style='display:none'>
+                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                        <ol id="olId1" class="carousel-indicators">
+                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="5"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="6"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="7"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="8"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="9"></li>
+                        </ol>
+                        <div class="carousel-inner" role="listbox">
+                            <div class="item  itembeg active">
+                                <p></p>
+                            </div>
+                            <div class="item itembeg">
+                                <p></p>
+                            </div>
+                            <div class="item itembeg">
+                                <p></p>
+                            </div>
+                            <div class="item itembeg">
+                                <p></p>
+                            </div>
+                            <div class="item itembeg">
+                                <p></p>
+                            </div>
+                            <div class="item itembeg">
+                                <p></p>
+                            </div>
+                            <div class="item itembeg">
+                                <p></p>
+                            </div>
+                            <div class="item itembeg">
+                                <p></p>
+                            </div>
+                            <div class="item itembeg">
+                                <p></p>
+                            </div>
+                            <div class="item itembeg">
+                                <p></p>
+                            </div>
                         </div>
-                        <div class="item">
-                            <p></p>
-                        </div>
-                        <div class="item">
-                            <p></p>
-                        </div>
-                        <div class="item">
-                            <p></p>
-                        </div>
-                        <div class="item">
-                            <p></p>
-                        </div>
-                        <div class="item">
-                            <p></p>
-                        </div>
-                        <div class="item">
-                            <p></p>
-                        </div>
-                        <div class="item">
-                            <p></p>
-                        </div>
-                        <div class="item">
-                            <p></p>
-                        </div>
-                        <div class="item">
-                            <p></p>
-                        </div>
+                        <a id="aCarId1" class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a id="aCarId2" class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
                     </div>
-                    <a id="aCarId1" class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                                    <span class="sr-only">Previous</span>
-                                </a>
-                    <a id="aCarId2" class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                                    <span class="sr-only">Next</span>
-                                </a>
                 </div>
-
-                </div>
-
             </div>
             <div id='fixMd4' class='container'>
                 <div id="fourSquareId" style='display:none'>
                     <div>
                         <div id="myCarousel" class="carousel slide vertical">
-                            <div id='innerCar2' class="carousel-inner   innerClass2">
+                            <div id='innerCar2' class="carousel-inner">
 
                                 <div class="active item  itemId2">
                                     <p class='styleSlider2'> </p>
@@ -176,9 +192,6 @@
                                 <div class="item  itemId2">
                                     <p class='styleSlider2'></p>
                                 </div>
-                                 <div class="item  itemId2">
-                                    <p class='styleSlider2'></p>
-                                </div>
                                 <div class="item  itemId2">
                                     <p class='styleSlider2'></p>
                                 </div>
@@ -218,7 +231,10 @@
                                 <div class="item  itemId2">
                                     <p class='styleSlider2'></p>
                                 </div>
-                                 <div class="item  itemId2">
+                                <div class="item  itemId2">
+                                    <p class='styleSlider2'></p>
+                                </div>
+                                <div class="item  itemId2">
                                     <p class='styleSlider2'></p>
                                 </div>
                                 <div class="item  itemId2">
@@ -260,8 +276,12 @@
                                 <!-- 43-->
 
                             </div>
-                            <a id='leftContSl2' class="left carousel-control" href="#myCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-down"></i></a>
-                            <a id='rightContSl2' class="right carousel-control" href="#myCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-up"></i></a>
+                            <a id='leftContSl2' class="left carousel-control" href="#myCarousel" data-slide="prev">
+                                <i class="glyphicon glyphicon-chevron-down"></i>
+                            </a>
+                            <a id='rightContSl2' class="right carousel-control" href="#myCarousel" data-slide="next">
+                                <i class="glyphicon glyphicon-chevron-up"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -273,10 +293,20 @@
         <!--Start of index.html-->
         <div id='forToSeePage' class='container'>
             <div id='flexIcn' class='container'>
-                <a onclick="return invokSkver('thirdCol', 'divFourSQ', 'fourthCol', 'secondCol')"><i id='bedFa' class="fa fa-bed"></i></a>
-                <a onclick="return invokSkver('fourthCol', 'divFourSQ', 'thirdCol', 'secondCol')"><i id='shopFa' class="fa fa-shopping-basket"></i></a>
-                <a onclick="return invokSkver('divFourSQ', 'thirdCol', 'fourthCol', 'secondCol')"><i id='foodFa' class="fa fa-cutlery"></i></a>
-                <a onclick="return invokSkver('secondCol', 'thirdCol', 'fourthCol', 'divFourSQ')"> <img id='eventFa' src='images/Concert-512.png'> </a>
+                <a onclick="return invokSkver('thirdCol', 'divFourSQ', 'fourthCol', 'secondCol','fifthCol')">
+                    <i id='bedFa' class="fa fa-bed"></i>
+                </a>
+                <a onclick="return invokSkver('fourthCol', 'divFourSQ', 'thirdCol', 'secondCol','fifthCol')">
+                    <i id='shopFa' class="fa fa-shopping-basket"></i>
+                </a>
+                <a onclick="return invokSkver('divFourSQ', 'thirdCol', 'fourthCol', 'secondCol','fifthCol')">
+                    <i id='foodFa' class="fa fa-cutlery"></i>
+                </a>
+                <a onclick="return invokSkver('secondCol', 'thirdCol', 'fourthCol', 'divFourSQ','fifthCol')">
+                    <img id='eventFa' src='images/Concert-512.png'> </a>
+                <a id='siteA' onclick="return invokSkver('fifthCol', 'thirdCol', 'fourthCol', 'divFourSQ','secondCol')">
+                    <i id='sitesFa' class="fa fa-camera-retro"></i>
+                </a>
                 <br>
             </div>
             <div id='divFourSQ' class='container'>
@@ -414,15 +444,18 @@
                     </div>
                     <!-- Left and right controls -->
                     <a href='https://foursquare.com' title='Foursquare helps you find the perfect places to go with friends.
-                                Discover the best food, nightlife, and entertainment in your area.' target="_blank"><img id='img4Id1' src="images/Powered-by-Foursquare-one-color-600.png" alt="Smiley face" height="45" width="180"/></a>
+                                Discover the best food, nightlife, and entertainment in your area.' target="_blank">
+                        <img id='img4Id1' src="images/Powered-by-Foursquare-one-color-600.png" alt="Smiley face" height="45"
+                            width="180" />
+                    </a>
                     <a id='carFourSQ1' class="left carousel-control" href="#myCarousel2" role="button" data-slide="prev">
-                                    <span  class="glyphicon glyphicon-chevron-left"></span>
-                                    <span  class="sr-only">Previous</span>
-                                </a>
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
                     <a id='carFourSQ2' class="right carousel-control" href="#myCarousel2" role="button" data-slide="next">
-                                    <span  class="glyphicon glyphicon-chevron-right"></span>
-                                    <span  class="sr-only">Next</span>
-                                </a>
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
                 </div>
                 <div id='forIndicator4Sq'>
                 </div>
@@ -432,7 +465,8 @@
                 <div id="myCarousel1" class="carousel slide" data-ride="carousel">
                     <div class="eventful-badge eventful-small">
                         <img src="http://api.eventful.com/images/powered/eventful_58x20.gif" alt="Local Events, Concerts, Tickets" title='Find upcoming events near you, with listings, tour dates and tickets for concerts, festivals, movies, performing arts, family events, sports and more.'>
-                        <p><a href="http://eventful.com/" target="_blank" title='Find upcoming events near you, with listings, tour dates and tickets for concerts, festivals, movies, performing arts, family events, sports and more.'>Events</a> by Eventful</p>
+                        <p>
+                            <a href="http://eventful.com/" target="_blank" title='Find upcoming events near you, with listings, tour dates and tickets for concerts, festivals, movies, performing arts, family events, sports and more.'>Events</a> by Eventful</p>
                     </div>
                     <div class="carousel-inner">
 
@@ -512,27 +546,27 @@
                             <p></p>
                             <p class='venueStorage1'></p>
                         </div>
-                          <div class="item item1">
+                        <div class="item item1">
                             <p></p>
                             <p class='venueStorage1'></p>
                         </div>
-                          <div class="item item1">
+                        <div class="item item1">
                             <p></p>
                             <p class='venueStorage1'></p>
                         </div>
-                        
+
 
 
                     </div>
                     <a id='carFourSQ11' class="left carousel-control  carFourSQ1Evn" href="#myCarousel1" role="button" data-slide="prev">
-                                    <span  class="glyphicon glyphicon-chevron-left"></span>
-                                    <span  class="sr-only">Previous</span>
-                                </a>
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
                     <a id='carFourSQ22' class="right carousel-control  carFourSQ1Evn" href="#myCarousel1" role="button" data-slide="next">
-                                    <span  class="glyphicon glyphicon-chevron-right"></span>
-                                    <span  class="sr-only">Next</span>
-                                </a>
-                                 <img id='probaj' src=''>
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                    <img id='probaj' src=''>
                     <!-- end of second col-->
                 </div>
             </div>
@@ -689,7 +723,7 @@
                             <p class='venueStorage2'></p>
                         </div>
 
-                          <div class="item item2">
+                        <div class="item item2">
                             <p></p>
                             <p class='venueStorage2'></p>
                         </div>
@@ -706,20 +740,20 @@
                             <p class='venueStorage2'></p>
                         </div>
 
-
-
-
                     </div>
                     <a href='https://foursquare.com' title='Foursquare helps you find the perfect places to go with friends.
-                                        Discover the best food, nightlife, and entertainment in your area.' target="_blank"><img id='img4Id2' src="images/Powered-by-Foursquare-one-color-600.png" alt="Smiley face" height="45" width="180"/></a>
+                                        Discover the best food, nightlife, and entertainment in your area.' target="_blank">
+                        <img id='img4Id2' src="images/Powered-by-Foursquare-one-color-600.png" alt="Smiley face" height="45"
+                            width="180" />
+                    </a>
                     <a id='carFourSQ33' class="left carousel-control  carFourSQ1Evn" href="#myCarousel3" role="button" data-slide="prev">
-                                            <span  class="glyphicon glyphicon-chevron-left"></span>
-                                            <span  class="sr-only">Previous</span>
-                                        </a>
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
                     <a id='carFourSQ44' class="right carousel-control  carFourSQ1Evn" href="#myCarousel3" role="button" data-slide="next">
-                                            <span  class="glyphicon glyphicon-chevron-right"></span>
-                                            <span  class="sr-only">Next</span>
-                                        </a>
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
                 </div>
             </div>
             <!-- end of thirdCOL -->
@@ -802,10 +836,6 @@
                             <p></p>
                             <p class='venueStorage4'></p>
                         </div>
-
-
-
-
                         <div class="item item44">
                             <p></p>
                             <p class='venueStorage4'></p>
@@ -891,28 +921,215 @@
                             <p></p>
                             <p class='venueStorage4'></p>
                         </div>
-                         <div class="item item44">
+                        <div class="item item44">
                             <p></p>
                             <p class='venueStorage4'></p>
                         </div>
-                        
 
+                    </div>
+                    <a href='https://foursquare.com' title='Foursquare helps you find the perfect places to go with friends.
+                                        Discover the best food, nightlife, and entertainment in your area.' target="_blank">
+                        <img id='img4Id4' src="images/Powered-by-Foursquare-one-color-600.png" alt="Smiley face" height="45"
+                            width="180" />
+                    </a>
+                    <a id='carFourSQ55' class="left carousel-control  carFourSQ1Evn" href="#myCarousel4" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a id='carFourSQ66' class="right carousel-control  carFourSQ1Evn" href="#myCarousel4" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+            <!--pocetak petog diva-->
+            <div style='display:none' id='fifthCol' class='container'>
+                <div id="myCarousel5" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="item active item55">
+                            <p></p>
+                            <p class='venueStorage5'></p>
+                        </div>
+                        <div class="item item55">
+                            <p></p>
+                            <p class='venueStorage5'></p>
+                        </div>
+                        <div class="item item55">
+                            <p></p>
+                            <p class='venueStorage5'></p>
+                        </div>
+                        <div class="item item55">
+                            <p></p>
+                            <p class='venueStorage5'></p>
+                        </div>
+                        <div class="item item55">
+                            <p></p>
+                            <p class='venueStorage5'></p>
+                        </div>
+                        <div class="item item55">
+                            <p></p>
+                            <p class='venueStorage5'></p>
+                        </div>
+                        <div class="item item55">
+                            <p></p>
+                            <p class='venueStorage5'></p>
+                        </div>
+                        <div class="item item55">
+                            <p></p>
+                            <p class='venueStorage5'></p>
+                        </div>
+                        <div class="item item55">
+                            <p></p>
+                            <p class='venueStorage5'></p>
+                        </div>
+                        <div class="item item55">
+                            <p></p>
+                            <p class='venueStorage5'></p>
+                        </div>
+                        <div class="item item55">
+                            <p></p>
+                            <p class='venueStorage5'></p>
+                        </div>
+                        <div class="item item55">
+                            <p></p>
+                            <p clas='venueStorage5'></p>
+                        </div>
+                        <div class="item item55">
+                            <p></p>
+                            <p class='venueStorage5'></p>
+                        </div>
+                        <div class="item  item55">
+                            <p></p>
+                            <p class='venueStorage5'></p>
+                        </div>
+                        <div class="item item55">
+                            <p></p>
+                            <p class='venueStorage5'></p>
+                        </div>
+                        <div class="item item55">
+                            <p></p>
+                            <p class='venueStorage5'></p>
+                        </div>
+                        <div class="item item55">
+                            <p></p>
+                            <p class='venueStorage5'></p>
+                        </div>
+                        <div class="item item55">
+                            <p></p>
+                            <p class='venueStorage5'></p>
+                        </div>
+                        <div class="item item55">
+                            <p></p>
+                            <p class='venueStorage5'></p>
+                        </div>
+                        <div class="item item55">
+                            <p></p>
+                            <p class='venueStorage5'></p>
+                        </div>
+                        <div class="item item55">
+                            <p></p>
+                            <p class='venueStorage5'></p>
+                        </div>
+                        <div class="item item55">
+                            <p></p>
+                            <p class='venueStorage5'></p>
+                        </div>
+                        <div class="item item55">
+                            <p></p>
+                            <p class='venueStorage5'></p>
+                        </div>
+                        <div class="item item55">
+                            <p></p>
+                            <p class='venueStorage5'></p>
+                        </div>
+                        <div class="item item55">
+                            <p></p>
+                            <p class='venueStorage5'></p>
+                        </div>
+                        <div class="item item55">
+                            <p></p>
+                            <p class='venueStorage5'></p>
+                        </div>
+                        <div class="item item55">
+                            <p></p>
+                            <p class='venueStorage5'></p>
+                        </div>
+                        <div class="item item55">
+                            <p></p>
+                            <p class='venueStorage5'></p>
+                        </div>
+                        <div class="item item55">
+                            <p></p>
+                            <p class='venueStorage5'></p>
+                        </div>
+                        <div class="item item55">
+                            <p></p>
+                            <p clas='venueStorage5'></p>
+                        </div>
+                        <div class="item item55">
+                            <p></p>
+                            <p class='venueStorage5'></p>
+                        </div>
+                        <div class="item  item55">
+                            <p></p>
+                            <p class='venueStorage5'></p>
+                        </div>
+                        <div class="item item55">
+                            <p></p>
+                            <p class='venueStorage5'></p>
+                        </div>
+                        <div class="item item55">
+                            <p></p>
+                            <p class='venueStorage5'></p>
+                        </div>
+                        <div class="item item55">
+                            <p></p>
+                            <p class='venueStorage5'></p>
+                        </div>
+                        <div class="item item55">
+                            <p></p>
+                            <p class='venueStorage5'></p>
+                        </div>
+                        <div class="item item55">
+                            <p></p>
+                            <p class='venueStorage5'></p>
+                        </div>
 
+                        <div class="item item55">
+                            <p></p>
+                            <p class='venueStorage5'></p>
+                        </div>
+                        <div class="item item55">
+                            <p></p>
+                            <p class='venueStorage5'></p>
+                        </div>
+                        <div class="item item55">
+                            <p></p>
+                            <p class='venueStorage5'></p>
+                        </div>
+                        <div class="item item55">
+                            <p></p>
+                            <p class='venueStorage5'></p>
+                        </div>
 
 
                     </div>
                     <a href='https://foursquare.com' title='Foursquare helps you find the perfect places to go with friends.
-                                        Discover the best food, nightlife, and entertainment in your area.' target="_blank"><img id='img4Id4' src="images/Powered-by-Foursquare-one-color-600.png" alt="Smiley face" height="45" width="180"/></a>
-                    <a id='carFourSQ55' class="left carousel-control  carFourSQ1Evn" href="#myCarousel4" role="button" data-slide="prev">
-                                            <span  class="glyphicon glyphicon-chevron-left"></span>
-                                            <span  class="sr-only">Previous</span>
-                                        </a>
-                    <a id='carFourSQ66' class="right carousel-control  carFourSQ1Evn" href="#myCarousel4" role="button" data-slide="next">
-                                            <span  class="glyphicon glyphicon-chevron-right"></span>
-                                            <span  class="sr-only">Next</span>
-                                        </a>
+                                        Discover the best food, nightlife, and entertainment in your area.' target="_blank">
+                        <img id='img4Id4' src="images/Powered-by-Foursquare-one-color-600.png" alt="Smiley face" height="45"
+                            width="180" />
+                    </a>
+                    <a id='carFourSQ77' class="left carousel-control  carFourSQ1Evn" href="#myCarousel5" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a id='carFourSQ88' class="right carousel-control  carFourSQ1Evn" href="#myCarousel5" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
                 </div>
             </div>
+            <!--ovo je kraj petog diva-->
         </div>
     </div>
     <div id="Page3" style="display:none">
@@ -929,7 +1146,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div id="mainDiv">
-                        <div id='redBtnDiv'></div>
+                        <button class='blink_me'></button>
                         <p id="storeDes"></p>
                         <p id="storeWind"> </p>
                         <p id='sunSetRise'></p>
@@ -937,7 +1154,9 @@
                         <p id='dayLastUv'></p>
                         <p id='maxMin'></p>
                         <hr style='width:70%'>
-                        <div id="date1">Loading Local Time... <img src="images/Spinner-1.4s-76px.gif" /></div>
+                        <div id="date1">Loading Local Time...
+                            <img src="images/Spinner-1.4s-76px.gif" />
+                        </div>
                         <div id='date2' style="display:none"></div>
                         <div id='date3' style="display:none"></div>
                         <p id="dayId"></p>
@@ -949,10 +1168,15 @@
                         </div>
                         <p id="storeTemp">
                             <p>
-                                <input title='Switch between celsius(&#8451;) and fahrenheit(&#x2109;)' type="button" value="Switch F/C" id="btn1" /><span id='glyId' class="glyphicon glyphicon-repeat" type='button' title='Switch between celsius(&#8451;) and fahrenheit(&#x2109;)'> </span></p>
+                                <input title='Switch between celsius(&#8451;) and fahrenheit(&#x2109;)' type="button" value="Switch F/C" id="btn1" />
+                                <span id='glyId' class="glyphicon glyphicon-repeat" type='button' title='Switch between celsius(&#8451;) and fahrenheit(&#x2109;)'>
+                                </span>
+                            </p>
                             <p id="storeDes"></p>
                             <p id='countryFlag'></p>
-                            <a href='https://openweathermap.org/' target='_blank'><img id= 'openWImg' src='images/imageeditOpn11.png' height='75' width='125'/></a>
+                            <a href='https://openweathermap.org/' target='_blank'>
+                                <img id='openWImg' src='images/imageeditOpn11.png' height='75' width='125' />
+                            </a>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -988,48 +1212,56 @@
                         </div>
                     </div>
                 </div>
+
                 <div class='col-md-12'>
                     <div id='citiesInfo'>
                         <p id='shortInfo'></p>
                     </div>
                 </div>
                 <div class="col-md-12">
-                    <!--<div id='justLINE'></div>-->
+
                     <div id="storeMap">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d90588.96404060595!2d20.430197!3d44.8031221!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ssr!2srs!4v1497371916951" width="100%" height="513" frameborder="0" style="border:0" allowfullscreen></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d90588.96404060595!2d20.430197!3d44.8031221!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ssr!2srs!4v1497371916951"
+                            width="100%" height="513" frameborder="0" style="border:0" allowfullscreen></iframe>
                     </div>
                     <div id="mapForMedGrid">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d181101.1457424313!2d20.368321280300464!3d44.827565975580676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ssr!2srs!4v1497456711092" width="250" height="350" style="border:0" allowfullscreen></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d181101.1457424313!2d20.368321280300464!3d44.827565975580676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ssr!2srs!4v1497456711092"
+                            width="250" height="350" style="border:0" allowfullscreen></iframe>
                     </div>
                 </div>
+
                 <div id='styleCol2' class='col-md-12'>
-                    <div id='mapid3'></div>
-                    <div id="mapid1"></div>
+                    <div id='mapid3' class='container'></div>
                 </div>
             </div>
+
         </div>
     </div>
     <!--End of weatherMore page -->
     <div id='Page5' style='display:none'>
-     <div id='forToSeePage' class='container'>
-     </div>
+        <div id='forToSeePage' class='container'>
+        </div>
     </div>
-
-
-
-    </div>
-
+    <!--</div>-->
 
     <footer class=" footStyle">
-        <p title='vladanng@gmail.com' id="footP"> @ Vladan Petrovic <b>2018</b> <a href="#top" class="styleItTop">
-                                        <i id ='toTopP' class="fa fa-arrow-circle-up"></i>
-                                    </a> </p>
+        <h6 id="footP">
+            <p id='footInnerP' title='vladanng@gmail.com'>@ Vladan Petrovic &nbsp;
+                <b>2018</b>
+            </p>
+        </h6>
+        <a href="#top" class="styleItTop ">
+            <i id='toTopP' class="fa fa-arrow-circle-up"></i>
+        </a>
+
     </footer>
-    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw==" crossorigin=""></script>
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
+        crossorigin=""></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <!--<script src='js/bootstrap.min.js'></script>-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
     <script src='instafeed.min.js'></script>
     <script src='main.js'></script>
     <script src='weathMore.js'></script>

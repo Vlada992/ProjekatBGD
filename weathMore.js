@@ -1,25 +1,58 @@
 
-  
-   var redB = document.getElementById('redBtnDiv');
-   redB.style.backgroundColor = '#ff7f7f';
-   redB.style.borderColor     = '#ff7f7f'
- setInterval( () => {redB.style.backgroundColor = 'red'
-    redB.style.boxShadow = "1px 5px 77px 30px red"
-    redB.style.borderColor = 'red'
-}, 1000)
- setInterval( () => {redB.style.backgroundColor = '#ff7f7f'
-    redB.style.boxShadow = "0px 0px 0px 0px #c2c2a3"
-    redB.style.borderColor = '#ff7f7f'
-}, 2000)
+ function callNow(){
+
+  var mymap3 = L.map('mapid3').setView([44.787197, 20.457271], 11);
+  L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiZG92bGExOTkyIiwiYSI6ImNqZnM0aG9nMzAwYWMycXA5OHlra2dnc2YifQ.0jZcVmYULoRh9DZewROQOA', {
+    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com" target="_blank">Mapbox</a>',
+    maxZoom: 17,
+    id:  'mapbox.dark',
+    accessToken: 'pk.eyJ1IjoiZG92bGExOTkyIiwiYSI6ImNqZnM0aG9nMzAwYWMycXA5OHlra2dnc2YifQ.0jZcVmYULoRh9DZewROQOA'
+}).addTo(mymap3);
+var circle = L.circle([44.7950478,20.4394765,17.71], {
+    color: '#8CB240',
+    fillOpacity: 0.3,
+    radius: 8500
+}).addTo(mymap3);
+setTimeout(function(){
+ mymap3.invalidateSize(true);
+}, 1000);
+$(window).on("resize", function () { $("#mapid3").height($(window).height()); mymap3.invalidateSize(); }).trigger("resize");
+
+
+ }
+ callNow()
+
+
+
+
+
+
+
+
+
+let blinkDiv = document.getElementsByClassName('blink_me');
+blinkDiv["0"].style.backgroundColor = '#ff9999';
+blinkDiv["0"].style.borderColor = '#ff9999';
+function blinker()
+{
+//$('.blink_me').fadeOut(1000);
+blinkDiv["0"].style.backgroundColor = 'red';
+blinkDiv["0"].style.borderColor = 'red';
+blinkDiv["0"].style.boxShadow = "1px 5px 77px 30px red";
+$('.blink_me').fadeToggle(1300);
+}
+setInterval(blinker,1300);
+   
+
 
 
   mainF() //mainF se znaci prva zove automatski i prikazuje sve. Druga FUNKCIJA POSLE OVE, dole showF() se zove u DOMu na click na 585 line u index.html
 function mainF(){  
 fetch('http://api.openweathermap.org/data/2.5/weather?q=Belgrade&units=imperial&APPID=69190f2d7f60d5551b77187e81d50575')
-  .then(eks => {
+  .then(eks =>{
     return  eks.json();     
   }).then(data => {
-      setInterval(() => {
+      setInterval(() =>{
       var date = new Date().toLocaleString("en-US", {timeZone: 'Europe/Belgrade'})
       updateTime(date);
   }, 1000);
@@ -33,13 +66,11 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Belgrade&units=imperial&
   var dt2 = moment(String(finalTm), "h:mm:ss A").format('dddd');  
   timeDiv.innerHTML =  dt1 +   " "  + `<p class='newClassNow'>${dt}</p>`  + " " + `<p id='stDay2'>${dt2}</p>`;  
   };
-
-
   fetch('https://api.sunrise-sunset.org/json?lat=' + data.coord.lat +  '&lng=' +  data.coord.lon)
-  .then(riseSet1 => {
+  .then(riseSet1 =>{
     return riseSet1.json();
   })
-  .then(dataSun => {
+  .then(dataSun =>{
     var takeRise = dataSun.results.sunrise;
     var takeSet  = dataSun.results.sunset;
     var takeDayU  = dataSun.results.day_length;
@@ -213,8 +244,7 @@ var storeFunc = function f2c(f) {
     return  num.toFixed(1);
   };
     }).then(function(){
-
-
+/*
   var mymap3 = L.map('mapid3').setView([44.787197, 20.457271], 11);
   L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiZG92bGExOTkyIiwiYSI6ImNqZnM0aG9nMzAwYWMycXA5OHlra2dnc2YifQ.0jZcVmYULoRh9DZewROQOA', {
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com" target="_blank">Mapbox</a>',
@@ -228,13 +258,13 @@ var circle = L.circle([44.7950478,20.4394765,17.71], {
     fillOpacity: 0.3,
     radius: 8500
 }).addTo(mymap3);
+setTimeout(function(){
+   mymap3.invalidateSize();
+}, 3000);
 
-  document.getElementById('mapid1').style.display  ='none';
 
-
-
-
-    })
+  document.getElementById('mapid1').style.display  ='none';*/
+})
 });
 return false
 }
@@ -251,11 +281,17 @@ sitNam.addEventListener('keydown', function(e){
     counter.push(e.isTrusted);
     var store = this.value;
     addPlace = this.value;
-    /*change title name on   on input*/
+    /*change title name on input*/
     let cityNameIt = document.getElementsByClassName('fixH3');
     var currPage = document.getElementById('navA1').href.slice(document.getElementById('navA1').href.length -6);
+    
     cityNameIt[0].innerHTML = addPlace;
-    cityNameIt[0].title =  '';
+    if(cityNameIt[0].innerHTML.length >= 16){
+    cityNameIt[0].style.fontSize ='40px' 
+    }else {
+    cityNameIt[0].style.fontSize='50px'
+    } 
+    cityNameIt[0].title =  `Currently, info for ${addPlace} is shown`;
     showF();
   }
 });
@@ -336,7 +372,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=' + addPlace  + '&units=
     }
   });
 
-  }  //updateTime
+  }
   })  
   function funcDay(){
     var day = new Date();
@@ -361,7 +397,6 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=' + addPlace  + '&units=
    var pressData1 = storeJson.main.pressure;
    var takeClouds = storeJson.clouds.all;
    var takeVisibl = storeJson.visibility != undefined ? storeJson.visibility + "m" :  `<img src="images/no-waiting.png"/>`
-   //console.log(storeJson)
    $('#humid').html(`Humidity:&nbsp <span id ='windDirVal'>${humidData1}&#37 </span>`);
    $('#humid').append(`&nbsp;&nbsp;<span class='redLineC'>|</span>`);
    $('#humid').append(`&nbsp;&nbsp; Pressure:&nbsp <span id='windDirVal'>${pressData1} mb</span>`)
@@ -419,19 +454,16 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=' + addPlace  + '&units=
       return geoGeo.json()
     })
     .then(geoRes =>{
-      //console.log('GEONAMES API', geoRes.geonames)
       var takeIt = geoRes.geonames;
        for(var e = 0; e < 10; e++){
         var sLat = String(data1.city.coord.lat).slice(0, 5)
         var sLon = String(data1.city.coord.lon).slice(0, 5)
 
           if( String(takeIt[e].lat).slice(0,5) == sLat || String(takeIt[e].lng).slice(0,5) == sLon){ 
-          console.log(data1.city.coord.lat, takeIt[e].title)
         document.getElementById('shortInfo').innerHTML = takeIt[0].summary.slice(0, takeIt[e].summary.length - 5) +
          `<a class='showInfoHref' href=https://${takeIt[0].wikipediaUrl} target=_blank>&nbsp; <i class='fa fa-external-link'></i></a>`;
         }
       }//for loop
-    
     })
 
   fetch('https://api.sunrise-sunset.org/json?lat=' + data1.city.coord.lat +  '&lng=' +  data1.city.coord.lon)
@@ -482,7 +514,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=' + addPlace  + '&units=
   var storeCalledALOBRE = storeFunc(storeTempK11).charAt(0) == '-' ?  storeFunc(storeTempK11) : '&nbsp;' + storeFunc(storeTempK11)                 //ternary
   var storeTempK111 = data1.list[14].main.temp;
   var storeCalledALO = storeFunc(storeTempK111).charAt(0) == '-' ?  storeFunc(storeTempK111) : '&nbsp;' + storeFunc(storeTempK111)
- ///
+ 
   $('#insideDiv11').html(" <br> " + data1.list[11].dt_txt + `<span id ='arrowSymb'>&nbsp;  &#x2771;&#x2771;&#x2771; </span>` + "&nbsp;&nbsp;" + `<span id ='styleVal5'> ${storeCalledALOBRE} °C </span>` + " &nbsp;&nbsp;  -  " + data1.list[11].weather[0].description + " - Wind:  " + `<span id ='windValAll'> ${data1.list[11].wind.speed}&nbsp;m/s</span>` + " <br> " + data1.list[14].dt_txt + `<span id ='arrowSymb'>&nbsp;  &#x2771;&#x2771;&#x2771; </span>` + "&nbsp;&nbsp;" + `<span id ='styleVal5'> ${storeCalledALO} °C </span>` + " &nbsp;&nbsp; - " +  data1.list[14].weather[0].description + "      - Wind: " + `<span id ='windValAll'> ${data1.list[14].wind.speed}&nbsp;m/s</span>`)
   
   var icon11 = data1.list[11].weather[0].icon;
@@ -510,13 +542,11 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=' + addPlace  + '&units=
  
  $("#insideDiv02Ent").prepend('<img src=' +  iconSrc01 +  '>' + "  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  " + " <img src =" + iconSrc02 + ">");
 
-
 /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
   var storeFunc = function f2c(f){
   var num = ((f-32) * (5/9))
     return  num.toFixed(1); 
   };
-
   var storeTempCETVRTI = data1.list[27].main.temp;
   var storeCalledCET = storeFunc(storeTempCETVRTI).charAt(0) == '-' ?  storeFunc(storeTempCETVRTI) : '&nbsp;' + storeFunc(storeTempCETVRTI);
   var storeTempCETVRTI1 = data1.list[30].main.temp;
@@ -548,19 +578,17 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=' + addPlace  + '&units=
     return  num.toFixed(1); 
   };
       return [cityLat, cityLong]
-    }).then(oneArr => { 
-      console.log(oneArr[1], oneArr[0])
-      console.log('radi li ovde leaflet L', L);
+    }).then(oneArr =>{ 
         document.getElementById('mapid3').style.display  ='none';
-        document.getElementById('mapid1').style.display  ='block';
-        /**/
-
-       var mapSrc = document.getElementById('storeMap').children[0].src = "https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d90588.96404060595!2d" + oneArr[1]  + "!3d" + oneArr[0] + "!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ssr!2srs!4v1497371916951";
+        document.getElementById('storeMap').children[0].src = "https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d90588.96404060595!2d" + oneArr[1]  + "!3d" + oneArr[0] + "!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ssr!2srs!4v1497371916951";
       })
-  
     })
     .then(function(){
-
     }) 
 }) //then
- }
+}
+
+
+
+
+
