@@ -84,7 +84,6 @@ function myFunction(){
     accessToken: 'pk.eyJ1IjoiZG92bGExOTkyIiwiYSI6ImNqZnM0aG9nMzAwYWMycXA5OHlra2dnc2YifQ.0jZcVmYULoRh9DZewROQOA'
 }).addTo(mymap);
 
-
 function onMapClick(e){
     console.log("You clicked the map at " + e.latlng);
 };
@@ -155,7 +154,6 @@ marker14.bindPopup("<b><a href='https://en.wikipedia.org/wiki/Pupin_Bridge' targ
                     takeWeekIE = myDays.split(',')
                     var dow = takeWeekIE[moment(momDate.join('-').slice(1)).day()]
         };*/
-
                  var dow = takeWeek[moment(momDate.join('-').slice(1)).day()]  /*moment fine code*/
                  var storeImageUse = storeText.match(/"http[^\s]+ /);
                  var myImage = storeImageUse[0];

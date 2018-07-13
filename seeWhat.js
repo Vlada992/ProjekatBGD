@@ -1,4 +1,5 @@
 function invokSkver(visible, notVisb1, notVisb2, notVisb3, notVisb4) {
+  
   document.getElementById(visible).style.display = 'block';
   document.getElementById(notVisb1).style.display = 'none';
   document.getElementById(notVisb2).style.display = 'none';
@@ -182,7 +183,7 @@ fetch('https://api.foursquare.com/v2/venues/search?ll=44.8099375,20.4494431&cate
       })
     //var idShops = localStorage.getItem('shopIds4').split(',');
   })
-  .then(() => {
+  .then(()=> {
     fetch('https://api.foursquare.com/v2/venues/search?ll=44.8099375,20.4494431&categoryId=4deefb944765f83613cdba6e&&limit=50&client_id=KVMJZ1HNLYIFF1LFGHK2151NCNXXOOP3JTKNB1RGZNVBG4CU&client_secret=ISR0GKYPL22ETHND0VCOSIULQ2VZIH1IH2IUB3TWLLWIL3SC&v=20180130')
       .then(historicSites=> {
         return historicSites.json();
