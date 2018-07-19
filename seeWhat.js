@@ -1,22 +1,41 @@
-function invokSkver(visible, notVisb1, notVisb2, notVisb3, notVisb4) {
-  
-  document.getElementById(visible).style.display = 'block';
+let pgid = []
+function invokSkver(visible, notVisb1, notVisb2, notVisb3, notVisb4, e){
+  let eachId = e.path["0"].id;
+  let thisPg1 = document.getElementById('eventFa').id
+  let thisPg2 =  document.getElementById('bedFa').id
+  let thisPg3 =  document.getElementById('shopFa').id
+  let thisPg4 =  document.getElementById('foodFa').id
+  let thisPg5 =  document.getElementById('sitesFa').id
+  pgid = [thisPg1, thisPg2, thisPg3, thisPg4, thisPg5];
+  document.getElementById(eachId).style.borderBottom = '4px solid #8CB240';
+  document.getElementById(eachId).style.color = '#8CB240';
+
+  for(let i = 0; i <pgid.length; i++){
+  if( document.getElementById(pgid[i]).style.borderBottom != ''){
+   document.getElementById(pgid[i]).style.borderBottom = '';
+   document.getElementById(pgid[i]).style.color = '';
+   document.getElementById(eachId).style.borderBottom = '4px solid  #8CB240';
+   document.getElementById(eachId).style.color = '#8CB240';
+  }
+}
+  document.getElementById(visible).style.display  = 'block';
   document.getElementById(notVisb1).style.display = 'none';
   document.getElementById(notVisb2).style.display = 'none';
   document.getElementById(notVisb3).style.display = 'none';
   document.getElementById(notVisb4).style.display = 'none';
 };
 
-
 fetch('https://api.foursquare.com/v2/venues/search?ll=44.8099375,20.4494431&categoryId=4d4b7105d754a06374d81259&&limit=50&client_id=SYQLZ1DXBSZYMCXG3QUGBBHDRM23YDDLO5SAZCALXMFUR3VS&client_secret=HHFBNGSRMFOUAFYQCTVMR1FK4HR4GZL5LO0T0BYGQVFUHSW0&v=20180130')
-  .then(xVenAll => {
+  .then(xVenAll=> {
     return xVenAll.json();
   })
   .then(foodY=> {
     var allVenueX = foodY.response.venues;
-    for (let i = 0; i <= 41; i++) {
-      var storeImageFSQ = allVenueX[i].categories[0].icon.prefix + 64 + allVenueX[i].categories[0].icon.suffix;
+    document.getElementById('foodFa').style.borderBottom = '4px solid #8CB240';
+    document.getElementById('foodFa').style.color = '#8CB240';
 
+    for (let i = 0; i <= 41; i++){
+      var storeImageFSQ = allVenueX[i].categories[0].icon.prefix + 64 + allVenueX[i].categories[0].icon.suffix;
       localStorage.setItem('eto3', 'images/imageeditNEW3.png');
       var defImgS = localStorage.getItem('eto3');
       var storeCateg = allVenueX[i].categories[0].name;
@@ -39,14 +58,14 @@ fetch('https://api.foursquare.com/v2/venues/search?ll=44.8099375,20.4494431&cate
      Categories: <span id='sq4StoreCat'>${storeCateg}</span></p>`;
     }
   })
-  .then(() => {
+  .then(()=> {
     $.ajax({
       url: 'http://api.eventful.com/json/events/search?app_key=RWcbt5k294VSHHmJ&l=Belgrade&date=Future&image_sizes=block100,medium,dropshadow250&page_size=50&within=30',
       accepts: {
         accepts: "application/json  charset=utf-8"
       },
       dataType: 'jsonp',
-      success: eventJson => {
+      success: eventJson=> {
         var takeEvent = eventJson.events.event;
         var myDays = 'Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday';
         myMont = 'January, February, March, April, May, June, July, August, September, October, November, December';
@@ -87,7 +106,8 @@ fetch('https://api.foursquare.com/v2/venues/search?ll=44.8099375,20.4494431&cate
           var takeDesc = takeEvent[l].description != undefined ? takeEvent[l].description.slice(0, 38) : 'No description'
           var takeLL = takeEvent[l].latitude.slice(takeEvent[l].latitude.length - 2) != 86 ? 'https://www.google.com/maps/search/?api=1&query=' + takeEvent[l].latitude + ',' + takeEvent[l].longitude : '';
 
-          document.getElementsByClassName('item1')[l].children[1].innerHTML = ` <p id='evTitl1'>${evTitle}</p>&nbsp;&nbsp; <p id=styleHr1></p><br>  <div class='divEvnAll' class='container'> <p id=monEvF>
+
+         document.getElementsByClassName('item1')[l].children[1].innerHTML = ` <p id='evTitl1'>${evTitle}</p>&nbsp;&nbsp; <p id=styleHr1></p><br>  <div class='divEvnAll' class='container'> <p id=monEvF>
          <img title='Date and time' src="images/calendar-with-a-clock-time-tools.png"/> &nbsp;  <span id='monDayId'>${monIs} ${dayIs}</span>, &nbsp;${yrIs} &nbsp; <span id =dashIdEvn>&minus;</span>&nbsp;  
         ${dayName}&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-long-arrow-right faIcn1"></i>  &nbsp;<span id=opnTmEvn>${opnTime}  &nbsp;&nbsp; </p>  <p id=dNameEvn> <img title='City' src="images/skyline.png"/>
          &nbsp;<span id=evnLocF>${evnLoc},  ${countName} &nbsp; <img src='images/favicon-32x32.png'/></span></span></p> <p id='locEvnIc'><img title='Venue location'  src ="images/placeholderNewLoc.png"/>
@@ -96,7 +116,7 @@ fetch('https://api.foursquare.com/v2/venues/search?ll=44.8099375,20.4494431&cate
           <p id='linkEnvId'><img title= 'Event url' src="images/http.png"/> &nbsp; <a id='venEvnUrl'  title='Visit eventfull.com for more info'  href= ${evUrl} target = "_blank">${eveUrlPrt}...</a>
          </p><p id="descIdEv"><i title='Venue name' id ='icnPDesc' class="fa fa-paragraph"></i> &nbsp;&nbsp;&nbsp;&nbsp;<a id='descPrtId' href =${evUrl} target=_blank>${takeDesc}...</a></p>   <img id='imgDrop250  src= ${takeImg}/> </div>`
         }
-        for (let xx = 0; xx < imageArr.length; xx++) {
+        for(let xx = 0; xx < imageArr.length; xx++){
           document.getElementsByClassName('item1')[iterArr[xx]].children[1].innerHTML += `<img id='picForEvent' src =${imageArr[xx]}/>`
         }
       }
@@ -107,7 +127,7 @@ fetch('https://api.foursquare.com/v2/venues/search?ll=44.8099375,20.4494431&cate
       .then(resHotel => {
         return resHotel.json();
       })
-      .then(hotelS => {
+      .then(hotelS=> {
         let allVenueX = hotelS.response.venues;
         for (let i = 0; i <= 40; i++) {
           var storeImageFSQ = allVenueX[i].categories[0].icon.prefix + 64 + allVenueX[i].categories[0].icon.suffix;
@@ -137,7 +157,7 @@ fetch('https://api.foursquare.com/v2/venues/search?ll=44.8099375,20.4494431&cate
       .then(shopS => {
         return shopS.json();
       })
-      .then(storeShops => {
+      .then(storeShops=> {
         console.log('shops API:', storeShops)
         let allVenueX = storeShops.response.venues;
         let eachVenId = [];
@@ -181,7 +201,6 @@ fetch('https://api.foursquare.com/v2/venues/search?ll=44.8099375,20.4494431&cate
           // }) //then inner
         }
       })
-    //var idShops = localStorage.getItem('shopIds4').split(',');
   })
   .then(()=> {
     fetch('https://api.foursquare.com/v2/venues/search?ll=44.8099375,20.4494431&categoryId=4deefb944765f83613cdba6e&&limit=50&client_id=KVMJZ1HNLYIFF1LFGHK2151NCNXXOOP3JTKNB1RGZNVBG4CU&client_secret=ISR0GKYPL22ETHND0VCOSIULQ2VZIH1IH2IUB3TWLLWIL3SC&v=20180130')
@@ -204,9 +223,7 @@ fetch('https://api.foursquare.com/v2/venues/search?ll=44.8099375,20.4494431&cate
           var storeAddr2 = allVenueX[i].location.formattedAddress[2] != undefined ? `&nbsp; ${allVenueX[i].location.formattedAddress[2]}` : '&nbsp;  Serbia';
           var number = allVenueX[i].contact.formattedPhone != undefined ? '' + `${allVenueX[i].contact.formattedPhone}` : `<span id ='ifNoNumId'>No number info</span>`;
           var takeLatLon = 'https://www.google.com/maps/search/?api=1&query=' + allVenueX[i].location.lat + ',' + allVenueX[i].location.lng
-           
-           document.getElementById('sitesFa').style.color ='red';
-
+          
            document.getElementsByClassName('item55')[i].children[0].innerHTML = `<h3 title = ${allVenueX[i].categories[0].name} id = 'titleFSQ1'> ${allVenueX[i].name} &nbsp;&nbsp;&nbsp;<img id= 'imgFSQ1' src =${storeImageFSQ} />
              <img title='sites/attractions' id='defImg3' src=${defImgS}></h3>
              <div id ='fsqTextDiv'> <p id ='adress4sq1'> <i title='Location of place' class="fa fa-map-signs"></i> <a id='latLonForSq' href=${takeLatLon} target=_blank title='Click to get there'>&nbsp;&nbsp;&nbsp;&nbsp;${storeAddress}</a><br>
@@ -217,9 +234,3 @@ fetch('https://api.foursquare.com/v2/venues/search?ll=44.8099375,20.4494431&cate
         };
       })
   }) //last then
-$('#eventFa').on('mouseover',()=> {
-  document.getElementById('eventFa').src ='images/editConc.png';
-});
-$('#eventFa').on('mouseleave',()=> {
-  document.getElementById('eventFa').src ='images/Concert-512.png';
-});

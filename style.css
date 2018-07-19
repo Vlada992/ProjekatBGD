@@ -834,7 +834,7 @@ a.icon {
 }
 
 #storeMap {
-  width: auto;
+  width: 90%;
   height: 520px;
   border: 4px solid #8CB240;
   border-bottom: 0px;
@@ -2902,19 +2902,20 @@ a.icon {
   margin-bottom: 30%;
   border: 4px solid #8CB240;
   border-top: 0px;
-  margin-bottom: -10%;
   box-shadow: 25px 20px 35px #888888;
   height: 600px !important;
   border: 4px solid #8CB240;
-  width: 100%
+  width: 90%
 }
 
-#mapid1 {
-  height: 500px;
+#mapid4 {
+  margin-bottom: 30%;
   border: 4px solid #8CB240;
   border-top: 0px;
-  margin-bottom: -10%;
   box-shadow: 25px 20px 35px #888888;
+  height: 600px !important;
+  border: 4px solid #8CB240;
+  width: 90%
 }
 
 #divFlx1 {
@@ -2982,12 +2983,14 @@ a.icon {
 #bedFa {
   font-size: 25px;
   margin: 0 8px;
+  padding-bottom:15px;
 }
 
 #shopFa {
   font-size: 25px;
   color: #551A8B;
   margin: 0 8px;
+  padding-bottom:15px;
 }
 
 #shopFa:hover {
@@ -2998,6 +3001,7 @@ a.icon {
   font-size: 25px;
   color: #ff4500;
   margin: 0 8px;
+  padding-bottom:15px;
 }
 
 #foodFa:hover {
@@ -3005,12 +3009,14 @@ a.icon {
 }
 
 #eventFa {
-  width: 40px;
-  height: 40px;
-  color: #7a5230;
+  color: #FD9E0C;
   margin-left: 8px;
   margin-right: 8px;
   padding-bottom: 15px;
+  font-size: 25px;
+}
+#eventFa:hover {
+  color:#f88507;
 }
 
 #sitesFa {
@@ -3029,6 +3035,7 @@ a.icon {
   display: flex;
   margin: 0 -5px;
   margin-left: 5%;
+  margin-bottom:3%;
 }
 
 #imgDrop250 {

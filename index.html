@@ -290,22 +290,21 @@
         <!--End of whatToSee.html pag2-->
     </div>
     <div id="Page2" style="display:none">
-        <!--Start of index.html-->
         <div id='forToSeePage' class='container'>
             <div id='flexIcn' class='container'>
-                <a onclick="return invokSkver('thirdCol', 'divFourSQ', 'fourthCol', 'secondCol','fifthCol')">
-                    <i id='bedFa' class="fa fa-bed"></i>
+                <a onclick="return invokSkver('thirdCol', 'divFourSQ', 'fourthCol', 'secondCol','fifthCol',event)">
+                    <i title='Where to stay' id='bedFa' class="fa fa-bed"></i>
                 </a>
-                <a onclick="return invokSkver('fourthCol', 'divFourSQ', 'thirdCol', 'secondCol','fifthCol')">
-                    <i id='shopFa' class="fa fa-shopping-basket"></i>
+                <a onclick="return invokSkver('fourthCol', 'divFourSQ', 'thirdCol', 'secondCol','fifthCol',event)">
+                    <i title='Where to do shopping' id='shopFa' class="fa fa-shopping-basket"></i>
                 </a>
-                <a onclick="return invokSkver('divFourSQ', 'thirdCol', 'fourthCol', 'secondCol','fifthCol')">
-                    <i id='foodFa' class="fa fa-cutlery"></i>
+                <a onclick="return invokSkver('divFourSQ', 'thirdCol', 'fourthCol', 'secondCol','fifthCol',event)">
+                    <i title='Where to eat/drink' id='foodFa' class="fa fa-cutlery"></i>
                 </a>
-                <a onclick="return invokSkver('secondCol', 'thirdCol', 'fourthCol', 'divFourSQ','fifthCol')">
-                    <img id='eventFa' src='images/Concert-512.png'> </a>
-                <a id='siteA' onclick="return invokSkver('fifthCol', 'thirdCol', 'fourthCol', 'divFourSQ','secondCol')">
-                    <i id='sitesFa' class="fa fa-camera-retro"></i>
+                <a onclick="return invokSkver('secondCol', 'thirdCol', 'fourthCol', 'divFourSQ','fifthCol',event)">
+                    <i id='eventFa' class="fas fa-music"></i>
+                <a onclick="return invokSkver('fifthCol', 'thirdCol', 'fourthCol', 'divFourSQ','secondCol',event)">
+                    <i title='Touristic spots' id='sitesFa' class="fa fa-camera-retro"></i>
                 </a>
                 <br>
             </div>
@@ -1142,6 +1141,7 @@
         <p>Loading something...</p>
     </div>
     <div id="Page4" style="display:none">
+
         <div id='forMorePage' class="container">
             <div class="row">
                 <div class="col-md-6">
@@ -1221,10 +1221,12 @@
                 <div class="col-md-12">
 
                     <div id="storeMap">
+
                         <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d90588.96404060595!2d20.430197!3d44.8031221!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ssr!2srs!4v1497371916951"
                             width="100%" height="513" frameborder="0" style="border:0" allowfullscreen></iframe>
                     </div>
                     <div id="mapForMedGrid">
+
                         <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d181101.1457424313!2d20.368321280300464!3d44.827565975580676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ssr!2srs!4v1497456711092"
                             width="250" height="350" style="border:0" allowfullscreen></iframe>
                     </div>
@@ -1232,10 +1234,13 @@
 
                 <div id='styleCol2' class='col-md-12'>
                     <div id='mapid3' class='container'></div>
+                    <div style='display:none' id='mapid4' class='container'></div>
+
                 </div>
             </div>
 
         </div>
+
     </div>
     <!--End of weatherMore page -->
     <div id='Page5' style='display:none'>
