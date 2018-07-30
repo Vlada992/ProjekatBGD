@@ -87,7 +87,8 @@ function myFunction(){
 let markLat= [44.816459,44.831891,44.822882,44.818986,44.814906,44.797246,44.799846,44.790364,44.802545,44.810918,44.828376,44.801346,44.8083,44.741856,44.864379]
 let markLon = [20.460835,20.435944,20.449848, 20.294838,20.448732,20.42573,20.436177, 20.409937,20.440793,20.44767,20.491916,20.439154, 20.488526,20.319353,20.381114]
 let urlW = ['Republic_Square_(Belgrade)','Great_War_Island','Belgrade_Fortress','Belgrade_Nikola_Tesla_Airport','Branko%27s_Bridge','Ada_Bridge','New_Railway_Bridge','Ada_Ciganlija','Gazela_Bridge','Old_Sava_Bridge','Pan%C4%8Devo_Bridge','Old_Railway_Bridge','Belgrade_New_Cemetery','Ostru%C5%BEnica_Bridge','Pupin_Bridge']; 
-for(let r=0; r < markLat.length; r++){
+let lenMark = markLat.length;
+for(let r=0; r < lenMark; r++){
 L.marker([markLat[r], markLon[r]]).addTo(mymap).bindPopup(`<br><b><a href='https://en.wikipedia.org/wiki/${urlW[r]}' target='_blank'>${decodeURI(urlW[r].split('_').join(' '))}</a></b>`)
 }
 
@@ -103,7 +104,8 @@ var circle = L.circle([44.7950478,20.4394765,17.71],{
     })
     .then(beogradRS=>{
       console.log('BG RSS feed:',beogradRS);
-        for(var i = 0; i < beogradRS.query.count; i++){ 
+      var len1 =  beogradRS.query.count
+        for(var i = 0; i < len1; i++){ 
                  var dataR = beogradRS.query.results.item[i];
                  var storeTitle = dataR.title;
                  var storeLink = dataR.link;
@@ -137,7 +139,7 @@ var circle = L.circle([44.7950478,20.4394765,17.71],{
                 let d =  blicRSS.query.results.item[i];
                 var storeTitle1   =  d.title;
                 var storeLink1    =  d.link;
-                var storeText1    = `&#x2014; &nbsp;d.description`;
+                var storeText1    = `&#x2014;` + d.description;
                 var storeDate1    =  d.pubDate;
                 var storeDatePart1 =  storeDate1.slice(0, storeDate1.length - 23);
                 var storeDatePart2 =  storeDate1.slice(storeDate1.length - 23, storeDate1.length - storeDate1.length - 15);

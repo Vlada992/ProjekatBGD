@@ -1,8 +1,10 @@
-let mymap3;
-let mymap4;
 
-function callNow() {
-  if (mymap3 != undefined) {
+  let mymap3;
+  let mymap4;
+ 
+
+function callNow(){
+  if(mymap3 != undefined){
     mymap3.remove();
   }
   mymap3 = L.map('mapid3').setView([44.787197, 20.457271], 11);
@@ -23,8 +25,8 @@ function callNow() {
 }
 
 
-function callNowWithDiff(lat1, lon1) {
-  if (mymap4 != undefined) {
+function callNowWithDiff(lat1, lon1){
+  if(mymap4 != undefined){
     mymap4.remove();
   }
   document.getElementById('mapid3').style.display = 'none';
@@ -46,23 +48,27 @@ function callNowWithDiff(lat1, lon1) {
   }, 1000);
 }
 
-
+(function(){
 let blinkDiv = document.getElementsByClassName('blink_me');
-blinkDiv["0"].style.backgroundColor = '#ff9999';
-blinkDiv["0"].style.borderColor = '#ff9999';
-
-function blinker() {
+  blinkDiv["0"].style.backgroundColor = '#ff9999';
+  blinkDiv["0"].style.borderColor = '#ff9999';
+function blinker(){
   blinkDiv["0"].style.backgroundColor = 'red';
   blinkDiv["0"].style.borderColor = 'red';
   blinkDiv["0"].style.boxShadow = "1px 5px 77px 30px red";
   $('.blink_me').fadeToggle(1300);
 }
 setInterval(blinker, 1300);
+})();
 
 
-mainF()
 
-function mainF() {
+
+
+(function(){ mainF() })();
+
+
+function mainF(){
   fetch('http://api.openweathermap.org/data/2.5/weather?q=Belgrade&units=imperial&APPID=69190f2d7f60d5551b77187e81d50575')
     .then(eks => {
       return eks.json();
@@ -298,7 +304,7 @@ function showF() {
         .then((tmZon) => {
           updateTime();
 
-          function updateTime() {
+          function updateTime(){
             var timeDiv = document.getElementById("date2");
             timeDiv.innerHTML = '';
             document.getElementById("date1").style.display = 'none';
