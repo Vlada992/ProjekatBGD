@@ -303,12 +303,20 @@
                 </a>
                 <a onclick="return invokSkver('secondCol', 'thirdCol', 'fourthCol', 'divFourSQ','fifthCol',event)">
                     <i id='eventFa' class="fas fa-music"></i>
+                </a>
+
                 <a onclick="return invokSkver('fifthCol', 'thirdCol', 'fourthCol', 'divFourSQ','secondCol',event)">
                     <i title='Touristic spots' id='sitesFa' class="fa fa-camera-retro"></i>
                 </a>
+
+
+                <a onclick="changeColor('thirdCol', 'fourthCol', 'divFourSQ', 'secondCol','fifthCol', 'stylePalet')">
+                 <img title='add/remove gradient color!' id='stylePalet' src='images/paletEmpty.png'/>
+                </a>
+                
                 <br>
             </div>
-            <div id='divFourSQ' class='container'>
+            <div id='divFourSQ' class='container divFourSQ'>
                 <div id="myCarousel2" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="item active item4">
@@ -459,7 +467,7 @@
                 <div id='forIndicator4Sq'>
                 </div>
             </div>
-            <div style='display:none' id='secondCol' class='container'>
+            <div style='display:none' id='secondCol' class='container secondCol'>
                 <!-- start of second call-->
                 <div id="myCarousel1" class="carousel slide" data-ride="carousel">
                     <div class="eventful-badge eventful-small">
@@ -569,7 +577,7 @@
                     <!-- end of second col-->
                 </div>
             </div>
-            <div style='display:none' id='thirdCol' class='container'>
+            <div style='display:none' id='thirdCol' class='container thirdCol'>
                 <!-- Add carousel here-->
                 <div id="myCarousel3" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
@@ -756,7 +764,7 @@
                 </div>
             </div>
             <!-- end of thirdCOL -->
-            <div style='display:none' id='fourthCol' class='container'>
+            <div style='display:none' id='fourthCol' class='container fourthCol'>
                 <div id="myCarousel4" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="item active item44">
@@ -942,7 +950,7 @@
                 </div>
             </div>
             <!--pocetak petog diva-->
-            <div style='display:none' id='fifthCol' class='container'>
+            <div style='display:none' id='fifthCol' class='container fifthCol'>
                 <div id="myCarousel5" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="item active item55">
@@ -1245,9 +1253,20 @@
     <!--End of weatherMore page -->
     <div id='Page5' style='display:none'>
         <div id='forToSeePage' class='container'>
-        </div>
+             <img id='paperId' src='images/finalImg1.jpg'/>
+
+             <div id='contactId'>
+             <h2><img src='images/user.png'/>     &nbsp; Contact info:</h2><br><br>
+             <h4><img src='images/oldphone.png'/> &nbsp; Phone: &nbsp; <span id ='numbContSpan'>063 7 312 033</span> </h4>
+             <h4><img src='images/gmail1.png'/>   &nbsp; Gmail: &nbsp; vladanng@gmail.com </h4>
+             <h4><img src='images/gitIcon.png'/>  &nbsp; GitHub: &nbsp; <a class='contLinkId' href ='https://github.com/Vlada992' target='_blank'>github.com/Vlada992</a></h4>
+             <h4><img class='contImgSize' src='http://www.softlab.ntua.gr/~nickie/images/logo/codewars.png'/> &nbsp; Codewars: &nbsp; <a class='contLinkId' href ='https://www.codewars.com/users/Vlada992' target='_blank'>codewars/com/users/Vlada992</a></h4>
+            </div>
+            </div>
     </div>
     <!--</div>-->
+    https://www.facebook.com/vladanng92
+
 
     <footer class=" footStyle">
         <h6 id="footP">

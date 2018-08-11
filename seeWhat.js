@@ -1,4 +1,6 @@
 let pgid = []
+let togleR = true;
+
 function invokSkver(visible, notVisb1, notVisb2, notVisb3, notVisb4, e){
   let eachId = e.path["0"].id;
   let thisPg1 = document.getElementById('eventFa').id
@@ -24,6 +26,31 @@ function invokSkver(visible, notVisb1, notVisb2, notVisb3, notVisb4, e){
   document.getElementById(notVisb3).style.display = 'none';
   document.getElementById(notVisb4).style.display = 'none';
 };
+
+
+function changeColor(div1, div2, div3, div4, div5, paletImg){
+ let colorArr = ['thirdCol','fourthCol','divFourSQ','secondCol', 'fifthCol'];
+ let pagesArr = [div1,div2,div3,div4,div5]
+ if(togleR == true){
+ colorArr.forEach((color, ind) => {
+  document.getElementById(pagesArr[ind]).classList.remove(color);
+  document.getElementById(pagesArr[ind]).classList.add( color + '1');
+  document.getElementById(paletImg).src = 'images/paletFill.png'
+ })
+ togleR = false;
+ }else {
+  colorArr.forEach((color, ind) => {
+  document.getElementById(pagesArr[ind]).classList.remove(color + '1');
+  document.getElementById(pagesArr[ind]).classList.add(color);
+  document.getElementById(paletImg).src = 'images/paletEmpty.png';
+  });
+  togleR = true;
+};
+ 
+
+};
+
+
 
 fetch('https://api.foursquare.com/v2/venues/search?ll=44.8099375,20.4494431&categoryId=4d4b7105d754a06374d81259&&limit=50&client_id=SYQLZ1DXBSZYMCXG3QUGBBHDRM23YDDLO5SAZCALXMFUR3VS&client_secret=HHFBNGSRMFOUAFYQCTVMR1FK4HR4GZL5LO0T0BYGQVFUHSW0&v=20180130')
   .then(xVenAll=> {

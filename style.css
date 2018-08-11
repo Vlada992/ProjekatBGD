@@ -2133,14 +2133,14 @@ a.icon {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: -5%;
-  padding-top: 10%;
+  /*padding-top: 10%;*/
 }
 
 #firstRow1 {
   border: 1px solid gray;
 }
 
-#divFourSQ {
+.divFourSQ {
   display: flex;
   justify-content: center;
   background-color: #ceceb5;
@@ -2151,7 +2151,20 @@ a.icon {
   box-shadow: 4px -6px 24px #888888;
 }
 
-#secondCol {
+
+.divFourSQ1 {
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(-85deg, #ff4500 0%, rgb(140, 178, 64) 55%);
+  opacity:0.8;
+  height: 600px;
+  border: 2px solid #8CB240;
+  width: 90%;
+  padding: 0px;
+  box-shadow: 4px -6px 24px #888888;
+}
+
+.secondCol {
   display: flex;
   justify-content: center;
   border: 2px solid #8CB240;
@@ -2162,7 +2175,50 @@ a.icon {
   box-shadow: 4px -6px 24px #888888;
 }
 
-#thirdCol {
+.secondCol1 {
+  display: flex;
+  justify-content: center;
+  border: 2px solid #8CB240;
+  height: 600px;
+  background-color: #ceceb5;
+  background: linear-gradient(-85deg, #FD9E0C 0%, rgb(140, 178, 64) 55%); 
+  opacity:0.8;
+  width: 90%;
+  padding: 0px;
+  box-shadow: 4px -6px 24px #888888;
+}
+
+
+
+.thirdCol {
+  display: flex;
+  justify-content: center;
+  width: 90%;
+  background-color: #ceceb5;
+  opacity:1;
+  height: 600px;
+  border: 2px solid #8CB240;
+  padding: 0px;
+  box-shadow: 4px -6px 24px #888888;
+}
+
+.thirdCol1 {
+  display: flex;
+  justify-content: center;
+  width: 90%;
+  background: linear-gradient(-85deg, #337ab7 0%, rgb(140, 178, 64) 55%); 
+  opacity:0.8;
+  height: 600px;
+  border: 2px solid #8CB240;
+  padding: 0px;
+  box-shadow: 4px -6px 24px #888888;
+}
+
+
+
+
+
+.fourthCol {
   display: flex;
   justify-content: center;
   width: 90%;
@@ -2172,8 +2228,21 @@ a.icon {
   padding: 0px;
   box-shadow: 4px -6px 24px #888888;
 }
+.fourthCol1 {
+  display: flex;
+  justify-content: center;
+  width: 90%;
+  background: linear-gradient(-85deg, #551A8B 0%, rgb(140, 178, 64) 55%); 
+  opacity:0.8;
+  height: 600px;
+  border: 2px solid #8CB240;
+  padding: 0px;
+  box-shadow: 4px -6px 24px #888888;
+}
 
-#fourthCol {
+
+
+.fifthCol {
   display: flex;
   justify-content: center;
   width: 90%;
@@ -2183,16 +2252,21 @@ a.icon {
   padding: 0px;
   box-shadow: 4px -6px 24px #888888;
 }
-
-#fifthCol {
+.fifthCol1 {
   display: flex;
   justify-content: center;
   width: 90%;
-  background-color: #ceceb5;
+  background: linear-gradient(-85deg, #7a5230 0%, rgb(140, 178, 64) 55%); 
+  opacity:0.8;
   height: 600px;
   border: 2px solid #8CB240;
   padding: 0px;
   box-shadow: 4px -6px 24px #888888;
+}
+
+#stylePalet {
+  width:36px;
+  height:36px;
 }
 
 #myCarousel {
@@ -2296,18 +2370,18 @@ a.icon {
 
 #adress4sq {
   padding: 10px;
-  font-weight: 700;
+  font-weight: 600;
   font-family: 'Times New Roman';
-  color: gray;
+  color: black;
   font-size: 16px;
   margin-top: 15%;
 }
 
 #adress4sq1 {
   padding: 10px;
-  font-weight: 700;
+  font-weight: 600;
   font-family: 'Times New Roman';
-  color: gray;
+  color: black;
   font-size: 16px;
   margin-top: 15%;
 }
@@ -2352,6 +2426,7 @@ a.icon {
 
 #ifNoNumId {
   color: gray;
+  color:black;
 }
 
 #style4ImgUrl {
@@ -2363,7 +2438,8 @@ a.icon {
 }
 
 #sq4UrlTxt {
-  color: gray;
+  /*color: gray;*/
+  color:black;
   font-weight: 700;
   margin-left: 46px;
   padding-bottom: 3px;
@@ -3022,7 +3098,7 @@ a.icon {
 #sitesFa {
   color: #7a5230;
   margin-left: 8px;
-  margin-right: 8px;
+  margin-right: 40px;
   padding-bottom: 15px;
   font-size: 26px;
 }
@@ -3060,4 +3136,35 @@ a.icon {
 #picForEvent {
   margin-left: 70%;
   margin-top: -30%;
+}
+
+
+#contactId {
+  font-family: 'Bernard MT';
+  font-size: 24px;
+  color:#a02700;
+  position:absolute;
+  top: 40%;
+  left: 10%;
+}
+
+#paperId {
+  background-color:gray;
+}
+
+.contLinkId {
+  text-decoration:none;
+  font-family: 'Bernard MT';
+  color:#a02700;
+}
+
+.contLinkId:hover {
+  color:#3e0f00;
+}
+.contImgSize {
+  width:32px;
+  height:32px;
+}
+#numbContSpan {
+  font-family: 'Bodoni MT';
 }
