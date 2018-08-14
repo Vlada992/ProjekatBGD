@@ -53,32 +53,33 @@
                 </div>
             </div>
         </div>
-        <a id='navA1' onclick="return show('Page4','Page1', 'Page3', 'Page2', 'Page5')" title='local and global weather, current date/time, google maps..'
+        <a id='navA1' onclick="return show('navA1','Page4','Page1', 'Page3', 'Page2', 'Page5')" title='local and global weather, current date/time, google maps..'
             href="#about">WEATHER &amp; MORE &nbsp;&nbsp;
             <i class="fa fa-umbrella styleNavIcn"></i>
         </a>
-        <a id='navA2' onclick="return show('Page5','Page1', 'Page3', 'Page2','Page4' )" title='contact information' href="#infoCont">CONTACT &nbsp;&nbsp;
+        <a id='navA2' onclick="return show('navA2','Page5','Page1', 'Page3', 'Page2','Page4' )" title='contact information' href="#infoCont">CONTACT &nbsp;&nbsp;
             <i class="fa fa-phone"></i>
         </a>
-        <a id='navA3' onclick="return show('Page2','Page1', 'Page3', 'Page4','Page5')" title='Places/Venues/Things to do' href="#contact">WHAT TO SEE/DO &nbsp;&nbsp;
+        <a id='navA3' onclick="return show('navA3','Page2','Page1', 'Page3', 'Page4','Page5')" title='Places/Venues/Things to do' href="#contact">WHAT TO SEE/DO &nbsp;&nbsp;
             <i class="fa fa-map-marker"></i>
         </a>
-        <a id='navA4' onclick="return show('Page3','Page1', 'Page2', 'Page4','Page5')" title='Find more about BG' href="#AboutBGD.html">ABOUT BG &nbsp;&nbsp;
+        <a id='navA4' onclick="return show('navA4', 'Page3','Page1', 'Page2', 'Page4','Page5')" title='Find more about BG' href="#AboutBGD.html">ABOUT BG &nbsp;&nbsp;
             <i class="fa fa-info"></i>
             <img id='wip1' src="images/i_WIP-300x269.png"> </a>
-        <a id='navA5' onclick="return show('Page1','Page2', 'Page3', 'Page4','Page5')" title='Home and main page' href="#home">HOME &nbsp;&nbsp;
+        <a id='navA5' onclick="return show('navA5', 'Page1','Page2', 'Page3', 'Page4','Page5')" title='Home and main page' href="#home">HOME &nbsp;&nbsp;
             <i class="fa fa-home"></i>
         </a>
         <a title='Local weather, current date/time, google maps...' href="javascript:void(0);" style="font-size:15px;" class="icon container"
-            onclick="myFunction()">
+            onclick="myFunc1()">
             <i class='glyphicon glyphicon-triangle-bottom'></i>
             <br>&#9776;</a>
     </div>
 
-    <div id="Page1">
+    <div id="Page1" >
         <div class='lajnL'></div>
         <div id='forHomePage' class='container'>
             <div id="mapid" class='container'></div>
+            <div id="mapid1" class='container'></div>
             <br>
             <br>
             <br>
@@ -292,26 +293,27 @@
     <div id="Page2" style="display:none">
         <div id='forToSeePage' class='container'>
             <div id='flexIcn' class='container'>
-                <a onclick="return invokSkver('thirdCol', 'divFourSQ', 'fourthCol', 'secondCol','fifthCol',event)">
-                    <i title='Where to stay' id='bedFa' class="fa fa-bed"></i>
+                <a onclick="return invokSkver(event, 'thirdCol', 'divFourSQ', 'fourthCol', 'secondCol','fifthCol')">
+                    <i title='Where to stay' id='bedFa' class="fa fa-bed  icnSkver"></i>
                 </a>
-                <a onclick="return invokSkver('fourthCol', 'divFourSQ', 'thirdCol', 'secondCol','fifthCol',event)">
-                    <i title='Where to do shopping' id='shopFa' class="fa fa-shopping-basket"></i>
+                <a onclick="return invokSkver(event, 'fourthCol', 'divFourSQ', 'thirdCol', 'secondCol','fifthCol')">
+                    <i title='Where to do shopping' id='shopFa' class="fa fa-shopping-basket  icnSkver"></i>
                 </a>
-                <a onclick="return invokSkver('divFourSQ', 'thirdCol', 'fourthCol', 'secondCol','fifthCol',event)">
-                    <i title='Where to eat/drink' id='foodFa' class="fa fa-cutlery"></i>
+                <a onclick="return invokSkver(event, 'divFourSQ', 'thirdCol', 'fourthCol', 'secondCol','fifthCol')">
+                    <i title='Where to eat/drink' id='foodFa' class="fa fa-cutlery  icnSkver"></i>
                 </a>
-                <a onclick="return invokSkver('secondCol', 'thirdCol', 'fourthCol', 'divFourSQ','fifthCol',event)">
-                    <i id='eventFa' class="fas fa-music"></i>
-                </a>
-
-                <a onclick="return invokSkver('fifthCol', 'thirdCol', 'fourthCol', 'divFourSQ','secondCol',event)">
-                    <i title='Touristic spots' id='sitesFa' class="fa fa-camera-retro"></i>
+                <a onclick="return invokSkver(event, 'secondCol', 'thirdCol', 'fourthCol', 'divFourSQ','fifthCol')">
+                    <i title='concerts/gigs/festivals' id='eventFa' class="fas fa-music  icnSkver"></i>
                 </a>
 
+                <a onclick="return invokSkver(event, 'fifthCol', 'thirdCol', 'fourthCol', 'divFourSQ','secondCol')">
+                    <i title='Touristic spots' id='sitesFa' class="fa fa-camera-retro  icnSkver"></i>
+                </a>
 
-                <a onclick="changeColor('thirdCol', 'fourthCol', 'divFourSQ', 'secondCol','fifthCol', 'stylePalet')">
+
+                <a id='paletHref' onclick="changeColor( 'stylePalet', 'thirdCol', 'fourthCol', 'divFourSQ', 'secondCol','fifthCol')">
                  <img title='add/remove gradient color!' id='stylePalet' src='images/paletEmpty.png'/>
+                 <img id='paletBrush'/>
                 </a>
                 
                 <br>
@@ -1253,20 +1255,20 @@
     <!--End of weatherMore page -->
     <div id='Page5' style='display:none'>
         <div id='forToSeePage' class='container'>
-             <img id='paperId' src='images/finalImg1.jpg'/>
+             <img  id='paperId' src='images/finalImg1.jpg'/>
 
              <div id='contactId'>
-             <h2><img src='images/user.png'/>     &nbsp; Contact info:</h2><br><br>
-             <h4><img src='images/oldphone.png'/> &nbsp; Phone: &nbsp; <span id ='numbContSpan'>063 7 312 033</span> </h4>
-             <h4><img src='images/gmail1.png'/>   &nbsp; Gmail: &nbsp; vladanng@gmail.com </h4>
-             <h4><img src='images/gitIcon.png'/>  &nbsp; GitHub: &nbsp; <a class='contLinkId' href ='https://github.com/Vlada992' target='_blank'>github.com/Vlada992</a></h4>
-             <h4><img class='contImgSize' src='http://www.softlab.ntua.gr/~nickie/images/logo/codewars.png'/> &nbsp; Codewars: &nbsp; <a class='contLinkId' href ='https://www.codewars.com/users/Vlada992' target='_blank'>codewars/com/users/Vlada992</a></h4>
+             <h2 id ='h2Id'><img src='images/user.png'/>     &nbsp; Contact info:</h2><br><br>
+             <h4 class ='h4I'><img src='images/oldphone.png'/> &nbsp; Phone: &nbsp; <span id ='numbContSpan'>063 7 312 033</span> </h4>
+             <h4 class ='h4I'><img src='images/gmail1.png'/>   &nbsp; Gmail: &nbsp; vladanng@gmail.com </h4>
+             <h4 class ='h4I'><img src='images/gitIcon.png'/>  &nbsp; GitHub: &nbsp; <a class='contLinkId' href ='https://github.com/Vlada992' target='_blank'>github.com/Vlada992</a></h4>
+             <h4 class ='h4I'><img class='contImgSize' src='http://www.softlab.ntua.gr/~nickie/images/logo/codewars.png'/> &nbsp; Codewars: &nbsp; <a class='contLinkId' href ='https://www.codewars.com/users/Vlada992' target='_blank'>codewars/com/users/Vlada992</a></h4>
+             <h4 class ='h4I'><img class='contImgSize' src='images/face1.png'/> &nbsp; Facebook: &nbsp; <a class='contLinkId' href ='https://www.facebook.com/vladanng92' target='_blank'>facebook.com/vladanng92</a></h4>
+
             </div>
             </div>
     </div>
     <!--</div>-->
-    https://www.facebook.com/vladanng92
-
 
     <footer class=" footStyle">
         <h6 id="footP">

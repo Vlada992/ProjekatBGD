@@ -126,7 +126,7 @@ a.icon {
   top: auto;
   left: auto;
   margin: auto;
-  height: 800px;
+  height: 850px;
 }
 
 .img-size {
@@ -298,7 +298,7 @@ a.icon {
 
 #storeDes {
   color: #7d0000;
-  font-size: 27px;
+  font-size: 20px;
   letter-spacing: 2px;
   padding-top: 20px;
   font-weight: 900;
@@ -306,8 +306,8 @@ a.icon {
 
 #bracketsDes {
   color: #973232;
-  font-size: 22px;
-  font-weight: 900;
+  font-size: 219x;
+  font-weight: 700;
 }
 
 #btn1 {
@@ -827,7 +827,7 @@ a.icon {
 
 #wrapDivW {
   border: 3px solid #8CB240;
-  height: 800px;
+  height: 850px;
   background-color: #c2c2a3;
   margin: auto;
   box-shadow: 4px -6px 24px #888888;
@@ -2269,6 +2269,15 @@ a.icon {
   height:36px;
 }
 
+#paletBrush{
+  text-decoration:none;
+}
+#paletHref {
+  text-decoration:none;
+}
+  
+
+
 #myCarousel {
   height: 450px;
   width: 100%;
@@ -2973,6 +2982,14 @@ a.icon {
   border: 4px solid #8CB240;
   box-shadow: 25px 20px 35px #888888;
 }
+#mapid1 {
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  border: 4px solid #8CB240;
+  box-shadow: 25px 20px 35px #888888;
+}
 
 #mapid3 {
   margin-bottom: 30%;
@@ -3143,14 +3160,70 @@ a.icon {
   font-family: 'Bernard MT';
   font-size: 24px;
   color:#a02700;
-  position:absolute;
+  /*position:absolute;
   top: 40%;
-  left: 10%;
+  left: 10%;*/
+  margin-top: -50%;
+  margin-left: 8%;
+  display: flex;
+  flex-flow: column;
 }
 
 #paperId {
   background-color:gray;
+  /*width: 50%;*/
 }
+.h4I {
+  
+}
+
+#h2Id {
+
+}
+
+
+
+/**/
+@media screen and (max-width: 1200px) {
+  #contactId {margin-top: -63%;  margin-left: 10%;}
+  #paperId {background-color:gray; /*width: 50%;*/ margin-bottom:5%}
+}
+
+@media screen and (max-width: 990px) {
+  #contactId {margin-top: -86%;   margin-left: 12%; } 
+  #paperId {background-color:gray; /*width: 50%;*/ margin-bottom:15%}
+}
+
+@media screen and (max-width: 770px) {
+  #contactId {margin-top: -90%;   margin-left: 15%; margin-bottom:15%} 
+  #paperId {background-color:gray; /*width: 50%;*/}
+}
+
+
+@media screen and (max-width: 690px) {
+  #contactId {margin-top: -80%;  margin-left: 5%; margin-bottom:15%;} 
+  #paperId {background-color:gray; /*width: 50%;*/ width:55%}
+  .h4I {font-size:13px}
+  #h2Id {font-size:20px}
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .contLinkId {
   text-decoration:none;
@@ -3158,9 +3231,17 @@ a.icon {
   color:#a02700;
 }
 
+
+
 .contLinkId:hover {
   color:#3e0f00;
 }
+
+.contLinkId:active {
+  color:#8CB240
+}
+
+
 .contImgSize {
   width:32px;
   height:32px;

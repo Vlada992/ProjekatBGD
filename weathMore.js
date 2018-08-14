@@ -1,12 +1,8 @@
 
-  let mymap3;
-  let mymap4;
+  let mymap3, mymap4;
  
-
 function callNow(){
-  if(mymap3 != undefined){
-    mymap3.remove();
-  }
+  mymap3 != undefined ? mymap3.remove() : undefined;
   mymap3 = L.map('mapid3').setView([44.787197, 20.457271], 11);
   L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiZG92bGExOTkyIiwiYSI6ImNqZnM0aG9nMzAwYWMycXA5OHlra2dnc2YifQ.0jZcVmYULoRh9DZewROQOA', {
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com" target="_blank">Mapbox</a>',
@@ -14,7 +10,7 @@ function callNow(){
     id: 'mapbox.dark',
     accessToken: 'pk.eyJ1IjoiZG92bGExOTkyIiwiYSI6ImNqZnM0aG9nMzAwYWMycXA5OHlra2dnc2YifQ.0jZcVmYULoRh9DZewROQOA'
   }).addTo(mymap3);
-  L.circle([44.7950478, 20.4394765, 17.71], {
+  L.circle([44.7950478, 20.4394765, 17.71],{
     color: '#8CB240',
     fillOpacity: 0.3,
     radius: 8500
@@ -23,12 +19,10 @@ function callNow(){
     mymap3.invalidateSize();
   }, 1000);
 }
-
+callNow();
 
 function callNowWithDiff(lat1, lon1){
-  if(mymap4 != undefined){
-    mymap4.remove();
-  }
+  mymap4 != undefined ? mymap4.remove() : undefined;
   document.getElementById('mapid3').style.display = 'none';
   document.getElementById('mapid4').style.display = 'block'
   mymap4 = L.map('mapid4').setView([lat1, lon1], 11);
@@ -46,9 +40,9 @@ function callNowWithDiff(lat1, lon1){
   setTimeout(() => {
     mymap4.invalidateSize();
   }, 1000);
-}
+};
 
-(function(){
+(()=> {
 let blinkDiv = document.getElementsByClassName('blink_me');
   blinkDiv["0"].style.backgroundColor = '#ff9999';
   blinkDiv["0"].style.borderColor = '#ff9999';
@@ -57,89 +51,70 @@ function blinker(){
   blinkDiv["0"].style.borderColor = 'red';
   blinkDiv["0"].style.boxShadow = "1px 5px 77px 30px red";
   $('.blink_me').fadeToggle(1300);
-}
-setInterval(blinker, 1300);
+};
+setInterval(blinker, 1300) 
 })();
 
 
-
-
-
 (function(){ mainF() })();
-
 
 function mainF(){
   fetch('http://api.openweathermap.org/data/2.5/weather?q=Belgrade&units=imperial&APPID=69190f2d7f60d5551b77187e81d50575')
     .then(eks => {
       return eks.json();
-    }).then(data => {
-      setInterval(() => {
-        var date = new Date().toLocaleString("en-US", {
-          timeZone: 'Europe/Belgrade'
-        })
-        updateTime(date);
+    }).then(data=> {
+      setInterval(()=> {
+        var date = new Date().toLocaleString("en-US", {timeZone: 'Europe/Belgrade'})
+        updateTime(date)
       }, 1000);
 
-      function updateTime(dateExp) {
-        var timeDiv = document.getElementById("date1");
-        var putSliced = dateExp.slice(10, dateExp.length - 2);
+      function updateTime(dateExp){
+        var timeDiv = document.getElementById("date1"), putSliced = dateExp.slice(10, dateExp.length - 2);
         var putSliced1 = dateExp.slice(dateExp.length - 2) == "PM" ? 'PM' : "AM";
-        var finalTm = putSliced + " " + putSliced1;
+        var finalTm = putSliced + " " + putSliced1
         var dt = moment(String(finalTm), "h:mm:ss A").format("HH:mm:ss");
         var dt1 = moment(String(finalTm), 'h:mm:ss A').format('MMMM Do YYYY');
         var dt2 = moment(String(finalTm), "h:mm:ss A").format('dddd');
         timeDiv.innerHTML = dt1 + " " + `<p class='newClassNow'>${dt}</p>` + " " + `<p id='stDay2'>${dt2}</p>`;
       };
       fetch('https://api.sunrise-sunset.org/json?lat=' + data.coord.lat + '&lng=' + data.coord.lon)
-        .then(riseSet1 => {
-          return riseSet1.json();
-        })
-        .then(dataSun => {
-          var takeRise = dataSun.results.sunrise;
-          var takeSet = dataSun.results.sunset;
-          var takeDayU = dataSun.results.day_length;
+        .then(riseSet1=> {
+          return riseSet1.json()})
+        .then(dataSun=> {
+          var dtR= dataSun.results, takeRise =  dtR.sunrise, takeSet = dtR.sunset, takeDayU = dtR.day_length;
           $('#sunSetRise').html(`Sunrise:&nbsp; <span id='sunId'>${takeRise}</span>`);
           $('#sunSetRise').append(`&nbsp;&nbsp;<span class='redLineC'>|</span>`);
           $('#sunSetRise').append(`&nbsp;&nbsp; Sunset:&nbsp; <span id ='sunId1'>${takeSet}</span>`);
           $('#dayLastUv').html(`Day length:&nbsp; <span id='dayUv'>${takeDayU}</span>`);
           $('#dayLastUv').append(`&nbsp;&nbsp;<span class='redLineC'>|</span>`);
           $('#shortInfo').html("Belgrade (/ˈbɛlɡreɪd/ BEL-grayd; Serbian: Beograd / Београд, meaning 'White city', Serbian pronunciation: [beǒɡrad] names in other languages) is the capital and largest city of Serbia. It is located at the confluence of the Sava and Danube rivers, where the Pannonian Plain meets the Balkans. The urban area of the City of Belgrade has a population of 1.23 million, while nearly 1.7 million people live within its administrative limits<a class='showInfoHref' title='Click to continue reading' href=https://en.wikipedia.org/wiki/Belgrade target=_blank> &nbsp;<i  class='fa fa-external-link'></i></>")
-
           fetch("http://api.openweathermap.org/data/2.5/uvi?appid=69190f2d7f60d5551b77187e81d50575&lat=44.787197&lon=20.457273")
-            .then(uvInd1 => {
-              return uvInd1.json()
-            })
-            .then(holdVal => {
-              $('#dayLastUv').append(`&nbsp;&nbsp; UVindex:&nbsp; <span id ='raceIt'>${holdVal.value}</span>`)
-            });
-        })
-      var storeJson = data;
-      var tempSwap = false;
+          .then(uvInd1=> {
+           return uvInd1.json()})
+         .then(holdVal=> {$('#dayLastUv').append(`&nbsp;&nbsp; UVindex:&nbsp; <span id ='raceIt'>${holdVal.value}</span>`) })
+         })
+      var storeJson = data, tempSwap = false;
       $('#countryFlag').html(`<img class='flagIdImg' src="http://www.countryflags.io/${storeJson.sys.country.toLowerCase()}/flat/64.png">`)
-      var icon = storeJson.weather[0].icon;
-      var iconSrc = "http://openweathermap.org/img/w/" + icon + ".png";
-      var storeIcon = `<img id ='iconIcon' src=   ${iconSrc} >`
-      $("#locId").html(`${storeJson.name},   ${storeJson.sys.country}`);
+      var icon = storeJson.weather[0].icon, iconSrc = "http://openweathermap.org/img/w/" + icon + ".png";
+      var storeIcon = `<img id ='iconIcon' src=${iconSrc}>`
+      $("#locId").html(`${storeJson.name}, ${storeJson.sys.country}`);
       $("#storeDes").html(`${storeJson.weather[0].main} (<span id ='bracketsDes'> ${storeJson.weather[0].description} </span>) <span id='iconDesId'> ${storeIcon} </span>`);
       $("#storeTemp").html(`Temperature is: <span id ='tempValId'> &nbsp; ${storeJson.main.temp.toFixed(1)} &#x2109; &nbsp;</span>`);
-      var storeWindRes = storeJson.wind.speed * 0.44704;
+      var storeWindRes = storeJson.wind.speed * 0.44704, windData = storeJson.wind.deg;
       $("#storeWind").html(`Wind Blow:&nbsp; <span id ='windVal'> ${storeWindRes.toFixed(2)}&nbsp;m/s </span>`);
-      var windData = storeJson.wind.deg;
       $('#storeWind').append(`&nbsp;&nbsp;<span class='redLineC'>|</span>`);
       $('#storeWind').append(`&nbsp;&nbsp; Wind direction:&nbsp <span id ='windDirVal'> ${windDirect(windData)} </span>`);
-      var humidData1 = storeJson.main.humidity;
-      var pressData1 = storeJson.main.pressure;
+      var humidData1 = storeJson.main.humidity, pressData1 = storeJson.main.pressure;
       var takeClouds1 = storeJson.clouds.all;
       var takeVisibl1 = (storeJson.visibility != undefined) ? storeJson.visibility : 'No visibility info!'
       $('#humid').html(`Humidity:&nbsp <span id ='windDirVal'>${humidData1}&#37 </span>`);
       $('#humid').append(`&nbsp;&nbsp;<span class='redLineC'>|</span>`);
       $('#humid').append(`&nbsp;&nbsp; Pressure:&nbsp <span id='windDirVal'>${pressData1} mb</span>`)
-
       $('#maxMin').html(`Cloudiness:&nbsp; <span class='cloudS'>${takeClouds1}&#37</span>`)
       $('#maxMin').append(`&nbsp;&nbsp;<span class='redLineC'>|</span>`);
       $('#maxMin').append(`&nbsp;&nbsp; Visibility:&nbsp; <span class='cloudS'>${takeVisibl1}m</span>`)
 
-      function windDirect(degree) {
+      function windDirect(degree){
         if (degree > 337.5) return 'Northerly';
         if (degree > 292.5) return 'North Westerly';
         if (degree > 247.5) return 'Westerly';
@@ -147,28 +122,26 @@ function mainF(){
         if (degree > 157.5) return 'Southerly';
         if (degree > 122.5) return 'South Easterly';
         if (degree > 67.5) return 'Easterly';
-        if (degree > 22.5) {
-          return 'North Easterly';
-        }
+        if (degree > 22.5){ return 'North Easterly' }
         return 'Northerly';
-      }
+      };
 
       var tempRoot = (storeJson.main.temp).toFixed(1); // Farenhajtima(F)
-      btn1.addEventListener("click", function () {
-        if (tempSwap === false) {
+      btn1.addEventListener("click", function(){
+        if (tempSwap === false){
           $("#storeTemp").html(storeFunc(tempRoot));
           tempSwap = true;
-        } else {
+        }else {
           $("#storeTemp").html(`Temperature is:&nbsp; <span id ='tempValId'> &nbsp; ${tempRoot} &#x2109; &nbsp;</span>`); //</span>` + " " + `<span id ='tempValId'>
           document.getElementById("btn1").value = "Switch F/C";
-          tempSwap = false; //to return
+          tempSwap = false;
         };
       });
       glyId.addEventListener("click", function(){
         if (tempSwap === false) {
           $("#storeTemp").html(storeFunc(tempRoot));
           tempSwap = true;
-        } else {
+        }else {
           $("#storeTemp").html(`Temperature is:&nbsp;<span id ='tempValId'> &nbsp; ${tempRoot} &#x2109; &nbsp;</span>`); //</span>` + " " + `<span id ='tempValId'>&#x2109;
           document.getElementById("btn1").value = "Switch F/C";
           tempSwap = false;
@@ -182,12 +155,11 @@ function mainF(){
     }).then(() => {
       fetch('http://api.openweathermap.org/data/2.5/forecast?q=Belgrade,RS&units=imperial&APPID=69190f2d7f60d5551b77187e81d50575')
         .then(function (ajax) {
-          return ajax.json();
-        })
-        .then((data1) => {
+          return ajax.json()})
+        .then(data1=> {
           var storeFunc = function f2c(f){
-            var num = ((f - 32) * (5 / 9));
-            return num.toFixed(1);
+          var num = ((f - 32) * (5 / 9));
+          return num.toFixed(1);
           };
           var storeTempK = data1.list[3].main.temp;
           var storeCalled = (storeFunc(storeTempK).charAt(0) == '-') ? storeFunc(storeTempK) : '&nbsp;' + storeFunc(storeTempK) //ternary
@@ -251,10 +223,9 @@ function mainF(){
         })
     });
   return false
-} //mainF end
+}//mainF end
 
 var sitNam = document.getElementById('siteName');
-
 function showDiv() {
   document.getElementById('siteName').style.display = 'block';
   document.getElementById('locId').style.display = 'none';
@@ -262,14 +233,14 @@ function showDiv() {
 };
 var counter = [];
 sitNam.addEventListener('keydown', function (e) {
-  if (e.keyCode == 13) {
+  if(e.keyCode == 13){
     counter.push(e.isTrusted);
     addPlace = this.value;
     let cityNameIt = document.getElementsByClassName('fixH3');
     cityNameIt[0].innerHTML = addPlace;
-    if (cityNameIt[0].innerHTML.length >= 16) {
+    if(cityNameIt[0].innerHTML.length >= 16) {
       cityNameIt[0].style.fontSize = '40px'
-    } else {
+    }else {
       cityNameIt[0].style.fontSize = '50px'
     }
     cityNameIt[0].title = `Currently, info for ${addPlace} is shown`;
@@ -278,20 +249,18 @@ sitNam.addEventListener('keydown', function (e) {
 });
 
 /*Start of showF function down*/
-function showF() {
+function showF(){
   fetch('http://api.openweathermap.org/data/2.5/weather?q=' + addPlace + '&units=imperial&APPID=69190f2d7f60d5551b77187e81d50575')
-    .then(eks => {
-      return eks.json();
-    }).then(data => {
-      console.log('300 data je:', data)
+    .then(eks=> {
+      return eks.json()})
+      .then(data=> {
       document.getElementById('siteName').style.display = 'none';
       document.getElementById('locId').style.display = 'block';
-      if (data.cod == 404) {
+      if (data.cod == 404){
         alert('Please, only enter place names on eglish language.');
-      } else if (data.name.length > 10) {
+      } else if (data.name.length > 10){
         document.getElementById('locId').style.fontSize = '35px';
       };
-
       if (data.name.length <= 10) {
         document.getElementById('locId').style.fontSize = '50px';
       }
@@ -299,9 +268,8 @@ function showF() {
       var cityLong1 = data.coord.lon;
       fetch("https://maps.googleapis.com/maps/api/timezone/json?location=" + cityLat1 + "," + cityLong1 + "&timestamp=1331161200&key=AIzaSyDQYoYpB-CyL4Leg5IWW1pT0afaVD9z4J0")
         .then((timeZon) => {
-          return timeZon.json()
-        })
-        .then((tmZon) => {
+          return timeZon.json()})
+        .then(tmZon=> {
           updateTime();
 
           function updateTime(){
@@ -378,11 +346,9 @@ function showF() {
         if (degree > 157.5) return 'Southerly';
         if (degree > 122.5) return 'South Easterly';
         if (degree > 67.5) return 'Easterly';
-        if (degree > 22.5) {
-          return 'North Easterly';
-        }
+        if (degree > 22.5) { return 'North Easterly'}
         return 'Northerly';
-      }
+      };
       var tempRoot = (storeJson.main.temp).toFixed(1); //(F)
       btn1.addEventListener("click", () => {
         if (tempSwap === false) {
@@ -395,10 +361,10 @@ function showF() {
         };
       });
       glyId.addEventListener("click", () => {
-        if (tempSwap === false) {
+        if(tempSwap === false) {
           $("#storeTemp").html(storeFunc(tempRoot));
           tempSwap = true;
-        } else {
+        }else {
           $("#storeTemp").html(`Temperature is:&nbsp;<span id ='tempValId'>&nbsp; ${tempRoot} &#x2109; &nbsp;</span>`);
           document.getElementById("btn1").value = "Switch F/C";
           tempSwap = false;
@@ -409,11 +375,10 @@ function showF() {
         document.getElementById("btn1").value = "Switch C/F";
         return `Temperature is:&nbsp;<span id ='tempValId'> &nbsp; ${num.toFixed(1)} &#8451 &nbsp;</span>`;
       }
-    }).then(() => {
+    }).then(()=> {
       fetch('http://api.openweathermap.org/data/2.5/forecast?q=' + addPlace + '&units=imperial&APPID=69190f2d7f60d5551b77187e81d50575')
-        .then(function (ajax) {
-          return ajax.json();
-        })
+        .then(function (ajax){
+          return ajax.json()})
         .then(data1 => {
           var cityLat = data1.city.coord.lat;
           var cityLong = data1.city.coord.lon;
@@ -435,8 +400,7 @@ function showF() {
 
           fetch('https://api.sunrise-sunset.org/json?lat=' + data1.city.coord.lat + '&lng=' + data1.city.coord.lon)
             .then(riseSet => {
-              return riseSet.json();
-            })
+              return riseSet.json()})
             .then(aboutSun => {
               var takeRise1 = aboutSun.results.sunrise;
               var takeSet1 = aboutSun.results.sunset;
@@ -447,17 +411,17 @@ function showF() {
               $('#dayLastUv').html(`Day length:&nbsp; <span id='dayUv1'>${takeDayU1}</span>`);
               $('#dayLastUv').append(`&nbsp;&nbsp;<span class='redLineC'>|</span>`);
               fetch("http://api.openweathermap.org/data/2.5/uvi?appid=69190f2d7f60d5551b77187e81d50575&lat=" + cityLat + "&lon=" + cityLong)
-                .then((uvInd1) => {
+                .then(uvInd1=> {
                   uvInd1.json()
-                    .then(holdVal => {
+                .then(holdVal=> {
                       $('#dayLastUv').append(`&nbsp;&nbsp; UVindex:&nbsp; <span id ='raceIt'>${holdVal.value}</span>`)
-                    })
+                })
                 })
               var storeLocId = document.getElementById('locId');
               storeLocId.title = `LAT: ${cityLat}   LON: ${cityLong}`;
               var storeFunc = function f2c(f) {
-                var num = ((f - 32) * (5 / 9));
-                return num.toFixed(1);
+              var num = ((f - 32) * (5 / 9));
+              return num.toFixed(1);
               };
               var storeTempK = data1.list[3].main.temp;
               var storeCalled = (storeFunc(storeTempK).charAt(0) == '-') ? storeFunc(storeTempK) : '&nbsp;' + storeFunc(storeTempK)
