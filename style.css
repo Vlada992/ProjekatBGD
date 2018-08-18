@@ -1,5 +1,4 @@
-html,
-body {
+html, body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
   height: 100%;
@@ -3160,9 +3159,7 @@ a.icon {
   font-family: 'Bernard MT';
   font-size: 24px;
   color:#a02700;
-  /*position:absolute;
-  top: 40%;
-  left: 10%;*/
+
   margin-top: -50%;
   margin-left: 8%;
   display: flex;
@@ -3171,14 +3168,11 @@ a.icon {
 
 #paperId {
   background-color:gray;
-  /*width: 50%;*/
 }
 .h4I {
-  
 }
 
 #h2Id {
-
 }
 
 
@@ -3186,39 +3180,69 @@ a.icon {
 /**/
 @media screen and (max-width: 1200px) {
   #contactId {margin-top: -63%;  margin-left: 10%;}
-  #paperId {background-color:gray; /*width: 50%;*/ margin-bottom:5%}
+  #paperId {background-color:gray; margin-bottom:5%}
+  #footInnerP {padding-bottom:0px;   margin-bottom: -10%; }
 }
 
 @media screen and (max-width: 990px) {
   #contactId {margin-top: -86%;   margin-left: 12%; } 
-  #paperId {background-color:gray; /*width: 50%;*/ margin-bottom:15%}
+  #paperId {background-color:gray;  margin-bottom:15%}
+  #footInnerP {    margin-bottom: -10%; }
 }
 
 @media screen and (max-width: 770px) {
   #contactId {margin-top: -90%;   margin-left: 15%; margin-bottom:15%} 
-  #paperId {background-color:gray; /*width: 50%;*/}
+  #paperId {background-color:gray;}
+  #footInnerP { padding-bottom:0px;   margin-bottom: -10%; }
 }
 
 
 @media screen and (max-width: 690px) {
-  #contactId {margin-top: -80%;  margin-left: 5%; margin-bottom:15%;} 
-  #paperId {background-color:gray; /*width: 50%;*/ width:55%}
-  .h4I {font-size:13px}
-  #h2Id {font-size:20px}
-  
+  #contactId {margin-top: -87%;  margin-left: 10%; margin-bottom:15%;} 
+  #paperId {background-color:gray; width:65%}
+  .h4I {font-size:12px}
+  #h2Id {font-size:20px;  margin-bottom: -12%;}
+  .contImgSize1 {width:24px; height:24px;}
+  .contImgSize {width:24px; height:24px;}
 }
 
+@media screen and (max-width: 560px) {
+  #contactId {margin-top: -88%;   margin-left: 8%; margin-bottom:15%} 
+  .h4I {font-size:10px}
+  #h2Id {font-size:13px;  margin-bottom: -12%;}
+  .contImgSize1 {width:20px; height:20px;}
+  .contImgSize {width:16px; height:16px; display:none}
+}
 
+@media screen and (max-width: 450px) {
+  #contactId {   margin-left: 14%; margin-bottom:15%} 
+  #paperId {background-color:gray; width: 85%; height:480px!important;}
+  #h2Id {font-size:10px;  margin-bottom: -19%;  margin-top: -20%;}
+  .contImgSize1 {width:17px; height:17px;}
+  .footStyle     {margin-top: 35%;}
+  #forToSeePage {padding-bottom: 40%;  margin-bottom: -36%;  }
+  #toTopP {margin-top:-12%; float: right;}
+}
+@media screen and (max-width: 375px) {
+  #contactId {margin-left: 14%; margin-bottom:15%} 
+  #paperId {background-color:gray; width: 85%; height:480px!important;}
+  #h2Id {font-size:9px;  margin-bottom: -19%;  margin-top: -40%;}
+  #forToSeePage {padding-bottom: 40%;  margin-bottom: -36%;  }
+  #footInnerP {padding-bottom:0px;     margin-bottom: -10%; }
+}
 
+@media screen and (max-width: 330px) {
+  #contactId { margin:0 auto; margin-top:50%} 
+  #paperId { display:none}
+  .contImgSize1 {width:17px; height:17px;}
+  #forToSeePage {padding-bottom: 40%;  margin-bottom: -36%;}
+  #toTopP {margin-top:-12%; float: left; padding-left:1.5%}
+}
 
-
-
-
-
-
-
-
-
+@media screen and (max-width 250px){
+  .fixH3 {font-size:15px!important; margin-left:auto}
+  #toTopP {margin-top:-13%; float: right; padding-left:1.5%}
+}
 
 
 
@@ -3246,6 +3270,9 @@ a.icon {
   width:32px;
   height:32px;
 }
+
+
+
 #numbContSpan {
   font-family: 'Bodoni MT';
 }
