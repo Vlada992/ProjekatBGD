@@ -1,30 +1,43 @@
-let pgid = [], togleR = true, brushPlt = document.getElementById('paletBrush')
+let pgid = [], togleR = true, brushPlt = document.getElementById('paletBrush'), greenArr = []
+
+function pgidVisb(){
+  if(localStorage.getItem('visible')  ){
+      greenArr.push('clicked')
+      document.getElementById('divFourSQ').style.display  = 'none';
+      document.getElementById(localStorage.getItem('visible')).style.display = 'block';
+      document.getElementById(localStorage.getItem('eachId')).style.borderBottom = '4px solid  #8CB240';
+      document.getElementById(localStorage.getItem('eachId')).style.color = '#8CB240';
+      document.getElementById('foodFa').style.borderBottom = '';
+      document.getElementById('foodFa').style.color = ''; 
+  }
+  };
+  pgidVisb();
+
 
 function invokSkver(e, visible){
-  let eachId = e.path["0"].id
+  let eachId = e.path["0"].id;
   Array.from($('.icnSkver')).forEach(ii => pgid.push(ii.id));
-  document.getElementById(eachId).style.borderBottom = '4px solid #8CB240';
-  document.getElementById(eachId).style.color = '#8CB240';    
   pgid.forEach(each => { 
   if(document.getElementById(each).style.borderBottom)
         document.getElementById(each).style.borderBottom = '';
         document.getElementById(each).style.color = '';
         document.getElementById(eachId).style.borderBottom = '4px solid  #8CB240';
-        //localStorage.setItemm('borBot', )
-        document.getElementById(eachId).style.color = '#8CB240';     
+        document.getElementById(eachId).style.color = '#8CB240'; 
   });
   document.getElementById(visible).style.display  = 'block';
-  Array.from(arguments).slice(2).forEach(arg =>  document.getElementById(arg).style.display = 'none')
+  Array.from(arguments).slice(2).forEach(arg => document.getElementById(arg).style.display = 'none')
+  localStorage.setItem('visible', visible );
+  localStorage.setItem('eachId', eachId);
 };
 
 
-(()=>{
+(()=> {
 $('#stylePalet').hover(
   () =>{
-    let imgSrc = document.getElementById('stylePalet').src,  len1 = imgSrc.length;
+    let imgSrc = document.getElementById('stylePalet').src, len1 = imgSrc.length;
     let imgP = imgSrc.slice(len1 - 5, len1 - 4);
     imgP == 'y' ? brushPlt.src = 'images/smallBrush.png' : brushPlt.src = 'images/brushNo.png';
-  },() => brushPlt.src = '' )
+  },() => brushPlt.src = '')
 })();
 
 function changeColor(paletImg){
@@ -50,10 +63,16 @@ function changeColor(paletImg){
 fetch('https://api.foursquare.com/v2/venues/search?ll=44.8099375,20.4494431&categoryId=4d4b7105d754a06374d81259&&limit=50&client_id=SYQLZ1DXBSZYMCXG3QUGBBHDRM23YDDLO5SAZCALXMFUR3VS&client_secret=HHFBNGSRMFOUAFYQCTVMR1FK4HR4GZL5LO0T0BYGQVFUHSW0&v=20180130')
   .then(venueAPI =>{
     return venueAPI.json()})
-  .then(foodY=> {
-    var allVenueX = foodY.response.venues;
-    document.getElementById('foodFa').style.borderBottom = '4px solid #8CB240';
-    document.getElementById('foodFa').style.color = '#8CB240';
+  .then(foodY => {
+    var allVenueX = foodY.response.venues, fudEl= document.getElementById('foodFa').style;
+    if(greenArr.length >=1){
+    fudEl.borderBottom = '';
+    fudEl.color = '';
+    }else{
+    fudEl.borderBottom = '4px solid #8CB240';
+    fudEl.color = '#8CB240';
+    };
+
     for (let i = 0; i <= 41; i++){
       var storeImageFSQ = allVenueX[i].categories[0].icon.prefix + 64 + allVenueX[i].categories[0].icon.suffix;
       localStorage.setItem('eto3', 'images/imageeditNEW3.png');
@@ -208,7 +227,7 @@ fetch('https://api.foursquare.com/v2/venues/search?ll=44.8099375,20.4494431&cate
             <span title='Explanation, nearby streets' id='crossId'>&nbsp;&#9580; </span> &nbsp;&nbsp;&nbsp; ${strCross} <br> <i title='In which city?'  class="fa fa-address-card-o styleFaCard"></i> &nbsp;&nbsp; ${Adrs1} ${Adrs2}<br>
             <span id ='boldNumId'><span title='Phone number' id ='phone4SqId'>&#9742;</span> &nbsp;&nbsp;&nbsp; ${number}</span></p><img title='Internet adress' id ='style4ImgUrl' src ='https://image.flaticon.com/icons/svg/109/109476.svg' style="width:26px;height:28px;"/> 
             <p>&nbsp;<a id = 'sq4UrlTxt' href = ${storeUrl} target = "_blank">${prtUrl}...</a></p><p id='showOnSm'>Visit Site<p></div><p id ='categ4sqId'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Categories: <span id='sq4StoreCat'>${Categ}</span></p>`;
-          // }) //then
+          // })
         }
       })
   })

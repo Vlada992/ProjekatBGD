@@ -82,10 +82,10 @@ function mainF(){
           return riseSet1.json()})
         .then(dataSun=> {
           var dtR= dataSun.results, takeRise =  dtR.sunrise, takeSet = dtR.sunset, takeDayU = dtR.day_length;
-          $('#sunSetRise').html(`Sunrise:&nbsp; <span id='sunId'>${takeRise}</span>`);
+          $('#sunSetRise').html(`Sunrise:&nbsp; <span class='sunId'>${takeRise}</span>`);
           $('#sunSetRise').append(`&nbsp;&nbsp;<span class='redLineC'>|</span>`);
-          $('#sunSetRise').append(`&nbsp;&nbsp; Sunset:&nbsp; <span id ='sunId1'>${takeSet}</span>`);
-          $('#dayLastUv').html(`Day length:&nbsp; <span id='dayUv'>${takeDayU}</span>`);
+          $('#sunSetRise').append(`&nbsp;&nbsp; Sunset:&nbsp; <span class='sunId'>${takeSet}</span>`);
+          $('#dayLastUv').html(`Day length:&nbsp; <span class='dayUv'>${takeDayU}</span>`);
           $('#dayLastUv').append(`&nbsp;&nbsp;<span class='redLineC'>|</span>`);
           $('#shortInfo').html("Belgrade (/ˈbɛlɡreɪd/ BEL-grayd; Serbian: Beograd / Београд, meaning 'White city', Serbian pronunciation: [beǒɡrad] names in other languages) is the capital and largest city of Serbia. It is located at the confluence of the Sava and Danube rivers, where the Pannonian Plain meets the Balkans. The urban area of the City of Belgrade has a population of 1.23 million, while nearly 1.7 million people live within its administrative limits<a class='showInfoHref' title='Click to continue reading' href=https://en.wikipedia.org/wiki/Belgrade target=_blank> &nbsp;<i  class='fa fa-external-link'></i></>")
           fetch("http://api.openweathermap.org/data/2.5/uvi?appid=69190f2d7f60d5551b77187e81d50575&lat=44.787197&lon=20.457273")
@@ -405,10 +405,10 @@ function showF(){
               var takeRise1 = aboutSun.results.sunrise;
               var takeSet1 = aboutSun.results.sunset;
               var takeDayU1 = aboutSun.results.day_length;
-              $('#sunSetRise').html(`Sunrise:&nbsp; <span id='sunIdNew'>${takeRise1}</span>`);
+              $('#sunSetRise').html(`Sunrise:&nbsp; <span class='sunIdNew'>${takeRise1}</span>`);
               $('#sunSetRise').append(`&nbsp;&nbsp;<span class='redLineC'>|</span>`);
-              $('#sunSetRise').append(`&nbsp;&nbsp; Sunset:&nbsp; <span id ='sunIdNew1'>${takeSet1}</span>`);
-              $('#dayLastUv').html(`Day length:&nbsp; <span id='dayUv1'>${takeDayU1}</span>`);
+              $('#sunSetRise').append(`&nbsp;&nbsp; Sunset:&nbsp; <span class ='sunIdNew'>${takeSet1}</span>`);
+              $('#dayLastUv').html(`Day length:&nbsp; <span class='dayUv'>${takeDayU1}</span>`);
               $('#dayLastUv').append(`&nbsp;&nbsp;<span class='redLineC'>|</span>`);
               fetch("http://api.openweathermap.org/data/2.5/uvi?appid=69190f2d7f60d5551b77187e81d50575&lat=" + cityLat + "&lon=" + cityLong)
                 .then(uvInd1=> {

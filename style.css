@@ -42,54 +42,22 @@ html, body {
 }
 
 @media screen and (max-width: 600px) {
-  .topnav a:not(:first-child) {
-    display: none;
-  }
-  .topnav a.icon {
-    float: left;
-    display: block;
-  }
-  .fixH3 {
-    width: auto;
-    margin-left: 0 auto;
-  }
-  .fixNH {
-    width: auto;
-    float: center;
-    margin-top: 0% !important;
-    padding-top: 0px;
-  }
+  .topnav a:not(:first-child) {display: none;}
+  .topnav a.icon {float: left;display: block;}
+  .fixH3 {width: auto; margin-left: 0 auto;}
+  .fixNH {width: auto;float: center; margin-top: 0% !important;}
 }
 
-@media screen and (max-width: 600px) {
-  .topnav.responsive .icon {
-    right: 0;
-    top: 0;
-  }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-  .fixH3 {
-    width: auto;
-    margin-left: 0 auto;
-  }
-  .fixNH {
-    width: auto;
-    float: center;
-    margin-top: 0% !important;
-    padding-top: 0px;
-  }
+@media screen and (max-width: 600px){
+  .topnav.responsive .icon{right: 0;top: 0;}
+  .topnav.responsive a {float: none; display: block; text-align: left;}
+  .fixH3 {width: auto;margin-left: 0 auto;}
+  .fixNH {width: auto;float: center;margin-top: 0% !important;}
 }
 
-a.icon {
-  height: 75.3px;
-}
+a.icon { height: 75.3px;}
 
-.container {
-  padding-top: 3%;
-}
+.container {padding-top: 3%;}
 
 #forHomePage {
   background-color: #ecece3;
@@ -214,18 +182,7 @@ a.icon {
   margin-top: -3%;
 }
 
-#windDirVal {
-  color: #7d0000;
-  font-weight: 800;
-}
-
-#windVal {
-  color: #7d0000;
-  font-weight: 800;
-}
-
-#windValAll {
-  color: #7d0000;
+#windDirVal, #windVal {color: #7d0000; font-weight: 800;
 }
 
 #humid {
@@ -236,15 +193,7 @@ a.icon {
   font-family: 'Times New Roman';
 }
 
-#sunId {
-  color: #7d0000;
-  font-weight: 800;
-}
-
-#sunId1 {
-  color: #7d0000;
-  font-weight: 800;
-}
+.sunId{color: #7d0000; font-weight: 800;}
 
 #sunSetRise {
   text-align: center;
@@ -262,27 +211,9 @@ a.icon {
   font-family: 'Times New Roman';
 }
 
-#dayUv {
-  color: #7d0000;
-  font-weight: 800;
-}
+.dayUv {color: #7d0000; font-weight: 800;}
 
-#dayUv1 {
-  color: #7d0000;
-  font-weight: 800
-}
-
-#sunIdNew {
-  color: #7d0000;
-  font-weight: 800;
-}
-
-#sunIdNew1 {
-  color: #7d0000;
-  font-weight: 800;
-}
-
-.cloudS {
+.sunIdNew {
   color: #7d0000;
   font-weight: 800;
 }
@@ -324,40 +255,15 @@ a.icon {
 }
 
 ;
-#btn1:visited {
-  color: brown;
-  box-shadow: 2px 0px 28px red;
-  border: 1px solid red;
-}
+#btn1:visited {color: brown; border: 1px solid red;}
 
 #btn1:hover {
   color: black;
   background-color: #9B9B79;
-  padding: 10px;
-  padding-right: 65px;
-  font-family: Arial;
-  font-weight: 700;
-  box-shadow: 2px 0px 28px red;
-  margin-bottom: 10px;
-  margin-right: -25px;
-  margin-left: -25px;
   border: 1px solid red;
 }
 
-#btn1:active {
-  background-color: #9B9B79;
-  font-family: Arial;
-  font-weight: 700;
-  color: red;
-  margin-left: 5px;
-  padding: 10px;
-  padding-right: 65px;
-  margin-bottom: 10px;
-  box-shadow: 2px 0px 28px red;
-  margin-right: -25px;
-  margin-left: -25px;
-  border: 1px solid red;
-}
+#btn1:active {background-color: #9B9B79; border: 1px solid red;}
 
 #demo {
   color: brown;
@@ -428,10 +334,7 @@ a.icon {
   position: absolute;
 }
 
-#iconIcon {
-  width: 85px;
-  height: 85px;
-}
+#iconIcon {width: 85px; height: 85px;}
 
 #yearId {
   font-weight: 700;
@@ -469,39 +372,19 @@ a.icon {
   padding-left: 5.29%;
 }
 
-.form-control:visited {
-  border: 1px solid #485b21 !important;
-}
+.form-control:visited {border: 1px solid #485b21 !important;}
 
-.form-control:hover {
-  border: 1px solid #6a8730;
-  background-color: #aeae92;
-}
+.form-control:hover {border: 1px solid #6a8730; background-color: #aeae92;}
 
-.form-control:active {
-  border: 1px solid #485b21 !important;
-}
+.form-control:active { border: 1px solid #485b21 !important;}
 
-.form-control::-webkit-input-placeholder {
-  color: red;
-  opacity: 0.4;
-}
+.form-control::-webkit-input-placeholder { color: red; opacity: 0.4;}
 
-.form-control::-moz-placeholder {
-  color: red;
-  opacity: 0.4;
-}
+.form-control::-moz-placeholder {color: red; opacity: 0.4;}
 
-.form-control::-ms-placeholder {
-  color: red;
-  opacity: 0.4;
-}
+.form-control::-ms-placeholder {color: red;opacity: 0.4;}
 
-.fixNav1 {
-  border-radius: 0px;
-  width: auto;
-  height: auto;
-}
+.fixNav1 {border-radius: 0px; width: auto; height: auto;}
 
 .fixH3 {
   font-size: 50px;
@@ -511,7 +394,7 @@ a.icon {
   width: 100%;
   height: 0 auto;
   color: #a02700;
-  font-family: Showcard Gothic;
+  font-family: 'Showcard Gothic';
 }
 
 .fixNH {
@@ -521,19 +404,11 @@ a.icon {
   margin-top: 0px;
 }
 
-.fixThisC {
-  background-color: #ecece3;
-  margin: auto;
-  padding: auto;
-}
+.fixThisC { background-color: #ecece3;margin: auto; padding: auto;}
 
-#HeadImg {
-  width: 100%
-}
+#HeadImg {width: 100%}
 
-#imgHolder {
-  border-left: 10px solid #8CB240;
-}
+#imgHolder {border-left: 10px solid #8CB240;}
 
 .fixThisC1 {
   background-color: #ecece3;
@@ -556,9 +431,7 @@ a.icon {
   border-bottom: 1px solid #a02700;
 }
 
-#styleheadTitl {
-  background-color: #ecece3;
-}
+#styleheadTitl {background-color: #ecece3;}
 
 .navBarChange {
   float: right;
@@ -568,24 +441,13 @@ a.icon {
   padding-bottom: 11px !important;
 }
 
-.clr1 {
-  font-weight: 800;
-  font-size: 15px;
-}
+.clr1 {font-weight: 800; font-size: 15px;}
 
-#styleHome {
-  color: black;
-  font-weight: 900;
-}
+#styleHome { color: black; font-weight: 900;}
 
-#styleHome:hover {
-  color: gray;
-}
+#styleHome:hover { color: gray;}
 
-#styleExit {
-  color: black;
-  font-weight: 900;
-}
+#styleExit { color: black; font-weight: 900;}
 
 .navBarChange #justThisW:hover {
   background-color: #dadac7;
@@ -621,8 +483,6 @@ a.icon {
   padding-top: 35px;
   padding-bottom: 35px;
   margin-bottom: -5%;
-  font-family: 'Raleway Italic';
-  background-color: #d7d7c3
 }
 
 #divF1 {
@@ -634,18 +494,11 @@ a.icon {
   left: auto;
 }
 
-#arrowSymb {
-  font-size: 15px;
-}
+#arrowSymb { font-size: 15px;}
 
-#insideDiv1 {
-  color: black;
-  font-weight: 800;
-}
+#insideDiv1 { color: black; font-weight: 800;}
 
-#insideDiv3 {
-  padding-bottom: 0px;
-}
+#insideDiv3 { padding-bottom: 0px;}
 
 #insideDiv3 img {
   width: 80px;
@@ -716,9 +569,7 @@ a.icon {
   padding-left: 20px;
 }
 
-#insideDiv02 {
-  padding-bottom: 0px;
-}
+#insideDiv02 { padding-bottom: 0px;}
 
 #insideDiv02 img {
   width: 80px;
@@ -727,9 +578,7 @@ a.icon {
   margin-left: 30px;
 }
 
-#insideDiv02Ent {
-  padding-bottom: 0px;
-}
+#insideDiv02Ent { padding-bottom: 0px;}
 
 #insideDiv02Ent img {
   width: 80px;
@@ -756,10 +605,7 @@ a.icon {
   margin-bottom: 30px;
 }
 
-#insideDivCET2 {
-  padding-bottom: 0px;
-  height: 80px;
-}
+#insideDivCET2 { padding-bottom: 0px; height: 80px;}
 
 #insideDivCET2 img {
   width: 80px;
@@ -768,9 +614,7 @@ a.icon {
   margin-left: 30px;
 }
 
-#insideDivCET2Ent {
-  padding-bottom: 0px;
-}
+#insideDivCET2Ent { padding-bottom: 0px;}
 
 #insideDivCET2Ent img {
   width: 80px;
@@ -797,10 +641,7 @@ a.icon {
   margin-bottom: 30px;
 }
 
-#insideDivPET2 {
-  padding-bottom: 0px;
-  height: 80px;
-}
+#insideDivPET2 {padding-bottom: 0px; height: 80px;}
 
 #insideDivPET2 img {
   width: 80px;
@@ -1152,7 +993,7 @@ a.icon {
     height: 100px !important;
     width: 15px !important;
   }
-  #divFourSQ {
+  #divFourCol {
     height: 660px !important;
     margin-bottom: 15% !important;
   }
@@ -1328,7 +1169,7 @@ a.icon {
   #imgHolder {
     border-left: 0px;
   }
-  #divFourSQ {
+  #divFourCol {
     margin-bottom: 15% !important;
     height: 610px !important;
   }
@@ -1449,7 +1290,7 @@ a.icon {
     border-right: 25px solid #8CB240;
     padding-right: 0px !important;
   }
-  #divFourSQ {
+  #divFourCol {
     margin-bottom: 15% !important;
     height: 590px !important;
   }
@@ -1623,7 +1464,7 @@ a.icon {
   #img4Id4 {
     margin-top: 15%;
   }
-  #divFourSQ {
+  #divFourCol {
     margin-bottom: 10%;
     height: 560px !important;
   }
@@ -2139,23 +1980,10 @@ a.icon {
   border: 1px solid gray;
 }
 
-.divFourSQ {
+.divFourCol {
   display: flex;
   justify-content: center;
   background-color: #ceceb5;
-  height: 600px;
-  border: 2px solid #8CB240;
-  width: 90%;
-  padding: 0px;
-  box-shadow: 4px -6px 24px #888888;
-}
-
-
-.divFourSQ1 {
-  display: flex;
-  justify-content: center;
-  background: linear-gradient(-85deg, #ff4500 0%, rgb(140, 178, 64) 55%);
-  opacity:0.8;
   height: 600px;
   border: 2px solid #8CB240;
   width: 90%;
@@ -2174,20 +2002,6 @@ a.icon {
   box-shadow: 4px -6px 24px #888888;
 }
 
-.secondCol1 {
-  display: flex;
-  justify-content: center;
-  border: 2px solid #8CB240;
-  height: 600px;
-  background-color: #ceceb5;
-  background: linear-gradient(-85deg, #FD9E0C 0%, rgb(140, 178, 64) 55%); 
-  opacity:0.8;
-  width: 90%;
-  padding: 0px;
-  box-shadow: 4px -6px 24px #888888;
-}
-
-
 
 .thirdCol {
   display: flex;
@@ -2201,22 +2015,6 @@ a.icon {
   box-shadow: 4px -6px 24px #888888;
 }
 
-.thirdCol1 {
-  display: flex;
-  justify-content: center;
-  width: 90%;
-  background: linear-gradient(-85deg, #337ab7 0%, rgb(140, 178, 64) 55%); 
-  opacity:0.8;
-  height: 600px;
-  border: 2px solid #8CB240;
-  padding: 0px;
-  box-shadow: 4px -6px 24px #888888;
-}
-
-
-
-
-
 .fourthCol {
   display: flex;
   justify-content: center;
@@ -2227,18 +2025,6 @@ a.icon {
   padding: 0px;
   box-shadow: 4px -6px 24px #888888;
 }
-.fourthCol1 {
-  display: flex;
-  justify-content: center;
-  width: 90%;
-  background: linear-gradient(-85deg, #551A8B 0%, rgb(140, 178, 64) 55%); 
-  opacity:0.8;
-  height: 600px;
-  border: 2px solid #8CB240;
-  padding: 0px;
-  box-shadow: 4px -6px 24px #888888;
-}
-
 
 
 .fifthCol {
@@ -2246,17 +2032,6 @@ a.icon {
   justify-content: center;
   width: 90%;
   background-color: #ceceb5;
-  height: 600px;
-  border: 2px solid #8CB240;
-  padding: 0px;
-  box-shadow: 4px -6px 24px #888888;
-}
-.fifthCol1 {
-  display: flex;
-  justify-content: center;
-  width: 90%;
-  background: linear-gradient(-85deg, #7a5230 0%, rgb(140, 178, 64) 55%); 
-  opacity:0.8;
   height: 600px;
   border: 2px solid #8CB240;
   padding: 0px;
@@ -3169,11 +2944,6 @@ a.icon {
 #paperId {
   background-color:gray;
 }
-.h4I {
-}
-
-#h2Id {
-}
 
 
 
@@ -3239,8 +3009,8 @@ a.icon {
   #toTopP {margin-top:-12%; float: left; padding-left:1.5%}
 }
 
-@media screen and (max-width 250px){
-  .fixH3 {font-size:15px!important; margin-left:auto}
+@media screen and (max-width: 250px){
+  .fixH3 {font-size:18px!important; margin-left:auto}
   #toTopP {margin-top:-13%; float: right; padding-left:1.5%}
 }
 
