@@ -4,9 +4,11 @@
  let attrLnk = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com" target="_blank">Mapbox</a>'
  let markLat = [816459, 831891, 822882, 818986, 814906, 797246, 799846, 790364, 802545, 810918, 828376, 801346, 8083, 741856, 864379],  markLon = [460835, 435944, 449848, 294838, 448732, 42573, 436177, 409937, 440793, 44767, 491916, 439154, 488526, 319353, 381114]
  let urlW = [`Republic_Square_${bG}`, 'Great_War_Island', `${bG}_Fortress`, `${bG}_Nikola_Tesla_Airport`, 'Branko%27s_B', 'Ada_B', 'New_Railway_B', 'Ada_Ciganlija', 'Gazela_B', 'Old_Sava_B', 'Pan%C4%8Devo_B', 'Old_Railway_B', `${bG}_New_Cemetery`, 'Ostru%C5%BEnica_B', 'Pupin_B'];
+ let myDays = 'Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday',  myMont = 'January, February, March, April, May, June, July, August, September, October, November, December';
 
 
- function whatPg() {
+
+ function whatPg(){
      if (localStorage.getItem('visbPg') != null) {
          document.getElementById('Page1').style.display = 'none';
          document.getElementById(localStorage.getItem('visbPg')).style.display = 'block';
@@ -109,7 +111,6 @@
          for (var i = 0, len1 = bgdRS.query.count; i < len1; i++) {
              dataR = bgdRS.query.results.item[i], storeTitle = dataR.title, storeLink = dataR.link
              var   storeText = dataR.description, storeDate = dataR.pubDate, momDate = storeDate.split('.').reverse();
-             var myDays = 'Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday';
              localStorage.setItem('dayW', myDays);
              var takeWeek = localStorage.getItem('dayW').split(','), dow = takeWeek[moment(momDate.join('-').slice(1)).day()]
              var storeImageUse = storeText.match(/"http[^\s]+ /), myImage = storeImageUse[0];

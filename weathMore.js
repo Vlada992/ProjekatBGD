@@ -319,6 +319,7 @@ function showF(){
               var takeIt = geoRes.geonames, sLat = cityLat.slice(0, 5), sLon = cityLong.slice(0, 5)
               for (var e = 0; e < 10; e++) {
                 if (String(takeIt[e].lat).slice(0, 5) == sLat || String(takeIt[e].lng).slice(0, 5) == sLon) {
+                  console.log('eee', takeIt[0].summary)
                   document.getElementById('shortInfo').innerHTML = takeIt[0].summary.slice(0, takeIt[e].summary.length - 5) +
                   `<a class='showInfoHref' href=https://${takeIt[0].wikipediaUrl} target=_blank>&nbsp; <i class='fa fa-external-link'></i></a>`;
                 }

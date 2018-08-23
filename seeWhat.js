@@ -1,4 +1,9 @@
 let pgid = [], togleR = true, brushPlt = document.getElementById('paletBrush'), greenArr = []
+/*localStorage.setItem('paletOn', 'fill' );
+localStorage.setItem('pgArrStore', 'fill1' );*/
+
+
+
 
 function pgidVisb(){
   if(localStorage.getItem('visible')){
@@ -12,19 +17,22 @@ function pgidVisb(){
       document.getElementById('foodFa').style.color = ''; 
       }
   };
-  if(localStorage.getItem("paletOn").slice(-1) == 1){
+
+  if(localStorage.getItem != null && localStorage.getItem("paletOn").slice(-1) == 1){
     String(localStorage.getItem('pgArrStore')).split(',').forEach((color, ind) => {
     document.getElementById(String(localStorage.getItem("pgArrStore")).split(',')[ind]).classList.remove(color)  // - Col
     document.getElementById(String(localStorage.getItem("pgArrStore")).split(',')[ind]).classList.add(color + '1') 
     document.getElementById('stylePalet').src = 'images/paletGreen.png';
     });
-  }else {
+  }else if(localStorage.getItem != null && localStorage.getItem("paletOn").slice(-1) != 1){
     String(localStorage.getItem('pgArrStore')).split(',').forEach((color, ind) => {
       document.getElementById( String(localStorage.getItem("pgArrStore")).split(',')[ind]).classList.remove(color + "1")
       document.getElementById(String(localStorage.getItem("pgArrStore")).split(',')[ind]).classList.add(color)
       document.getElementById('stylePalet').src = 'images/paletEmpty.png';
     })
-  };
+  }else {
+    return
+  }
   };
   pgidVisb();
 
@@ -121,8 +129,7 @@ fetch('https://api.foursquare.com/v2/venues/search?ll=44.8099375,20.4494431&cate
       url: 'http://api.eventful.com/json/events/search?app_key=RWcbt5k294VSHHmJ&l=Belgrade&date=Future&image_sizes=block100,medium,dropshadow250&page_size=50&within=30',
       accepts:{accepts: "application/json  charset=utf-8"}, dataType: 'jsonp',
        success: eventJson=> {
-        var takeEvent = eventJson.events.event, myDays = 'Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday';
-        var  myMont = 'January, February, March, April, May, June, July, August, September, October, November, December';
+        var takeEvent = eventJson.events.event
         localStorage.setItem('dayW', myDays);
         localStorage.setItem('monthS', myMont);
         let weekday = localStorage.getItem('dayW').split(","), month = localStorage.getItem('monthS').split(",");
@@ -148,8 +155,7 @@ fetch('https://api.foursquare.com/v2/venues/search?ll=44.8099375,20.4494431&cate
           var namD = new Date(dSplit[0], dSplit[1], dSplit[2]), dayName = weekday[namD.getDay()];
           var opnTime = strTime.slice(10, 13) < 12 && strTime.slice(10, 13) > 00 ? strTime.slice(10, 16) + " AM" : strTime.slice(10, 16) + ' PM'
           var evnLoc = itr.olson_path.slice(7), takeDesc = itr.description != undefined ? itr.description.slice(0, 38) : 'No description'
-          var takeLL = itr.latitude.slice(itr.latitude.length - 2) != 86 ? 'https://www.google.com/maps/search/?api=1&query=' + itr.latitude + ',' + itr.longitude : '';
-
+          var takeLL = itr.latitude.slice(-2) != 86 ? 'https://www.google.com/maps/search/?api=1&query=' + itr.latitude + ',' + itr.longitude : '';
          document.getElementsByClassName('item1')[l].children[1].innerHTML = `<p id='evTitl1'>${evTitle}</p>&nbsp;&nbsp; <p id=styleHr1></p><br>  <div class='divEvnAll' class='container'> <p id=monEvF>
          <img title='Date and time' src="images/calendar-with-a-clock-time-tools.png"/> &nbsp;  <span id='monDayId'>${monIs} ${dayIs}</span>, &nbsp;${yrIs} &nbsp; <span id =dashIdEvn>&minus;</span>&nbsp;  
          ${dayName}&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-long-arrow-right faIcn1"></i>  &nbsp;<span id=opnTmEvn>${opnTime}  &nbsp;&nbsp; </p>  <p id=dNameEvn> <img title='City' src="images/skyline.png"/>
